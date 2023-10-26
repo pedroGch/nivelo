@@ -13,13 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// LOGIN AND REGISTER ROUTES
+// Rutas de login y registro
 Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
   ->name('login');
-Route::get('/signup', [\App\Http\Controllers\SessionController::class, 'signupForm'])
+Route::post('/', [\App\Http\Controllers\SessionController::class, 'loginAction'])
+  ->name('loginAction');
+
+
+Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
   ->name('signup');
-Route::get('/about-you', [\App\Http\Controllers\SessionController::class, 'aboutYou'])
-  ->name('aboutYou');
+
+Route::post('/registrate', [\App\Http\Controllers\SessionController::class, 'signupAction'])
+  ->name('signupAction');
+
+
+Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouForm'])
+  ->name('aboutYouForm');
+Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
+  ->name('aboutYouAction');
 // Route::get('/crear_cuenta', [\App\Http\Controllers\SesionController::class, 'crear_cuenta']);
 // Route::post('/validar_usuario', [\App\Http\Controllers\SesionController::class, 'validar_usuario']);
 // Route::post('/cerrar_sesion', [\App\Http\Controllers\SesionController::class, 'cerrar_sesion']);
@@ -27,4 +38,5 @@ Route::get('/about-you', [\App\Http\Controllers\SessionController::class, 'about
 
 
 
-Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'categories']);
+Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'categories'])
+  ->name('categories');

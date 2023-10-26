@@ -49,7 +49,7 @@ class SessionController extends Controller
    * Retorna la vista de la página de creación de cuenta
    * @return \Illuminate\View\View
    */
-  public function aboutYou()
+  public function aboutYouForm()
   {
     return view('/personal_conf/user-conf');
   }
@@ -99,5 +99,5 @@ class SessionController extends Controller
 
   //   return view('welcome')->with('status.message', 'Sesión cerrada correctamente');
   // }
-  
+
 }
