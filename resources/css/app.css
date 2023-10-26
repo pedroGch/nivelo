@@ -1,0 +1,36 @@
+:root{
+  /* ESTILOS DE LOS COLORES */
+  --verde-principal: #13BA41 ;
+  --verde-light: #5FE07E ;
+  --verde-dark: #079128 ;
+  --verde-contenedor-dark: #006633 ;
+  --verde-contenedor-light: #D7FFDF ;
+
+  --naranja-principal: #F9A028 ;
+  --naranja-light: #FFC37B ;
+  --naranja-dark: #D67B0F ;
+  --naranja-contenedor-dark: #AD680A ;
+  --naranja-contenedor-light: #FFDFB8 ;
+
+  --violeta-principal: #760FF9 ;
+  --violeta-light: #A166FF ;
+  --violeta-dark: #5713AC ;
+  --violeta-contenedor-dark: #3A0C82 ;
+  --vervioletade-contenedor-light: #E2CFFF ;
+
+  --gris-oscuro: #333333;
+  --gris-claro: #F4F4F4;
+  --gris-form: #AFB1B6;
+
+  --negro: #0D0D0D;
+  /* ----------------------------------------------------*/
+
+  /* ESTILOS DE LOS TEXTOS */
+  --H-2: 24px;
+  --p: 16px;
+  --p-small: 14px;
+  --botones-chicos: 11px;
+  --p-aclaraciones: 12px;
+  /* ----------------------------------------------------*/
+
+}
