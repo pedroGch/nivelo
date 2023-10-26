@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('review_by_user', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade'); // FK
-            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('restrict')->onUpdate('cascade'); // FK
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade'); // FK
+            //$table->foreign('review_id')->references('id')->on('reviews')->onDelete('restrict')->onUpdate('cascade'); // FK
             $table->timestamps();
         });
     }
