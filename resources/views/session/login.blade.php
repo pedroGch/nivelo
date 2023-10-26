@@ -13,7 +13,7 @@
 
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
         <div class="col-12 my-4">
-          <h2 class="fw-bold">
+          <h2 class="fw-bold bg-movimiento">
             Log in
           </h2>
         </div>

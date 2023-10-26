@@ -47,3 +47,11 @@
   border-top-left-radius: 29px !important;
   border-top-right-radius: 29px !important;
 }
+
+.bg-movimiento{
+  background-image: url('../img/enfasis.png');
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-x: 79px;
+  background-position-y: 9px;
+}
