@@ -59,6 +59,15 @@ class SessionController extends Controller
   }
 
   /**
+   * Retorna la vista de la página de creación de cuenta
+   * @return \Illuminate\View\View
+   */
+  public function aboutYou()
+  {
+    return view('/personal_conf/user-conf');
+  }
+
+  /**
    * Retorna la vista de la página del dashboard del administrador
    * @return \Illuminate\View\View
    */

@@ -36,13 +36,16 @@
 }
 
 .bg-verde-principal{
-  background-color: var(--verde-principal);
+  background-color: var(--verde-principal) !important;
 }
 
 .bg-violeta-principal{
   background-color: var(--violeta-principal);
 }
 
+.bg-gris-form{
+  background-color: var(--gris-form) !important;
+}
 .redondeo-superior-login{
   border-top-left-radius: 29px !important;
   border-top-right-radius: 29px !important;

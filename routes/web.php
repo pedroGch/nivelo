@@ -17,3 +17,5 @@ Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
   ->name('login');
 Route::get('/signup', [\App\Http\Controllers\SessionController::class, 'signupForm'])
   ->name('signup');
+  Route::get('/about-you', [\App\Http\Controllers\SessionController::class, 'aboutYou'])
+  ->name('aboutYou');
