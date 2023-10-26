@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username');
             $table->date('birth_date');
             $table->string('profile_pic')->nullable();
-            $table->unsignedInteger('user_definition_id'); // FK
+            $table->string('rol');
             $table->timestamps();
         });
     }
