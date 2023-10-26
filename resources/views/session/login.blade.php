@@ -11,9 +11,9 @@
         <img src="{{ url('./../public/img/logo_horizontal.png') }}" alt="logo de nivelo">
       </div>
 
-      <div class="row my-4 mx-auto border-top rounded-top rounded-lg  shadow-sm-top">
+      <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
         <div class="col-12 my-4">
-          <h2 class="fw-bold">
+          <h2 class="fw-bold bg-movimiento">
             Log in
           </h2>
         </div>
@@ -29,7 +29,7 @@
               <input type="email" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
             </div>
             <div class="mb-4">
-              <input type="submit" class="form-control rounded-pill p-3 shadow bg-success text-white" value="Continuar">
+              <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white" value="Continuar">
             </div>
           </form>
           <div class="row">
@@ -37,7 +37,7 @@
               <p>¿Olvidaste tu contraseña?</p>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <button class="form-control btn btn-primary rounded-pill p-2 text-white shadow">Google</button>
+              <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow">Google</button>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
               <p>¿No tenés una cuenta? <a href="#" class="fw-bold">Registrate</a></p>
