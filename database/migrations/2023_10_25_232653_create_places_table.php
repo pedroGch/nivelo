@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('parking')->default(false);
             $table->boolean('elevator')->default(false);
             $table->unsignedInteger('src_info_id'); // FK
-            $table->unsignedInteger('review_id'); // FK
+            $table->unsignedInteger('review_id')->nullable(); // FK
             $table->unsignedInteger('category_id'); // FK
             $table->unsignedInteger('uploaded_from_id'); // FK
             $table->timestamps();
