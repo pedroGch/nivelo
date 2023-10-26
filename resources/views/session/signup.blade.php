@@ -13,9 +13,12 @@
 
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
         <div class="col-12 my-4">
-          <h2 class="fw-bold bg-movimiento bg-signup">
-            Regístrate
-          </h2>
+          <div class="d-flex ">
+            <h2 class="fw-bold">
+              Regístrate
+            </h2>
+            <span class="bg-movimiento mx-2"></span>
+          </div>
         </div>
         <div class="col-12">
           <form action="#" method="POST">

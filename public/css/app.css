@@ -49,17 +49,10 @@
 }
 
 .bg-movimiento{
+  width: 32px;
   background-image: url('../img/enfasis.png');
   background-repeat: no-repeat;
   background-size: 30px;
   background-position-y: 9px;
 }
 
-.bg-h2{
-  background-position-x: 77px;
-
-}
-
-.bg-signup{
-  background-position-x: 126px;
-}

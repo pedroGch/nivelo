@@ -5,5 +5,5 @@
 @section('title', 'Inicio')
 
 @section('content')
-  <h1>Nivelo</h1>
+  <h1>CATEGORIAS</h1>
 @endsection
