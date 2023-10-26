@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -42,4 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /* DB RELATIONSHIPS */
+
+    /**
+     * Define la relación (uno a uno) entre la tabla users y la tabla user_more_info
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userMoreInfo(): HasOne
+    {
+        return $this->hasOne(UserMoreInfo::class, 'id', 'id');
+    }
 }
