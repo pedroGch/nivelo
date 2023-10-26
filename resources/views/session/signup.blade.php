@@ -13,7 +13,7 @@
 
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
         <div class="col-12 my-4">
-          <h2 class="fw-bold bg-movimiento bg-h2">
+          <h2 class="fw-bold bg-movimiento bg-signup">
             Regístrate
           </h2>
         </div>
@@ -58,7 +58,7 @@
           </form>
           <div class="row">
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿Ya tenés una cuenta? <a href="#" class="fw-bold">Inicía sesión</a></p>
+              <p>¿Ya tenés una cuenta? <a href="<?= url('/') ?>" class="fw-bold">Inicía sesión</a></p>
             </div>
 
 
