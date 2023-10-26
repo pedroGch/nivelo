@@ -13,7 +13,7 @@
 
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
         <div class="col-12 my-4">
-          <h2 class="fw-bold bg-movimiento">
+          <h2 class="fw-bold bg-movimiento bg-signup">
             Log in
           </h2>
         </div>
@@ -40,7 +40,7 @@
               <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow">Google</button>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿No tenés una cuenta? <a href="#" class="fw-bold">Registrate</a></p>
+              <p>¿No tenés una cuenta? <a href="<?= url('/signup') ?>" class="fw-bold">Registrate</a></p>
             </div>
 
 

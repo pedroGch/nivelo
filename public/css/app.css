@@ -52,6 +52,14 @@
   background-image: url('../img/enfasis.png');
   background-repeat: no-repeat;
   background-size: 30px;
-  background-position-x: 79px;
   background-position-y: 9px;
+}
+
+.bg-h2{
+  background-position-x: 79px;
+
+}
+
+.bg-signup{
+  background-position-x: 126px;
 }

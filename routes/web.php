@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
-  ->name('inicio');
+  ->name('login');
+Route::get('/signup', [\App\Http\Controllers\SessionController::class, 'signupForm'])
+  ->name('signup');

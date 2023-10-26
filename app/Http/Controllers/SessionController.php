@@ -53,9 +53,9 @@ class SessionController extends Controller
    * Retorna la vista de la página de creación de cuenta
    * @return \Illuminate\View\View
    */
-  public function crear_cuenta()
+  public function signupForm()
   {
-    return view('crear_cuenta');
+    return view('/session/signup');
   }
 
   /**
