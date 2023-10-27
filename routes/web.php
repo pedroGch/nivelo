@@ -38,5 +38,5 @@ Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'abou
 
 
 
-Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'categories'])
+Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->name('categories');
