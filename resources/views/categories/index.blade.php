@@ -6,7 +6,21 @@
 
 @section('content')
 <nav class="nav-inferior bg-violeta-dark">
-
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="py-3">
+          <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="d-flex justify-content-end py-3">
+          <img src="{{ url('/img/Bookmark.png') }}" alt="vista perfil de usuario" class="me-3">
+          <img src="{{ url('/img/Category.png') }}" alt="menú">
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
 
   <section class="container">
@@ -41,13 +55,13 @@
     </div>
     <div class="row my-3">
       <div class="col-12 mb-2">
-        <img src="{{ url('/img/cat_restaurante.png') }}" alt="logo de nivelo" class="w-100">
+        <img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100">
       </div>
       <div class="col-12 mb-2">
-        <img src="{{ url('/img/cat_comercios.png') }}" alt="logo de nivelo" class="w-100">
+        <img src="{{ url('/img/cat_comercios.png') }}" alt="comercio de ropa" class="w-100">
       </div>
       <div class="col-12 mb-2">
-        <img src="{{ url('/img/cat_shoppings.png') }}" alt="logo de nivelo" class="w-100">
+        <img src="{{ url('/img/cat_shoppings.png') }}" alt="shopping" class="w-100">
       </div>
     </div>
 
