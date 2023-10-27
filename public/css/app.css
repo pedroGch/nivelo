@@ -51,6 +51,13 @@
   border-top-right-radius: 29px !important;
 }
 
+.bg-conf-icono{
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position-y: 9px;
+  background-position-x: 15px;
+}
+
 .bg-movimiento{
   width: 32px;
   background-image: url('../img/enfasis.png');
@@ -59,3 +66,46 @@
   background-position-y: 9px;
 }
 
+.bg-acompaniante{
+  background-image: url('../img/acompaniante.png');
+}
+
+.bg-andador{
+  background-image: url('../img/andador.png');
+}
+
+.bg-camina_dificultad{
+  background-image: url('../img/camina_dificultad.png');
+}
+
+.bg-bastones{
+  background-image: url('../img/bastones.png');
+}
+
+.bg-muletas{
+  background-image: url('../img/muletas.png');
+}
+
+.bg-scooter{
+  background-image: url('../img/scooter.png');
+  background-size: 30px !important;
+}
+
+.bg-silla_ruedas_electrica{
+  background-image: url('../img/silla_ruedas_electrica.png');
+}
+
+.bg-silla_ruedas_manual{
+  background-image: url('../img/silla_ruedas_manual.png');
+  background-position-y: 12px !important;
+}
+
+.btn-form-w{
+  width: 135px;
+  height: 52px;
+  text-align: right;
+  font-size: var(--botones-chicos);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
