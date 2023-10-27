@@ -29,7 +29,7 @@ Route::post('/registrate', [\App\Http\Controllers\SessionController::class, 'sig
 
 Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouForm'])
   ->name('aboutYouForm');
-Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
+Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
   ->name('aboutYouAction');
 // Route::get('/crear_cuenta', [\App\Http\Controllers\SesionController::class, 'crear_cuenta']);
 // Route::post('/validar_usuario', [\App\Http\Controllers\SesionController::class, 'validar_usuario']);
