@@ -28,46 +28,42 @@
             @csrf
             <div class="row ">
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="sticks" name="sticks"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-bastones bg-conf-icono" for="sticks">Bastón/es</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="crutches" name="crutches"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-muletas bg-conf-icono" for="crutches">Muletas</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="walker" name="walker"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-andador bg-conf-icono" for="walker">Andador</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-camina_dificultad bg-conf-icono" for="difficult_walking">Camina con dificultad</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="manual_wheelchair" name="manual_wheelchair"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_manual bg-conf-icono" for="manual_wheelchair">Silla de ruedas manual</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="electric_wheelchair" name="electric_wheelchair"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_electrica bg-conf-icono" for="electric_wheelchair">silla de ruedas eléctrica</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="scooter" name="scooter"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-scooter bg-conf-icono" for="scooter">Scooter</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <label class="bg-gris-form btn rounded-pill" for="btn-check-2">Checked</label>
+                <input type="checkbox" class="btn-check" id="companion" name="companion"  autocomplete="off">
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-acompaniante  bg-conf-icono" for="companion">Acompañante</label>
               </div>
             </div>
 
-            <div class="col-12 mb-3 d-flex justify-content-center">
-              <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow">Google</button>
+            <div class="mb-4">
+              <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white" value="Continuar">
             </div>
-            <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿No tenés una cuenta? <a href="<?= url('/signup') ?>" class="fw-bold">Registrate</a></p>
-            </div>
-
 
           </div>
         </div>

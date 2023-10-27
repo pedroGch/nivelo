@@ -16,7 +16,7 @@
   --violeta-light: #A166FF ;
   --violeta-dark: #5713AC ;
   --violeta-contenedor-dark: #3A0C82 ;
-  --vervioletade-contenedor-light: #E2CFFF ;
+  --violeta-contenedor-light: #E2CFFF ;
 
   --gris-oscuro: #333333;
   --gris-claro: #F4F4F4;
@@ -108,4 +108,10 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  /* border: none !important; */
+}
+
+
+.btn-check:checked+.btn{
+  background-color: var(--violeta-contenedor-light) !important;
 }
