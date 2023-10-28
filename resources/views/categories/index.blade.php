@@ -5,23 +5,25 @@
 @section('title', 'Categorías')
 
 @section('content')
-<nav class="nav-inferior bg-violeta-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <div class="py-3">
-          <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
+<header class="nav-inferior ">
+  <nav class=" bg-violeta-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="py-3">
+            <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
+          </div>
         </div>
-      </div>
-      <div class="col-6">
-        <div class="d-flex justify-content-end py-3">
-          <img src="{{ url('/img/Bookmark.png') }}" alt="vista perfil de usuario" class="me-3">
-          <img src="{{ url('/img/Category.png') }}" alt="menú">
+        <div class="col-6">
+          <div class="d-flex justify-content-end py-3">
+            <img src="{{ url('/img/Bookmark.png') }}" alt="vista perfil de usuario" class="me-3">
+            <img src="{{ url('/img/Category.png') }}" alt="menú">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
   <section class="container">
     <div class="my-4">
@@ -67,21 +69,39 @@
 
   </section>
 
-  <nav class="nav-inferior bg-violeta-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <div class="py-3">
-            <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="d-flex justify-content-end py-3">
-            <img src="{{ url('/img/Bookmark.png') }}" alt="vista perfil de usuario" class="me-3">
-            <img src="{{ url('/img/Category.png') }}" alt="menú">
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <footer class=" ">
+    <nav >
+      <a href="">
+        <span class="icon">
+          <ion-icon name="location-outline"></ion-icon>
+        </span>
+        <span class="text">mapa</span>
+      </a>
+      <a href="">
+        <span class="icon">
+          <ion-icon name="notifications-outline"></ion-icon>
+        </span>
+        <span class="text">notificaciones</span>
+      </a>
+      <a href="" class="new_place">
+        <span class="icon text-white">
+          <ion-icon name="add-outline"></ion-icon>
+        </span>
+        <span class="text">nuevo lugar</span>
+      </a>
+      <a href="">
+        <span class="icon">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        </span>
+        <span class="text">chat</span>
+      </a>
+      <a href="">
+        <span class="icon">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
+        <span class="text">perfil</span>
+      </a>
+
+    </nav>
+  </footer>
 @endsection
