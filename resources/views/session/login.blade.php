@@ -43,7 +43,7 @@
               <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow">Google</button>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿No tenés una cuenta? <a href="<?= url('/signup') ?>" class="fw-bold">Registrate</a></p>
+              <p>¿No tenés una cuenta? <a href="<?= url('/resitrate') ?>" class="fw-bold">Registrate</a></p>
             </div>
 
 

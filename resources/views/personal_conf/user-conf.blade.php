@@ -45,7 +45,7 @@
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="manual_wheelchair" name="manual_wheelchair"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_manual bg-conf-icono" for="manual_wheelchair">Silla de ruedas manual</label>
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_manual bg-conf-icono ps-3" for="manual_wheelchair">Silla de ruedas manual</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="electric_wheelchair" name="electric_wheelchair"  autocomplete="off">

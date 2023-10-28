@@ -15,7 +15,7 @@
         <div class="col-12 my-4">
           <div class="d-flex ">
             <h2 class="fw-bold">
-              Regístrate
+              Registrate
             </h2>
             <span class="bg-movimiento mx-2"></span>
           </div>
@@ -32,8 +32,8 @@
               <input type="text" name="l_name" class="form-control p-3" id="l_name" placeholder="Apellido">
             </div>
             <div class="mb-4">
-              <label for="name" class="form-label d-none">Nombre</label>
-              <input type="text" name="name" class="form-control p-3" id="name" placeholder="Nombre">
+              <label for="user-name" class="form-label d-none">Nombre de usuario</label>
+              <input type="text" name="user-name" class="form-control p-3" id="user-name" placeholder="Nombre de usuario">
             </div>
             <div class="mb-4">
               <label for="email" class="form-label d-none">Email</label>
@@ -52,6 +52,7 @@
               <input type="password" name="password-repeart" class="form-control p-3" id="password-repeart" placeholder="Repetir contraseña">
             </div>
             <div class="mb-4 d-flex justify-content-center">
+              <a>Términos y condiciones</a>
               <input type="checkbox" class="btn-check" id="terms_ok" name="terms_ok" autocomplete="off">
               <label class="btn btn-outline-primary" for="terms_ok">Acepto los términos y condiciones</label>
             </div>
@@ -61,7 +62,7 @@
           </form>
           <div class="row">
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿Ya tenés una cuenta? <a href="<?= url('/') ?>" class="fw-bold">Inicía sesión</a></p>
+              <p>¿Ya tenés una cuenta? <a href="<?= url('/') ?>" class="fw-bold">Iniciá sesión</a></p>
             </div>
 
 
