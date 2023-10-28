@@ -66,4 +66,22 @@
     </div>
 
   </section>
+
+  <nav class="nav-inferior bg-violeta-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="py-3">
+            <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex justify-content-end py-3">
+            <img src="{{ url('/img/Bookmark.png') }}" alt="vista perfil de usuario" class="me-3">
+            <img src="{{ url('/img/Category.png') }}" alt="menú">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 @endsection
