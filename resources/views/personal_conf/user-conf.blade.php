@@ -41,7 +41,7 @@
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-camina_dificultad bg-conf-icono" for="difficult_walking">Camina con dificultad</label>
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-camina_dificultad bg-conf-icono ps-3" for="difficult_walking">Camina con dificultad</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="manual_wheelchair" name="manual_wheelchair"  autocomplete="off">
@@ -49,7 +49,7 @@
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="electric_wheelchair" name="electric_wheelchair"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_electrica bg-conf-icono" for="electric_wheelchair">silla de ruedas eléctrica</label>
+                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_electrica bg-conf-icono" for="electric_wheelchair">Silla de ruedas eléctrica</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="scooter" name="scooter"  autocomplete="off">
