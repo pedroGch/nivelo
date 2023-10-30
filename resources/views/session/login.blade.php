@@ -32,7 +32,7 @@
               <input type="email" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
             </div>
             <div class="mb-4">
-              <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white" value="Continuar">
+              <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value="Continuar">
             </div>
           </form>
           <div class="row">
@@ -40,10 +40,10 @@
               <p>¿Olvidaste tu contraseña?</p>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow">Google</button>
+              <button class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow fw-semibold">Google</button>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿No tenés una cuenta? <a href="<?= url('/resitrate') ?>" class="fw-bold">Registrate</a></p>
+              <p>¿No tenés una cuenta? <a href="<?= url('/registrate') ?>" class="fw-bold text-reset text-decoration-none">Registrate</a></p>
             </div>
 
 

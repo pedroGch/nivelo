@@ -29,35 +29,35 @@
             <div class="row ">
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="sticks" name="sticks"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-bastones bg-conf-icono" for="sticks">Bastón/es</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-bastones bg-conf-icono" for="sticks">Bastón/es</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="crutches" name="crutches"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-muletas bg-conf-icono" for="crutches">Muletas</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-muletas bg-conf-icono" for="crutches">Muletas</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="walker" name="walker"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-andador bg-conf-icono" for="walker">Andador</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-andador bg-conf-icono" for="walker">Andador</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-camina_dificultad bg-conf-icono ps-3" for="difficult_walking">Camina con dificultad</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-camina_dificultad bg-conf-icono ps-3" for="difficult_walking">Camina con dificultad</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="manual_wheelchair" name="manual_wheelchair"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_manual bg-conf-icono ps-3" for="manual_wheelchair">Silla de ruedas manual</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-silla_ruedas_manual bg-conf-icono ps-3" for="manual_wheelchair">Silla de ruedas manual</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="electric_wheelchair" name="electric_wheelchair"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-silla_ruedas_electrica bg-conf-icono" for="electric_wheelchair">Silla de ruedas eléctrica</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-silla_ruedas_electrica bg-conf-icono" for="electric_wheelchair">Silla de ruedas eléctrica</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="scooter" name="scooter"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-scooter bg-conf-icono" for="scooter">Scooter</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-scooter bg-conf-icono" for="scooter">Scooter</label>
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="companion" name="companion"  autocomplete="off">
-                <label class="bg-gris-claro shadow btn-form-w btn rounded-pill bg-acompaniante  bg-conf-icono" for="companion">Acompañante</label>
+                <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-acompaniante  bg-conf-icono" for="companion">Ninguna de las anteriores</label>
               </div>
             </div>
 
