@@ -17,22 +17,25 @@ class SessionController extends Controller
     return view('/session/login');
   }
 
+
+
+
   /**
    * Valida los datos del formulario de inicio de sesión y loguea al usuario
    * @param Request $request
    * @return \Illuminate\View\View
    */
-  public function validateUser(Request $request)
+  public function loginAction(Request $request)
   {
     $credentials = $request->only(['email', 'password']);
     if (!Auth::attempt($credentials)) {
-      return redirect('/iniciar_sesion')->with('status.message', 'email y/o contraseña incorrecta')
+      return redirect('/iniciar-sesion')->with('status.message', 'Email y/o contraseña incorrecta')
         ->withInput();
     }
 
     // $url = (Auth::user()->rol == 1) ? '/panel_admin' : '/panel_admin';
 
-    return redirect('/categories')->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
+    return redirect('/categorias')->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
   }
 
 

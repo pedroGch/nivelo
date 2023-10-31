@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
+  ->name('home');
 
 // Rutas de login y registro
-Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
+Route::get('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginForm'])
   ->name('login');
-Route::post('/', [\App\Http\Controllers\SessionController::class, 'loginAction'])
+Route::post('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginAction'])
   ->name('loginAction');
 
 

@@ -2,7 +2,7 @@
 
 {{-- @section('title') Blog @endsection --}}
 
-@section('title', 'Log in')
+@section('title', 'Iniciar sesión')
 
 @section('content')
   <section class="container">
@@ -15,13 +15,18 @@
         <div class="col-12 my-4">
           <div class="d-flex ">
             <h2 class="fw-bold">
-              Log in
+              Iniciar sesión
             </h2>
             <span class="bg-movimiento mx-1"></span>
           </div>
         </div>
+        @if (\Session::has('status.message'))
+          <div class="" role="alert">
+            {!! \Session::get('status.message') !!}
+          </div>
+        @endif
         <div class="col-12">
-          <form action="#" method="POST">
+          <form action="{{ url('iniciar-sesion') }}" method="POST">
             @csrf
             <div class="mb-4">
               <label for="email" class="form-label d-none">Email</label>
@@ -29,10 +34,10 @@
             </div>
             <div class="mb-4">
               <label for="password" class="form-label d-none">Contraseña</label>
-              <input type="email" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
+              <input type="password" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
             </div>
             <div class="mb-4">
-              <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value="Continuar">
+              <button type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
             </div>
           </form>
           <div class="row">
