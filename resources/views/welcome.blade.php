@@ -8,5 +8,19 @@
 
 <h1>INICIO LANDING</h1>
 
-<a href="<?= url('/iniciar-sesion') ?>">Iniciar sesión</a>
+
+@auth
+  <form action="<?= url('/cerrar-sesion') ?>" method="post">
+    @csrf
+    <button type="submit" class="">
+      Cerrar sesión
+    </button>
+  </form>
+
+@else
+
+  <a href="<?= url('/iniciar-sesion') ?>">Iniciar sesión</a>
+
+@endauth
+
 @endsection

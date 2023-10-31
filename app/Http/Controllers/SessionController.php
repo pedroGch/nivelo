@@ -19,7 +19,6 @@ class SessionController extends Controller
 
 
 
-
   /**
    * Valida los datos del formulario de inicio de sesión y loguea al usuario
    * @param Request $request
@@ -36,6 +35,22 @@ class SessionController extends Controller
     // $url = (Auth::user()->rol == 1) ? '/panel_admin' : '/panel_admin';
 
     return redirect('/categorias')->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
+  }
+
+
+
+  /**
+   * Cierra la sesión del usuario
+   * @param Request $request
+   * @return \Illuminate\View\View
+   */
+  public function logoutAction(Request $request)
+  {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/iniciar-sesion')->with('status.message', 'Sesión cerrada correctamente');
   }
 
 
@@ -89,18 +104,6 @@ class SessionController extends Controller
 
 
 
-  // /**
-  //  * Cierra la sesión del usuario
-  //  * @param Request $request
-  //  * @return \Illuminate\View\View
-  //  */
-  // public function logout(Request $request)
-  // {
-  //   Auth::logout();
-  //   $request->session()->invalidate();
-  //   $request->session()->regenerateToken();
 
-  //   return view('welcome')->with('status.message', 'Sesión cerrada correctamente');
-  // }
 
 }

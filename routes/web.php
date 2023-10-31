@@ -20,6 +20,8 @@ Route::get('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, '
   ->name('login');
 Route::post('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginAction'])
   ->name('loginAction');
+Route::post('/cerrar-sesion', [\App\Http\Controllers\SessionController::class, 'logoutAction'])
+  ->name('logoutAction');
 
 
 Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
