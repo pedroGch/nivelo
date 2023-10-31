@@ -26,11 +26,11 @@
           </div>
         @endif
         <div class="col-12">
-          <form action="{{ url('iniciar-sesion') }}" method="POST">
+          <form action="{{ route('loginAction') }}" method="POST">
             @csrf
             <div class="mb-4">
               <label for="email" class="form-label d-none">Email</label>
-              <input type="email" name="email" class="form-control p-3" id="email" placeholder="Email">
+              <input type="email" name="email" class="form-control p-3" id="email" placeholder="Email" value="{{ old('email') }}">
             </div>
             <div class="mb-4">
               <label for="password" class="form-label d-none">Contraseña</label>

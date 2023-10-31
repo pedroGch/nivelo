@@ -10,7 +10,7 @@
 
 
 @auth
-  <form action="<?= url('/cerrar-sesion') ?>" method="post">
+  <form action="{{ route('logoutAction') }}" method="post">
     @csrf
     <button type="submit" class="">
       Cerrar sesión
@@ -19,7 +19,8 @@
 
 @else
 
-  <a href="<?= url('/iniciar-sesion') ?>">Iniciar sesión</a>
+  <a href="{{ route('signup') }}">Registrate</a>
+  <a href="{{ route('login') }}">Iniciá sesión</a>
 
 @endauth
 
