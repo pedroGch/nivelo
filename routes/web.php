@@ -31,3 +31,13 @@ Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'abou
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->middleware('auth')
   ->name('categories');
+
+Route::get('/login-google', function () {
+  return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-callback', function () {
+  $user = Socialite::driver('google')->user();
+  dd($user);
+  // $user->token
+});

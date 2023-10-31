@@ -45,7 +45,7 @@
               <p>¿Olvidaste tu contraseña?</p>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <a <a href="<?= url('/login-google') ?>" class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow fw-semibold">Google</a>
+              <a href="<?= url('/login-google') ?>" class="form-control btn bg-violeta-principal rounded-pill p-2 text-white shadow fw-semibold">Google</>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
               <p>¿No tenés una cuenta? <a href="<?= url('/registrate') ?>" class="fw-bold text-reset text-decoration-none">Registrate</a></p>
