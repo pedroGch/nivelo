@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,15 @@ Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'abou
 // Route::post('/validar_usuario', [\App\Http\Controllers\SesionController::class, 'validar_usuario']);
 // Route::post('/cerrar_sesion', [\App\Http\Controllers\SesionController::class, 'cerrar_sesion']);
 
+Route::get('/login-google', function () {
+  return Socialite::driver('google')->redirect();
+});
 
+Route::get('/google-callback', function () {
+  $user = Socialite::driver('google')->user();
+  dd($user);
+  // $user->token
+});
 
 
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
