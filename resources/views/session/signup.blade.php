@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <form action="#" method="POST">
+                    <form action="{{ route('signupAction') }}" method="POST">
                         @csrf
                         <div class="mb-4">
                             <label for="name" class="form-label d-none">Nombre</label>
@@ -73,8 +73,7 @@
                     </form>
                     <div class="row">
                         <div class="col-12 mb-3 d-flex justify-content-center">
-                            <p>¿Ya tenés una cuenta? <a href="<?= url('/') ?>"
-                                    class="fw-bold text-reset text-decoration-none">Iniciá sesión</a></p>
+                            <p>¿Ya tenés una cuenta? <a href="{{ route('login') }}" class="fw-bold text-reset text-decoration-none">Iniciá sesión</a></p>
                         </div>
 
 

@@ -27,6 +27,11 @@
 
   <section class="container">
     <div class="my-4">
+      @if (\Session::has('status.message'))
+          <div class="" role="alert">
+            {!! \Session::get('status.message') !!}
+          </div>
+      @endif
       <div class="row">
         <div class="col-6 ">
           <h2 class="titulo fw-bold mt-3">Categorías</h2>
