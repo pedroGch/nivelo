@@ -22,7 +22,7 @@
         @endif
       <div class="row">
         <div class="col-6 col-md-9">
-          <h2 class="titulo fw-bold mt-3 ps-2">Categorías</h2>
+          <h2 class="titulo fw-bold mt-3 ps-2">Restaurantes</h2>
         </div>
         <div class="col-6 col-md-3 d-flex justify-content-end">
           <div class="">
@@ -51,7 +51,7 @@
     </div>
     <div class="row my-3 pt-3 d-flex">
       <div class="col-12 col-md-6 mb-2">
-        <a href=" {{ route('categoryDetail') }} "><img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100"></a>
+        <img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100">
       </div>
       <div class="col-12 col-md-6 mb-2">
         <img src="{{ url('/img/cat_comercios.png') }}" alt="comercio de ropa" class="w-100">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,5 +16,14 @@ class CategoryController extends Controller
     return view('/categories/index');
   }
 
-  // acá vamos a ir agregando los métodos que necesitemos para renderizar las otras vistas
+
+  /**
+   * Retorna la vista de una categoría en particular
+   * @param int $id
+   * @return \Illuminate\View\View
+   */
+  public function categoryDetail(/*int $id*/) {
+  return view('/categories/one-category'/*, ["category" => Category::findOrFail($id)] */);
+  }
+
 }
