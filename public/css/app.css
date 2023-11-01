@@ -150,6 +150,19 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: var(--violeta-contenedor-light) !important;
 }
 
+/* CHECKBOX*/
+.form-check-input:checked{
+  background-color: var(--naranja-principal);
+  border-color: var(--naranja-light);
+}
+
+/* INPUT FOCUS*/
+.form-check-input:focus, .form-control:focus {
+  border-color: var(--naranja-light);
+  box-shadow: 0 0 0 0.25rem rgba(255,195,123,.25);
+}
+
+
 .w-standard{
   width: 150px;
 }
