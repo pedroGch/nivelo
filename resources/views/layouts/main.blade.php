@@ -13,7 +13,9 @@
 </head>
 
 <body>
+  <header>
   @yield('header')
+  </header>
   <main>
     <!-- espacio cedido a templates anexos -->
     @yield('content')
