@@ -64,7 +64,10 @@
             <div class="mb-4">
               <input type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white" value="Continuar">
             </div>
-
+          </form>
+          </div>
+          <div class="mb-4">
+            <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow bg-verde-principal text-white">Omitir por ahora</a>
           </div>
         </div>
       </div>
