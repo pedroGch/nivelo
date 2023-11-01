@@ -172,6 +172,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 }
 
 /* NAVBAR SUPERIOR*/
+
+.margin-header {
+  margin-top: 90px;
+}
 .nav-superior{
   width: 100%;
   height: 63px;
@@ -182,7 +186,7 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   box-shadow: none;
 }
 
-footer{
+.footer-nav nav{
   z-index: 10000;
   width: 100%;
   height: 63px;
@@ -192,12 +196,12 @@ footer{
   align-items: center;
 }
 
-footer nav{
+.footer-nav nav{
   display: flex;
   width: 100%;
 }
 
-footer nav a {
+.footer-nav nav a {
   position: relative;
   list-style: none;
   width: 70px;
@@ -210,7 +214,7 @@ footer nav a {
   width: 100%;
 }
 
-footer nav a .icon{
+.footer-nav nav a .icon{
   position: relative;
   display: block;
   line-height: 65px;
@@ -219,7 +223,7 @@ footer nav a .icon{
   color: var(--gris-oscuro);
 }
 
-footer nav a .text{
+.footer-nav nav a .text{
   display: none;
   position: absolute;
   color: #fff;
@@ -237,6 +241,6 @@ footer nav a .text{
   border-radius: 50%;
 }
 
-footer nav .new_place .text{
+.footer-nav nav .new_place .text{
   color:#fff;
 }

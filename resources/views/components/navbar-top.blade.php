@@ -1,4 +1,4 @@
-<div>
+<div class="fixed-top">
   <nav class="navbar navbar-expand-lg bg-violeta-dark">
     <div class="py-1 container-fluid">
       <div>
