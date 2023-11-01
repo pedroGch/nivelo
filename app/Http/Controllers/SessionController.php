@@ -89,8 +89,9 @@ class SessionController extends Controller
 public function googleCallback()
 {
   $user = Socialite::driver('google')->user();
-  dd($user);
-  return $user;
+
+  return redirect()
+    ->route('aboutYouAction');
 }
 
   // /**

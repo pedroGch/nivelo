@@ -15,8 +15,10 @@ Route::post('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 
   ->name('loginAction');
 Route::post('/cerrar-sesion', [\App\Http\Controllers\SessionController::class, 'logoutAction'])
   ->name('logoutAction');
+Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'loginWithGoogle'])
+  ->name('loginGoogle');
 
-// Rutas de registro
+  // Rutas de registro
 Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
   ->name('signup');
 Route::post('/registrate', [\App\Http\Controllers\SessionController::class, 'signupAction'])
@@ -25,12 +27,10 @@ Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'about
   ->name('aboutYouForm');
 Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
   ->name('aboutYouAction');
-Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'loginWithGoogle'])
-  ->name('loginGoogle');
 Route::get('/google-callback', [\App\Http\Controllers\SessionController::class, 'googleCallback'])
   ->name('googleCallback');
 
-// Rutas de la aplicación (se requiere estar logueado)
+  // Rutas de la aplicación (se requiere estar logueado)
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->middleware('auth')
   ->name('categories');
