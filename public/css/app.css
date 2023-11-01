@@ -171,9 +171,15 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   height: 52px;
 }
 
-.nav-inferior{
+/* NAVBAR SUPERIOR*/
+.nav-superior{
   width: 100%;
   height: 63px;
+}
+
+.navbar-toggler:focus, .navbar-toggler:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 footer{

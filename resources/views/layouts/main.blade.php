@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+  @yield('header')
   <main>
     <!-- espacio cedido a templates anexos -->
     @yield('content')
