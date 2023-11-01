@@ -37,7 +37,7 @@
               <input type="password" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
             </div>
             <div class="mb-4">
-              <button type="submit" class="form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
+              <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
             </div>
           </form>
           <div class="row">

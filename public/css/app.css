@@ -57,6 +57,18 @@ h2.titulo{
   background-color: var(--violeta-dark);
 }
 
+a.bg-verde-principal:hover {
+  background-color: var(--verde-dark);
+}
+
+.btn-verde-hover:hover {
+  background-color: var(--verde-dark)!important;
+}
+
+a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
+  background-color: var(--violeta-dark);
+}
+
 .bg-gris-form{
   background-color: var(--gris-form) !important;
 }
