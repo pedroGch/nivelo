@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+
 
 
 // Ruta de landing page
@@ -17,7 +17,7 @@ Route::post('/cerrar-sesion', [\App\Http\Controllers\SessionController::class, '
   ->name('logoutAction');
 
 // Rutas de registro
- Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
+Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
   ->name('signup');
 Route::post('/registrate', [\App\Http\Controllers\SessionController::class, 'signupAction'])
   ->name('signupAction');
@@ -25,19 +25,13 @@ Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'about
   ->name('aboutYouForm');
 Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
   ->name('aboutYouAction');
-
+Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'loginWithGoogle'])
+  ->name('loginGoogle');
+Route::get('/google-callback', [\App\Http\Controllers\SessionController::class, 'googleCallback'])
+  ->name('googleCallback');
 
 // Rutas de la aplicación (se requiere estar logueado)
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->middleware('auth')
   ->name('categories');
 
-Route::get('/login-google', function () {
-  return Socialite::driver('google')->redirect();
-});
-
-Route::get('/google-callback', function () {
-  $user = Socialite::driver('google')->user();
-  dd($user);
-  // $user->token
-});

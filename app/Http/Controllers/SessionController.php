@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class SessionController extends Controller
 {
@@ -71,6 +72,26 @@ class SessionController extends Controller
   {
     return view('/personal_conf/user-conf');
   }
+
+  /**
+   * Retorna la vista de la página de creación de cuenta
+   * @return \Illuminate\View\View
+   */
+  public function loginWithGoogle()
+  {
+    return Socialite::driver('google')->redirect();
+  }
+
+/**
+ * Retorna la vista de la página de creación de cuenta
+ * @return \Illuminate\View\View
+ */
+public function googleCallback()
+{
+  $user = Socialite::driver('google')->user();
+  dd($user);
+  return $user;
+}
 
   // /**
   //  * Retorna la vista de la página del dashboard del administrador
