@@ -49,14 +49,14 @@
         </div>
       </div>
     </div>
-    <div class="row my-3 pt-3">
-      <div class="col-12 mb-2">
+    <div class="row my-3 pt-3 d-flex">
+      <div class="col-12 col-md-6 mb-2">
         <img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100">
       </div>
-      <div class="col-12 mb-2">
+      <div class="col-12 col-md-6 mb-2">
         <img src="{{ url('/img/cat_comercios.png') }}" alt="comercio de ropa" class="w-100">
       </div>
-      <div class="col-12 mb-2">
+      <div class="col-12 col-md-6 mb-2">
         <img src="{{ url('/img/cat_shoppings.png') }}" alt="shopping" class="w-100">
       </div>
     </div>

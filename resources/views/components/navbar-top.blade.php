@@ -1,6 +1,6 @@
 <div class="fixed-top">
-  <nav class="navbar bg-violeta-dark fixed-top">
-    <div class="container-fluid">
+  <nav class="navbar bg-violeta-dark">
+    <div class="container-fluid py-2 d-flex align-items-center">
       <div>
         <a class="navbar-brand" href="#"><img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo"></a>
       </div>
@@ -62,5 +62,5 @@
     </div>
   </nav>
 
-  
+
 </div>
