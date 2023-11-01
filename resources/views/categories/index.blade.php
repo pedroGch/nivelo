@@ -28,10 +28,11 @@
   <section class="container">
     <div class="my-4">
       @if (\Session::has('status.message'))
-          <div class="" role="alert">
+          <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
             {!! \Session::get('status.message') !!}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
           </div>
-      @endif
+        @endif
       <div class="row">
         <div class="col-6 ">
           <h2 class="titulo fw-bold mt-3">Categorías</h2>

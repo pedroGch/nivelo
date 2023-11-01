@@ -66,9 +66,7 @@
                             </label>
                         </div>
                         <div class="mb-4">
-                            <input type="submit"
-                                class="form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold"
-                                value="Continuar">
+                          <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
                         </div>
                     </form>
                     <div class="row">
