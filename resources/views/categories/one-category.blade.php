@@ -37,28 +37,25 @@
         </div>
       </div>
     </div>
-    <div class="row my-3">
-      <div class="col-12">
-        <div class="input-group">
-          <input type="text" class="form-control buscador-principal" placeholder="Buscar" aria-label="buscar" aria-describedby="buscar">
-          <button class="btn bg-verde-principal" type="button" id="button-addon2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFF" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+
     <div class="row my-3 pt-3 d-flex">
-      <div class="col-12 col-md-6 mb-2">
-        <img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100">
+      <div class="col-12 col-md-6 mb-2 shadow d-flex rounded-2">
+        <div class="col-4">
+          <img src="{{ url('/img/places/2.jpeg') }}" alt="restaurante **id 2** " class="img-fluid rounded-start">
+        </div>
+        <div class="col-8 ps-1">
+          <h3 class="h5 fw-bold">Condor Clift - Pizza & Pasta</h3>
+          <p class="text-muted">Restaurantes</p>
+          <div class="d-flex">
+            <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid"></div>
+            <div>
+              <p class="text-muted">8</p>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="col-12 col-md-6 mb-2">
-        <img src="{{ url('/img/cat_comercios.png') }}" alt="comercio de ropa" class="w-100">
-      </div>
-      <div class="col-12 col-md-6 mb-2">
-        <img src="{{ url('/img/cat_shoppings.png') }}" alt="shopping" class="w-100">
-      </div>
+
     </div>
 
   </section>
