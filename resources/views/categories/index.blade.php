@@ -21,10 +21,10 @@
           </div>
         @endif
       <div class="row">
-        <div class="col-6 ">
-          <h2 class="titulo fw-bold mt-3">Categorías</h2>
+        <div class="col-6 col-md-9">
+          <h2 class="titulo fw-bold mt-3 ps-2">Categorías</h2>
         </div>
-        <div class="col-6">
+        <div class="col-6 col-md-3 d-flex justify-content-end">
           <div class="">
             <a class="btn rounded-pill p-3 shadow bg-verde-principal text-white w-standard " >
               {{-- <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-geo-alt-fill me-1" viewBox="0 0 16 16">
@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="row my-3">
+    <div class="row my-3 pt-3">
       <div class="col-12 mb-2">
         <img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100">
       </div>
