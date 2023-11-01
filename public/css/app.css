@@ -69,6 +69,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: var(--violeta-dark);
 }
 
+.btn-violeta-active:active, .btn-violeta-active:focus, .btn-violeta-active:focus-visible {
+  background-color: var(--violeta-light)!important;
+}
+
 .bg-gris-form{
   background-color: var(--gris-form) !important;
 }
