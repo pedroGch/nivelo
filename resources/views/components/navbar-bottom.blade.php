@@ -1,5 +1,5 @@
-<div>
-  <div class="footer-nav fixed-bottom">
+<div class="row d-flex fixed-bottom justify-content-center bg-gris-claro">
+  <div class="col-12 col-md-9 col-lg-6 footer-nav">
     <nav>
       <a href="">
         <span class="icon">

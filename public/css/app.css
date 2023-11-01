@@ -76,6 +76,11 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 .bg-gris-form{
   background-color: var(--gris-form) !important;
 }
+
+.bg-gris-claro{
+  background-color: var(--gris-claro) !important;
+}
+
 .redondeo-superior-login{
   border-top-left-radius: 29px !important;
   border-top-right-radius: 29px !important;
