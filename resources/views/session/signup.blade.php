@@ -8,7 +8,7 @@
     <section class="container">
         <div class="row my-5">
             <div class="d-flex justify-content-center my-6">
-                <img src="{{ url('./../public/img/logo_horizontal.png') }}" alt="logo de nivelo">
+                <img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo">
             </div>
 
             <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
