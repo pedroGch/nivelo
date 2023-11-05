@@ -13,13 +13,14 @@
         </span>
         <span class="text">Notificaciones</span>
       </a>
-      <a href="" class="new_place text-decoration-none pb-2">
-        <span class="text-white fw-semibold fs-1">
-          {{-- <ion-icon name="add-outline"></ion-icon> --}}
-          +
-        </span>
-        <span class="text">Nuevo lugar</span>
-      </a>
+      <div class="bg-verde-principal p-5 rounded-top-circle">
+        <a href="" class="text-decoration-none">
+          <span class="text-white fw-semibold h1 pb-5">
+            +
+          </span>
+          <span class="text">Nuevo lugar</span>
+        </a>
+      </div>
       <a href="">
         <span class="icon">
           <ion-icon name="chatbubble-ellipses-outline"></ion-icon>

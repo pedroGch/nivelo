@@ -258,12 +258,12 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   letter-spacing: 0.005em;
 }
 
-.new_place{
+/* .new_place{
   background-color: var(--verde-principal);
   margin-top: -31px;
   height: 75px !important;
   border-radius: 50%;
-}
+} */
 
 .footer-nav nav .new_place .text{
   color:#fff;
