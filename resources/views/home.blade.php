@@ -6,7 +6,7 @@
 
 @section('content')
 
-<h1>INICIO LANDING</h1>
+<h2>INICIO LANDING</h2>
 
 
 

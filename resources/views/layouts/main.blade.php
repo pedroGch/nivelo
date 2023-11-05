@@ -14,10 +14,11 @@
 
 <body>
   <header>
+    <h1 class="d-none">Nivelo</h1>
     @yield('header')
   </header>
 
-  <main class="margin-header">
+  <main>
     @yield('content')
   </main>
 

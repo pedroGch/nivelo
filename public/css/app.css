@@ -81,6 +81,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: var(--gris-claro) !important;
 }
 
+.bg-blanco{
+  background-color: #fff;
+}
+
 .redondeo-superior-login{
   border-top-left-radius: 29px !important;
   border-top-right-radius: 29px !important;
@@ -138,6 +142,20 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 .bg-silla_ruedas_manual{
   background-image: url('../img/silla_ruedas_manual.png');
   background-position-y: 12px !important;
+}
+
+.bg-login {
+  background-image: url('../img/bg-login.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-attachment: fixed;
+  margin-top: -900px;
+  z-index: -1;
+}
+
+.bg-white-vertical {
+  background-color: #fff;
 }
 
 .btn-form-w{
