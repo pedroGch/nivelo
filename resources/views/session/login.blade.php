@@ -7,7 +7,7 @@
 @section('content')
   <section>
     <div class="row d-flex vh-100">
-        <div class="col-12 col-md-6 col-lg-5 mt-lg-5 ms-lg-5 pt-3 container-xxl bg-white rounded shadow">
+      <div class="col-12 col-md-6 col-lg-4 mt-lg-5 ms-lg-5 pt-3 container-xxl bg-white rounded shadow">
           <div class="pt-5 d-flex justify-content-center my-6">
             <img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo">
           </div>
@@ -57,7 +57,6 @@
         </div>
 
       <div class="col-12 d-none d-sm-block bg-login">
-
       </div>
     </div>
 
