@@ -12,7 +12,7 @@
 
 @section('content')
 
-  <section class="container">
+  <section class="container margin-header">
     <div class="my-4">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
