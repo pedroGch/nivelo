@@ -196,8 +196,9 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 
 /* NAVBAR SUPERIOR*/
 
-.margin-header {
+.margin-navs {
   margin-top: 90px;
+  margin-bottom: 90px;
 }
 .nav-superior{
   width: 100%;

@@ -12,7 +12,7 @@
 
 @section('content')
 
-  <section class="container margin-header">
+  <section class="container margin-navs">
     <div class="my-4">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
@@ -49,16 +49,154 @@
         </div>
       </div>
     </div>
-    <div class="row my-3 pt-3 d-flex">
-      <div class="col-12 col-md-6 mb-2">
-        <a href=" {{ route('categoryDetail') }} "><img src="{{ url('/img/cat_restaurante.png') }}" alt="restaurante" class="w-100"></a>
+    <div class="row g-3 my-3 pt-3 d-flex">
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat_gastronomia.jpg') }}" alt="Gastronomía" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Gastronomía</p>
+            </div>
+          </div>
+        </a>
       </div>
-      <div class="col-12 col-md-6 mb-2">
-        <img src="{{ url('/img/cat_comercios.png') }}" alt="comercio de ropa" class="w-100">
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat_comercios.jpg') }}" alt="comercio de ropa" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Comercios</p>
+            </div>
+          </div>
+        </a>
       </div>
-      <div class="col-12 col-md-6 mb-2">
-        <img src="{{ url('/img/cat_shoppings.png') }}" alt="shopping" class="w-100">
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat_shoppings.jpg') }}" alt="shoppings" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Shoppings</p>
+            </div>
+          </div>
+        </a>
       </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-alojamientos.jpg') }}" alt="alojamiento" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Alojamiento</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-recreacion-cultura.jpg') }}" alt="recreacion y cultura" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Recreación y Cultura</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-plazas-parques.jpg') }}" alt="plazas y parques" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Plazas y parques</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-playas-balnearios.jpg') }}" alt="Playas y Balnearios" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Playas y Balnearios</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-oficinas-estado.jpg') }}" alt="Oficinas del Estado" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Oficinas del Estado</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-educacion.jpg') }}" alt="Educación" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Educación</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-deporte.jpg') }}" alt="Deporte" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Deporte</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-salud.jpg') }}" alt="Salud" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Salud</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-transporte.jpg') }}" alt="Transporte" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Transporte</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat-albergues-transitorios.jpg') }}" alt="Albergues transitorios" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Albergues transitorios</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+
+
+
     </div>
 
   </section>
