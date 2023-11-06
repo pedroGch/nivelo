@@ -12,7 +12,7 @@
 
 @section('content')
 
-  <section class="container">
+  <section class="container margin-navs">
     <div class="my-4">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
@@ -21,8 +21,9 @@
           </div>
         @endif
       <div class="row">
-        <div class="col-6 col-md-9">
-          <h2 class="titulo fw-bold mt-3 ps-2">Restaurantes</h2>
+        <div class="col-6 col-md-9 d-flex mt-3 align-items-center">
+          <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
+          <h2 class="titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / Restaurantes</h2>
         </div>
         <div class="col-6 col-md-3 d-flex justify-content-end">
           <div class="">
@@ -38,10 +39,23 @@
       </div>
     </div>
 
-    <div class="row my-3 pt-3 d-flex">
-      <div class="col-12 col-md-6 mb-2 shadow d-flex rounded-2">
+    <div class="row g-3 my-3 pt-3 d-flex">
+
+      <div class="col-12 col-md-6 col-xl-4 position-relative">
+        <a href=" {{ route('categoryDetail') }} ">
+          <div class="col-12 d-flex">
+            <img src="{{ url('/img/categorias/cat_comercios.jpg') }}" alt="comercio de ropa" class="w-100 rounded rounded-3 shadow">
+            <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">
+              <p class="pt-2 px-4 text-white">Comercios</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+      <div class="col-12 col-md-6 col-xl-4 mb-2 shadow d-flex rounded-2">
         <div class="col-4">
-          <img src="{{ url('/img/places/2.jpeg') }}" alt="restaurante **id 2** " class="img-fluid rounded-start">
+          <img src="{{ url('/img/places/2.jpeg') }}" alt="restaurante **id 2** " class="h-100 img-fluid rounded-start">
         </div>
         <div class="col-8 ps-1">
           <h3 class="h5 fw-bold">Condor Clift - Pizza & Pasta</h3>
