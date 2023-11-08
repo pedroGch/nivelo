@@ -22,7 +22,7 @@
         @endif
     </div>
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-7">
         <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
           <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
           <p class="h4 titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail') }}" class="text-decoration-none text-reset">Restaurantes</a></p>
@@ -63,7 +63,7 @@
         </div>
       </div>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-5">
         <img src="{{ url('/img/places/2.jpeg') }}" alt="foto local 2" class="w-100 rounded rounded-3 shadow m-md-2 m-lg-3">
       </div>
     </div>
@@ -219,7 +219,7 @@
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">
           <!--back-->
-          <a href="#" class="form-control btn w-100 rounded-pill p-3 shadow bg-verde-principal text-white">Atrás</a>
+          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow bg-verde-principal text-white">Atrás</a>
         </div>
       </div>
     </div>
