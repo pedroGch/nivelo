@@ -39,3 +39,6 @@ Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'ind
 Route::get('/categorias/1', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
   ->middleware('auth')
   ->name('categoryDetail');
+Route::get('/categorias/1/1', [\App\Http\Controllers\PlaceController::class, 'placeDetail']) //{id}
+  ->middleware('auth')
+  ->name('placeDetail');
