@@ -42,3 +42,7 @@ Route::get('/categorias/1', [\App\Http\Controllers\CategoryController::class, 'c
 Route::get('/categorias/1/1', [\App\Http\Controllers\PlaceController::class, 'placeDetail']) //{id}
   ->middleware('auth')
   ->name('placeDetail');
+
+// Formulario de carga de un nuevo lugar
+Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceForm'])
+  ->name('addPlaceForm');

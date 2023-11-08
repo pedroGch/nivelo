@@ -14,7 +14,7 @@
         <span class="text">Notificaciones</span>
       </a>
       <div class="bg-verde-principal p-5 rounded-top-circle">
-        <a href="" class="text-decoration-none">
+        <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
           <span class="text-white fw-semibold h1 pb-5">
             +
           </span>

@@ -82,7 +82,7 @@
             <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Entrada accesible</p>
           </div>
           <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center" >Entrada accesible (se necesita asistencia)</p>
+            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center" >Entrada accesible (con asistencia)</p>
           </div>
           <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
             <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Circulación interna accesible</p>
@@ -97,7 +97,7 @@
             <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Estacionamiento</p>
           </div>
           <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Ascensor / Plataforma de elevación</p>
+            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Ascensor / Plataforma</p>
           </div>
         </div>
       </div>
