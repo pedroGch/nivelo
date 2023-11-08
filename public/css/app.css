@@ -169,6 +169,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   /* border: none !important; */
 }
 
+.p-btn-chicos {
+  font-size: var(--p-small);
+}
+
 .btn-check:checked+.btn{
   background-color: var(--violeta-contenedor-light) !important;
 }
