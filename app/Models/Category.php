@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\Category
  *
- * @property int $id
+ * @property int $category_id
  * @property string $name
  * @property string|null $icon
  * @property \Illuminate\Support\Carbon|null $created_at

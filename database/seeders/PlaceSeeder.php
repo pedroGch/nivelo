@@ -18,7 +18,7 @@ class PlaceSeeder extends Seeder
 
         [
           [
-              'id'=> '1',
+              'place_id'=> '1',
               'name'=> 'Laboratorio Moreno',
               'address'=> 'Uruguay 80',
               'city'=> 'Moreno',
@@ -40,7 +40,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '2',
+              'place_id'=> '2',
               'name'=> 'Condor Clift - Pizza & Pasta',
               'address'=> 'Av. del Libertador 2',
               'city'=> 'Moreno',
@@ -62,7 +62,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '3',
+              'place_id'=> '3',
               'name'=> 'Hotel UTHGRA de las Luces',
               'address'=> 'Adolfo Alsina 525',
               'city'=> 'CABA',
@@ -84,7 +84,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '4',
+              'place_id'=> '4',
               'name'=> 'Café Martínez',
               'address'=> 'Concejal Alberto Rosset 200',
               'city'=> 'Moreno',
@@ -106,7 +106,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '5',
+              'place_id'=> '5',
               'name'=> 'Diagnóstico Tesla Moreno',
               'address'=> 'Av. Int. Pagano 2666',
               'city'=> 'Moreno',
@@ -128,7 +128,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '6',
+              'place_id'=> '6',
               'name'=> 'Cyan Hotel de las Americas',
               'address'=> 'Libertad 1020',
               'city'=> 'CABA',
@@ -150,7 +150,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '7',
+              'place_id'=> '7',
               'name'=> 'Museo Nacional de Bellas Artes',
               'address'=> 'Av. del Libertador 1473',
               'city'=> 'CABA',
@@ -172,7 +172,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '8',
+              'place_id'=> '8',
               'name'=> 'Unicenter',
               'address'=> 'Paraná 3745',
               'city'=> 'Martínez',
@@ -194,7 +194,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '9',
+              'place_id'=> '9',
               'name'=> 'Teatro Marechal',
               'address'=> 'Eduardo Asconapé 81',
               'city'=> 'Moreno',
@@ -216,7 +216,7 @@ class PlaceSeeder extends Seeder
               'uploaded_from_id'=> '2',
           ],
           [
-              'id'=> '10',
+              'place_id'=> '10',
               'name'=> 'McDonald\'s',
               'address'=> 'Av. Bartolomé Mitre 2859',
               'city'=> 'Moreno',

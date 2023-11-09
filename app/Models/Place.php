@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\Place
  *
- * @property int $id
+ * @property int $place_id
  * @property string $name
  * @property string $coordinates
  * @property string|null $description
@@ -59,5 +59,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Place extends Model
 {
-    use HasFactory;
+   // use HasFactory;
+
+   protected $table = "places";
+
+   protected $primaryKey = "place_id";
 }

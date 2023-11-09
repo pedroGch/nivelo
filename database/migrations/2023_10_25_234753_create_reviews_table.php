@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->id();
+            $table->id('review_id');
             $table->unsignedInteger('user_id'); // FK
             $table->text('review')->nullable();
             $table->string('pic_1')->nullable();

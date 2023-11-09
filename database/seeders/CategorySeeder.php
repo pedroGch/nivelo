@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
       DB::table("categories")->insert(
         [
           [
-              'id' => '1',
+              'category_id' => '1',
               'name' => 'Alojamiento',
               'icon' => NULL,
               'image_cat' => 'categories/cat-alojamiento.jpg',
@@ -24,7 +24,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '2',
+              'category_id' => '2',
               'name' => 'Recreación y Cultura',
               'icon' => NULL,
               'image_cat' => 'categories/cat-recreacion-cultura.jpg',
@@ -32,7 +32,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '3',
+              'category_id' => '3',
               'name' => 'Comercios',
               'icon' => NULL,
               'image_cat' => 'categories/cat-comercios.jpg',
@@ -40,7 +40,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '4',
+              'category_id' => '4',
               'name' => 'Plazas y Parques',
               'icon' => NULL,
               'image_cat' => 'categories/cat-plazas-parques.jpg',
@@ -48,7 +48,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '5',
+              'category_id' => '5',
               'name' => 'Playas y Balnearios',
               'icon' => NULL,
               'image_cat' => 'categories/cat-playas-balnearios.jpg',
@@ -56,7 +56,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '6',
+              'category_id' => '6',
               'name' => 'Gastronomía',
               'icon' => NULL,
               'image_cat' => 'categories/cat-gastronomia.jpg',
@@ -64,7 +64,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '7',
+              'category_id' => '7',
               'name' => 'Oficinas del Estado',
               'icon' => NULL,
               'image_cat' => 'categories/cat-oficinas-estado.jpg',
@@ -72,7 +72,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '8',
+              'category_id' => '8',
               'name' => 'Educación',
               'icon' => NULL,
               'image_cat' => 'categories/cat-educacion.jpg',
@@ -80,7 +80,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '9',
+              'category_id' => '9',
               'name' => 'Deporte',
               'icon' => NULL,
               'image_cat' => 'categories/cat-deporte.jpg',
@@ -88,7 +88,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '10',
+              'category_id' => '10',
               'name' => 'Salud',
               'icon' => NULL,
               'image_cat' => 'categories/cat-salud.jpg',
@@ -96,7 +96,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '11',
+              'category_id' => '11',
               'name' => 'Transporte',
               'icon' => NULL,
               'image_cat' => 'categories/cat-transporte.jpg',
@@ -104,7 +104,7 @@ class CategorySeeder extends Seeder
 
           ],
           [
-              'id' => '12',
+              'category_id' => '12',
               'name' => 'Albergues transitorios',
               'icon' => NULL,
               'image_cat' => 'categories/cat-albergues-transitorios.jpg',

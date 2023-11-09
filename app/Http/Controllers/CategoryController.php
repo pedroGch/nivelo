@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -23,7 +24,13 @@ class CategoryController extends Controller
    * @param int $id
    * @return \Illuminate\View\View
    */
-  public function categoryDetail(/*int $id*/) {
-  return view('/categories/one-category'/*, ["category" => Category::findOrFail($id)] */);
+  public function categoryDetail(int $id) {
+
+    $places = Place::where('category_id', $id)->get();
+
+    return view('/categories/one-category', [
+      "category" => Category::findOrFail($id),
+      "places" => $places
+    ] );
   }
 }
