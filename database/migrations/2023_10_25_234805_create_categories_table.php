@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('icon', 255)->nullable();
-            $table->string('imagen_cat', 255);
+            $table->string('image_cat', 255);
             $table->string('alt_img_cat', 255);
             $table->timestamps();
         });

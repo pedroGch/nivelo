@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
               'id' => '1',
               'name' => 'Alojamiento',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-alojamiento.jpg',
+              'image_cat' => 'categories/cat-alojamiento.jpg',
               'alt_img_cat'=> 'una habitación de hotel',
 
           ],
@@ -27,7 +27,7 @@ class CategorySeeder extends Seeder
               'id' => '2',
               'name' => 'Recreación y Cultura',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-recreacion-cultura.jpg',
+              'image_cat' => 'categories/cat-recreacion-cultura.jpg',
               'alt_img_cat'=> 'sala llena de gente mirando una obra de teatro',
 
           ],
@@ -35,7 +35,7 @@ class CategorySeeder extends Seeder
               'id' => '3',
               'name' => 'Comercios',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-comercios.jpg',
+              'image_cat' => 'categories/cat-comercios.jpg',
               'alt_img_cat'=> 'prendas de ropa en perchas',
 
           ],
@@ -43,7 +43,7 @@ class CategorySeeder extends Seeder
               'id' => '4',
               'name' => 'Plazas y Parques',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-plazas-parques.jpg',
+              'image_cat' => 'categories/cat-plazas-parques.jpg',
               'alt_img_cat'=> 'un parque con muchos árboles y personas caminando',
 
           ],
@@ -51,7 +51,7 @@ class CategorySeeder extends Seeder
               'id' => '5',
               'name' => 'Playas y Balnearios',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-playas-balnearios.jpg',
+              'image_cat' => 'categories/cat-playas-balnearios.jpg',
               'alt_img_cat'=> 'una persona en silla anfibia yendo al mar por una pasarela sobre la arena',
 
           ],
@@ -59,7 +59,7 @@ class CategorySeeder extends Seeder
               'id' => '6',
               'name' => 'Gastronomía',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-gastronomia.jpg',
+              'image_cat' => 'categories/cat-gastronomia.jpg',
               'alt_img_cat'=> 'una mesa con platos de comida',
 
           ],
@@ -67,7 +67,7 @@ class CategorySeeder extends Seeder
               'id' => '7',
               'name' => 'Oficinas del Estado',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-oficinas-estado.jpg',
+              'image_cat' => 'categories/cat-oficinas-estado.jpg',
               'alt_img_cat'=> 'una oficina con escritorios y computadoras',
 
           ],
@@ -75,7 +75,7 @@ class CategorySeeder extends Seeder
               'id' => '8',
               'name' => 'Educación',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-educacion.jpg',
+              'image_cat' => 'categories/cat-educacion.jpg',
               'alt_img_cat'=> 'una mujer estudiando con su notebook',
 
           ],
@@ -83,7 +83,7 @@ class CategorySeeder extends Seeder
               'id' => '9',
               'name' => 'Deporte',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-deporte.jpg',
+              'image_cat' => 'categories/cat-deporte.jpg',
               'alt_img_cat'=> 'una persona sin discapacidad y otra en silla de ruedas en la pista de atletismo',
 
           ],
@@ -91,7 +91,7 @@ class CategorySeeder extends Seeder
               'id' => '10',
               'name' => 'Salud',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-salud.jpg',
+              'image_cat' => 'categories/cat-salud.jpg',
               'alt_img_cat'=> 'una persona en un consultorio médico',
 
           ],
@@ -99,7 +99,7 @@ class CategorySeeder extends Seeder
               'id' => '11',
               'name' => 'Transporte',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-transporte.jpg',
+              'image_cat' => 'categories/cat-transporte.jpg',
               'alt_img_cat'=> 'un subte en una estación',
 
           ],
@@ -107,7 +107,7 @@ class CategorySeeder extends Seeder
               'id' => '12',
               'name' => 'Albergues transitorios',
               'icon' => NULL,
-              'imagen_cat' => 'categories/cat-albergues-transitorios.jpg',
+              'image_cat' => 'categories/cat-albergues-transitorios.jpg',
               'alt_img_cat'=> 'un baño adaptado de una habitación',
           ]
           ]);
