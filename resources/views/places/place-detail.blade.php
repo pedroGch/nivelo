@@ -1,6 +1,11 @@
-@extends('layouts.main')
+<?php
+/**
+ * @var \App\Models\Category $category
+ * @var \App\Models\Place $place
+ */
+ ?>
 
-{{-- @section('title') Página Principal @endsection --}}
+@extends('layouts.main')
 
 @section('title', 'Detalle del Lugar')
 
@@ -25,10 +30,10 @@
       <div class="col-12 col-lg-7">
         <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
           <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
-          <p class="h4 titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail') }}" class="text-decoration-none text-reset">Restaurantes</a></p>
+          <p class="h4 titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="text-decoration-none text-reset">{{ $category->name }}</a></p>
         </div>
         <div class="mt-3">
-          <h2 class="fw-bold ps-2">Condor Clift - Pizza & Pasta</h2>
+          <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
         </div>
         <div class="mt-3 d-flex align-items-center border-bottom border-dark-subtle pb-3">
           <div>
@@ -51,7 +56,7 @@
           </div>
         </div>
         <div>
-          <p class="ps-2">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+          <p class="ps-2">{{ $place->address }}, {{ $place->city }}, {{ $place->province }}.</p>
         </div>
         <div class="col-12 d-flex">
           <div class="my-3">
@@ -64,7 +69,7 @@
       </div>
       </div>
       <div class="col-12 col-lg-5">
-        <img src="{{ url('/img/places/2.jpeg') }}" alt="foto local 2" class="w-100 rounded rounded-3 shadow m-md-2 m-lg-3">
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow m-md-2 m-lg-3">
       </div>
     </div>
 
@@ -109,7 +114,7 @@
         </div>
       </div>
       <div>
-        <p class="ps-2">Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta fugiat temporibus nobis consequatur non doloremque magni quidem pariatur, aperiam, numquam alias fuga saepe vel ipsam! Enim eligendi cumque obcaecati sunt!</p>
+        <p class="ps-2">{{ $place->description }}</p>
       </div>
     </div>
     <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">

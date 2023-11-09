@@ -61,7 +61,7 @@
 
       @foreach ($categories as $category)
       <div class="col-12 col-md-6 col-xl-4 position-relative">
-        <a href=" {{ route('categoryDetail', ['id' => $category->category_id ]) }} ">
+        <a href=" {{ route('categoryDetail', ['category_id' => $category->category_id ]) }} ">
           <div class="col-12 d-flex">
             <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow">
             <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-3 ms-3 shadow">

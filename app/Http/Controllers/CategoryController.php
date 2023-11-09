@@ -24,12 +24,12 @@ class CategoryController extends Controller
    * @param int $id
    * @return \Illuminate\View\View
    */
-  public function categoryDetail(int $id) {
+  public function categoryDetail(int $category_id) {
 
-    $places = Place::where('category_id', $id)->get();
+    $places = Place::where('category_id', $category_id)->get();
 
     return view('/categories/one-category', [
-      "category" => Category::findOrFail($id),
+      "category" => Category::findOrFail($category_id),
       "places" => $places
     ] );
   }

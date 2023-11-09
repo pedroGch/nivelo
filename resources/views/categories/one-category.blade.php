@@ -52,7 +52,7 @@
 
       @forelse ($places as $place)
       <div class="card col-6 col-lg-3" style="width: 18rem;">
-        <a href="{{ route('placeDetail') }}" class="text-reset text-decoration-none">
+        <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
           <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
           <div class="card-body">
             <p class="h6">{{ $category->name }}</p>

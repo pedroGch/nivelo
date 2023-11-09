@@ -36,12 +36,14 @@ Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'ind
   ->name('categories');
 
 
-Route::get('/categorias/{id}', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
+Route::get('/categorias/{category_id}', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
   ->middleware('auth')
   ->name('categoryDetail');
-Route::get('/categorias/1/1', [\App\Http\Controllers\PlaceController::class, 'placeDetail']) //{id}
+
+Route::get('/categorias/{category_id}/{place_id}', [\App\Http\Controllers\PlaceController::class, 'placeDetail']) //{id}
   ->middleware('auth')
-  ->name('placeDetail');
+  ->name('placeDetail')
+  ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+']);
 
 // Formulario de carga de un nuevo lugar
 Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceForm'])
