@@ -14,8 +14,13 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('address');
+            $table->string('city');
+            $table->string('province');
             $table->string('coordinates');
             $table->text('description')->nullable();
+            $table->string('main_img')->nullable();
+            $table->string('alt_main_img')->nullable();
             $table->boolean('access_entrance')->default(false);
             $table->boolean('assisted_access_entrance')->default(false);
             $table->boolean('internal_circulation')->default(false);
