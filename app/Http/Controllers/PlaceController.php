@@ -23,4 +23,7 @@ class PlaceController extends Controller
   public function addPlaceForm() {
   return view('places.add-place-form'/*, ["category" => Category::findOrFail($id)] */);
   }
+
+
+  
 }
