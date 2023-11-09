@@ -82,28 +82,30 @@
         </div>
       </div>
       <div class="col-12">
-        <div class="row my-3 flex justify-content-center align-items-center">
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Entrada accesible</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center" >Entrada accesible (con asistencia)</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Circulación interna accesible</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Baño adaptado</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Cambiador para adultos</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Estacionamiento</p>
-          </div>
-          <div class="mb-3 px-2 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-            <p class="p-3 bg-gris-claro border border-0 shadow fw-semibold rounded-pill p-btn-chicos text-center">Ascensor / Plataforma</p>
-          </div>
+        <div class="row ms-3 my-3 flex justify-content-center align-items-center">
+          <ul>
+          @if($place->access_entrance == 1)
+          <li>Entrada accesible</li>
+          @endif
+          @if($place->access_entrance_assisted == 1)
+          <li>Entrada accesible (con asistencia)</li>
+          @endif
+          @if($place->internal_circulation == 1)
+          <li>Circulación interna accesible</li>
+          @endif
+          @if($place->bathroom == 1)
+          <li>Baño adaptado</li>
+          @endif
+          @if($place->adult_changing_table == 1)
+          <li>Cambiador para adultos</li>
+          @endif
+          @if($place->parking == 1)
+          <li>Estacionamiento</li>
+          @endif
+          @if($place->elevator == 1)
+          <li>Ascensor / Plataforma</li>
+          @endif
+          </ul>
         </div>
       </div>
     </div>
@@ -118,7 +120,10 @@
       </div>
     </div>
     <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">
-      <p>{{ $place->src_info->name }}</p>
+      <p>{{ $place->src_information->name }}</p>
+      @if($place->src_information->src_info_id == 2)
+      <p>Lugar cargado por: {{ $place->users->name }} </p>
+      @endif
     </div>
 
     <div class="row pb-3">

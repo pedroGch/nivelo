@@ -81,18 +81,25 @@ public function categories() :BelongsTo {
 
 
 /**
- * Relación de uno a muchos inversa entre Place y SrcInfo
+ * Relación de uno a muchos inversa entre Place y SrcInformation
  * esta función devuelve el objeto SrcInfo que corresponde al place
  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
  */
-public function src_info() :BelongsTo {
+public function src_information() :BelongsTo {
   return $this->belongsTo(SrcInformation::class, 'src_info_id', 'src_info_id');
-
-
 
 }
 
 
+/**
+ * Relación de uno a muchos inversa entre Place y User
+ * esta función devuelve el objeto User que corresponde al place
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function users() :BelongsTo {
+  return $this->belongsTo(User::class, 'uploaded_from_id', 'id');
+
+}
 
 
 

@@ -20,6 +20,7 @@ class PlaceController extends Controller
       "place" => Place::findOrFail($place_id),
       "category" => Category::findOrFail($category_id),
       "src_information" => Place::findOrFail($place_id)->srcInformation,
+      "uploaded_from_id" => Place::findOrFail($place_id)->uploadedFrom,
     ]);
   }
 
