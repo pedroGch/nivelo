@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">
-      <p>Información proporcionada por el usuario "ro_scotto" . Sujeta a verificación.</p>
+      <p>{{ $place->src_info->name }}</p>
     </div>
 
     <div class="row pb-3">

@@ -14,11 +14,13 @@ class PlaceController extends Controller
   * @return \Illuminate\View\View
   */
   public function placeDetail(int $category_id, int $place_id) {
-    
+
 
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
-      "category" => Category::findOrFail($category_id)]);
+      "category" => Category::findOrFail($category_id),
+      "src_information" => Place::findOrFail($place_id)->srcInformation,
+    ]);
   }
 
 
@@ -33,19 +35,3 @@ class PlaceController extends Controller
 
 
 }
-
-
-// /**
-//    * Retorna la vista de una categoría en particular
-//    * @param int $id
-//    * @return \Illuminate\View\View
-//    */
-//   public function categoryDetail(int $category_id) {
-
-//     $places = Place::where('category_id', $category_id)->get();
-
-//     return view('/categories/one-category', [
-//       "category" => Category::findOrFail($category_id),
-//       "places" => $places
-//     ] );
-//   }

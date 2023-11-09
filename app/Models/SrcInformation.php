@@ -27,5 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SrcInformation extends Model
 {
-    use HasFactory;
+  // use HasFactory;
+
+  protected $table = "src_information";
+
+  protected $primaryKey = "src_info_id";
 }

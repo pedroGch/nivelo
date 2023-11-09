@@ -33,9 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Review extends Model
 {
-    // use HasFactory;
+  // use HasFactory;
 
-   protected $table = "reviews";
+  protected $table = "reviews";
 
-   protected $primaryKey = "review_id";
+  protected $primaryKey = "review_id";
 }

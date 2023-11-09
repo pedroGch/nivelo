@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Place
@@ -64,4 +65,35 @@ class Place extends Model
    protected $table = "places";
 
    protected $primaryKey = "place_id";
+
+
+
+/* RELACIONES */
+
+/**
+ * Relación de uno a muchos inversa entre Place y Category
+ * esta función devuelve el objeto Category que corresponde al place
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function categories() :BelongsTo {
+  return $this->belongsTo(Category::class, 'category_id', 'category_id');
+}
+
+
+/**
+ * Relación de uno a muchos inversa entre Place y SrcInfo
+ * esta función devuelve el objeto SrcInfo que corresponde al place
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function src_info() :BelongsTo {
+  return $this->belongsTo(SrcInformation::class, 'src_info_id', 'src_info_id');
+
+
+
+}
+
+
+
+
+
 }
