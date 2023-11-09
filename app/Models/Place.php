@@ -45,6 +45,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereSrcInfoId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUploadedFromId($value)
+ * @property string $address
+ * @property string $city
+ * @property string $province
+ * @property string|null $main_img
+ * @property string|null $alt_main_img
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereAltMainImg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereMainImg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereProvince($value)
  * @mixin \Eloquent
  */
 class Place extends Model

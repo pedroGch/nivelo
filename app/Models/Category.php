@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @property string $imagen_cat
+ * @property string $alt_img_cat
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereAltImgCat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereImagenCat($value)
  * @mixin \Eloquent
  */
 class Category extends Model
