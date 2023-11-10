@@ -146,24 +146,75 @@
       </div>
     </div>
 
-    <div class="row g-2 my-3 pt-3 d-flex">
+    <div class="row g-3 my-3 pt-3 d-flex">
 
       @forelse($reviews as $review)
-      <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 bg-violeta-ultra-light shadow ">
-        <div>
-          <div class="mx-2">
-            <p class="h6 ps-2 mt-3">Comentario:</p>
-            <p>{{ $review->review }}</p>
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+          <div class="mx-2 border-bottom border-dark-subtle pb-3">
+            <p class="h5 mt-3 fw-bold text-center">Comentario de:  {{ $review->user->user_more_info->username}}</p>
+            <div class="d-flex justify-content-center">
+              <div class="col-12 mt-2 d-flex justify-content-center">
+                  @switch($review->score)
+                    @case($review->score == 1)
+                      <div class="d-flex">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                      </div>
+                    @break
+                    @case($review->score == 2)
+                      <div class="d-flex">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                      </div>
+                    @break
+                    @case($review->score == 3)
+                      <div class="d-flex">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                      </div>
+                    @break
+                    @case($review->score == 4)
+                      <div class="d-flex">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                      </div>
+                    @break
+                    @case($review->score == 5)
+                      <div class="d-flex">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                        <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                      </div>
+                    @break
 
+                    @default
+                    <div class="d-flex">
+                      <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    </div>
+                  @endswitch
+
+
+                </div>
+              </div>
           </div>
           <div class="mx-2 mt-3 d-flex align-items-center pb-3">
-            <div class="mx-2 d-flex">
-              <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1"></div>
-              <div>
-                <p class="d-none">Puntaje otorgado:</p>
-                <p class="ps-1 pt-1">{{ $review->score }}</p>
-              </div>
-            </div>
+            <p>{{ $review->review }}</p>
+
           </div>
           <div class="row d-flex-justify-content-around mx-2">
             @if($review->pic_1)
@@ -180,10 +231,9 @@
             <div class="col-6">
               <p class="h6 ps-2 mt-3">Fecha: {{ $review->created_at }}</p>
               {{-- <p class="h6 ps-2 mt-3">Usuario: {{ $review->userMoreInfo->username}} </p> --}}
-              <p class="h6 ps-2 mt-3">Usuario: {{ $review->user->user_more_info->username}} </p>
             </div>
             <div class="col-6">
-              <div class="mt-3 pb-4 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver más</a></div>
+              <div class="mt-3 pb-4 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
             </div>
           </div>
         </div>
