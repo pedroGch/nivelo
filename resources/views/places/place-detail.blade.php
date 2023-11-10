@@ -40,11 +40,11 @@
         <div class="mt-3">
           <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
         </div>
-        <div class="mt-3 align-items-center border-bottom border-dark-subtle pb-3">
+        <div class="mt-3 align-items-center border-bottom border-top border-dark-subtle pb-3">
           <div>
-            <p class="h5 ps-2">Calificación:</p>
+            <p class="h5 ps-2 mt-3">Promedio de calificaciones:</p>
           </div>
-          <div class="col-12 mt-2 d-flex justify-content-center">
+          <div class="col-12 mt-2 d-flex">
             @switch($averagePlaceScore)
               @case($averagePlaceScore == 1)
                 <div class="d-flex">

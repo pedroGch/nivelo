@@ -42,7 +42,7 @@
         @switch($review->score)
           @case($review->score == 1)
             <div class="d-flex">
-              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluidpt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -51,7 +51,7 @@
           @break
           @case($review->score == 2)
             <div class="d-flex">
-              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -60,7 +60,7 @@
           @break
           @case($review->score == 3)
             <div class="d-flex">
-              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -69,7 +69,7 @@
           @break
           @case($review->score == 4)
             <div class="d-flex">
-              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -78,7 +78,7 @@
           @break
           @case($review->score == 5)
             <div class="d-flex">
-              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
