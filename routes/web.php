@@ -45,6 +45,14 @@ Route::get('/categorias/{category_id}/{place_id}', [\App\Http\Controllers\PlaceC
   ->name('placeDetail')
   ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+']);
 
-// Formulario de carga de un nuevo lugar
+
+Route::get('/categorias/{category_id}/{place_id}/{review_id}', [\App\Http\Controllers\ReviewController::class, 'reviewDetail'])
+  ->middleware('auth')
+  ->name('reviewDetail')
+  ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+', 'review_id' => '[0-9]+']); //{id}
+
+
+  // Formulario de carga de un nuevo lugar
 Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceForm'])
+  ->middleware('auth')
   ->name('addPlaceForm');

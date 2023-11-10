@@ -14,6 +14,7 @@
 
   --violeta-principal: #760FF9 ;
   --violeta-light: #A166FF ;
+  --violeta-ultra-light: #e1ceff ;
   --violeta-dark: #5713AC ;
   --violeta-contenedor-dark: #3A0C82 ;
   --violeta-contenedor-light: #E2CFFF ;
@@ -69,8 +70,20 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: var(--violeta-dark);
 }
 
+.bg-violeta-ultra-light {
+  background-color: var(--violeta-ultra-light);
+}
+
 .btn-violeta-active:active, .btn-violeta-active:focus, .btn-violeta-active:focus-visible {
   background-color: var(--violeta-light)!important;
+}
+
+.bg-naranja-principal{
+  background-color: var(--naranja-principal);
+}
+
+.bg-naranja-dark{
+  background-color: var(--naranja-dark);
 }
 
 .bg-gris-form{

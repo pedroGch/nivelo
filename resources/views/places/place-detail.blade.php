@@ -64,7 +64,7 @@
         </div>
         <div class="col-12 d-flex">
           <div class="my-3">
-            <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal text-white " >
+            <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
               <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
               <span class="fw-semibold">Ver en el mapa</span>
             </a>
@@ -138,7 +138,7 @@
       </div>
       <div class="col-12 d-flex">
         <div class="my-3">
-          <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal text-white " >
+          <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
             <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
@@ -149,7 +149,7 @@
     <div class="row g-2 my-3 pt-3 d-flex">
 
       @forelse($reviews as $review)
-      <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 shadow ">
+      <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 bg-violeta-ultra-light shadow ">
         <div>
           <div class="mx-2">
             <p class="h6 ps-2 mt-3">Comentario:</p>
@@ -176,10 +176,15 @@
             <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
             @endif
           </div>
-          <div class="col-12">
-            <p class="h6 ps-2 mt-3">Fecha: {{ $review->created_at }}</p>
-            {{-- <p class="h6 ps-2 mt-3">Usuario: {{ $review->userMoreInfo->username}} </p> --}}
-            <p class="h6 ps-2 mt-3">Usuario: {{ $review->user->user_more_info->username}} </p>
+          <div class="row">
+            <div class="col-6">
+              <p class="h6 ps-2 mt-3">Fecha: {{ $review->created_at }}</p>
+              {{-- <p class="h6 ps-2 mt-3">Usuario: {{ $review->userMoreInfo->username}} </p> --}}
+              <p class="h6 ps-2 mt-3">Usuario: {{ $review->user->user_more_info->username}} </p>
+            </div>
+            <div class="col-6">
+              <div class="mt-3 pb-4 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver más</a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +203,7 @@
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">
           <!--back-->
-          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow bg-verde-principal text-white">Atrás</a>
+          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white">Atrás</a>
         </div>
       </div>
     </div>

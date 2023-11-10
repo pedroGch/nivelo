@@ -26,7 +26,7 @@ class ReviewSeeder extends Seeder
               'alt_pic_2' => 'sala de espera y rampa de acceso',
               'pic_3' => 'reviews/261256716752.jpg',
               'alt_pic_3' => 'box de atención',
-              'score' => '5',
+              'score' => '3',
               'created_at' => now(),
               'updated_at' => now(),
 
