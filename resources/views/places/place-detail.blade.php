@@ -4,6 +4,7 @@
  * @var \App\Models\Place $place
  * @var \App\Models\Review[] $reviews
  * @var \App\Models\User $user_more_info
+ * @var $averagePlaceScore
  *
  */
 
@@ -39,18 +40,63 @@
         <div class="mt-3">
           <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
         </div>
-        <div class="mt-3 d-flex align-items-center border-bottom border-dark-subtle pb-3">
+        <div class="mt-3 align-items-center border-bottom border-dark-subtle pb-3">
           <div>
             <p class="h5 ps-2">Calificación:</p>
           </div>
-          <div class="d-flex">
-            <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1"></div>
-            <div>
-              <p class="ps-1 pt-1">8</p>
-            </div>
-            <div>
-              <p class="ps-3 pt-1">(5 reseñas)</p>
-            </div>
+          <div class="col-12 mt-2 d-flex justify-content-center">
+            @switch($averagePlaceScore)
+              @case($averagePlaceScore == 1)
+                <div class="d-flex">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                </div>
+              @break
+              @case($averagePlaceScore == 2)
+                <div class="d-flex">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                </div>
+              @break
+              @case($averagePlaceScore == 3)
+                <div class="d-flex">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                </div>
+              @break
+              @case($averagePlaceScore == 4)
+                <div class="d-flex">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                </div>
+              @break
+              @case($averagePlaceScore == 5)
+                <div class="d-flex">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                </div>
+              @break
+
+              @default
+              <div class="d-flex">
+                <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+              </div>
+            @endswitch
           </div>
         </div>
       <div class="col-12 col-lg-6 ">
@@ -155,8 +201,8 @@
             <p class="h5 mt-3 fw-bold text-center">Comentario de:  {{ $review->user->user_more_info->username}}</p>
             <div class="d-flex justify-content-center">
               <div class="col-12 mt-2 d-flex justify-content-center">
-                  @switch($review->score)
-                    @case($review->score == 1)
+                  @switch($averagePlaceScore)
+                    @case($averagePlaceScore == 1)
                       <div class="d-flex">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                         <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -165,7 +211,7 @@
                         <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                       </div>
                     @break
-                    @case($review->score == 2)
+                    @case($averagePlaceScore == 2)
                       <div class="d-flex">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -174,7 +220,7 @@
                         <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                       </div>
                     @break
-                    @case($review->score == 3)
+                    @case($averagePlaceScore == 3)
                       <div class="d-flex">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -183,7 +229,7 @@
                         <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                       </div>
                     @break
-                    @case($review->score == 4)
+                    @case($averagePlaceScore == 4)
                       <div class="d-flex">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
@@ -192,7 +238,7 @@
                         <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                       </div>
                     @break
-                    @case($review->score == 5)
+                    @case($averagePlaceScore == 5)
                       <div class="d-flex">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                         <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">

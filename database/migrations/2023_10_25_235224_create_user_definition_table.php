@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('manual_wheelchair')->default(false);
             $table->boolean('electric_wheelchair')->default(false);
             $table->boolean('scooter')->default(false);
-            $table->boolean('companion')->default(false);
+            $table->boolean('none')->default(false);
             $table->timestamps();
         });
     }

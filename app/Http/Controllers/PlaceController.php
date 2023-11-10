@@ -18,12 +18,20 @@ class PlaceController extends Controller
   */
   public function placeDetail(int $category_id, int $place_id) {
 
+    $scores = Review::where('place_id', $place_id)->get('score');
+
+    ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 0;
+    $averagePlaceScore = $totalPlaceScore / $scores->count();
+
+    $averagePlaceScore = max(1, min(5, $averagePlaceScore));
+
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
       "category" => Category::findOrFail($category_id),
       "src_information" => Place::findOrFail($place_id)->srcInformation,
       "uploaded_from_id" => Place::findOrFail($place_id)->uploadedFrom,
       "reviews" => Review::where('place_id', $place_id)->get(),
+      "averagePlaceScore" => $averagePlaceScore,
 
     ]);
   }

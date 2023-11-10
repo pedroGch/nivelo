@@ -43,7 +43,7 @@ class UserMoreInfo extends Model
 
 
 
-    /* DB RELATIONSHIPS */
+    /* RELACIONES */
 
     /**
      *  Define la relación (uno a uno) entre la tabla users y la tabla user_more_info

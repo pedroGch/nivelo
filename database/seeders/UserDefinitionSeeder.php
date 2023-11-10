@@ -24,7 +24,7 @@ class UserDefinitionSeeder extends Seeder
           'manual_wheelchair' => false,
           'electric_wheelchair' => false,
           'scooter' => false,
-          'companion' => true,
+          'none' => true,
 
         ],
         [
@@ -36,10 +36,10 @@ class UserDefinitionSeeder extends Seeder
           'manual_wheelchair' => true,
           'electric_wheelchair' => false,
           'scooter' => false,
-          'companion' => false
+          'none' => false
         ]
       ]
     );
-    
+
   }
 }

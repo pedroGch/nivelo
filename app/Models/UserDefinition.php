@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\UserDefinition
@@ -15,5 +16,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserDefinition extends Model
 {
-    use HasFactory;
+     // use HasFactory;
+
+   protected $table = 'user_definition';
+
+   protected $primaryKey = 'id';
+
+
+
+
+
+    /* RELACIONES */
+
+    /**
+     *  Define la relación (uno a uno) entre la tabla users y la tabla user_definition
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+     public function user(): BelongsTo
+     {
+         return $this->belongsTo(User::class, 'id', 'id');
+     }
 }
