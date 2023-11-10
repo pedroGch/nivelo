@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -95,5 +96,15 @@ class User extends Authenticatable
     public function user_definition(): HasOne
     {
         return $this->hasOne(UserDefinition::class, 'id', 'id');
+    }
+
+
+    /**
+     * Relación (uno a muchos) entre la tabla users y la tabla review
+     * Devuelve un array con los objetos Review asociados al usuario
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'user_id', 'id');
     }
 }

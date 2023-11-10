@@ -18,24 +18,13 @@ class PlaceController extends Controller
   */
   public function placeDetail(int $category_id, int $place_id) {
 
-    $review = Review::where('place_id', $place_id)->get();
-
-    $user = $review[0]->user_id;
-    $user_more_info = UserMoreInfo::where('id', $user)->get();
-
-    $dateReview = $review[0]->created_at;
-    $date = new DateTime($dateReview);
-    // Formatea la fecha según el formato deseado (DD-MM-AAAA)
-    $formattedDate = $date->format('d-m-Y');
-
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
       "category" => Category::findOrFail($category_id),
       "src_information" => Place::findOrFail($place_id)->srcInformation,
       "uploaded_from_id" => Place::findOrFail($place_id)->uploadedFrom,
       "reviews" => Review::where('place_id', $place_id)->get(),
-      "user_more_info" => $user_more_info,
-      "date" => $formattedDate
+
     ]);
   }
 
@@ -47,7 +36,6 @@ class PlaceController extends Controller
   public function addPlaceForm() {
   return view('places.add-place-form'/*, ["category" => Category::findOrFail($id)] */);
   }
-
 
 
 }

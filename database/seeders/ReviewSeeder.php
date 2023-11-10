@@ -30,6 +30,22 @@ class ReviewSeeder extends Seeder
               'created_at' => now(),
               'updated_at' => now(),
 
+            ],
+            [
+              'review_id' => '2',
+              'place_id' => '1',
+              'user_id' => '1',
+              'review' => 'Antes no era accesible, pero ahora sí',
+              'pic_1' => 'reviews/486461616.jpg',
+              'alt_pic_1' => 'frente del lugar con dársena de estacionamiento',
+              'pic_2' => 'reviews/56465465161.jpg',
+              'alt_pic_2' => 'sala de espera y rampa de acceso',
+              'pic_3' => NULL,
+              'alt_pic_3' => NULL,
+              'score' => '5',
+              'created_at' => now(),
+              'updated_at' => now(),
+
             ]
           ]
         );

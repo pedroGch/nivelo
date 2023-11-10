@@ -166,13 +166,20 @@
             </div>
           </div>
           <div class="row d-flex-justify-content-around mx-2">
+            @if($review->pic_1)
             <div class="col-4"><a href="#""><img src="{{asset('storage/'. $review->pic_1) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_1 }}"></a></div>
+            @endif
+            @if($review->pic_2)
             <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_2) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_2 }}"></a></div>
+            @endif
+            @if($review->pic_3)
             <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
+            @endif
           </div>
           <div class="col-12">
-            <p class="h6 ps-2 mt-3">Fecha: {{$date }}</p>
-            <p class="h6 ps-2 mt-3">Usuario: {{ $user_more_info->first()->username }} </p>
+            <p class="h6 ps-2 mt-3">Fecha: {{ $review->created_at }}</p>
+            {{-- <p class="h6 ps-2 mt-3">Usuario: {{ $review->userMoreInfo->username}} </p> --}}
+            <p class="h6 ps-2 mt-3">Usuario: {{ $review->user->user_more_info->username}} </p>
           </div>
         </div>
       </div>
