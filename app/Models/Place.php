@@ -24,6 +24,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int|null $review_id
  * @property int $category_id
  * @property int $uploaded_from_id
+ * @property string $address
+ * @property string $city
+ * @property string $province
+ * @property string|null $main_img
+ * @property string|null $alt_main_img
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
@@ -46,11 +51,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereSrcInfoId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUploadedFromId($value)
- * @property string $address
- * @property string $city
- * @property string $province
- * @property string|null $main_img
- * @property string|null $alt_main_img
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAltMainImg($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereCity($value)
@@ -102,5 +102,14 @@ public function users() :BelongsTo {
 }
 
 
+/**
+ * Relación de uno a muchos inversa entre Place y Review
+ * esta función devuelve el objeto Review que corresponde al place
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function reviews() :BelongsTo {
+  return $this->belongsTo(Review::class, 'review_id', 'review_id');
 
+
+}
 }

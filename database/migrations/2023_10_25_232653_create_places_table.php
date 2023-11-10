@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('province');
-            $table->string('coordinates');
+            $table->string('coordinates')->nullable();
             $table->text('description')->nullable();
             $table->string('main_img')->nullable();
             $table->string('alt_main_img')->nullable();

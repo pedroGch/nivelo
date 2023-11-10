@@ -2,6 +2,9 @@
 /**
  * @var \App\Models\Category $category
  * @var \App\Models\Place $place
+ * @var \App\Models\Review[] $reviews
+ * @var \App\Models\User $user_more_info
+ *
  */
  ?>
 
@@ -143,86 +146,44 @@
     </div>
 
     <div class="row g-2 my-3 pt-3 d-flex">
+
+      @forelse($reviews as $review)
       <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 shadow ">
         <div>
           <div class="mx-2">
             <p class="h6 ps-2 mt-3">Comentario:</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis quia, assumenda pariatur vero facere nostrum!.</p>
+            <p>{{ $review->review }}</p>
+
           </div>
           <div class="mx-2 mt-3 d-flex align-items-center pb-3">
             <div class="mx-2 d-flex">
               <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1"></div>
               <div>
                 <p class="d-none">Puntaje otorgado:</p>
-                <p class="ps-1 pt-1">10</p>
+                <p class="ps-1 pt-1">{{ $review->score }}</p>
               </div>
             </div>
           </div>
           <div class="row d-flex-justify-content-around mx-2">
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
+            <div class="col-4"><a href="#""><img src="{{asset('storage/'. $review->pic_1) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_1 }}"></a></div>
+            <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_2) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_2 }}"></a></div>
+            <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
           </div>
           <div class="col-12">
-            <p class="h6 ps-2 mt-3">Fecha: 01/01/2001</p>
-            <p class="h6 ps-2 mt-3">Usuario: ro_scotto</p>
+            <p class="h6 ps-2 mt-3">Fecha: {{ dateFormat($review->created_at) }}</p>
+            <p class="h6 ps-2 mt-3">Usuario: {{ $user_more_info->first()->username }} </p>
           </div>
         </div>
       </div>
+      @empty
+      <div class="col-12">
+        <p class="h6 ps-2 mt-3">Aún no hay reseñas. ¿Conocés este lugar?, ¡Contanos cómo fue tu experiencia!</p>
+      </div>
+      @endforelse
 
-      <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 shadow p-3">
-        <div>
-          <div class="mx-2 mt-2">
-            <p class="h6 ps-2 mt-3">Comentario:</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis quia, assumenda pariatur vero facere nostrum!.</p>
-          </div>
-          <div class="mt-3 d-flex align-items-center pb-3">
-            <div class="mx-2 d-flex">
-              <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1"></div>
-              <div>
-                <p class="d-none">Puntaje otorgado:</p>
-                <p class="ps-1 pt-1">10</p>
-              </div>
-            </div>
-          </div>
-          <div class="row d-flex-justify-content-between">
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-          </div>
-          <div class="col-12 mx-2 mb-2">
-            <p class="h6 ps-2 mt-3">Fecha: 01/01/2001</p>
-            <p class="h6 ps-2 mt-3">Usuario: ro_scotto</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-12 col-md-6 col-xl-4 rounded rounded-3 shadow">
-        <div>
-          <div class="mx-2">
-            <p class="h6 ps-2 mt-3">Comentario:</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis quia, assumenda pariatur vero facere nostrum!.</p>
-          </div>
-          <div class="mt-3 d-flex align-items-center pb-3">
-            <div class="mx-2 d-flex">
-              <div><img src="{{ url('/img/icon_star.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1"></div>
-              <div>
-                <p class="d-none">Puntaje otorgado:</p>
-                <p class="ps-1 pt-1">10</p>
-              </div>
-            </div>
-          </div>
-          <div class="row d-flex-justify-content-around">
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-            <div class="col-4"><a href=""><img src="{{ url('/img/places/2.jpeg') }}" class="card-img-top rounded rounded-2" alt="..."></a></div>
-          </div>
-          <div class="col-12">
-            <p class="h6 ps-2 mt-3">Fecha: 01/01/2001</p>
-            <p class="h6 ps-2 mt-3">Usuario: ro_scotto</p>
-          </div>
-        </div>
-      </div>
+
+
     </div>
 
     <div class="row my-3 d-flex justify-content-center">

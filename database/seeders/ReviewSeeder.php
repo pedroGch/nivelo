@@ -20,13 +20,15 @@ class ReviewSeeder extends Seeder
               'place_id' => '1',
               'user_id' => '2',
               'review' => 'Muy buen lugar, muy accesible',
-              'pic_1' => 'reviews/1/1.jpg',
-              'alt_pic_1' => 'frente del lugar',
-              'pic_2' => 'reviews/1/2.jpg',
-              'alt_pic_2' => 'interior del lugar',
-              'pic_3' => 'reviews/1/3.jpg',
-              'alt_pic_3' => 'interior del lugar',
+              'pic_1' => 'reviews/486461616.jpg',
+              'alt_pic_1' => 'frente del lugar con dársena de estacionamiento',
+              'pic_2' => 'reviews/56465465161.jpg',
+              'alt_pic_2' => 'sala de espera y rampa de acceso',
+              'pic_3' => 'reviews/261256716752.jpg',
+              'alt_pic_3' => 'box de atención',
               'score' => '5',
+              'created_at' => now(),
+              'updated_at' => now(),
 
             ]
           ]
