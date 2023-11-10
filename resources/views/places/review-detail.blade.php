@@ -140,6 +140,46 @@
         <p>"{{ $review->review }}"</p>
       </div>
     </div>
+    <div class="row border-bottom border-dark-subtle pb-4">
+      <div>
+        <p class="h5 mt-3">Fotos:</p>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        @if($review->pic_1 || $review->pic_2 || $review->pic_3)
+        <div class="col-12 col-md-10 col-lg-7">
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              @if($review->pic_1)
+              <div class="carousel-item active">
+                <img src="{{asset('storage/'. $review->pic_1) }}" class="d-block w-100" alt="{{ $review->alt_pic_1 }}">
+              </div>
+              @endif
+              @if($review->pic_2)
+              <div class="carousel-item">
+                <img src="{{asset('storage/'. $review->pic_2) }}" class="d-block w-100" alt="{{ $review->alt_pic_2 }}">
+              </div>
+              @endif
+              @if($review->pic_3)
+              <div class="carousel-item">
+                <img src="{{asset('storage/'. $review->pic_3) }}" class="d-block w-100" alt="{{ $review->alt_pic_3 }}">
+              </div>
+              @endif
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+        @else
+        <p class="h6">Este usuario no subió fotos</p>
+        @endif
+      </div>
+    </div>
 
 
 
