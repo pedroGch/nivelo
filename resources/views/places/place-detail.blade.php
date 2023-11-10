@@ -6,6 +6,7 @@
  * @var \App\Models\User $user_more_info
  *
  */
+
  ?>
 
 @extends('layouts.main')
@@ -170,7 +171,7 @@
             <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
           </div>
           <div class="col-12">
-            <p class="h6 ps-2 mt-3">Fecha: {{ dateFormat($review->created_at) }}</p>
+            <p class="h6 ps-2 mt-3">Fecha: {{$date }}</p>
             <p class="h6 ps-2 mt-3">Usuario: {{ $user_more_info->first()->username }} </p>
           </div>
         </div>
