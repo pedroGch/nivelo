@@ -28,10 +28,10 @@ return new class extends Migration
             $table->boolean('adult_changing_table')->default(false);
             $table->boolean('parking')->default(false);
             $table->boolean('elevator')->default(false);
-            $table->unsignedInteger('src_info_id'); // FK
-            $table->unsignedInteger('review_id')->nullable(); // FK
-            $table->unsignedInteger('category_id'); // FK
-            $table->unsignedInteger('uploaded_from_id'); // FK
+            $table->unsignedInteger('src_info_id')->foreign('src_info_id')->references('src_info_id')->on('src_information')->ondelete('restrict')->onupdate('cascade');; // FK
+            $table->unsignedInteger('review_id')->nullable()->foreign('review_id')->references('review_id')->on('reviews')->ondelete('restrict')->onupdate('cascade');; // FK
+            $table->unsignedInteger('category_id')->foreign('category_id')->references('category_id')->on('categories')->ondelete('restrict')->onupdate('cascade');; // FK
+            $table->unsignedInteger('uploaded_from_id')->foreign('uploaded_from_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade');; // FK
             $table->timestamps();
         });
     }

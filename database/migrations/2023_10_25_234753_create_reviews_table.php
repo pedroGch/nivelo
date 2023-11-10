@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id('review_id');
-            $table->unsignedInteger('user_id'); // FK
+            $table->unsignedInteger('place_id')->foreign('place_id')->references('place_id')->on('places')->ondelete('restrict')->onupdate('cascade');
+            $table->unsignedInteger('user_id')->foreign('user_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade'); // FK
             $table->text('review')->nullable();
             $table->string('pic_1')->nullable();
+            $table->string('alt_pic_1')->nullable();
             $table->string('pic_2')->nullable();
+            $table->string('alt_pic_2')->nullable();
             $table->string('pic_3')->nullable();
+            $table->string('alt_pic_3')->nullable();
             $table->tinyInteger('score')->default(0);
             $table->timestamps();
         });

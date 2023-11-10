@@ -75,14 +75,25 @@ class User extends Authenticatable
     ];
 
 
-    /* DB RELATIONSHIPS */
+    /* RELACIONES */
 
     /**
-     * Define la relación (uno a uno) entre la tabla users y la tabla user_more_info
+     * Relación (uno a uno) entre la tabla users y la tabla user_more_info
+     * Devuelve el objeto UserMoreInfo asociado al usuario
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function userMoreInfo(): HasOne
+    public function user_more_info(): HasOne
     {
         return $this->hasOne(UserMoreInfo::class, 'id', 'id');
+    }
+
+
+    /**
+     * Relación (uno a uno) entre la tabla users y la tabla user_definition
+     * Devuelve el objeto UserDefinition asociado al usuario
+     */
+    public function user_definition(): HasOne
+    {
+        return $this->hasOne(UserDefinition::class, 'id', 'id');
     }
 }
