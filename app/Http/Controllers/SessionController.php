@@ -89,7 +89,20 @@ class SessionController extends Controller
 public function googleCallback()
 {
   $user = Socialite::driver('google')->user();
+  $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
 
+  if($userExist){
+    Auth::login($userExist);
+  }else{
+    $newUser = User::Create([
+      'name' => $user->name,
+      'email' => $user->email,
+      'avatar' => $user->avatar,
+      'external_id' => $user->id,
+      'external_auth' => 'google',
+    ]);
+    Auth::login($newUser);
+  }
   return redirect()
     ->route('aboutYouAction');
 }
