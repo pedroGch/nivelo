@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserMoreInfo;
+use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -89,7 +91,25 @@ class SessionController extends Controller
 public function googleCallback()
 {
   $user = Socialite::driver('google')->user();
+  $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
 
+  if($userExist){
+    Auth::login($userExist);
+  }else{
+
+    $newUser = User::Create([
+      'name' => $user->name,
+      'email' => $user->email,
+      'avatar' => $user->avatar,
+      'external_id' => $user->id,
+      'external_auth' => 'google',
+    ]);
+
+    $userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
+    $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
+    dd($userMoreInfo);
+    Auth::login($newUser);
+  }
   return redirect()
     ->route('aboutYouAction');
 }
