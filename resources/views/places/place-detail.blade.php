@@ -192,7 +192,7 @@
       </div>
     </div>
 
-    <div class="row g-3 my-3 pt-3 d-flex">
+    <div class="row g-3 my-3 pt-3 d-flex justify-content-center">
 
       @forelse($reviews as $review)
       <div class="col-12 col-md-6 col-xl-4">

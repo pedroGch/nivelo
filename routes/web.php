@@ -11,30 +11,43 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
 // Rutas de login y logout
 Route::get('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginForm'])
   ->name('login');
+
 Route::post('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginAction'])
   ->name('loginAction');
+
 Route::post('/cerrar-sesion', [\App\Http\Controllers\SessionController::class, 'logoutAction'])
   ->name('logoutAction');
+
 Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'loginWithGoogle'])
   ->name('loginGoogle');
 
-  // Rutas de registro
+// Rutas de perfil de usuario
+Route::get('/mi-perfil', [\App\Http\Controllers\UserController::class, 'userProfile'])
+  ->middleware('auth')
+  ->name('userProfile');
+
+
+// Rutas de registro
 Route::get('/registrate', [\App\Http\Controllers\SessionController::class, 'signupForm'])
   ->name('signup');
+
 Route::post('/registrate', [\App\Http\Controllers\SessionController::class, 'signupAction'])
   ->name('signupAction');
+
 Route::get('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouForm'])
   ->name('aboutYouForm');
+
 Route::post('/sobre-vos', [\App\Http\Controllers\SessionController::class, 'aboutYouAction'])
   ->name('aboutYouAction');
+
 Route::get('/google-callback', [\App\Http\Controllers\SessionController::class, 'googleCallback'])
   ->name('googleCallback');
+
 
   // Rutas de la aplicación (se requiere estar logueado)
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->middleware('auth')
   ->name('categories');
-
 
 Route::get('/categorias/{category_id}', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
   ->middleware('auth')
@@ -44,7 +57,6 @@ Route::get('/categorias/{category_id}/{place_id}', [\App\Http\Controllers\PlaceC
   ->middleware('auth')
   ->name('placeDetail')
   ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+']);
-
 
 Route::get('/categorias/{category_id}/{place_id}/{review_id}', [\App\Http\Controllers\ReviewController::class, 'reviewDetail'])
   ->middleware('auth')
