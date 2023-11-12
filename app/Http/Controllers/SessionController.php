@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserMoreInfo;
+use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -94,6 +96,7 @@ public function googleCallback()
   if($userExist){
     Auth::login($userExist);
   }else{
+
     $newUser = User::Create([
       'name' => $user->name,
       'email' => $user->email,
@@ -101,6 +104,10 @@ public function googleCallback()
       'external_id' => $user->id,
       'external_auth' => 'google',
     ]);
+
+    $userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
+    $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
+    dd($userMoreInfo);
     Auth::login($newUser);
   }
   return redirect()
