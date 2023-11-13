@@ -35,10 +35,17 @@ class UserMoreInfo extends Model
 {
    // use HasFactory;
 
-   protected $table = 'user_more_info';
+  protected $table = 'user_more_info';
 
-   protected $primaryKey = 'id';
+  protected $primaryKey = 'id';
 
+  protected $fillable = [
+    'surname',
+    'username',
+    'birth_date',
+    'profile_pic',
+    'user_id',
+];
 
 
 

@@ -18,11 +18,21 @@ class UserDefinition extends Model
 {
      // use HasFactory;
 
-   protected $table = 'user_definition';
+  protected $table = 'user_definition';
 
-   protected $primaryKey = 'id';
+  protected $primaryKey = 'id';
 
-
+  protected $fillable = [
+    'stick',
+    'crutches',
+    'walker',
+    'dificult_walking',
+    'manual_wheelchair',
+    'electric_wheelchair',
+    'scooter',
+    'none',
+    'user_id',
+];
 
 
 
