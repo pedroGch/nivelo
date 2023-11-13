@@ -107,7 +107,7 @@ public function googleCallback()
 
     $userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
     $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
-    dd($userMoreInfo);
+
     Auth::login($newUser);
   }
   return redirect()
