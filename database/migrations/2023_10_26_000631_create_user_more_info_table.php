@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_more_info', function (Blueprint $table) {
             $table->id();
-            $table->string('surname');
-            $table->string('username');
-            $table->date('birth_date');
+            $table->string('surname')->nullable();
+            $table->string('username')->nullable();
+            $table->date('birth_date')->nullable();
             $table->string('profile_pic')->nullable();
-            $table->string('rol');
+            $table->string('rol')->default('usuario');
             $table->unsignedInteger('user_id')->foreign('user_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade'); // FK
             $table->timestamps();
         });
