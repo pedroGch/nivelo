@@ -68,8 +68,8 @@ class UserMoreInfo extends Model
      *  Define la relación (uno a uno) entre la tabla users y la tabla user_more_info
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-     public function user(): BelongsTo
-     {
-         return $this->belongsTo(User::class, 'id', 'id');
-     }
+    //  public function user(): BelongsTo
+    //  {
+    //      return $this->belongsTo(User::class, 'id', 'id');
+    //  }
 }

@@ -52,7 +52,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'username',
         'email',
+        'birth_date',
         'password',
         'avatar',
         'external_id',
@@ -60,23 +63,25 @@ class User extends Authenticatable
     ];
     public static $rules = [
       'name' => "required|max:30",
-      'email' => [
-        'required',
-        'email', // Asegura que sea un formato de correo electrónico válido
-        //Rule::unique('tu_tabla')->ignore($this->id),
-      ],
+      'surname' => "required|max:30",
+      'username' => "required|max:30",
+      'email' => "required|email",
+      //Rule::unique('tu_tabla')->ignore($this->id),
+      'birth_date' => "required",
       'password' => "required",
     ];
 
     public static $errorMessages = [
       'name.required' => 'El nombre es requerido',
       'name.max' => 'El nombre es no puede contener más de 30 carateres',
-
       'email.required' => 'El email es requerido',
       'email.email' => 'El email debe ser valido',
-
       'password.required' => 'El password es requerido',
-
+      'username.required' => 'El nombre es requerido',
+      'surname.required' => 'El apellido es requerido',
+      'username.max' => 'El nombre no puede contener más de 30 carateres',
+      'surname.max' => 'El apellido no puede contener más de 30 carateres',
+      'birth_date.required' => 'La fecha de nacimiento es requerida',
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -106,10 +111,10 @@ class User extends Authenticatable
      * Devuelve el objeto UserMoreInfo asociado al usuario
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user_more_info(): HasOne
-    {
-        return $this->hasOne(UserMoreInfo::class, 'id', 'id');
-    }
+    // public function user_more_info(): HasOne
+    // {
+    //     return $this->hasOne(UserMoreInfo::class, 'id', 'id');
+    // }
 
 
     /**

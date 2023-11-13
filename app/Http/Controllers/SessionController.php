@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\UserMoreInfo;
+//use App\Models\UserMoreInfo;
 use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,7 +105,7 @@ public function googleCallback()
       'external_auth' => 'google',
     ]);
 
-    $userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
+    //$userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
     $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
 
     Auth::login($newUser);
@@ -142,35 +142,25 @@ public function aboutYouAction(Request $request)
     ->route('aboutYouForm')
     ->with('status.message', 'Tenes que escoger al menos una opción');
 }
-  // /**
-  //  * Retorna la vista de la página del dashboard del administrador
-  //  * @return \Illuminate\View\View
-  //  */
-  // public function dashboard_admin()
-  // {
-  //   return view('dashboard_admin');
-  // }
 
-  // /**
-  //  * Retorna la vista de la página del perfil del usuario
-  //  * @return \Illuminate\View\View
-  //  */
-  // public function perfil_usuario()
-  // {
-  //   return view('perfil_usuario');
-  // }
+public function signupAction(Request $request)
+{
+  //valido lo que me llego en la request
+  $request->validate(User::$rules, User::$errorMessages);
+  //selecciono los datos de la request para guardar en la tabla user
+  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password']);
+  //guardo en la tabla user
+  $newUser = User::create($data);
+  //autentico al usuario
+  Auth::login($newUser);
+  //creo la tabla de user definition
+  $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
+  //re direcciono a la vista de aboutYouForm
+  return redirect()
+    ->route('aboutYouForm')
+    ->with('status.message', 'Tu perfil fue generado exitosamente');
+}
 
-
-  // /**
-  //  * Muestra el panel de administración enviando el usuario logueado
-  //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-  //  */
-  // public function dashboardAdmin()
-  // {
-  //   return view('dashboard_admin', [
-  //     '$user' => Auth::user(),
-  //   ]);
-  // }
 
 
 

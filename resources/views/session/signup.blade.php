@@ -38,12 +38,12 @@
                           </div>
                           <div class="mb-4">
                               <label for="l_name" class="form-label d-none">Apellido</label>
-                              <input type="text" name="l_name" class="form-control p-3" id="l_name"
+                              <input type="text" name="surname" class="form-control p-3" id="surname"
                                   placeholder="Apellido">
                           </div>
                           <div class="mb-4">
                               <label for="user-name" class="form-label d-none">Nombre de usuario</label>
-                              <input type="text" name="user-name" class="form-control p-3" id="user-name"
+                              <input type="text" name="username" class="form-control p-3" id="username"
                                   placeholder="Nombre de usuario">
                           </div>
                           <div class="mb-4">
@@ -53,7 +53,7 @@
                           </div>
                           <div class="mb-4">
                               <label for="b_date" class="form-label ">Fecha de nacimiento</label>
-                              <input type="date" name="b_date" class="form-control p-3" id="b_date"
+                              <input type="date" name="birth_date" class="form-control p-3" id="birth_date"
                                   placeholder="Nombre">
                           </div>
                           <div class="mb-4">
