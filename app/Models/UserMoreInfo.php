@@ -45,9 +45,21 @@ class UserMoreInfo extends Model
     'birth_date',
     'profile_pic',
     'user_id',
-];
+  ];
 
+  public static $rules = [
+    'surname' => "required|max:30",
+    'username' => "required|max:30",
+    'birth_date' => "required",
+  ];
 
+  public static $errorMessages = [
+    'username.required' => 'El nombre es requerido',
+    'surname.required' => 'El apellido es requerido',
+    'username.max' => 'El nombre no puede contener más de 30 carateres',
+    'surname.max' => 'El apellido no puede contener más de 30 carateres',
+    'birth_date.required' => 'La fecha de nacimiento es requerida',
+  ];
 
 
     /* RELACIONES */

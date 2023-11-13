@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Validation\Rule;
 
 /**
  * App\Models\User
@@ -57,7 +58,26 @@ class User extends Authenticatable
         'external_id',
         'external_auth',
     ];
+    public static $rules = [
+      'name' => "required|max:30",
+      'email' => [
+        'required',
+        'email', // Asegura que sea un formato de correo electrónico válido
+        //Rule::unique('tu_tabla')->ignore($this->id),
+      ],
+      'password' => "required",
+    ];
 
+    public static $errorMessages = [
+      'name.required' => 'El nombre es requerido',
+      'name.max' => 'El nombre es no puede contener más de 30 carateres',
+
+      'email.required' => 'El email es requerido',
+      'email.email' => 'El email debe ser valido',
+
+      'password.required' => 'El password es requerido',
+
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
