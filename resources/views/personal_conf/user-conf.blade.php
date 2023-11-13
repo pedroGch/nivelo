@@ -32,7 +32,7 @@
             @endif
             </div>
           <div class="col-12">
-            <form action="#" method="POST">
+            <form action="{{ url('/sobre-vos')}}" method="POST">
               @csrf
               <div class="row ">
                 <div class="mb-4 d-flex justify-content-center col-6">

@@ -114,6 +114,34 @@ public function googleCallback()
     ->route('aboutYouAction');
 }
 
+public function aboutYouAction(Request $request)
+{
+  $userId = Auth::id();
+  // Obtener los valores de los checkboxes
+  $checkboxValues = [
+    'sticks' => $request->input('sticks')  === 'on' ? true : false,
+    'crutches' => $request->input('crutches')  === 'on' ? true : false,
+    'walker' => $request->input('walker')  === 'on' ? true : false,
+    'difficult_walking' => $request->input('difficult_walking')  === 'on' ? true : false,
+    'manual_wheelchair' => $request->input('manual_wheelchair')  === 'on' ? true : false,
+    'electric_wheelchair' => $request->input('electric_wheelchair')  === 'on' ? true : false,
+    'scooter' => $request->input('scooter')  === 'on' ? true : false,
+    'companion' => $request->input('companion')  === 'on' ? true : false,
+  ];
+  // Verificar si al menos uno de ellos tiene valor "on"
+  $anyOn = in_array(true, $checkboxValues);
+
+  // Hacer algo en base al resultado
+  if ($anyOn) {
+    $userDefinition = UserDefinition::findOrFail($userId);
+    $userDefinition->update($checkboxValues);
+    return redirect()
+      ->route('categories');
+  }
+  return redirect()
+    ->route('aboutYouForm')
+    ->with('status.message', 'Tenes que escoger al menos una opción');
+}
   // /**
   //  * Retorna la vista de la página del dashboard del administrador
   //  * @return \Illuminate\View\View
