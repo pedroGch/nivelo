@@ -21,6 +21,7 @@ class UserMoreInfoSeeder extends Seeder
             'username' => 'pedroGch',
             'birth_date' => '1990-01-25',
             'profile_pic'=> 'img_1.jpg',
+            'user_id' => 1,
             'rol' => 'superadmin',
           ],
           [
@@ -29,6 +30,7 @@ class UserMoreInfoSeeder extends Seeder
             'username' => 'ro_scotto',
             'birth_date' => '1989-12-11',
             'profile_pic'=> 'img_2.jpg',
+            'user_id' => 2,
             'rol' => 'superadmin',
           ]
         ]

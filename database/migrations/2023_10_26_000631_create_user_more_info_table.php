@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('profile_pic')->nullable();
             $table->string('rol');
+            $table->unsignedInteger('user_id')->foreign('user_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade'); // FK
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('electric_wheelchair')->default(false);
             $table->boolean('scooter')->default(false);
             $table->boolean('none')->default(false);
+            $table->unsignedInteger('user_id')->foreign('user_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade'); // FK
             $table->timestamps();
         });
     }
