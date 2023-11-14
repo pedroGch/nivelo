@@ -59,34 +59,34 @@
                   </div>
                   <div class="col-12">
                     <div class="row ">
-                      <label for="place_characteristics" class="form-label">Características que posee:</label>
+                      <h3 class="mb-3">Características de <strong>accesibilidad</strong> que posee:</h3>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="sticks" name="sticks"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="sticks">Entrada accesible</label>
+                        <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="acces_entrance">Entrada </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="crutches" name="crutches"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="crutches">Entrada accesible (con asistencia)</label>
+                        <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="walker" name="walker"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="walker">Circulación interna accesible</label>
+                        <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="difficult_walking">Baño adaptado</label>
+                        <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="difficult_walking">Cambiador para adultos</label>
+                        <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="difficult_walking">Estacionamiento</label>
+                        <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="difficult_walking" name="difficult_walking"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="difficult_walking">Ascensor / Plataforma</label>
+                        <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off">
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
                       </div>
                     </div>
                   </div>
@@ -97,14 +97,9 @@
                       </textarea>
                     </div>
                   </div>
-                  <div class="form-check d-flex justify-content-center">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault"> Acepto los <a href="#" class="fw-bold text-reset text-decoration-none">términos y condiciones</a>
-                    </label>
+                  <div class="mb-4">
+                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
                   </div>
-                    <div class="mb-4">
-                      <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
-                    </div>
                 </div>
                 </form>
 
