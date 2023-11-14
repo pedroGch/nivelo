@@ -92,24 +92,31 @@ public function googleCallback()
 {
   $user = Socialite::driver('google')->user();
   $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
+  $userEmailExist = User::where('email', $user->email)->first();
 
   if($userExist){
     Auth::login($userExist);
-  }else{
-
-    $newUser = User::Create([
-      'name' => $user->name,
-      'email' => $user->email,
-      'avatar' => $user->avatar,
-      'external_id' => $user->id,
-      'external_auth' => 'google',
-    ]);
-
-    //$userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
-    $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
-
-    Auth::login($newUser);
+    return redirect()
+      ->route('categories');
   }
+  if( $userEmailExist){
+    Auth::login($userEmailExist);
+    return redirect()
+      ->route('categories');
+  }
+  $newUser = User::Create([
+    'name' => $user->name,
+    'email' => $user->email,
+    'avatar' => $user->avatar,
+    'external_id' => $user->id,
+    'external_auth' => 'google',
+  ]);
+
+  //$userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
+  $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
+
+  Auth::login($newUser);
+
   return redirect()
     ->route('aboutYouAction');
 }
