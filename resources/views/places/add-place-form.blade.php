@@ -11,7 +11,6 @@
 @endsection
 
 @section('content')
-
 <section class="container margin-navs">
     <div class="row d-flex vh-100">
       <div class="">
@@ -31,12 +30,15 @@
             @endif
             </div>
           <div class="col-12">
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="new_place_create">
                 @csrf
                 <div class="row">
                   <div class="col-12 mb-4">
                     <label for="place_name" class="form-label ">Nombre del lugar</label>
                     <input type="text" name="place_name" class="form-control p-3" id="place_name" placeholder="Nombre">
+                  </div>
+                  <div class="col-12">
+                    <div id="gmp-map"></div>
                   </div>
                   <div class="col-12 col-md-6 mb-4">
                     <label for="category" class="form-label ">Categoría</label>
@@ -113,6 +115,48 @@
 
     </div>
 </section>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&callback=initMap&libraries=places&v=weekly" defer></script>
+<script>
+  let inputLugarNombre
+  let map
+  let marker
+  function initMap(){
+    const myLatLng = {
+    lat: -34.916667,
+    lng: -57.95
+    };
+    map = new google.maps.Map(document.getElementById("gmp-map"), {
+      zoom: 10,
+      center: myLatLng,
+      fullscreenControl: false,
+      zoomControl: true,
+      streetViewControl: false
+    });
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: "My location"
+    });
+    initAutoComplete()
+  }
+  function initAutoComplete(){
+    inputLugarNombre = document.getElementById("place_name")
+    let autoComplete = new google.maps.places.Autocomplete(inputLugarNombre)
+    autoComplete.addListener('place_changed', function () {
+      const place = autoComplete.getPlace()
+      console.log(place)
+      map.setCenter(place.geometry.location)
+      marker.setPosition(place.geometry.location)
+    });
+  }
+  const formulario = document.getElementById("new_place_create");
+  formulario.addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log(inputLugarNombre.value)
+    formulario.reset();
+  });
+</script>
 @endsection
 
 @section('footer')
