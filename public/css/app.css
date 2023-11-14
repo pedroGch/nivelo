@@ -285,3 +285,7 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 .footer-nav nav .new_place .text{
   color:#fff;
 }
+
+#gmp-map{
+  height: 300px;
+}
