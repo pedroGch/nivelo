@@ -34,15 +34,15 @@
                 @csrf
                 <div class="row">
                   <div class="col-12 mb-4">
-                    <label for="place_name" class="form-label ">Nombre del lugar</label>
-                    <input type="text" name="place_name" class="form-control p-3" id="place_name" placeholder="Nombre">
+                    <label for="place_name" class="form-label ">¿Dónde queda este lugar?</label>
+                    <input type="text" name="place_name" class="form-control p-3" id="place_name" placeholder="ingresá un nombre o dirección">
                   </div>
-                  <div class="col-12">
+                  <div class="col-12 mb-3">
                     <div id="gmp-map"></div>
                   </div>
                   <div class="col-12 col-md-6 mb-4">
-                    <label for="category" class="form-label ">Categoría</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <label for="category" class="form-label ">¿Qué lugar visitaste?</label>
+                    <select class="form-select" aria-label="Default select example" name="category" id="category">
                       <option selected>Elegí una categoría</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -54,16 +54,11 @@
                     <input type="file" name="imagen_prod" id="imagen_prod">
 
                   </div>
-                  <div class="mb-4">
-                      <label for="l_name" class="form-label">Dirección:</label>
-                      <input type="text" name="l_name" class="form-control p-3" id="l_name"
-                          placeholder="Ingresá la dirección completa">
-                  </div>
                   <div class="col-12">
                     <div class="row ">
                       <h3 class="mb-3">Características de <strong>accesibilidad</strong> que posee:</h3>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"   />
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="acces_entrance">Entrada </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
@@ -108,7 +103,7 @@
                 <div class="mb-4">
                   <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow bg-verde-principal text-white">Cancelar</a>
                 </div>
-5           </form>
+            </form>
           </div>
         </div>
       </div>
@@ -121,6 +116,8 @@
   let inputLugarNombre
   let map
   let marker
+  let autocomplete
+  let place_selected = {}
   function initMap(){
     const myLatLng = {
     lat: -34.916667,
@@ -138,22 +135,43 @@
       map: map,
       title: "My location"
     });
-    initAutoComplete()
+
+    const options = {
+      componentRestrictions: {country: "ar"},
+      fields: ["address_components", "geometry", "icon", "name", "plus_code"],
+      strictBounds: false
+
+    }
+
+    autocomplete = new google.maps.places.Autocomplete(place_name, options)
+
+    autocomplete.addListener("place_changed",() =>{
+      const aPlace = autocomplete.getPlace()
+      console.log(aPlace)
+      place_selected.name = aPlace.name
+      place_selected.address = aPlace.address_components[0].long_name
+      place_selected.city = aPlace.address_components[1].long_name
+      place_selected.province = aPlace.address_components[2].long_name
+      place_selected.coordinates = aPlace.plus_code.global_code
+    })
   }
-  function initAutoComplete(){
-    inputLugarNombre = document.getElementById("place_name")
-    let autoComplete = new google.maps.places.Autocomplete(inputLugarNombre)
-    autoComplete.addListener('place_changed', function () {
-      const place = autoComplete.getPlace()
-      console.log(place)
-      map.setCenter(place.geometry.location)
-      marker.setPosition(place.geometry.location)
-    });
-  }
+
   const formulario = document.getElementById("new_place_create");
   formulario.addEventListener('submit', function(event) {
     event.preventDefault();
-    console.log(inputLugarNombre.value)
+    place_selected.main_img = "places/1.jpg"
+    place_selected.atl_main_img = "imagen cargada por usuario"
+    place_selected.category = document.getElementById("category").value
+    place_selected.acces_entrance = document.getElementById("acces_entrance").checked
+    place_selected.asisted_entrance = document.getElementById("asisted_entrance").checked
+    place_selected.internal_circulation = document.getElementById("internal_circulation").checked
+    place_selected.bathroom = document.getElementById("bathroom").checked
+    place_selected.adult_changing_table = document.getElementById("adult_changing_table").checked
+    place_selected.parking = document.getElementById("parking").checked
+    place_selected.elevator = document.getElementById("elevator").checked
+    place_selected.place_description = document.getElementById("place_description").value
+
+
     formulario.reset();
   });
 </script>
