@@ -53,6 +53,10 @@ Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'ind
   ->middleware('auth')
   ->name('categories');
 
+  Route::get('/buscar-lugar', [\App\Http\Controllers\PlaceController::class, 'searchPlaces'])
+  ->middleware('auth')
+  ->name('searchPlaces');
+
 Route::get('/categorias/{category_id}', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
   ->middleware('auth')
   ->name('categoryDetail');
