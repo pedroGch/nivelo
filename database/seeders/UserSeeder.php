@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 'id' => '1',
                 'name' => 'Pedro',
-                'surname' => 'González Chavez',
+                'surname' => 'Gonzalez Chavez',
                 'username' => 'pedro_gCH',
                 'email' => 'pedro.gonzalez@davinci.edu.ar',
                 'password'=> Hash::make('123456'),
