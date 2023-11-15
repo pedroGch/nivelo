@@ -31,7 +31,7 @@
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
         <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
-        <h2 class="h4 titulo fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / Comentario de {{ $review->user->user_more_info->username }}</h2>
+        <h2 class="h4 titulo fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / Comentario de {{ $review->user->username }}</h2>
       </div>
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
