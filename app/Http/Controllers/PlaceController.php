@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use App\Models\UserMoreInfo;
 use DateTime;
 use Illuminate\Http\Request;
@@ -41,10 +42,45 @@ class PlaceController extends Controller
    * Retorna la vista del formulario de carga de un nuevo lugar
    * @return \Illuminate\View\View
    */
-  public function addPlaceForm() {
-  return view('places.add-place-form'/*, ["category" => Category::findOrFail($id)] */);
+  public function addPlaceForm()
+  {
+    return view('places.add-place-form', ["categories" => Category::all()]);
   }
 
 
-  
+  /**
+   * Retorna la vista del formulario de carga de un nuevo lugar
+   * @return \Illuminate\View\View
+   */
+  public function addPlaceAction(Request $request)
+  {
+    $userId = Auth::id();
+
+    Place::Create([
+      'name' => $request->place_name,
+      'address' => $request->addressPlace,
+      'city' => $request->cityPlace,
+      'province' => $request->provincePlace,
+      'coordinates' => $request->coordinatesPlace,
+      'description' => $request->place_description,
+      'main_img' => '',
+      'alt_main_img' => 'imagen subida por el usuario '.$userId,
+      'access_entrance' => $request->acces_entrance === 'on' ? true : false,
+      'assisted_access_entrance' => $request->asisted_entrance === 'on' ? true : false,
+      'internal_circulation' => $request->internal_circulation === 'on' ? true : false,
+      'bathroom' => $request->bathroom === 'on' ? true : false,
+      'adult_changing_table' => $request->adult_changing_table === 'on' ? true : false,
+      'parking' => $request->parking === 'on' ? true : false,
+      'elevator' => $request->elevator === 'on' ? true : false,
+      'src_info_id' => 2,
+      'review_id' => null,
+      'category_id' => 1,
+      'uploaded_from_id' => 2,
+    ]);
+    return redirect()
+      ->route('categories')
+      ->with('status.message', 'El lugar fue cargado correctamente');
+  }
+
+
 }

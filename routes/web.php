@@ -72,3 +72,7 @@ Route::get('/categorias/{category_id}/{place_id}/{review_id}', [\App\Http\Contro
 Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceForm'])
   ->middleware('auth')
   ->name('addPlaceForm');
+
+Route::post('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceAction'])
+  ->middleware('auth')
+  ->name('addPlaceAction');

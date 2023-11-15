@@ -30,12 +30,17 @@
             @endif
             </div>
           <div class="col-12">
-            <form action="#" method="POST" id="new_place_create">
+            <form action="{{ route('addPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-12 mb-4">
                     <label for="place_name" class="form-label ">¿Dónde queda este lugar?</label>
-                    <input type="text" name="place_name" class="form-control p-3" id="place_name" placeholder="ingresá un nombre o dirección">
+                    <input type="text"   name="place_name" class="form-control p-3" id="place_name" placeholder="ingresá un nombre o dirección">
+                    <input type="hidden" name="namePlace" id="namePlace">
+                    <input type="hidden" name="addressPlace" id="addressPlace">
+                    <input type="hidden" name="cityPlace" id="cityPlace">
+                    <input type="hidden" name="provincePlace" id="provincePlace">
+                    <input type="hidden" name="coordinatesPlace" id="coordinatesPlace">
                   </div>
                   <div class="col-12 mb-3">
                     <div id="gmp-map"></div>
@@ -44,9 +49,9 @@
                     <label for="category" class="form-label ">¿Qué lugar visitaste?</label>
                     <select class="form-select" aria-label="Default select example" name="category" id="category">
                       <option selected>Elegí una categoría</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      @foreach($categories as $category)
+                          <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="col-12 col-md-6 mb-4">
@@ -117,7 +122,6 @@
   let map
   let marker
   let autocomplete
-  let place_selected = {}
   function initMap(){
     const myLatLng = {
     lat: -34.916667,
@@ -147,33 +151,16 @@
 
     autocomplete.addListener("place_changed",() =>{
       const aPlace = autocomplete.getPlace()
-      console.log(aPlace)
-      place_selected.name = aPlace.name
-      place_selected.address = aPlace.address_components[0].long_name
-      place_selected.city = aPlace.address_components[1].long_name
-      place_selected.province = aPlace.address_components[2].long_name
-      place_selected.coordinates = aPlace.plus_code.global_code
+
+
+      document.getElementById('namePlace').value = aPlace.name
+      document.getElementById('addressPlace').value = aPlace.address_components[0].long_name
+      document.getElementById('cityPlace').value = aPlace.address_components[1].long_name
+      document.getElementById('provincePlace').value = aPlace.address_components[2].long_name
+      document.getElementById('coordinatesPlace').value = aPlace.plus_code.global_code
     })
   }
 
-  const formulario = document.getElementById("new_place_create");
-  formulario.addEventListener('submit', function(event) {
-    event.preventDefault();
-    place_selected.main_img = "places/1.jpg"
-    place_selected.atl_main_img = "imagen cargada por usuario"
-    place_selected.category = document.getElementById("category").value
-    place_selected.acces_entrance = document.getElementById("acces_entrance").checked
-    place_selected.asisted_entrance = document.getElementById("asisted_entrance").checked
-    place_selected.internal_circulation = document.getElementById("internal_circulation").checked
-    place_selected.bathroom = document.getElementById("bathroom").checked
-    place_selected.adult_changing_table = document.getElementById("adult_changing_table").checked
-    place_selected.parking = document.getElementById("parking").checked
-    place_selected.elevator = document.getElementById("elevator").checked
-    place_selected.place_description = document.getElementById("place_description").value
-
-
-    formulario.reset();
-  });
 </script>
 @endsection
 

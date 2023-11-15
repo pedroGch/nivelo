@@ -66,7 +66,27 @@ class Place extends Model
 
    protected $primaryKey = "place_id";
 
-
+  protected $fillable = [
+    'name',
+    'address',
+    'city',
+    'province',
+    'coordinates',
+    'description',
+    'main_img',
+    'alt_main_img',
+    'access_entrance',
+    'assisted_access_entrance',
+    'internal_circulation',
+    'bathroom',
+    'adult_changing_table',
+    'parking',
+    'elevator',
+    'src_info_id',
+    'review_id',
+    'category_id',
+    'uploaded_from_id',
+  ];
 
 /* RELACIONES */
 
