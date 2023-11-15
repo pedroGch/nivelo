@@ -22,7 +22,7 @@ class PlaceController extends Controller
     $scores = Review::where('place_id', $place_id)->get('score');
 
     ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 1;
-    $averagePlaceScore = $totalPlaceScore / $scores->count();
+    $averagePlaceScore = $totalPlaceScore / ($scores->count() > 0 ? $scores->count() : 1);
 
     $averagePlaceScore = max(1, min(5, $averagePlaceScore));
 
