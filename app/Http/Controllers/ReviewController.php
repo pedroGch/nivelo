@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use DateTime;
 use Illuminate\Http\Request;
 
@@ -42,4 +43,26 @@ class ReviewController extends Controller
         "category" => Place::findOrFail($category_id),
         "place" => Place::findOrFail($place_id)]);
     }
+
+    /**
+     * Retorna la vista del formulario de carga de una nueva review
+     * @param int $category_id
+     * @param int $place_id
+     * @return \Illuminate\View\View
+     */
+    public function addReviewAction(Request $request)
+    {
+      $userId = Auth::id();
+
+      Review::Create([
+        "place_id" => $request->place_id,
+        "user_id" => $userId,
+        "review" => $request->review_text,
+        "score" => $request->inlineRadioOptions,
+      ]);
+      return redirect()
+      ->route('categories')
+      ->with('status.message', 'Gracias por dejarnos tu opinión');
+    }
 }
+
