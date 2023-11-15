@@ -19,7 +19,7 @@
 @section('content')
 
   <section class="container margin-navs">
-    <div class="my-4">
+    <div class="my-4 mb-5">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
             {!! \Session::get('status.message') !!}
@@ -59,7 +59,7 @@
         </form>
       </div>
     </div>
-    <div class="row g-3 my-3 pt-3 d-flex">
+    <div class="row g-3 my-3 mb-5 pt-3 d-flex">
 
 
       @foreach ($categories as $category)

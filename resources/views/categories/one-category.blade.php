@@ -34,7 +34,7 @@
     </div>
     <div class="row">
       <div class="col-6 col-md-9 d-flex mt-3 align-items-center">
-        <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
+        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
         <h2 class="titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / {{ $category->name }}</h2>
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end">
@@ -48,7 +48,7 @@
     </div>
 
 
-    <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
+    <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
 
       @forelse ($places as $place)
       <div class="card col-6 col-lg-3" style="width: 18rem;">
@@ -118,7 +118,12 @@
       </div>
       @empty
       <div class="col-12">
-        <p class="h5 fw-bold">Aún no hay lugares cargados para esta categoría</p>
+        <p class="h5 fw-bold">¡Aún no hay lugares cargados para esta categoría!</p>
+        <div class="my-4">
+          <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+            <span class="fw-semibold">Cargar un lugar</span>
+          </a>
+        </div>
       </div>
       @endforelse
     </div>

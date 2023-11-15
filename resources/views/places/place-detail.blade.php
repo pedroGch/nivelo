@@ -34,7 +34,7 @@
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-lg-7">
         <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
-          <a href="#"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
+          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
           <p class="h4 titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="text-decoration-none text-reset">{{ $category->name }}</a></p>
         </div>
         <div class="mt-3">

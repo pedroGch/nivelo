@@ -13,7 +13,7 @@
 @section('content')
 <section class="container margin-navs">
     <div class="row d-flex vh-100">
-      <div class="">
+      <div class="mb-2">
         <div class="row my-4 mx-auto">
           <div class="col-12 my-4">
               <div class="d-flex ">
@@ -29,13 +29,13 @@
               </div>
             @endif
             </div>
-          <div class="col-12">
+          <div class="col-12 mb-5">
             <form action="{{ route('addPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-12 mb-4">
-                    <label for="place_name" class="form-label ">¿Dónde queda este lugar?</label>
-                    <input type="text"   name="place_name" class="form-control p-3" id="place_name" placeholder="ingresá un nombre o dirección">
+                    <label for="place_name" class="form-label h5 my-3">¿Dónde queda este lugar?</label>
+                    <input type="text"   name="place_name" class="form-control p-3" id="place_name" placeholder="Ingresá un nombre o dirección">
                     <input type="hidden" name="namePlace" id="namePlace">
                     <input type="hidden" name="addressPlace" id="addressPlace">
                     <input type="hidden" name="cityPlace" id="cityPlace">
@@ -45,8 +45,8 @@
                   <div class="col-12 mb-3">
                     <div id="gmp-map"></div>
                   </div>
-                  <div class="col-12 col-md-6 mb-4">
-                    <label for="category" class="form-label ">¿Qué lugar visitaste?</label>
+                  <div class="col-12 col-md-6 my-4">
+                    <label for="category" class="form-label my-3 h5">¿Qué lugar visitaste?</label>
                     <select class="form-select" aria-label="Default select example" name="category" id="category">
                       <option selected>Elegí una categoría</option>
                       @foreach($categories as $category)
@@ -55,46 +55,46 @@
                     </select>
                   </div>
                   <div class="col-12 col-md-6 mb-4">
-                    <label for="imagen_prod" class="block font-bold my-2"> Imagen producto </label>
+                    <label for="imagen_prod" class="block font-bold my-3 h5"> Imagen principal del lugar </label>
                     <input type="file" name="imagen_prod" id="imagen_prod">
 
                   </div>
                   <div class="col-12">
-                    <div class="row ">
-                      <h3 class="mb-3">Características de <strong>accesibilidad</strong> que posee:</h3>
+                    <div class="row">
+                      <h3 class="mt-2 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"   />
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="acces_entrance">Entrada </label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off">
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
+                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
                       </div>
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="mb-4 d-flex flex-column">
-                      <label for="place_description" class="form-label">Descripción:</label>
+                      <label for="place_description" class="form-label h5 my-3 ">Descripción:</label>
                       <textarea name="place_description" id="place_description" class="form-control p-3">
                       </textarea>
                     </div>
@@ -105,7 +105,7 @@
                 </div>
                 </form>
 
-                <div class="mb-4">
+                <div class="mb-5">
                   <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow bg-verde-principal text-white">Cancelar</a>
                 </div>
             </form>

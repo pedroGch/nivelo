@@ -2,7 +2,7 @@
   <nav class="navbar bg-violeta-dark">
     <div class="container-fluid py-2 d-flex align-items-center">
       <div>
-        <a class="navbar-brand" href="#"><img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo"></a>
+        <a class="navbar-brand" href="{{ route('categories') }}"><img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo"></a>
       </div>
       <div class="d-flex align-items-center">
         <div class="pe-4">
@@ -18,7 +18,7 @@
       <div class="offcanvas offcanvas-end bg-violeta-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"  aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">

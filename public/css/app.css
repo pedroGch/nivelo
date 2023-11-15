@@ -182,6 +182,18 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   /* border: none !important; */
 }
 
+.btn-form-w-center{
+  width: 135px;
+  height: 52px;
+  text-align: right;
+  font-size: var(--botones-chicos);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: none !important; */
+}
+
+
 .p-btn-chicos {
   font-size: var(--p-small);
 }
@@ -189,6 +201,7 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 .btn-check:checked+.btn{
   background-color: var(--violeta-contenedor-light) !important;
 }
+
 
 /* CHECKBOX*/
 .form-check-input:checked{
