@@ -31,8 +31,9 @@
             @endif
             </div>
           <div class="col-12">
-            <form action="" method="POST" id="new_review_create" enctype="multipart/form-data">
+            <form action="{{ route('addReviewAction') }}" method="POST" id="new_review_create" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="place_id" value="{{$place->place_id}}">
                 <div class="mb-4 d-flex flex-wrap justify-content-around">
                   <div class="my-2 form-check form-check-inline">
                     <input class="fs-4 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">

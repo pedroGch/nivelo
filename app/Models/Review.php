@@ -42,6 +42,12 @@ class Review extends Model
 
   protected $primaryKey = "review_id";
 
+  protected $fillable = [
+    "place_id",
+    "user_id",
+    "review",
+    "score"
+  ];
 
   /**
    * Método que devuelve la fecha de creación de la review formateada a DD-MM-AAAA

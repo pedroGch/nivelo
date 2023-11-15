@@ -87,6 +87,6 @@ Route::get('/categorias/{category_id}/{place_id}/nueva-resena', [\App\Http\Contr
   ->middleware('auth')
   ->name('addReviewForm');
 
-// Route::post('/categorias/{category_id}/{Review_id}/nueva-resena', [\App\Http\Controllers\Reviewontroller::class, 'addReviewAction'])
-//   ->middleware('auth')
-//   ->name('addReviewAction');
+Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController::class, 'addReviewAction'])
+  ->middleware('auth')
+  ->name('addReviewAction');
