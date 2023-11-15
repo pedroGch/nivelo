@@ -82,5 +82,23 @@ class PlaceController extends Controller
       ->with('status.message', 'El lugar fue cargado correctamente');
   }
 
+    /**
+   * Retorna una vista con los resultados
+   * @return \Illuminate\View\View
+   */
+  public function searchPlaces (Request $request)
+  {
+    $searchPlace = $request->buscar;
 
+    $placesResult = Place::where('name', 'LIKE', "%$searchPlace%")
+      ->orWhere('address', 'LIKE', "%$searchPlace%")
+      ->orWhere('city', 'LIKE', "%$searchPlace%")
+      ->orWhere('province', 'LIKE', "%$searchPlace%")
+      ->get();
+
+    dd($placesResult);
+    return redirect()
+      ->route('searchResults', ['placesResult' => $placesResult])
+      ->with('status.message', 'El lugar fue cargado correctamente');
+  }
 }
