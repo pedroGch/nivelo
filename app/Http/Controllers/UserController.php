@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,11 +12,13 @@ class UserController extends Controller
      * @return \Illuminate\View\View
      */
     public function userProfile() {
-      $user = auth()->user();
+      $userAuth = auth()->user();
+
+      $userDB = User::where('id', $userAuth->id)->first();
 
         return view('personal_conf.user-profile', [
-          "user" => $user,
-          "category" => Categ
+          "userAuth" => $userAuth,
+          "userDB" => $userDB,
         ]);
     }
 }

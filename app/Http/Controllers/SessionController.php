@@ -171,6 +171,4 @@ public function signupAction(Request $request)
 
 
 
-
-
 }

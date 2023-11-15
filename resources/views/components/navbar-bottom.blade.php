@@ -27,7 +27,7 @@
         </span>
         <span class="text">Chat</span>
       </a>
-      <a href="">
+      <a href="{{ route('userProfile') }}">
         <span class="icon">
           <ion-icon name="person-outline"></ion-icon>
         </span>
