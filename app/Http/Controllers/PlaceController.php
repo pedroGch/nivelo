@@ -56,7 +56,6 @@ class PlaceController extends Controller
   {
     $userId = Auth::id();
     if ($request->hasFile('imagen_prod')) {
-      dd($request->hasFile('imagen_prod'));
       $data = $request->file('imagen_prod')->store('places');
     }
     Place::Create([
