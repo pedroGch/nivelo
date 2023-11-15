@@ -76,3 +76,13 @@ Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPl
 Route::post('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceAction'])
   ->middleware('auth')
   ->name('addPlaceAction');
+
+
+  // Formulario de carga de una nueva reseña
+Route::get('/categorias/{category_id}/{place_id}/nueva-resena', [\App\Http\Controllers\ReviewController::class, 'addReviewForm'])
+  ->middleware('auth')
+  ->name('addReviewForm');
+
+// Route::post('/categorias/{category_id}/{Review_id}/nueva-resena', [\App\Http\Controllers\Reviewontroller::class, 'addReviewAction'])
+//   ->middleware('auth')
+//   ->name('addReviewAction');

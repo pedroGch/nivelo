@@ -184,7 +184,7 @@
       </div>
       <div class="col-12 d-flex">
         <div class="my-3">
-          <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
             <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
