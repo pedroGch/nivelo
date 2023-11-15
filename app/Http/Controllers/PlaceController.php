@@ -55,7 +55,9 @@ class PlaceController extends Controller
   public function addPlaceAction(Request $request)
   {
     $userId = Auth::id();
-
+    if ($request->hasFile('imagen_prod')) {
+      $data = $request->file('imagen_prod')->store('places');
+    }
     Place::Create([
       'name' => $request->place_name,
       'address' => $request->addressPlace,
@@ -63,7 +65,7 @@ class PlaceController extends Controller
       'province' => $request->provincePlace,
       'coordinates' => $request->coordinatesPlace,
       'description' => $request->place_description,
-      'main_img' => '',
+      'main_img' => $data,
       'alt_main_img' => 'imagen subida por el usuario '.$userId,
       'access_entrance' => $request->acces_entrance === 'on' ? true : false,
       'assisted_access_entrance' => $request->asisted_entrance === 'on' ? true : false,
@@ -74,8 +76,8 @@ class PlaceController extends Controller
       'elevator' => $request->elevator === 'on' ? true : false,
       'src_info_id' => 2,
       'review_id' => null,
-      'category_id' => 1,
-      'uploaded_from_id' => 2,
+      'category_id' => $request->category,
+      'uploaded_from_id' => $userId,
     ]);
     return redirect()
       ->route('categories')
