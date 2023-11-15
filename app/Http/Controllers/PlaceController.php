@@ -96,9 +96,14 @@ class PlaceController extends Controller
       ->orWhere('province', 'LIKE', "%$searchPlace%")
       ->get();
 
-    dd($placesResult);
-    return redirect()
-      ->route('searchResults', ['placesResult' => $placesResult])
-      ->with('status.message', 'El lugar fue cargado correctamente');
+      return view('categories.search-results', [
+        "placesResult" => $placesResult,
+        "searchPlace" => $searchPlace,
+      ]);
+
+    // dd($placesResult);
+    // return redirect()
+    //   ->route('searchResults', ['placesResult' => $placesResult])
+    //   ->with('status.message', 'El lugar fue cargado correctamente');
   }
 }
