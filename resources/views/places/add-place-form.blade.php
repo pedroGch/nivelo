@@ -122,6 +122,26 @@
   let map
   let marker
   let autocomplete
+  // function getCurrentPosition(map, marker) {
+  //   if (navigator.geolocation){
+  //     navigator.geolocation.getCurrentPosition(
+  //       ({coords: {latitude, longitude} }) => {
+  //         const coords = {
+  //           lat: latitude,
+  //           lng: longitude,
+  //         };
+  //         map.setCenter(coords)
+  //         map.setZoom(8)
+  //         marker.setPosition(coords)
+  //       },
+  //       () => {
+  //         alert("ocurrio un error")
+  //       }
+  //     )
+  //   }else{
+  //     alert('tu navegador no dispone de geolocalizacion')
+  //   }
+  // }
   function initMap(){
     const myLatLng = {
     lat: -34.916667,
@@ -139,7 +159,7 @@
       map: map,
       title: "My location"
     });
-
+    //getCurrentPosition(map,marker)
     const options = {
       componentRestrictions: {country: "ar"},
       fields: ["address_components", "geometry", "icon", "name", "plus_code"],
@@ -151,6 +171,8 @@
 
     autocomplete.addListener("place_changed",() =>{
       const aPlace = autocomplete.getPlace()
+      map.setCenter(aPlace.geometry.location)
+      marker.setPosition(aPlace.geometry.location)
 
 
       document.getElementById('namePlace').value = aPlace.name
