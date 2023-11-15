@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
             [
                 'id' => '1',
                 'name' => 'Pedro',
+                'surname' => 'González Chavez',
+                'username' => 'pedro_gCH',
                 'email' => 'pedro.gonzalez@davinci.edu.ar',
                 'password'=> Hash::make('123456'),
                 'created_at' => now(),
@@ -27,6 +29,8 @@ class UserSeeder extends Seeder
             [
                 'id' => '2',
                 'name' => 'Rocío',
+                'surname' => 'Scotto',
+                'username' => 'ro_scotto',
                 'email' => 'rocio.scotto@davinci.edu.ar',
                 'password'=> Hash::make('123456'),
                 'created_at' => now(),
