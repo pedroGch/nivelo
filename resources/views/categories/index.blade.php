@@ -21,11 +21,11 @@
   <section class="container margin-navs">
     <div class="my-4 mb-5">
       @if (\Session::has('status.message'))
-          <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
-            {!! \Session::get('status.message') !!}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-          </div>
-        @endif
+              <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
+                {!! \Session::get('status.message') !!}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+              </div>
+            @endif
       <div class="row">
         <div class="col-6 col-md-9">
           <h2 class="titulo fw-bold mt-3 ps-2">Categorías</h2>

@@ -31,7 +31,9 @@ class SessionController extends Controller
   {
     $credentials = $request->only(['email', 'password']);
     if (!Auth::attempt($credentials)) {
-      return redirect('/iniciar-sesion')->with('status.message', 'Email y/o contraseña incorrecta')
+      return redirect('/iniciar-sesion')
+        ->with('status.message', 'Email y/o contraseña incorrecta')
+        ->with('status.type', 'danger')
         ->withInput();
     }
 
@@ -147,7 +149,8 @@ public function aboutYouAction(Request $request)
   }
   return redirect()
     ->route('aboutYouForm')
-    ->with('status.message', 'Tenes que escoger al menos una opción');
+    ->with('status.message', 'Tenes que escoger al menos una opción')
+    ->with('status.type', 'warning');
 }
 
 public function signupAction(Request $request)
