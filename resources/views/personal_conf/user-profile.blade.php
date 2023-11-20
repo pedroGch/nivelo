@@ -5,6 +5,7 @@
  * @var \App\Models\Place[] $myPlaces
  * @var \App\Models\Review $review
  * @var \App\Models\Review[] $madeReviews
+ * @var $UserProfileActive
  */
 
  ?>
@@ -137,6 +138,7 @@
 
 @section('footer')
 
-<x-NavbarBottom/>
+<x-NavbarBottom :UserProfileActive="$UserProfileActive ? 'true' : 'false'" />
+
 
 @endsection

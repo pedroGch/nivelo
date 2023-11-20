@@ -20,9 +20,9 @@ class UserController extends Controller
 
       $myPlaces = Place::where('uploaded_from_id', $userAuth->id)->get();
 
-      // $reviewedPlaces = Place::where('review_id', $userAuth->id)->get();
-
       $madeReviews = Review::where('user_id', $userAuth->id)->orderBy('created_at', 'desc')->get();
+
+      $UserProfileActive = true;
 
         return view('personal_conf.user-profile', [
           "userAuth" => $userAuth,
@@ -30,6 +30,7 @@ class UserController extends Controller
           "myPlaces" => $myPlaces,
           // "reviewedPlaces" => $reviewedPlaces,
           "madeReviews" => $madeReviews,
+          "UserProfileActive" => $UserProfileActive,
         ]);
     }
 }
