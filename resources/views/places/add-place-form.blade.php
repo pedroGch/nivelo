@@ -34,7 +34,7 @@
                 @csrf
                 <div class="row">
                   <div class="col-12 mb-4">
-                    <label for="place_name" class="form-label h5 my-3">¿Dónde queda este lugar?</label>
+                    <label for="place_name" class="form-label h5 my-3">Buscá el lugar:</label>
                     <input type="text"   name="place_name" class="form-control p-3" id="place_name" placeholder="Ingresá un nombre o dirección">
                     <input type="hidden" name="namePlace" id="namePlace">
                     <input type="hidden" name="addressPlace" id="addressPlace">
@@ -45,23 +45,24 @@
                   <div class="col-12 mb-3">
                     <div id="gmp-map"></div>
                   </div>
-                  <div class="col-12 col-md-6 my-4">
-                    <label for="category" class="form-label my-3 h5">¿Qué lugar visitaste?</label>
-                    <select class="form-select" aria-label="Default select example" name="category" id="category">
+                  <div class="col-12 my-4 border-bottom border-dark-subtle pb-3">
+                    <label for="category" class="form-label my-3 h5">¿Qué tipo de lugar es?</label>
+                    <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
                       <option selected>Elegí una categoría</option>
                       @foreach($categories as $category)
                           <option value="{{ $category->category_id }}">{{ $category->name }}</option>
                       @endforeach
                     </select>
                   </div>
-                  <div class="col-12 col-md-6 mb-4">
-                    <label for="main_img" class="block font-bold my-3 h5"> Imagen principal del lugar </label>
-                    <input type="file" name="main_img" id="main_img">
-
+                  <div class="col-12 mb-4 border-bottom border-dark-subtle pb-3">
+                    <label for="main_img" class="block font-bold mb-3 h5"> Imagen principal del lugar </label>
+                    <div class="mb-3">
+                      <input type="file" name="main_img" id="main_img">
+                    </div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-12 border-bottom border-dark-subtle pb-3">
                     <div class="row">
-                      <h3 class="mt-2 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
+                      <h3 class="mt-1 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"   />
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
@@ -93,10 +94,9 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <div class="mb-4 d-flex flex-column">
+                    <div class="mb-4 mt-1 d-flex flex-column pb-4">
                       <label for="place_description" class="form-label h5 my-3 ">Descripción:</label>
-                      <textarea name="place_description" id="place_description" class="form-control p-3">
-                      </textarea>
+                      <textarea name="place_description" id="place_description" class="form-control p-3"></textarea>
                     </div>
                   </div>
                   <div class="mb-4">
