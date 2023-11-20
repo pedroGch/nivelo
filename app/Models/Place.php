@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -87,6 +89,28 @@ class Place extends Model
     'category_id',
     'uploaded_from_id',
   ];
+
+
+  /**
+   * Método que devuelve la fecha de creación del lugar formateada a DD-MM-AAAA
+   * utilizando accessors y mutators
+   * @return Attribute
+   */
+  public function createdAt() : Attribute
+  {
+    return Attribute::make(
+      function($value) {
+         $value = new DateTime($value);
+         return $value->format('d-m-Y');
+      },
+      function($value) {
+          return $value;
+      }
+    );
+  }
+
+
+
 
 /* RELACIONES */
 

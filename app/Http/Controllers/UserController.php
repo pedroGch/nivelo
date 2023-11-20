@@ -22,7 +22,7 @@ class UserController extends Controller
 
       // $reviewedPlaces = Place::where('review_id', $userAuth->id)->get();
 
-      $madeReviews = Review::where('user_id', $userAuth->id)->get();
+      $madeReviews = Review::where('user_id', $userAuth->id)->orderBy('created_at', 'desc')->get();
 
         return view('personal_conf.user-profile', [
           "userAuth" => $userAuth,

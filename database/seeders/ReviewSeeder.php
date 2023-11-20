@@ -27,7 +27,7 @@ class ReviewSeeder extends Seeder
               'pic_3' => 'reviews/261256716752.jpg',
               'alt_pic_3' => 'box de atención',
               'score' => '3',
-              'created_at' => now(),
+              'created_at' => '2023-07-15 14:21:00',
               'updated_at' => now(),
 
             ],
@@ -43,7 +43,7 @@ class ReviewSeeder extends Seeder
               'pic_3' => NULL,
               'alt_pic_3' => NULL,
               'score' => '5',
-              'created_at' => now(),
+              'created_at' => '2023-08-20 16:30:00',
               'updated_at' => now(),
 
             ]
