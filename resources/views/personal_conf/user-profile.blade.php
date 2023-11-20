@@ -2,7 +2,9 @@
 /**
  * @var \App\Models\Category $category
  * @var \App\Models\Place $place
+ * @var \App\Models\Place[] $myPlaces
  * @var \App\Models\Review $review
+ * @var \App\Models\Review[] $madeReviews
  */
 
  ?>
