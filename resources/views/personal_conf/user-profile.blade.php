@@ -19,7 +19,7 @@
 
 @section('content')
 
-  <section class="container margin-navs">
+  <section class="container margin-navs pb-4">
     <div class="my-4">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
@@ -92,7 +92,7 @@
         <tbody>
           @forelse ($myPlaces as $place)
           <tr>
-            <td width="50%" class="col px-2">{{ $place->name }}</td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="fw-bold text-reset text-decoration-none">{{ $place->name }}</a></td>
             <td width="50%" class="col px-2">{{ $place->categories->name}}</td>
           </tr>
           @empty
@@ -103,11 +103,9 @@
       </table>
     </div>
 
-    <div>
+    <div class="pb-4">
       <p class="h5 mt-5 mb-2"> Lugares sobre los que opiné: </p>
       <table>
-        {{-- @forelse ($reviewedPlaces as $place) --}}
-
         <thead>
           <tr class="bg-violeta-ultra-light">
             <th class="col p-2">Nombre</th>
@@ -118,7 +116,7 @@
         <tbody>
           @forelse ($madeReviews as $review)
           <tr>
-            <td width="50%" class="col px-2">{{ $review->place->name }}</td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="fw-bold text-reset text-decoration-none">{{ $review->place->name }}</a></td>
             <td width="50%" class="col px-2">{{ $review->place->categories->name}}</td>
           </tr>
           @empty
