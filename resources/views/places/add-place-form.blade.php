@@ -55,8 +55,8 @@
                     </select>
                   </div>
                   <div class="col-12 col-md-6 mb-4">
-                    <label for="imagen_prod" class="block font-bold my-3 h5"> Imagen principal del lugar </label>
-                    <input type="file" name="imagen_prod" id="imagen_prod">
+                    <label for="main_img" class="block font-bold my-3 h5"> Imagen principal del lugar </label>
+                    <input type="file" name="main_img" id="main_img">
 
                   </div>
                   <div class="col-12">
