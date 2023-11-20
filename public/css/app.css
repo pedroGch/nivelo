@@ -302,3 +302,29 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 #gmp-map{
   height: 300px;
 }
+
+
+ .stablished-height {
+  height: 130px;
+}
+
+/* MEDIA QUERIES */
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+  .stablished-height {
+    height: 150px;
+  }
+}
