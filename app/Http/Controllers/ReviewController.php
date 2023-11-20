@@ -54,6 +54,8 @@ class ReviewController extends Controller
     {
       $userId = Auth::id();
 
+      $place = Place::findOrFail($request->place_id);
+
       Review::Create([
         "place_id" => $request->place_id,
         "user_id" => $userId,
@@ -61,7 +63,8 @@ class ReviewController extends Controller
         "score" => $request->inlineRadioOptions,
       ]);
       return redirect()
-      ->route('categories')
+      // ->route('categories')
+      ->route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $request->place_id])
       ->with('status.message', 'Gracias por dejarnos tu opinión');
     }
 }
