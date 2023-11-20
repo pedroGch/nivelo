@@ -303,6 +303,9 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   height: 300px;
 }
 
+table {
+  width: 100%;
+}
 
  .stablished-height {
   height: 130px;

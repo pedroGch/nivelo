@@ -37,47 +37,96 @@
     </div>
 
     <div>
-      <p class="h5 my-3"> Nombre y Apellido:</p>
+      <p class="h5 mt-5 mb-2"> Nombre y Apellido:</p>
       <p> {{ $userDB->name }} {{ $userDB->surname }}</p>
-      <p class="h5 my-3"> Email: </p>
+      <p class="h5 mt-5 mb-2"> Email: </p>
       <p> {{ $userDB->email }} </p>
-      <p class="h5 my-3"> Nombre de usuario: </p>
+      <p class="h5 mt-5 mb-2"> Nombre de usuario: </p>
       <p> {{ $userDB->username }} </p>
     </div>
 
     <div>
-      <p class="h5 my-3"> Acerca de vos: </p>
+      <p class="h5 mt-5 mb-2"> Acerca de mí: </p>
       @if ($userDB->user_definition->none == 1)
       <ul>
-        <li>No posees ninguna discapacidad pero te sumaste a la "Comunidad ¡Yo, nivelo!"</li>
+        <li>No poseo ninguna discapacidad pero me sumé a la "Comunidad ¡Yo, nivelo!"</li>
       </ul>
       @endif
 
       @if($userDB->user_definition->none == 0)
         <ul>
         @if($userDB->user_definition->sticks == 1)
-          <li>Bastones</li>
+          <li>Camina con bastones</li>
         @endif
         @if($userDB->user_definition->crutches == 1)
-          <li>Muletas</li>
+          <li>Camina con muletas</li>
         @endif
         @if($userDB->user_definition->walker == 1)
-          <li>Andador</li>
+          <li>Utiliza andador</li>
         @endif
         @if($userDB->user_definition->difficult_walking == 1)
           <li>Camina con dificultad</li>
         @endif
         @if($userDB->user_definition->manual_wheelchair == 1)
-          <li>Silla de ruedas manual</li>
+          <li>Utiliza silla de ruedas manual</li>
         @endif
         @if($userDB->user_definition->electric_wheelchair == 1)
-          <li>Silla de ruedas eléctrica</li>
+          <li>Utiliza silla de ruedas eléctrica</li>
         @endif
         @if($userDB->user_definition->scooter == 1)
-          <li>Scooter</li>
+          <li>Utiliza scooter</li>
         @endif
         </ul>
       @endif
+    </div>
+
+    <div>
+      <p class="h5 mt-5 mb-2"> Lugares nuevos que subí a la app:</p>
+      <table>
+        <thead>
+          <tr class="bg-violeta-ultra-light w-100">
+            <th class="col p-2">Nombre</th>
+            <th class="col p-2">Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($myPlaces as $place)
+          <tr>
+            <td width="50%" class="col px-2">{{ $place->name }}</td>
+            <td width="50%" class="col px-2">{{ $place->categories->name}}</td>
+          </tr>
+          @empty
+          <tr>
+            <td width="100%">No subiste ningún lugar aún.</td>
+          </tr>
+          @endforelse
+      </table>
+    </div>
+
+    <div>
+      <p class="h5 mt-5 mb-2"> Lugares sobre los que opiné: </p>
+      <table>
+        {{-- @forelse ($reviewedPlaces as $place) --}}
+
+        <thead>
+          <tr class="bg-violeta-ultra-light">
+            <th class="col p-2">Nombre</th>
+            <th class="col p-2">Categoría</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($madeReviews as $review)
+          <tr>
+            <td width="50%" class="col px-2">{{ $review->place->name }}</td>
+            <td width="50%" class="col px-2">{{ $review->place->categories->name}}</td>
+          </tr>
+          @empty
+          <tr>
+            <td width="100%">No opinaste sobre ningún lugar aún.</td>
+          </tr>
+          @endforelse
+      </table>
     </div>
 
 </section>
