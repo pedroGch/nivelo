@@ -55,6 +55,9 @@ class PlaceController extends Controller
   public function addPlaceAction(Request $request)
   {
     $userId = Auth::id();
+
+    $request->validate(Place::$rules, Place::$errorMessages);
+
     if ($request->hasFile('main_img')) {
       $data = $request->file('main_img')->store('places');
     }

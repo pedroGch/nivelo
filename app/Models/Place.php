@@ -90,6 +90,39 @@ class Place extends Model
     'uploaded_from_id',
   ];
 
+  public static $rules = [
+    'place_name' => 'required|string|max:255',
+    'place_description' => 'required|string|max:255',
+    'main_img' => 'required',
+    'access_entrance' => 'boolean',
+    'assisted_access_entrance' => 'boolean',
+    'internal_circulation' => 'boolean',
+    'bathroom' => 'boolean',
+    'adult_changing_table' => 'boolean',
+    'parking' => 'boolean',
+    'elevator' => 'boolean',
+    'category' => 'integer',
+  ];
+
+  public static $errorMessages = [
+    'place_name.required' => 'El nombre del lugar es obligatorio',
+    'place_name.string' => 'El nombre del lugar debe ser un texto',
+    'place_name.max' => 'El nombre del lugar no puede superar los 255 caracteres',
+    'place_description.required' => 'La descripción del lugar es obligatoria',
+    'place_description.string' => 'La descripción del lugar debe ser un texto',
+    'place_description.max' => 'La descripción del lugar no puede superar los 255 caracteres',
+    'main_img.required' => 'La imagen principal del lugar es obligatoria',
+    'category.required' => 'La categoría del lugar es obligatoria',
+    'category.integer' => 'La categoría del lugar es obligatoria',
+    'elevator.boolean' => 'El campo ascensor debe ser un booleano',
+    'access_entrance.boolean' => 'El campo acceso debe ser un booleano',
+    'assisted_access_entrance.boolean' => 'El campo acceso asistido debe ser un booleano',
+    'internal_circulation.boolean' => 'El campo circulación interna debe ser un booleano',
+    'bathroom.boolean' => 'El campo baño debe ser un booleano',
+    'adult_changing_table.boolean' => 'El campo cambiador para adultos debe ser un booleano',
+    'parking.boolean' => 'El campo estacionamiento debe ser un booleano',
+    
+  ];
 
   /**
    * Método que devuelve la fecha de creación del lugar formateada a DD-MM-AAAA

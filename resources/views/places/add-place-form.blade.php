@@ -12,6 +12,7 @@
 
 @section('content')
 <section class="container margin-navs">
+
     <div class="row d-flex vh-100">
       <div class="mb-2">
         <div class="row my-4 mx-auto">
@@ -28,6 +29,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
               </div>
             @endif
+            @if($errors->any())
+            <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
+              <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para cargar correctamente el lugar.</p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+            @endif
             </div>
           <div class="col-12 mb-5">
             <form action="{{ route('addPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
@@ -35,7 +42,14 @@
                 <div class="row">
                   <div class="col-12 mb-4">
                     <label for="place_name" class="form-label h5 my-3">Buscá el lugar:</label>
-                    <input type="text"   name="place_name" class="form-control p-3" id="place_name" placeholder="Ingresá un nombre o dirección">
+                    <input type="text"   name="place_name" class="form-control p-3 @error('place_name') is-invalid @enderror" id="place_name" placeholder="Ingresá un nombre o dirección" value="{{ old('place_name') }}"
+                    @error('place_name')
+                    aria-describedby="error-place_name"
+                    aria-invalid="true"
+                    @enderror>
+                    @error('place_name')
+                    <p class="text-danger" id="error-place_name">{{ $message }}</p>
+                    @enderror
                     <input type="hidden" name="namePlace" id="namePlace">
                     <input type="hidden" name="addressPlace" id="addressPlace">
                     <input type="hidden" name="cityPlace" id="cityPlace">
@@ -50,53 +64,93 @@
                     <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
                       <option selected>Elegí una categoría</option>
                       @foreach($categories as $category)
-                          <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                          <option class="@error('category') is-invalid @enderror" value="{{ $category->category_id }}"
+                            {{ old('category') == $category->category_id ? 'selected' : '' }}
+                            @error('category')
+                            aria-describedby="error-category"
+                            aria-invalid="true"
+                            @enderror
+                            >{{ $category->name }}</option>
                       @endforeach
                     </select>
+                    @error('category')
+                    <p class="text-danger" id="error-category">{{ $message }}</p>
+                    @enderror
                   </div>
+
                   <div class="col-12 mb-4 border-bottom border-dark-subtle pb-3">
                     <label for="main_img" class="block font-bold mb-3 h5"> Imagen principal del lugar </label>
                     <div class="mb-3">
-                      <input type="file" name="main_img" id="main_img">
+                      <input type="file" name="main_img" id="main_img" class="@error('main_img') is-invalid @enderror"
+                      @error('main_img')
+                      aria-describedby="error-main_img"
+                      aria-invalid="true"
+                      @enderror>
+                      @error('main_img')
+                      <p class="text-danger" id="error-main_img">{{ $message }}</p>
+                      @enderror
                     </div>
                   </div>
+
                   <div class="col-12 border-bottom border-dark-subtle pb-3">
                     <div class="row">
                       <h3 class="mt-1 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"   />
+                        <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"
+                        @if(old('acces_entrance')) checked @endif
+                        />
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance" autocomplete="off"
+                        @if(old('asisted_entrance')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off"
+                        @if(old('internal_circulation')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off"
+                        @if(old('bathroom')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off"
+                        @if(old('adult_changing_table')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off"
+                        @if(old('parking')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                        <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off">
+                        <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off"
+                        @if(old('elevator')) checked @endif
+                        >
                         <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
                       </div>
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="mb-4 mt-1 d-flex flex-column pb-4">
-                      <label for="place_description" class="form-label h5 my-3 ">Descripción:</label>
-                      <textarea name="place_description" id="place_description" class="form-control p-3"></textarea>
+                      <label for="place_description" class="form-label h5 my-3">Descripción:</label>
+                      <textarea name="place_description" id="place_description" class="form-control p-3 @error('place_description') is-invalid @enderror"
+                      @error('place_description')
+                      aria-describedby="error-place_description"
+                      aria-invalid="true"
+                      @enderror
+                      >{{ old('place_description') }}</textarea>
+                      @error('place_description')
+                      <p class="text-danger" id="error-place_description">{{ $message }}</p>
+                      @enderror
                     </div>
                   </div>
                   <div class="mb-4">
