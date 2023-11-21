@@ -57,6 +57,7 @@ class User extends Authenticatable
         'email',
         'birth_date',
         'password',
+        'password-repeat',
         'avatar',
         'external_id',
         'external_auth',
@@ -66,18 +67,21 @@ class User extends Authenticatable
       'surname' => "required|max:30",
       'username' => "required|max:30",
       'email' => "required|email",
-      //Rule::unique('tu_tabla')->ignore($this->id),
       'birth_date' => "required",
       'password' => "required",
+      'password-repeat' => "required|same:password",
+
     ];
 
     public static $errorMessages = [
       'name.required' => 'El nombre es requerido',
       'name.max' => 'El nombre es no puede contener más de 30 carateres',
       'email.required' => 'El email es requerido',
-      'email.email' => 'El email debe ser valido',
+      'email.email' => 'El email debe ser válido',
       'password.required' => 'El password es requerido',
-      'username.required' => 'El nombre es requerido',
+      'password-repeat.required' => 'Es necesario que repitas tu contraseña',
+      'password-repeat.same' => 'Las contraseñas no coinciden',
+      'username.required' => 'El nombre de usuario es requerido',
       'surname.required' => 'El apellido es requerido',
       'username.max' => 'El nombre no puede contener más de 30 carateres',
       'surname.max' => 'El apellido no puede contener más de 30 carateres',

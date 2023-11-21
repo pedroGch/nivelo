@@ -158,7 +158,7 @@ public function signupAction(Request $request)
   //valido lo que me llego en la request
   $request->validate(User::$rules, User::$errorMessages);
   //selecciono los datos de la request para guardar en la tabla user
-  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password']);
+  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password', 'password-repeat']);
   //guardo en la tabla user
   $newUser = User::create($data);
   //autentico al usuario

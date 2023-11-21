@@ -22,48 +22,58 @@
                   </div>
                   <div class="col-12 my-1">
                     @if (\Session::has('status.message'))
-                      <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
-                        {!! \Session::get('status.message') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                      <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
+                      {!! \Session::get('status.message') !!}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                       </div>
                     @endif
+                    @if($errors->any())
+                    <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
+                      <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para poder registrarte.</p>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                      <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
                     </div>
+                    @endif
+                  </div>
                   <div class="col-12">
                       <form action="{{ route('signupAction') }}" method="POST">
                           @csrf
                           <div class="mb-4">
                               <label for="name" class="form-label d-none">Nombre</label>
-                              <input type="text" name="name" class="form-control p-3" id="name"
+                              <input type="text" name="name" class="form-control p-3 @error('name') is-invalid @enderror" id="name"
                                   placeholder="Nombre">
                           </div>
                           <div class="mb-4">
                               <label for="l_name" class="form-label d-none">Apellido</label>
-                              <input type="text" name="surname" class="form-control p-3" id="surname"
+                              <input type="text" name="surname" class="form-control p-3 @error('surname') is-invalid @enderror" id="surname"
                                   placeholder="Apellido">
                           </div>
                           <div class="mb-4">
                               <label for="user-name" class="form-label d-none">Nombre de usuario</label>
-                              <input type="text" name="username" class="form-control p-3" id="username"
+                              <input type="text" name="username" class="form-control p-3 @error('username') is-invalid @enderror" id="username"
                                   placeholder="Nombre de usuario">
                           </div>
                           <div class="mb-4">
                               <label for="email" class="form-label d-none">Email</label>
-                              <input type="email" name="email" class="form-control p-3" id="email"
+                              <input type="email" name="email" class="form-control p-3 @error('email') is-invalid @enderror" id="email"
                                   placeholder="Email">
                           </div>
                           <div class="mb-4">
-                              <label for="b_date" class="form-label ">Fecha de nacimiento</label>
-                              <input type="date" name="birth_date" class="form-control p-3" id="birth_date"
+                              <label for="birth_date" class="form-label ">Fecha de nacimiento</label>
+                              <input type="date" name="birth_date" class="form-control p-3 @error('birth_date') is-invalid @enderror" id="birth_date"
                                   placeholder="Nombre">
                           </div>
                           <div class="mb-4">
                               <label for="password" class="form-label d-none">Contraseña</label>
-                              <input type="password" name="password" class="form-control p-3" id="password"
-                                  placeholder="Contraseña">
+                              <input type="password" name="password" class="form-control p-3 @error('password') is-invalid @enderror" id="password" placeholder="Contraseña">
                           </div>
                           <div class="mb-4">
-                              <label for="password-repeart" class="form-label d-none">Repetir contraseña</label>
-                              <input type="password" name="password-repeart" class="form-control p-3" id="password-repeart"
+                              <label for="password-repeat" class="form-label d-none">Repetir contraseña</label>
+                              <input type="password" name="password-repeat" class="form-control p-3 @error('password-repeat') is-invalid @enderror" id="password-repeat"
                                   placeholder="Repetir contraseña">
                           </div>
                           <div class="form-check d-flex justify-content-center">
