@@ -49,7 +49,14 @@
     </div>
 
     <div>
-      <p class="h5 mt-5 mb-2"> Acerca de mí: </p>
+      <div class="mt-5 mb-2 d-flex align-items-center">
+        <p class="h5"> Acerca de mí: </p>
+        <a href="{{ route('aboutYouForm') }}">
+          <span class="icon ps-3">
+            <ion-icon name="create-outline" aria-label="Editar" size="large"></ion-icon>
+          </span>
+        </a>
+      </div>
 
       @if($userDB->user_definition->none == 0 && $userDB->user_definition->sticks == 0 && $userDB->user_definition->crutches == 0 && $userDB->user_definition->walker == 0 && $userDB->user_definition->difficult_walking == 0 && $userDB->user_definition->manual_wheelchair == 0 && $userDB->user_definition->electric_wheelchair == 0 && $userDB->user_definition->scooter == 0)
         <p>Aún no cargaste ninguna información sobre tu movilidad.</p>
