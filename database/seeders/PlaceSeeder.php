@@ -68,7 +68,11 @@ class PlaceSeeder extends Seeder
               'city'=> 'CABA',
               'province'=> 'Buenos Aires',
               'coordinates'=> '9JQG+WC Buenos Aires',
-              'description'=> 'Hotel',
+              'description'=> 'Este hotel modesto está ubicado en una casa adosada, a 3 minutos a pie de la estación de metro más cercana, a 6 minutos a pie de la Casa Rosada y a 2 km del gran teatro Colón.
+
+              Las habitaciones sencillamente amuebladas disponen de conexión Wi-Fi gratis, TV por cable, caja fuerte y frigobar. Algunas cuentan con capacidad para 3 personas. Se ofrece servicio a la habitación.
+
+              Se ofrece desayuno tipo bufé. Además, dispone de un bar informal, un salón y un centro de negocios.',
               'main_img'=> 'places/3.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -90,7 +94,7 @@ class PlaceSeeder extends Seeder
               'city'=> 'Moreno',
               'province'=> 'Buenos Aires',
               'coordinates'=> '9634+MP Moreno, Provincia de Buenos Aires',
-              'description'=> 'Cafetería',
+              'description'=> 'Cafetería.',
               'main_img'=> 'places/4.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -112,7 +116,7 @@ class PlaceSeeder extends Seeder
               'city'=> 'Moreno',
               'province'=> 'Buenos Aires',
               'coordinates'=> '9637+VF Moreno, Provincia de Buenos Aires',
-              'description'=> 'Centro de diagnóstico',
+              'description'=> 'Centro de diagnóstico por imágenes.',
               'main_img'=> 'places/5.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -134,7 +138,11 @@ class PlaceSeeder extends Seeder
               'city'=> 'CABA',
               'province'=> 'Buenos Aires',
               'coordinates'=> 'CJ38+96 Buenos Aires',
-              'description'=> 'Hotel',
+              'description'=> 'Situado en el corazón del barrio de Recoleta, el Cyan Hotel de las Américas de 4 estrellas ofrece amplias habitaciones con aire acondicionado a pocos metros de las populares avenidas 9 de Julio y Santa Fe. Se proporciona conexión WiFi gratuita.
+
+              Como huésped del Cyan Hotel de las Américas, podrá caminar hasta el Obelisco, la Plaza San Martín, la Catedral Metropolitana y varios otros atractivos de Buenos Aires.
+
+              El hotel ofrece un suntuoso desayuno bufé y otras opciones gastronómicas durante el día en el restaurante y snack bar. Además, el servicio de habitaciones está disponible las 24 horas del día.',
               'main_img'=> 'places/6.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -156,7 +164,7 @@ class PlaceSeeder extends Seeder
               'city'=> 'CABA',
               'province'=> 'Buenos Aires',
               'coordinates'=> 'CJ84+CQ Buenos Aires',
-              'description'=> 'Museo',
+              'description'=> 'El Museo Nacional de Bellas Artes, ubicado en la Ciudad de Buenos Aires, es una de las instituciones públicas de arte más importantes de Argentina. Alberga un patrimonio sumamente diverso, que incluye más de 12 000 piezas, entre pinturas, esculturas, dibujos, grabados, textiles y objetos.',
               'main_img'=> 'places/7.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -178,7 +186,7 @@ class PlaceSeeder extends Seeder
               'city'=> 'Martínez',
               'province'=> 'Buenos Aires',
               'coordinates'=> 'FFRG+HP Martínez, Provincia de Buenos Aires',
-              'description'=> 'Shopping',
+              'description'=> 'Unicenter Shopping es el centro comercial más grande de la Argentina. El shopping, que pertenece al holding chileno Cencosud, fue inaugurado el 12 de octubre de 1988, y se encuentra ubicado en la localidad de Martínez.',
               'main_img'=> 'places/8.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> true,
@@ -200,7 +208,7 @@ class PlaceSeeder extends Seeder
               'city'=> 'Moreno',
               'province'=> 'Buenos Aires',
               'coordinates'=> '86X5+FJ Moreno, Provincia de Buenos Aires',
-              'description'=> 'Teatro',
+              'description'=> 'Teatro Marechal es un teatro municipal ubicado en la ciudad de Moreno, provincia de Buenos Aires, Argentina.',
               'main_img'=> 'places/9.jpg',
               'alt_main_img' => 'frente del lugar',
               'access_entrance'=> false,

@@ -166,7 +166,7 @@
         </div>
       </div>
       <div>
-        <p class="ps-2">{{ $place->description }}</p>
+        <p class="ps-2">{!! nl2br($place->description) !!}</p>
       </div>
     </div>
     <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">
