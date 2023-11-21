@@ -135,7 +135,7 @@ public function aboutYouAction(Request $request)
     'manual_wheelchair' => $request->input('manual_wheelchair')  === 'on' ? true : false,
     'electric_wheelchair' => $request->input('electric_wheelchair')  === 'on' ? true : false,
     'scooter' => $request->input('scooter')  === 'on' ? true : false,
-    'companion' => $request->input('companion')  === 'on' ? true : false,
+    'none' => $request->input('none')  === 'on' ? true : false,
   ];
   // Verificar si al menos uno de ellos tiene valor "on"
   $anyOn = in_array(true, $checkboxValues);
@@ -145,7 +145,9 @@ public function aboutYouAction(Request $request)
     $userDefinition = UserDefinition::findOrFail($userId);
     $userDefinition->update($checkboxValues);
     return redirect()
-      ->route('categories');
+      ->route('userProfile')
+      ->with('status.message', 'Tu perfil se actualizó exitosamente');
+
   }
   return redirect()
     ->route('aboutYouForm')
@@ -159,7 +161,7 @@ public function signupAction(Request $request)
   //valido lo que me llego en la request
   $request->validate(User::$rules, User::$errorMessages);
   //selecciono los datos de la request para guardar en la tabla user
-  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password']);
+  $data = $request->only(['name', 'surname' ,'username', 'email', 'birth_date','password']);
 
   //guardo en la tabla user
   $newUser = User::create($data);

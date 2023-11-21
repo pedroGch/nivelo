@@ -23,10 +23,10 @@ class UserDefinition extends Model
   protected $primaryKey = 'id';
 
   protected $fillable = [
-    'stick',
+    'sticks',
     'crutches',
     'walker',
-    'dificult_walking',
+    'difficult_walking',
     'manual_wheelchair',
     'electric_wheelchair',
     'scooter',

@@ -39,6 +39,18 @@ class UserDefinitionSeeder extends Seeder
           'scooter' => false,
           'none' => false,
           'user_id' => 2,
+        ],
+        [
+          'id' => '3',
+          'sticks' => false,
+          'crutches' => false,
+          'walker' => true,
+          'difficult_walking' => false,
+          'manual_wheelchair' => false,
+          'electric_wheelchair' => false,
+          'scooter' => false,
+          'none' => false,
+          'user_id' => 3,
         ]
       ]
     );

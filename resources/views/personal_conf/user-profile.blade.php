@@ -50,36 +50,46 @@
 
     <div>
       <p class="h5 mt-5 mb-2"> Acerca de mí: </p>
-      @if ($userDB->user_definition->none == 1)
-      <ul>
-        <li>No poseo ninguna discapacidad pero me sumé a la "Comunidad ¡Yo, nivelo!"</li>
-      </ul>
-      @endif
 
-      @if($userDB->user_definition->none == 0)
+      @if($userDB->user_definition->none == 0 && $userDB->user_definition->sticks == 0 && $userDB->user_definition->crutches == 0 && $userDB->user_definition->walker == 0 && $userDB->user_definition->difficult_walking == 0 && $userDB->user_definition->manual_wheelchair == 0 && $userDB->user_definition->electric_wheelchair == 0 && $userDB->user_definition->scooter == 0)
+        <p>Aún no cargaste ninguna información sobre tu movilidad.</p>
+        <div class="my-3">
+          <a href="{{ route('aboutYouForm') }}" class="btn rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+            <span class="fw-semibold">Agregar información</span>
+          </a>
+        </div>
+      @else
+      @if ($userDB->user_definition->none == 1)
         <ul>
-        @if($userDB->user_definition->sticks == 1)
-          <li>Camina con bastones</li>
-        @endif
-        @if($userDB->user_definition->crutches == 1)
-          <li>Camina con muletas</li>
-        @endif
-        @if($userDB->user_definition->walker == 1)
-          <li>Utiliza andador</li>
-        @endif
-        @if($userDB->user_definition->difficult_walking == 1)
-          <li>Camina con dificultad</li>
-        @endif
-        @if($userDB->user_definition->manual_wheelchair == 1)
-          <li>Utiliza silla de ruedas manual</li>
-        @endif
-        @if($userDB->user_definition->electric_wheelchair == 1)
-          <li>Utiliza silla de ruedas eléctrica</li>
-        @endif
-        @if($userDB->user_definition->scooter == 1)
-          <li>Utiliza scooter</li>
-        @endif
+          <li>No poseo ninguna discapacidad pero me sumé a la "Comunidad ¡Yo, nivelo!"</li>
         </ul>
+        @endif
+
+        @if($userDB->user_definition->none == 0)
+          <ul>
+          @if($userDB->user_definition->sticks == 1)
+            <li>Camina con bastones</li>
+          @endif
+          @if($userDB->user_definition->crutches == 1)
+            <li>Camina con muletas</li>
+          @endif
+          @if($userDB->user_definition->walker == 1)
+            <li>Utiliza andador</li>
+          @endif
+          @if($userDB->user_definition->difficult_walking == 1)
+            <li>Camina con dificultad</li>
+          @endif
+          @if($userDB->user_definition->manual_wheelchair == 1)
+            <li>Utiliza silla de ruedas manual</li>
+          @endif
+          @if($userDB->user_definition->electric_wheelchair == 1)
+            <li>Utiliza silla de ruedas eléctrica</li>
+          @endif
+          @if($userDB->user_definition->scooter == 1)
+            <li>Utiliza scooter</li>
+          @endif
+          </ul>
+        @endif
       @endif
     </div>
 
