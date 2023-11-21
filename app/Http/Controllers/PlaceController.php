@@ -61,7 +61,7 @@ class PlaceController extends Controller
     if ($request->hasFile('main_img')) {
       $data = $request->file('main_img')->store('places');
     }
-    Place::Create([
+    $newPlace = Place::Create([
       'name' => $request->place_name,
       'address' => $request->addressPlace,
       'city' => $request->cityPlace,
@@ -82,9 +82,12 @@ class PlaceController extends Controller
       'category_id' => $request->category,
       'uploaded_from_id' => $userId,
     ]);
+
+    $placeId = $newPlace->place_id;
+
     return redirect()
-      ->route('categories')
-      ->with('status.message', 'El lugar fue cargado correctamente');
+      ->route('addReviewForm', ['category_id' => $request->category, 'place_id' => $placeId])
+      ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
   }
 
     /**

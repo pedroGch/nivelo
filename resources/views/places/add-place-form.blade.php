@@ -33,6 +33,11 @@
             <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
               <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para cargar correctamente el lugar.</p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+              <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+               </ul>
             </div>
             @endif
             </div>
