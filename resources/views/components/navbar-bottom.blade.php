@@ -16,11 +16,12 @@
         </span>
         <span class="text">Notificaciones</span>
       </a>
-      <div class="bg-verde-principal p-5 rounded-top-circle">
+      <div class="bg-verde-principal p-4  rounded-top-circle">
         <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
-          <span class="text-white fw-semibold h1 pb-5">
+          {{-- <span class="text-white fw-semibold h1 pb-5">
             +
-          </span>
+          </span> --}}
+          <ion-icon class="mb-2" name="add-circle-outline" size="large" style="color: #fff"></ion-icon>
           <span class="text">Nuevo lugar</span>
         </a>
       </div>
