@@ -25,14 +25,14 @@
           </div>
           <div class="col-12 my-1">
             @if (\Session::has('status.message'))
-              <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
-                {!! \Session::get('status.message') !!}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+              <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
+              {!! \Session::get('status.message') !!}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
               </div>
             @endif
-            </div>
+          </div>
           <div class="col-12">
-            <form action="{{ url('/sobre-vos')}}" method="POST">
+            <form action="{{ route('aboutYouAction') }}" method="POST">
               @csrf
               <div class="row ">
                 <div class="mb-4 d-flex justify-content-center col-6">

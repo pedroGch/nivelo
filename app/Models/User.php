@@ -61,6 +61,7 @@ class User extends Authenticatable
         'avatar',
         'external_id',
         'external_auth',
+        'terms',
     ];
     public static $rules = [
       'name' => "required|max:30",
@@ -70,7 +71,7 @@ class User extends Authenticatable
       'birth_date' => "required",
       'password' => "required",
       'password-repeat' => "required|same:password",
-
+      'terms' => "accepted",
     ];
 
     public static $errorMessages = [
@@ -86,6 +87,7 @@ class User extends Authenticatable
       'username.max' => 'El nombre no puede contener más de 30 carateres',
       'surname.max' => 'El apellido no puede contener más de 30 carateres',
       'birth_date.required' => 'La fecha de nacimiento es requerida',
+      'terms.accepted' => 'Es necesario que aceptes los términos y condiciones',
     ];
     /**
      * The attributes that should be hidden for serialization.

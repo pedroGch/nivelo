@@ -149,8 +149,9 @@ public function aboutYouAction(Request $request)
   }
   return redirect()
     ->route('aboutYouForm')
-    ->with('status.message', 'Tenes que escoger al menos una opción')
-    ->with('status.type', 'warning');
+    ->with('status.message', 'Tenés que seleccionar al menos una opción')
+    ->with('status.type', 'warning')
+    ->withInput();
 }
 
 public function signupAction(Request $request)
@@ -158,7 +159,8 @@ public function signupAction(Request $request)
   //valido lo que me llego en la request
   $request->validate(User::$rules, User::$errorMessages);
   //selecciono los datos de la request para guardar en la tabla user
-  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password', 'password-repeat']);
+  $data = $request->only(['name', 'usurname', 'email', 'birth_date','password']);
+
   //guardo en la tabla user
   $newUser = User::create($data);
   //autentico al usuario

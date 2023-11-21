@@ -32,8 +32,8 @@
                       <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para poder registrarte.</p>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                       <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
                         @endforeach
                       </ul>
                     </div>
@@ -44,45 +44,98 @@
                           @csrf
                           <div class="mb-4">
                               <label for="name" class="form-label d-none">Nombre</label>
-                              <input type="text" name="name" class="form-control p-3 @error('name') is-invalid @enderror" id="name"
-                                  placeholder="Nombre">
+                              <input type="text" name="name" class="form-control p-3 @error('name') is-invalid @enderror" id="name"  placeholder="Nombre" value="{{ old('name') }}"
+                              @error('name')
+                              aria-describedby="error-name"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('name')
+                              <p class="text-danger" id="error-name">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
-                              <label for="l_name" class="form-label d-none">Apellido</label>
-                              <input type="text" name="surname" class="form-control p-3 @error('surname') is-invalid @enderror" id="surname"
-                                  placeholder="Apellido">
+                              <label for="surname" class="form-label d-none">Apellido</label>
+                              <input type="text" name="surname" class="form-control p-3 @error('surname') is-invalid @enderror" id="surname"  placeholder="Apellido" value="{{ old('surname') }}"
+                              @error('surname')
+                              aria-describedby="error-surname"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('surname')
+                              <p class="text-danger" id="error-surname">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
-                              <label for="user-name" class="form-label d-none">Nombre de usuario</label>
-                              <input type="text" name="username" class="form-control p-3 @error('username') is-invalid @enderror" id="username"
-                                  placeholder="Nombre de usuario">
+                              <label for="username" class="form-label d-none">Nombre de usuario</label>
+                              <input type="text" name="username" class="form-control p-3 @error('username') is-invalid @enderror" id="username"  placeholder="Nombre de usuario" value="{{ old('username') }}"
+                              @error('username')
+                              aria-describedby="error-username"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('username')
+                              <p class="text-danger" id="error-username">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
                               <label for="email" class="form-label d-none">Email</label>
-                              <input type="email" name="email" class="form-control p-3 @error('email') is-invalid @enderror" id="email"
-                                  placeholder="Email">
+                              <input type="email" name="email" class="form-control p-3 @error('email') is-invalid @enderror" id="email"  placeholder="Email" value="{{ old('email') }}"
+                              @error('email')
+                              aria-describedby="error-email"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('email')
+                              <p class="text-danger" id="error-email">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
                               <label for="birth_date" class="form-label ">Fecha de nacimiento</label>
-                              <input type="date" name="birth_date" class="form-control p-3 @error('birth_date') is-invalid @enderror" id="birth_date"
-                                  placeholder="Nombre">
+                              <input type="date" name="birth_date" class="form-control p-3 @error('birth_date') is-invalid @enderror" id="birth_date" placeholder="Nombre" value="{{ old('birth_date') }}"
+                              @error('birth_date')
+                              aria-describedby="error-birth_date"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('birth_date')
+                              <p class="text-danger" id="error-birth_date">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
                               <label for="password" class="form-label d-none">Contraseña</label>
-                              <input type="password" name="password" class="form-control p-3 @error('password') is-invalid @enderror" id="password" placeholder="Contraseña">
+                              <input type="password" name="password" class="form-control p-3 @error('password') is-invalid @enderror" id="password" placeholder="Contraseña"
+                              @error('password')
+                              aria-describedby="error-password"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('password')
+                              <p class="text-danger" id="error-password">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="mb-4">
                               <label for="password-repeat" class="form-label d-none">Repetir contraseña</label>
-                              <input type="password" name="password-repeat" class="form-control p-3 @error('password-repeat') is-invalid @enderror" id="password-repeat"
-                                  placeholder="Repetir contraseña">
+                              <input type="password" name="password-repeat" class="form-control p-3 @error('password-repeat') is-invalid @enderror" id="password-repeat" placeholder="Repetir contraseña"
+                              @error('password-repeat')
+                              aria-describedby="error-password-repeat"
+                              aria-invalid="true"
+                              @enderror>
+                              @error('password-repeat')
+                              <p class="text-danger" id="error-password-repeat">{{ $message }}</p>
+                              @enderror
                           </div>
                           <div class="form-check d-flex justify-content-center">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault">
+                              <!-- Campo hidden con valor 0 (para caso de que no esté marcado) -->
+                              <input type="hidden" name="terms" value="0">
+                              <!-- Checkbox que se enviará con valor 1 si está marcado -->
+                              <input class="form-check-input" type="checkbox" value="1" id="terms" name="terms"
+                              @error('terms')
+                              aria-describedby="error-terms"
+                              aria-invalid="true"
+                              @enderror>
+                              <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault" for="terms">
                                   Acepto los <a href="#" class="fw-bold text-reset text-decoration-none">términos y
                                       condiciones</a>
                               </label>
                           </div>
+                          @error('terms')
+                              <p class="text-danger" id="error-terms">{{ $message }}</p>
+                          @enderror
                           <div class="mb-4">
                             <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
                           </div>
