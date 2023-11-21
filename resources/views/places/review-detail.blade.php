@@ -98,37 +98,41 @@
         <p class="h5 mt-3">Acerca del usuario:</p>
       </div>
       <div>
-        @if ($review->user->user_definition->none == 1)
-        <ul>
-          <li>No posee discapacidad pero se sumó a la "Comunidad ¡Yo, nivelo!"</li>
-        </ul>
-        @endif
-
-        @if($review->user->user_definition->none == 0)
-          <p>Se moviliza con:</p>
+        @if($review->user->user_definition->none == 0 && $review->user->user_definition->sticks == 0 && $review->user->user_definition->crutches == 0 && $review->user->user_definition->walker == 0 && $review->user->user_definition->difficult_walking == 0 && $review->user->user_definition->manual_wheelchair == 0 && $review->user->user_definition->electric_wheelchair == 0 && $review->user->user_definition->scooter == 0)
+          <p>Aún no cargó ninguna información sobre su movilidad.</p>
+        @else
+          @if ($review->user->user_definition->none == 1)
           <ul>
-          @if($review->user->user_definition->sticks == 1)
-            <li>Bastones</li>
-          @endif
-          @if($review->user->user_definition->crutches == 1)
-            <li>Muletas</li>
-          @endif
-          @if($review->user->user_definition->walker == 1)
-            <li>Andador</li>
-          @endif
-          @if($review->user->user_definition->difficult_walking == 1)
-            <li>Camina con dificultad</li>
-          @endif
-          @if($review->user->user_definition->manual_wheelchair == 1)
-            <li>Silla de ruedas manual</li>
-          @endif
-          @if($review->user->user_definition->electric_wheelchair == 1)
-            <li>Silla de ruedas eléctrica</li>
-          @endif
-          @if($review->user->user_definition->scooter == 1)
-            <li>Scooter</li>
-          @endif
+            <li>No posee discapacidad pero se sumó a la "Comunidad ¡Yo, nivelo!"</li>
           </ul>
+          @endif
+
+          @if($review->user->user_definition->none == 0)
+            <p>Se moviliza con:</p>
+            <ul>
+            @if($review->user->user_definition->sticks == 1)
+              <li>Bastones</li>
+            @endif
+            @if($review->user->user_definition->crutches == 1)
+              <li>Muletas</li>
+            @endif
+            @if($review->user->user_definition->walker == 1)
+              <li>Andador</li>
+            @endif
+            @if($review->user->user_definition->difficult_walking == 1)
+              <li>Camina con dificultad</li>
+            @endif
+            @if($review->user->user_definition->manual_wheelchair == 1)
+              <li>Silla de ruedas manual</li>
+            @endif
+            @if($review->user->user_definition->electric_wheelchair == 1)
+              <li>Silla de ruedas eléctrica</li>
+            @endif
+            @if($review->user->user_definition->scooter == 1)
+              <li>Scooter</li>
+            @endif
+            </ul>
+          @endif
         @endif
       </div>
     </div>
@@ -136,8 +140,12 @@
       <div>
         <p class="h5 mt-3">Su opinión sobre este lugar:</p>
       </div>
-      <div>
+      <div class="col-12 d-flex justify-content-center">
+        @if($review->review)
         <p>"{{ $review->review }}"</p>
+        @else
+        <p class="h6">Sólo utilizó la calificación de estrellas.</p>
+        @endif
       </div>
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
@@ -176,7 +184,7 @@
           </div>
         </div>
         @else
-        <p class="h6">Este usuario no subió fotos</p>
+        <p class="h6">El usuario no subió fotos</p>
         @endif
       </div>
     </div>
