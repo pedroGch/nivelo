@@ -39,7 +39,7 @@ class CategoryController extends Controller
             $averageScore = max(1, min(5, $averageScore));
             $place->totalAverageScore = $averageScore;
         } else {
-            $place->totalAverageScore = 0; // Otra opción si no hay reseñas
+            $place->totalAverageScore = 3; // Otra opción si no hay reseñas
         }
     }
 

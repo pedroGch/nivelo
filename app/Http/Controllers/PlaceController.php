@@ -21,7 +21,7 @@ class PlaceController extends Controller
 
     $scores = Review::where('place_id', $place_id)->get('score');
 
-    ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 1;
+    ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 3;
     $averagePlaceScore = $totalPlaceScore / ($scores->count() > 0 ? $scores->count() : 1);
 
     $averagePlaceScore = max(1, min(5, $averagePlaceScore));
@@ -104,14 +104,23 @@ class PlaceController extends Controller
       ->orWhere('province', 'LIKE', "%$searchPlace%")
       ->get();
 
+    // Obtener los puntajes promedio para cada lugar y agregarlos al array $placesResult
+    foreach ($placesResult as $place) {
+      $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
+
+      if (count($totalScores) > 0) {
+        $totalScore = array_sum($totalScores);
+        $averageScore = $totalScore / count($totalScores);
+        $averageScore = max(1, min(5, $averageScore));
+        $place->totalAverageScore = $averageScore;
+      } else {
+        $place->totalAverageScore = 3; // Otra opción si no hay reseñas
+      }
+    }
+
       return view('categories.search-results', [
         "placesResult" => $placesResult,
         "searchPlace" => $searchPlace,
       ]);
-
-    // dd($placesResult);
-    // return redirect()
-    //   ->route('searchResults', ['placesResult' => $placesResult])
-    //   ->with('status.message', 'El lugar fue cargado correctamente');
   }
 }
