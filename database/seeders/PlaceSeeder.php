@@ -37,7 +37,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '10',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '2',
@@ -59,7 +59,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '6',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '3',
@@ -85,7 +85,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '3',
               'review_id'=> NULL,
               'category_id'=> '1',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '4',
@@ -107,7 +107,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '6',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '5',
@@ -129,7 +129,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '10',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '6',
@@ -155,7 +155,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '1',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '7',
@@ -177,7 +177,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '3',
               'review_id'=> NULL,
               'category_id'=> '2',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '8',
@@ -199,7 +199,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '3',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '9',
@@ -221,7 +221,7 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '2',
-              'uploaded_from_id'=> '2',
+              'uploaded_from_id'=> '3',
           ],
           [
               'place_id'=> '10',
@@ -243,8 +243,30 @@ class PlaceSeeder extends Seeder
               'src_info_id'=> '2',
               'review_id'=> NULL,
               'category_id'=> '6',
-              'uploaded_from_id'=> '2',
-          ]
+              'uploaded_from_id'=> '3',
+          ],
+          [
+            'place_id'=> '11',
+            'name'=> 'Perla Norte',
+            'address'=> 'Bv. Marítimo P. P. Ramos 230',
+            'city'=> 'Mar del Plata',
+            'province'=> 'Buenos Aires',
+            'coordinates'=> '2F84+97 Mar del Plata, Provincia de Buenos Aires',
+            'description'=> 'Estacionamiento prioritario, rampa de acceso (pendiente pronunciada), circulaciones garantizadas por rampas asistidas, unidades de sombra, sanitario y vestuario accesible y 4 sillas anfibias en sector público',
+            'main_img'=> 'places/11.jpg',
+            'alt_main_img' => 'frente del lugar',
+            'access_entrance'=> true,
+            'assisted_access_entrance'=> true,
+            'internal_circulation'=> true,
+            'bathroom'=> true,
+            'adult_changing_table'=> false,
+            'parking'=> true,
+            'elevator'=> false,
+            'src_info_id'=> '4',
+            'review_id'=> NULL,
+            'category_id'=> '5',
+            'uploaded_from_id'=> '3',
+        ]
 
         ]
 

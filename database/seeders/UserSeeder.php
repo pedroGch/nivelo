@@ -35,7 +35,17 @@ class UserSeeder extends Seeder
                 'password'=> Hash::make('123456'),
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+              'id' => '3',
+              'name' => 'Equipo',
+              'surname' => 'Nivelo',
+              'username' => 'equipo_nivelo',
+              'email' => 'info@nivelo.com.ar',
+              'password'=> Hash::make('123456'),
+              'created_at' => now(),
+              'updated_at' => now(),
+          ],
           ]
         );
     }

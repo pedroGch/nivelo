@@ -34,7 +34,13 @@ class SrcInformationSeeder extends Seeder
             'name' => 'Distinguido por el Programa de Directrices de Accesibilidad de la Secretaría de Turismo de la Nación.',
             'logo' => NULL,
             'website' => NULL,
-          ]
+          ],
+          [
+            'src_info_id' => '4',
+            'name' => 'Documento "Servicios Accesibles Mar del Plata" del Ministerio de Producción, Ciencia e Innovación Tecnológica de la Provincia de Buenos Aires.',
+            'logo' => NULL,
+            'website' => NULL,
+          ],
         ]);
         //
     }
