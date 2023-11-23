@@ -11,16 +11,16 @@
           <div class="pt-5 d-flex justify-content-center my-6">
             <img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo">
           </div>
-          <div class="row pb-5 mt-4 mx-auto border-top redondeo-superior-login  shadow-top">
+          <div class="row pb-5 mt-4 mx-auto border-top redondeo-superior-login shadow-top">
             <div class="col-12 my-4">
               <div class="d-flex ">
                 <h2 class="fw-bold">
-                  Iniciar sesión
+                  Iniciá sesión
                 </h2>
                 <span class="bg-movimiento mx-1"></span>
               </div>
             </div>
-            <div class="col-12 my-1">
+            <div class="mx-2 col-12 my-1">
             @if (\Session::has('status.message'))
               <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
                 {!! \Session::get('status.message') !!}

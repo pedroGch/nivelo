@@ -22,7 +22,7 @@
                 <span class="bg-movimiento mx-2 mt-1"></span>
               </div>
           </div>
-          <div class="col-12 my-1">
+          <div class="mx-2 col-12 my-1">
             @if (\Session::has('status.message'))
               <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
                 {!! \Session::get('status.message') !!}

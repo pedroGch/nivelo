@@ -20,7 +20,7 @@
 @section('content')
 
   <section class="container margin-navs">
-    <div class="my-4">
+    <div class="mx-2 my-4">
       @if (\Session::has('status.message'))
           <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
             {!! \Session::get('status.message') !!}

@@ -22,7 +22,7 @@
               </div>
               <h3 class="mt-3">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b> ?</h3>
           </div>
-          <div class="col-12 my-1">
+          <div class="mx-2 col-12 my-1">
             @if (\Session::has('status.message'))
               <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
                 {!! \Session::get('status.message') !!}
