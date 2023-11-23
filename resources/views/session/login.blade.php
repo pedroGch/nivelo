@@ -21,12 +21,12 @@
               </div>
             </div>
             <div class="mx-2 col-12 my-1">
-            @if (\Session::has('status.message'))
+              @if (\Session::has('status.message'))
               <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
                 {!! \Session::get('status.message') !!}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
               </div>
-            @endif
+              @endif
             </div>
             <div class="col-12">
               <form action="{{ route('loginAction') }}" method="POST">
