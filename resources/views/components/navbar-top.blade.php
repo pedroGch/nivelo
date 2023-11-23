@@ -5,12 +5,12 @@
         <a class="navbar-brand" href="{{ route('categories') }}"><img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo"></a>
       </div>
       <div class="d-flex align-items-center">
-        <div class="pe-4">
+        <div class="pe-2">
           <a href="">
           <img src="{{ url('/img/bookmark.png') }}" alt="vista perfil de usuario" class=""></a>
         </div>
         <div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <button class="btn text-white pe-3 pb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><img src="{{ url('/img/category.png') }}" alt="menú"></span>
           </button>
         </div>
