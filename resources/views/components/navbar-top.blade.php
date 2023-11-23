@@ -18,23 +18,23 @@
       <div class="offcanvas offcanvas-end bg-violeta-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"  aria-label="Close"></button>
+          <button type="button" class="btn text-white" data-bs-dismiss="offcanvas"  aria-label="Close"><ion-icon name="close-outline" size="large"></ion-icon></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="pe-3 pt-3 nav-item text-end">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
+            <li class="pe-2 pt-3 nav-item text-end">
               <a href="{{ route('userProfile') }}" class="nav-link active text-white" aria-current="page" href="#">Mi cuenta ( {{ Auth::user()->email }} )</a>
             </li>
-            <li class="pe-3 pt-2 nav-item text-end">
+            <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white" href="{{ route('categories') }}">Categorías</a>
             </li>
-            <li class="pe-3 pt-2 nav-item text-end">
+            <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white disabled" href="#">Blog</a>
             </li>
-            <li class="pe-3 pt-2 nav-item text-end">
+            <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white disabled" aria-disabled="true">Acerca de Nivelo</a>
             </li>
-            <li class="pe-3 pt-2 nav-item text-end">
+            <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white disabled" aria-disabled="true">Términos y condiciones</a>
             </li>
             @auth
