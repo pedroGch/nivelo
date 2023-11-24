@@ -74,7 +74,7 @@
             </form>
             </div>
             <div class="mb-4">
-              <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow bg-verde-principal text-white">Omitir por ahora</a>
+              <a href="{{ route('categories') }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow bg-verde-principal text-white">Omitir por ahora</a>
             </div>
           </div>
         </div>
