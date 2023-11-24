@@ -36,6 +36,15 @@
 
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+::selection {
+  background-color: #f2eaff;
+}
+
+
 
 .w-100{
   width: 100%;

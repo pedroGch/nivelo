@@ -40,17 +40,17 @@
     </div>
 
     <div>
-      <p class="h5 mt-5 mb-2"> Nombre y Apellido:</p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Nombre y apellido:</p>
       <p> {{ $userDB->name }} {{ $userDB->surname }}</p>
-      <p class="h5 mt-5 mb-2"> Email: </p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Email: </p>
       <p> {{ $userDB->email }} </p>
-      <p class="h5 mt-5 mb-2"> Nombre de usuario: </p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Nombre de usuario: </p>
       <p> {{ $userDB->username }} </p>
     </div>
 
     <div>
       <div class="mt-5 mb-2 d-flex align-items-center">
-        <p class="h5"> Acerca de mí: </p>
+        <p class="h5 fw-bold"> Acerca de mí: </p>
         <a href="{{ route('aboutYouForm') }}">
           <span class="icon ps-3">
             <ion-icon name="create-outline" aria-label="Editar" size="large" style="color: #000;"></ion-icon>
@@ -101,7 +101,7 @@
     </div>
 
     <div>
-      <p class="h5 mt-5 mb-2"> Lugares nuevos que subí a la app:</p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Lugares nuevos que subí a la app:</p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light w-100">
@@ -112,7 +112,7 @@
         <tbody>
           @forelse ($myPlaces as $place)
           <tr>
-            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="fw-bold text-reset text-decoration-none">{{ $place->name }}</a></td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">{{ $place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $place->created_at}}</td>
           </tr>
           @empty
@@ -124,7 +124,7 @@
     </div>
 
     <div class="pb-4">
-      <p class="h5 mt-5 mb-2"> Lugares sobre los que opiné: </p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Lugares sobre los que opiné: </p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light">
@@ -135,7 +135,7 @@
         <tbody>
           @forelse ($madeReviews as $review)
           <tr>
-            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="fw-bold text-reset text-decoration-none">{{ $review->place->name }}</a></td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class=" text-reset text-decoration-none">{{ $review->place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $review->created_at}}</td>
           </tr>
           @empty
