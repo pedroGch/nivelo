@@ -102,7 +102,7 @@
 
     <div>
       <p class="h5 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </p>
-      <p class="mt-5 mb-2 fw-bold"> Lugares nuevos que subí a la app:</p>
+      <p class="mt-5 mb-2 fw-bold"> Lugares nuevos:</p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light w-100">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="pb-4">
-      <p class="mt-5 mb-2 fw-bold"> Lugares sobre los que opiné: </p>
+      <p class="mt-5 mb-2 fw-bold">Opiniones: </p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light">

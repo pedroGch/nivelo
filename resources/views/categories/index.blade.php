@@ -26,7 +26,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
         </div>
       @endif
-      <div class="row">
+      <div class="row pt-3">
         <div class="col-6 col-md-9">
           <h2 class="titulo fw-bold mt-3 ps-2">Categorías</h2>
         </div>
@@ -49,7 +49,7 @@
         <form action="{{ route('searchPlaces') }}" method="get">
           @csrf
           <div class="input-group">
-            <input type="text" class="form-control buscador-principal" name="buscar" id="buscar" placeholder="Nombre de lugar, ciudad o provincia" aria-label="buscar" aria-describedby="buscar">
+            <input type="text" class="form-control buscador-principal" name="buscar" id="buscar" placeholder="Lugar, ciudad o provincia" aria-label="buscar" aria-describedby="buscar">
             <button class="btn bg-verde-principal" type="submit" id="button-addon2">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFF" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
