@@ -25,7 +25,7 @@ class CategorySeeder extends Seeder
           ],
           [
               'category_id' => '2',
-              'name' => 'Recreación y Cultura',
+              'name' => 'Recreación y cultura',
               'icon' => NULL,
               'image_cat' => 'categories/cat-recreacion-cultura.jpg',
               'alt_img_cat'=> 'sala llena de gente mirando una obra de teatro',
@@ -41,7 +41,7 @@ class CategorySeeder extends Seeder
           ],
           [
               'category_id' => '4',
-              'name' => 'Plazas y Parques',
+              'name' => 'Plazas y parques',
               'icon' => NULL,
               'image_cat' => 'categories/cat-plazas-parques.jpg',
               'alt_img_cat'=> 'un parque con muchos árboles y personas caminando',
@@ -49,7 +49,7 @@ class CategorySeeder extends Seeder
           ],
           [
               'category_id' => '5',
-              'name' => 'Playas y Balnearios',
+              'name' => 'Playas y balnearios',
               'icon' => NULL,
               'image_cat' => 'categories/cat-playas-balnearios.jpg',
               'alt_img_cat'=> 'una persona en silla anfibia yendo al mar por una pasarela sobre la arena',
