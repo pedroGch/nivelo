@@ -61,11 +61,11 @@
                 </div>
                 <div class="mb-4 d-flex justify-content-center col-6">
                   <input type="checkbox" class="btn-check" id="scooter" name="scooter"  autocomplete="off">
-                  <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-scooter bg-conf-icono" for="scooter">Scooter</label>
+                  <label class="px-4 bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-scooter bg-conf-icono" for="scooter">Scooter</label>
                 </div>
                 <div class="mb-4 d-flex justify-content-center col-6">
                   <input type="checkbox" class="btn-check" id="companion" name="companion"  autocomplete="off">
-                  <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-acompaniante  bg-conf-icono" for="companion">Ninguna de las anteriores</label>
+                  <label class="bg-gris-claro border border-0 shadow btn-form-w fw-semibold btn rounded-pill bg-acompaniante bg-conf-icono" for="companion">Ninguna de las anteriores</label>
                 </div>
               </div>
               <div class="mb-4">

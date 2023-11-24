@@ -48,7 +48,7 @@
       <p> {{ $userDB->username }} </p>
     </div>
 
-    <div>
+    <div class="border-bottom border-dark-subtle pb-3">
       <div class="mt-5 mb-2 d-flex align-items-center">
         <p class="h5 fw-bold"> Acerca de mí: </p>
         <a href="{{ route('aboutYouForm') }}">
@@ -101,7 +101,8 @@
     </div>
 
     <div>
-      <p class="h5 mt-5 mb-2 fw-bold"> Lugares nuevos que subí a la app:</p>
+      <p class="h5 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </p>
+      <p class="mt-5 mb-2 fw-bold"> Lugares nuevos que subí a la app:</p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light w-100">
@@ -124,7 +125,7 @@
     </div>
 
     <div class="pb-4">
-      <p class="h5 mt-5 mb-2 fw-bold"> Lugares sobre los que opiné: </p>
+      <p class="mt-5 mb-2 fw-bold"> Lugares sobre los que opiné: </p>
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light">
