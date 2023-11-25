@@ -113,7 +113,7 @@
         <tbody>
           @forelse ($myPlaces as $place)
           <tr>
-            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">{{ $place->name }}</a></td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $place->created_at}}</td>
           </tr>
           @empty
@@ -136,7 +136,7 @@
         <tbody>
           @forelse ($madeReviews as $review)
           <tr>
-            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class=" text-reset text-decoration-none">{{ $review->place->name }}</a></td>
+            <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $review->place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $review->created_at}}</td>
           </tr>
           @empty
