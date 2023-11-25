@@ -31,14 +31,26 @@
             <div class="col-12">
               <form action="{{ route('loginAction') }}" method="POST">
                 @csrf
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                   <label for="email" class="form-label d-none">Email</label>
                   <input type="email" name="email" class="form-control p-3" id="email" placeholder="Email" value="{{ old('email') }}">
+                </div> --}}
+                <div class="mb-4">
+                  <div class="form-floating">
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" value="{{ old('email') }}"
+                          @error('email') aria-describedby="error-email" aria-invalid="true" @enderror>
+                      <label for="email">Email</label>
+                      @error('email')
+                      <p class="text-danger" id="error-email">{{ $message }}</p>
+                      @enderror
+                  </div>
                 </div>
                 <div class="mb-4">
-                  <label for="password" class="form-label d-none">Contraseña</label>
-                  <input type="password" name="password" class="form-control p-3" id="password" placeholder="Contraseña">
-                </div>
+                  <div class="form-floating">
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" value="{{ old('password') }}">
+                      <label for="password">Contraseña</label>
+                  </div>
+              </div>
                 <div class="mb-4">
                   <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
                 </div>

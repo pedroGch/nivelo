@@ -259,8 +259,11 @@
               </div>
           </div>
           <div class="mx-2 mt-3 d-flex align-items-center pb-3">
+            @if ($review->review == null)
+            <p>Sólo puntuado con estrellas</p>
+            @else
             <p>{{ $review->shortened_paragraph(10) }}</p>
-
+            @endif
           </div>
           <div class="mb-2 row d-flex-justify-content-around mx-2">
             @if($review->pic_1)
