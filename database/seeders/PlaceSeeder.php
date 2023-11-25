@@ -41,7 +41,7 @@ class PlaceSeeder extends Seeder
           ],
           [
               'place_id'=> '2',
-              'name'=> 'Condor Clift - Pizza & Pasta',
+              'name'=> 'Cóndor Clift - Pizza & Pasta',
               'address'=> 'Av. del Libertador 2',
               'city'=> 'Moreno',
               'province'=> 'Buenos Aires',
