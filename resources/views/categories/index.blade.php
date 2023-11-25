@@ -27,9 +27,11 @@
         </div>
       @endif
       <div class="row pt-3">
-        <div class="col-6 col-md-9">
-          <h2 class="titulo fw-bold mt-3 ps-2">Categorías</h2>
+        <div class="col-6 col-md-9 d-flex mt-3 ps-2">
+          <h2 class="h3 fw-bold">Categorías</h2>
+          <span class="bg-movimiento ms-3"></span>
         </div>
+
         <div class="col-6 col-md-3 d-flex justify-content-end">
           <div>
             <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal text-white w-standard " >

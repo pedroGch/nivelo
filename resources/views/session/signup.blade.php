@@ -17,7 +17,7 @@
                           <h2 class="fw-bold">
                               Registrate
                           </h2>
-                          <span class="bg-movimiento mx-2"></span>
+                          <span class="bg-movimiento ms-3 mt-1"></span>
                       </div>
                   </div>
                   <div class="mx-2 col-12 my-1">

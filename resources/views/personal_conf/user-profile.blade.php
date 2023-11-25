@@ -35,7 +35,10 @@
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
         <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
-        <h2 class="h4 titulo fw-bold ps-2">Mi perfil</h2>
+        <div class="d-flex ">
+          <h2 class="h3 fw-bold">Mi perfil</h2>
+          <span class="bg-movimiento ms-3"></span>
+        </div>
       </div>
     </div>
 

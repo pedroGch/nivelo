@@ -18,7 +18,7 @@
           <div class="col-12 mb-4">
               <div class="d-flex border-bottom border-dark-subtle">
                 <h2 class="fw-bold pb-1">Nueva reseña</h2>
-                <span class="bg-movimiento mx-2"></span>
+                <span class="bg-movimiento ms-3 mt-1"></span>
               </div>
               <h3 class="h5 mt-3">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</h3>
           </div>
@@ -37,24 +37,24 @@
                   <input type="hidden" name="place_id" value="{{$place->place_id}}">
                   <div class="col-6 col-lg-12 mb-4 d-flex flex-wrap justify-content-lg-around">
                     <div class="mb-2 form-check form-check-inline">
-                      <input class="fs-5 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5">
-                      <label class="fs-5 form-check-label" for="inlineRadio3">👍 Excelente</label>
+                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5">
+                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">👍 Excelente</label>
                     </div>
                     <div class="my-2 form-check form-check-inline">
-                      <input class="fs-5 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4">
-                      <label class="fs-5 form-check-label" for="inlineRadio3">😌 Buena</label>
+                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4">
+                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">😌 Buena</label>
                     </div>
                     <div class="my-2 form-check form-check-inline">
-                      <input class="fs-5 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
-                      <label class="fs-5 form-check-label" for="inlineRadio3">😐 Regular</label>
+                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
+                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">😐 Regular</label>
                     </div>
                     <div class="my-2 form-check form-check-inline">
-                      <input class="fs-5 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
-                      <label class="fs-5 form-check-label" for="inlineRadio2">🙁 Mala</label>
+                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio2">🙁 Mala</label>
                     </div>
                     <div class="my-2 form-check form-check-inline">
-                      <input class="fs-5 form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
-                      <label class="fs-5 form-check-label" for="inlineRadio1">👎 Muy mala</label>
+                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio1">👎 Muy mala</label>
                     </div>
                   </div>
                 </div>

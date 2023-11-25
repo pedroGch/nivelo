@@ -18,8 +18,8 @@
         <div class="row my-4 mx-auto">
           <div class="col-12 my-4">
               <div class="d-flex ">
-                <h2 class="fw-bold">Cargar un nuevo lugar</h2>
-                <span class="bg-movimiento mx-2 mt-1"></span>
+                <h2 class="h3 fw-bold">Cargar un nuevo lugar</h2>
+                <span class="bg-movimiento ms-3"></span>
               </div>
           </div>
           <div class="mx-2 col-12 my-1">
@@ -160,7 +160,7 @@
                 </form>
 
                 <div class="mb-5">
-                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
+                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal  btn-verde-hover text-white">Cancelar</a>
                 </div>
             </form>
           </div>

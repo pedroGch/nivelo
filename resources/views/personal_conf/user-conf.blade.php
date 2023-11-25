@@ -17,7 +17,7 @@
               <h2 class="fw-bold">
                 ¿Cómo te movilizás?
               </h2>
-              <span class="bg-movimiento mx-1"></span>
+              <span class="bg-movimiento ms-3 mt-1"></span>
             </div>
             <div class="col-12">
               <p>Podés elegir más de una opción</p>
