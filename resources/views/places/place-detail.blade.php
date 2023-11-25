@@ -110,7 +110,7 @@
         </div>
         <div class="col-12 d-flex">
           <div class="my-3">
-            <a class="btn rounded-pill pt-3 px-3 pb-3 shadow bg-verde-principal btn-verde-hover text-white w-standard " >
+            <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
               <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
               <span class="fw-semibold mt-2">Ver mapa</span>
             </a>
@@ -119,7 +119,7 @@
       </div>
       </div>
       <div class="col-12 col-lg-5">
-        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow m-md-2 m-lg-3">
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
       </div>
     </div>
 
@@ -184,7 +184,7 @@
       </div>
       <div class="col-12 d-flex">
         <div class="my-3">
-          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
@@ -279,7 +279,7 @@
               <p class="ps-2"> {{ $review->created_at }}</p>
           </div>
             <div class="col-6">
-              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
+              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
             </div>
           </div>
         </div>
@@ -295,7 +295,7 @@
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">
           <!--back-->
-          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white">Atrás</a>
+          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Atrás</a>
         </div>
       </div>
     </div>

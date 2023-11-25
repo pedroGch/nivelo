@@ -6,12 +6,17 @@
       </div>
       <div class="d-flex align-items-center">
         <div class="pe-2">
-          <a href="">
-          <img src="{{ url('/img/bookmark.png') }}" alt="vista perfil de usuario" class=""></a>
+          <a href="#">
+          {{-- <img src="{{ url('/img/bookmark.png') }}" alt="favoritos" class=""> --}}
+          <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
+          </a>
         </div>
         <div>
           <button class="btn text-white pe-3 pb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><img src="{{ url('/img/category.png') }}" alt="menú"></span>
+            <span class="navbar-toggler-icon  pb-1">
+              {{-- <img src="{{ url('/img/category.png') }}" alt="menú"> --}}
+              <ion-icon style="color: #fff" name="menu-outline" size="large" class="icon-hover"></ion-icon>
+            </span>
           </button>
         </div>
       </div>

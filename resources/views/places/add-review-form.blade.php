@@ -63,14 +63,14 @@
                     <textarea name="review_text" id="review_text" class="form-control p-3"></textarea>
                   </div>
                     <div class="mb-4">
-                      <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+                      <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
                     </div>
                   </div>
 
                 </form>
 
                 <div class="mb-4">
-                  <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow bg-verde-principal text-white">Cancelar</a>
+                  <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
                 </div>
             </form>
           </div>

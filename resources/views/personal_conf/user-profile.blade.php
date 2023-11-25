@@ -34,7 +34,7 @@
 
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
-        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
+        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
         <h2 class="h4 titulo fw-bold ps-2">Mi perfil</h2>
       </div>
     </div>
@@ -61,7 +61,7 @@
       @if($userDB->user_definition->none == 0 && $userDB->user_definition->sticks == 0 && $userDB->user_definition->crutches == 0 && $userDB->user_definition->walker == 0 && $userDB->user_definition->difficult_walking == 0 && $userDB->user_definition->manual_wheelchair == 0 && $userDB->user_definition->electric_wheelchair == 0 && $userDB->user_definition->scooter == 0)
         <p>Aún no cargaste ninguna información sobre tu movilidad.</p>
         <div class="my-3">
-          <a href="{{ route('aboutYouForm') }}" class="btn rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+          <a href="{{ route('aboutYouForm') }}" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <span class="fw-semibold">Agregar información</span>
           </a>
         </div>

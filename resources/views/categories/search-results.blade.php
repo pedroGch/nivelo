@@ -38,7 +38,7 @@
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end">
         <div>
-          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow bg-verde-principal text-white w-standard " >
+          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm-sm bg-verde-principal text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -50,7 +50,7 @@
     <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
 
       @forelse ($placesResult as $place)
-      <div class="card col-6 col-lg-3" style="width: 18rem;">
+      <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
         <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
           <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
           <div class="card-body">

@@ -39,7 +39,7 @@
       </div>
       <div class="col-5 col-md-3 d-flex justify-content-end">
         <div>
-          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow bg-verde-principal text-white w-standard " >
+          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -51,7 +51,7 @@
     <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
 
       @forelse ($places as $place)
-      <div class="card col-6 col-lg-3" style="width: 18rem;">
+      <div class="card col-6 col-lg-3 shadow-sm" style="width: 18rem;">
         <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
           <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
           <div class="card-body">
@@ -120,7 +120,7 @@
       <div class="col-12">
         <p class="h5 fw-bold">¡Aún no hay lugares cargados para esta categoría!</p>
         <div class="my-4">
-          <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
+          <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <span class="fw-semibold">Cargar un lugar</span>
           </a>
         </div>

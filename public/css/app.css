@@ -221,7 +221,7 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 /* INPUT FOCUS*/
 .form-check-input:focus, .form-control:focus {
   border-color: var(--naranja-light);
-  box-shadow: 0 0 0 0.25rem rgba(255,195,123,.25);
+  box-shadow-sm: 0 0 0 0.25rem rgba(255,195,123,.25);
 }
 
 
@@ -246,7 +246,7 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
 
 .navbar-toggler:focus, .navbar-toggler:focus-visible {
   outline: none;
-  box-shadow: none;
+  box-shadow-sm: none;
 }
 
 .footer-nav nav{
@@ -327,6 +327,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   color: var(--violeta-dark) !important;
   transform: scaleX(1);
   transform-origin: right; /* Cambia el punto de origen de la transformación al lado derecho */
+}
+
+ion-icon.icon-hover:hover {
+  color: var(--naranja-principal) !important;
 }
 
 .footer-nav nav .new_place .text{

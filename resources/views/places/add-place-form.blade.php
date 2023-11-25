@@ -99,43 +99,43 @@
                         <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"
                         @if(old('acces_entrance')) checked @endif
                         />
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance" autocomplete="off"
                         @if(old('asisted_entrance')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off"
                         @if(old('internal_circulation')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off"
                         @if(old('bathroom')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off"
                         @if(old('adult_changing_table')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off"
                         @if(old('parking')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
                       </div>
                       <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                         <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off"
                         @if(old('elevator')) checked @endif
                         >
-                        <label class="bg-gris-claro border border-0 shadow p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
+                        <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
                       </div>
                     </div>
                   </div>
@@ -154,13 +154,13 @@
                     </div>
                   </div>
                   <div class="mb-4">
-                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
                   </div>
                 </div>
                 </form>
 
                 <div class="mb-5">
-                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow bg-verde-principal text-white">Cancelar</a>
+                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
                 </div>
             </form>
           </div>

@@ -20,7 +20,7 @@
           <span class="text">Notificaciones</span>
         </a>
       </div>
-      <div class="bg-verde-principal py-2  px-4 rounded-circle">
+      <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle">
         <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
           {{-- <span class="text-white fw-semibold h1 pb-5">
             +

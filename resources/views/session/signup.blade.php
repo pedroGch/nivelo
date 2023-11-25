@@ -7,11 +7,11 @@
 @section('content')
     <section>
         <div class="row d-flex vh-100">
-          <div class="mt-lg-5 ms-lg-5 pt-3 container-xxl col-12 col-md-6 col-lg-4 bg-white rounded shadow">
+          <div class="mt-lg-5 ms-lg-5 pt-3 container-xxl col-12 col-md-6 col-lg-4 bg-white rounded shadow-sm">
               <div class="d-flex justify-content-center my-6">
                   <img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo">
               </div>
-              <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-top">
+              <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-sm-top">
                   <div class="col-12 my-4">
                       <div class="d-flex ">
                           <h2 class="fw-bold">
@@ -132,7 +132,7 @@
                               <p class="text-danger" id="error-terms">{{ $message }}</p>
                           @enderror
                           <div class="mb-4">
-                            <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
+                            <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
                           </div>
                       </form>
                       <div class="row">
