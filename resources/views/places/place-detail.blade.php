@@ -34,8 +34,8 @@
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-lg-7">
         <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
-          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
-          <p class="h4 titulo fw-bold  ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="text-decoration-none text-reset">{{ $category->name }}</a></p>
+          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
+          <p class="h5 titulo fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="text-decoration-none text-reset">{{ $category->name }}</a></p>
         </div>
         <div class="mt-3">
           <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
@@ -102,7 +102,7 @@
       <div class="col-12 col-lg-6 ">
         <div class="mt-3 d-flex align-items-center">
           <div>
-            <p class="h5 ps-2 mt-3">Dirección:</p>
+            <p class="h5 ps-2 mt-3 fw-bold">Dirección:</p>
           </div>
         </div>
         <div>
@@ -110,9 +110,9 @@
         </div>
         <div class="col-12 d-flex">
           <div class="my-3">
-            <a class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
-              <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
-              <span class="fw-semibold">Ver en el mapa</span>
+            <a class="btn rounded-pill pt-3 px-3 pb-3 shadow bg-verde-principal btn-verde-hover text-white w-standard " >
+              <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
+              <span class="fw-semibold mt-2">Ver mapa</span>
             </a>
           </div>
         </div>
@@ -127,7 +127,7 @@
       <div class="col-12">
         <div class="mt-3 d-flex align-items-center">
           <div>
-            <p class="h5 ps-2 mt-3">Características:</p>
+            <p class="h5 ps-2 mt-3 fw-bold">Características:</p>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@
     <div class="row border-bottom border-dark-subtle pb-3">
       <div class="mt-3 d-flex align-items-center">
         <div>
-          <p class="h5 ps-2 mt-3">Descripción:</p>
+          <p class="h5 ps-2 mt-3 fw-bold">Descripción:</p>
         </div>
       </div>
       <div>
@@ -179,13 +179,13 @@
     <div class="row pb-3">
       <div class="mt-3 d-flex align-items-center">
         <div>
-          <p class="h5 ps-2 mt-3">Reseñas:</p>
+          <p class="h5 ps-2 mt-3 fw-bold">Reseñas:</p>
         </div>
       </div>
       <div class="col-12 d-flex">
         <div class="my-3">
           <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow bg-verde-principal btn-verde-hover text-white " >
-            <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
+            <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
         </div>
@@ -259,10 +259,10 @@
               </div>
           </div>
           <div class="mx-2 mt-3 d-flex align-items-center pb-3">
-            <p>{{ $review->review }}</p>
+            <p>{{ $review->shortened_paragraph(10) }}</p>
 
           </div>
-          <div class="row d-flex-justify-content-around mx-2">
+          <div class="mb-2 row d-flex-justify-content-around mx-2">
             @if($review->pic_1)
             <div class="col-4"><a href="#""><img src="{{asset('storage/'. $review->pic_1) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_1 }}"></a></div>
             @endif
@@ -275,11 +275,11 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <p class="h6 ps-2 mt-3">Fecha: {{ $review->created_at }}</p>
-              {{-- <p class="h6 ps-2 mt-3">Usuario: {{ $review->userMoreInfo->username}} </p> --}}
-            </div>
+              <p class="h6 ps-2 mt-1 fw-bold">Fecha: </p>
+              <p class="ps-2"> {{ $review->created_at }}</p>
+          </div>
             <div class="col-6">
-              <div class="mt-3 pb-4 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
+              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
             </div>
           </div>
         </div>
@@ -290,11 +290,7 @@
       </div>
       @endforelse
 
-
-
-
     </div>
-
     <div class="row my-3 d-flex justify-content-center">
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">

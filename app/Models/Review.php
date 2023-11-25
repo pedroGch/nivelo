@@ -68,6 +68,26 @@ class Review extends Model
   }
 
 
+   /**
+   * Esta función devuelve las primeras x palabras de un párrafo
+   * @param int $q Esta es la q de palabras a extraer (opcional), por defecto 20
+   */
+  public function shortened_paragraph(int $q = 20): string
+  {
+    $text = $this->review;
+
+    $array = explode(" ", $text);
+    if (count($array) <= $q) {
+      $result = $text;
+    } else {
+      array_splice($array, $q);
+      $result = implode(" ", $array) . "...";
+    }
+
+    return $result;
+  }
+
+  
   /* RELACIONES */
 
   /**
