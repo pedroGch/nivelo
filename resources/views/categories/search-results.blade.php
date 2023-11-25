@@ -37,10 +37,10 @@
         <h2 class="titulo fw-bold  ps-2">Resultados para: "{{ $searchPlace }}"</h2>
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end">
-        <div class="">
-          <a class="btn rounded-pill p-3 shadow bg-verde-principal text-white w-standard " >
-            <img src="{{ url('/img/location.png') }}" alt="vista perfil de usuario" class="me-1">
-            <span class="fw-semibold">Ver mapa</span>
+        <div>
+          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow bg-verde-principal text-white w-standard " >
+            <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
+            <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
         </div>
       </div>

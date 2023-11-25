@@ -32,7 +32,7 @@
               <a class="nav-link text-white disabled" href="#">Blog</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white disabled" aria-disabled="true">Acerca de Nivelo</a>
+              <a class="nav-link text-white disabled" aria-disabled="true">Acerca de nivelo</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white disabled" aria-disabled="true">Términos y condiciones</a>
@@ -51,7 +51,7 @@
             <li class="nav-item text-end">
               <a href="{{ route('signup') }}">Registrate</a>
             </li>
-            <li class="nav-item text-end">
+            <li class="nav-item text-end ps-2">
               <a href="{{ route('login') }}">Iniciá sesión</a>
             </li>
           @endauth
