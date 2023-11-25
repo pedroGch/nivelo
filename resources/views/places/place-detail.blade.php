@@ -294,8 +294,7 @@
     <div class="row my-3 d-flex justify-content-center">
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">
-          <!--back-->
-          <a href="#" class="my-3 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Atrás</a>
+          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="my-3 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Atrás</a>
         </div>
       </div>
     </div>

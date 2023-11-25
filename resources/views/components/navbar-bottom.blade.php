@@ -1,7 +1,7 @@
 @props(['UserProfileActive' => $UserProfileActive ?? false])
 
 
-<div class="row d-flex fixed-bottom justify-content-center bg-gris-claro">
+<div class="row d-flex fixed-bottom justify-content-center bg-gris-claro shadow-top">
   <div class="col-12 col-md-9 col-lg-6 footer-nav">
     <nav class="d-flex justify-content-around">
       <div>
@@ -20,7 +20,7 @@
           <span class="text">Notificaciones</span>
         </a>
       </div>
-      <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle">
+      <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle shadow-sm">
         <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
           {{-- <span class="text-white fw-semibold h1 pb-5">
             +

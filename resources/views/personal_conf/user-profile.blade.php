@@ -103,6 +103,7 @@
     <div>
       <p class="h5 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </p>
       <p class="mt-5 mb-2 fw-bold"> Lugares nuevos:</p>
+      @forelse ($myPlaces as $place)
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light w-100">
@@ -111,21 +112,24 @@
           </tr>
         </thead>
         <tbody>
-          @forelse ($myPlaces as $place)
           <tr>
             <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $place->created_at}}</td>
           </tr>
           @empty
-          <tr>
-            <td width="100%">No subiste ningún lugar aún.</td>
-          </tr>
+          <p> No subiste ningún lugar aún.</p>
+          <div class="my-4">
+            <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+              <span class="fw-semibold">Cargar un lugar</span>
+            </a>
+          </div>
           @endforelse
       </table>
     </div>
 
     <div class="pb-4">
       <p class="mt-5 mb-2 fw-bold">Opiniones: </p>
+      @forelse ($madeReviews as $review)
       <table>
         <thead>
           <tr class="bg-violeta-ultra-light">
@@ -134,15 +138,17 @@
           </tr>
         </thead>
         <tbody>
-          @forelse ($madeReviews as $review)
           <tr>
             <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $review->place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $review->created_at}}</td>
           </tr>
           @empty
-          <tr>
-            <td width="100%">No opinaste sobre ningún lugar aún.</td>
-          </tr>
+          <p>No has opinado sobre ningún lugar.</p>
+          <div class="my-4">
+            <a href="{{ route('categories') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+              <span class="fw-semibold">Buscar lugar</span>
+            </a>
+          </div>
           @endforelse
       </table>
     </div>
