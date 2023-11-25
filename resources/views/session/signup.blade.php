@@ -37,7 +37,7 @@
                   <div class="col-12">
                       <form action="{{ route('signupAction') }}" method="POST">
                           @csrf
-                          <div class="mb-4">
+                          {{-- <div class="mb-4">
                               <label for="name" class="form-label d-none">Nombre</label>
                               <input type="text" name="name" class="form-control p-3 @error('name') is-invalid @enderror" id="name"  placeholder="Nombre" value="{{ old('name') }}"
                               @error('name')
@@ -47,72 +47,76 @@
                               @error('name')
                               <p class="text-danger" id="error-name">{{ $message }}</p>
                               @enderror
+                          </div> --}}
+                          <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nombre" value="{{ old('name') }}"
+                                    @error('name') aria-describedby="error-name" aria-invalid="true" @enderror>
+                                <label for="name">Nombre</label>
+                                @error('name')
+                                <p class="text-danger" id="error-name">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="surname" class="form-label d-none">Apellido</label>
-                              <input type="text" name="surname" class="form-control p-3 @error('surname') is-invalid @enderror" id="surname"  placeholder="Apellido" value="{{ old('surname') }}"
-                              @error('surname')
-                              aria-describedby="error-surname"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('surname')
-                              <p class="text-danger" id="error-surname">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror" id="surname" placeholder="Apellido" value="{{ old('surname') }}"
+                                    @error('surname') aria-describedby="error-surname" aria-invalid="true" @enderror>
+                                <label for="surname">Apellido</label>
+                                @error('surname')
+                                <p class="text-danger" id="error-surname">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="username" class="form-label d-none">Nombre de usuario</label>
-                              <input type="text" name="username" class="form-control p-3 @error('username') is-invalid @enderror" id="username"  placeholder="Nombre de usuario" value="{{ old('username') }}"
-                              @error('username')
-                              aria-describedby="error-username"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('username')
-                              <p class="text-danger" id="error-username">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Nombre de usuario" value="{{ old('username') }}"
+                                    @error('username') aria-describedby="error-username" aria-invalid="true" @enderror>
+                                <label for="username">Nombre de usuario</label>
+                                @error('username')
+                                <p class="text-danger" id="error-username">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="email" class="form-label d-none">Email</label>
-                              <input type="email" name="email" class="form-control p-3 @error('email') is-invalid @enderror" id="email"  placeholder="Email" value="{{ old('email') }}"
-                              @error('email')
-                              aria-describedby="error-email"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('email')
-                              <p class="text-danger" id="error-email">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" value="{{ old('email') }}"
+                                    @error('email') aria-describedby="error-email" aria-invalid="true" @enderror>
+                                <label for="email">Email</label>
+                                @error('email')
+                                <p class="text-danger" id="error-email">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="birth_date" class="form-label ">Fecha de nacimiento</label>
-                              <input type="date" name="birth_date" class="form-control p-3 @error('birth_date') is-invalid @enderror" id="birth_date" placeholder="Nombre" value="{{ old('birth_date') }}"
-                              @error('birth_date')
-                              aria-describedby="error-birth_date"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('birth_date')
-                              <p class="text-danger" id="error-birth_date">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="date" name="birth_date" class="form-control @error('birth_date') is-invalid @enderror" id="birth_date" placeholder="Fecha de nacimiento" value="{{ old('birth_date') }}"
+                                    @error('birth_date') aria-describedby="error-birth_date" aria-invalid="true" @enderror>
+                                <label for="birth_date">Fecha de nacimiento</label>
+                                @error('birth_date')
+                                <p class="text-danger" id="error-birth_date">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="password" class="form-label d-none">Contraseña</label>
-                              <input type="password" name="password" class="form-control p-3 @error('password') is-invalid @enderror" id="password" placeholder="Contraseña"
-                              @error('password')
-                              aria-describedby="error-password"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('password')
-                              <p class="text-danger" id="error-password">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Contraseña"
+                                    @error('password') aria-describedby="error-password" aria-invalid="true" @enderror>
+                                <label for="password">Contraseña</label>
+                                @error('password')
+                                <p class="text-danger" id="error-password">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="mb-4">
-                              <label for="password-repeat" class="form-label d-none">Repetir contraseña</label>
-                              <input type="password" name="password-repeat" class="form-control p-3 @error('password-repeat') is-invalid @enderror" id="password-repeat" placeholder="Repetir contraseña"
-                              @error('password-repeat')
-                              aria-describedby="error-password-repeat"
-                              aria-invalid="true"
-                              @enderror>
-                              @error('password-repeat')
-                              <p class="text-danger" id="error-password-repeat">{{ $message }}</p>
-                              @enderror
+                            <div class="form-floating">
+                                <input type="password" name="password-repeat" class="form-control @error('password-repeat') is-invalid @enderror" id="password-repeat" placeholder="Repetir contraseña"
+                                    @error('password-repeat') aria-describedby="error-password-repeat" aria-invalid="true" @enderror>
+                                <label for="password-repeat">Repetir contraseña</label>
+                                @error('password-repeat')
+                                <p class="text-danger" id="error-password-repeat">{{ $message }}</p>
+                                @enderror
+                            </div>
                           </div>
                           <div class="form-check d-flex justify-content-center">
                               <!-- Campo hidden con valor 0 (para caso de que no esté marcado) -->
