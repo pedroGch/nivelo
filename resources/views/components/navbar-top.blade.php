@@ -23,22 +23,22 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
             <li class="pe-2 pt-3 nav-item text-end">
-              <a href="{{ route('userProfile') }}" class="nav-link active text-white" aria-current="page" href="#">Mi cuenta ( {{ Auth::user()->email }} )</a>
+              <a href="{{ route('userProfile') }}" class="nav-link active text-white link-offcanvas link-offcanvas-hover" aria-current="page" href="#">Mi cuenta ( {{ Auth::user()->email }} )</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white" href="{{ route('categories') }}">Categorías</a>
+              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white disabled" href="#">Blog</a>
+              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="#">Blog</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white disabled" aria-disabled="true">Acerca de nivelo</a>
+              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white disabled" aria-disabled="true">Términos y condiciones</a>
+              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Términos y condiciones</a>
             </li>
             @auth
-            <li class="nav-item pt-2 text-end">
+            <li class="nav-item pt-2 text-end link-offcanvas link-offcanvas-hover">
               <form action="{{ route('logoutAction') }}" method="post">
                 @csrf
                 <button type="submit" class="btn text-white">
