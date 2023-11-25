@@ -33,8 +33,8 @@
     </div>
     <div class="row">
       <div class="col-6 col-md-9 d-flex mt-3 align-items-center">
-        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
-        <h2 class="titulo fw-bold  ps-2">Resultados para: "{{ $searchPlace }}"</h2>
+        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
+        <h2 class="h5 fw-bold ps-2">Resultados para: "{{ $searchPlace }}"</h2>
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end">
         <div>

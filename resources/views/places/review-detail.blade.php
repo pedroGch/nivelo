@@ -30,13 +30,14 @@
     </div>
     <div class="row border-bottom border-dark-subtle pb-3 d-flex">
       <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
-        <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1" height="20px"></a>
-        <h2 class="h4 titulo fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / Comentario de {{ $review->user->username }}</h2>
+        <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
+        <p class="h5 fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / </p>
       </div>
+      <h2 class="h3 fw-bold ps-2 mt-3">Comentario de: {{ $review->user->username }}</h2>
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
       <div>
-        <p class="h5 mt-3">Calificación:</p>
+        <p class="h5 mt-3 fw-bold">Calificación:</p>
       </div>
       <div class="col-12 mt-2 d-flex justify-content-center">
         @switch($review->score)
@@ -95,7 +96,7 @@
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
       <div>
-        <p class="h5 mt-3">Acerca del usuario:</p>
+        <p class="h5 mt-3 fw-bold">Acerca del usuario:</p>
       </div>
       <div>
         @if($review->user->user_definition->none == 0 && $review->user->user_definition->sticks == 0 && $review->user->user_definition->crutches == 0 && $review->user->user_definition->walker == 0 && $review->user->user_definition->difficult_walking == 0 && $review->user->user_definition->manual_wheelchair == 0 && $review->user->user_definition->electric_wheelchair == 0 && $review->user->user_definition->scooter == 0)
@@ -138,7 +139,7 @@
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
       <div>
-        <p class="h5 mt-3">Su opinión sobre este lugar:</p>
+        <p class="h5 mt-3 fw-bold">Su opinión sobre este lugar:</p>
       </div>
       <div class="col-12 d-flex justify-content-center">
         @if($review->review)
@@ -150,7 +151,7 @@
     </div>
     <div class="row border-bottom border-dark-subtle pb-4">
       <div>
-        <p class="h5 mt-3">Fotos:</p>
+        <p class="h5 mt-3 fw-bold">Fotos:</p>
       </div>
       <div class="col-12 d-flex justify-content-center">
         @if($review->pic_1 || $review->pic_2 || $review->pic_3)
