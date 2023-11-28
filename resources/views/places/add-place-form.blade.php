@@ -176,26 +176,26 @@
   let map
   let marker
   let autocomplete
-  // function getCurrentPosition(map, marker) {
-  //   if (navigator.geolocation){
-  //     navigator.geolocation.getCurrentPosition(
-  //       ({coords: {latitude, longitude} }) => {
-  //         const coords = {
-  //           lat: latitude,
-  //           lng: longitude,
-  //         };
-  //         map.setCenter(coords)
-  //         map.setZoom(8)
-  //         marker.setPosition(coords)
-  //       },
-  //       () => {
-  //         alert("ocurrio un error")
-  //       }
-  //     )
-  //   }else{
-  //     alert('tu navegador no dispone de geolocalizacion')
-  //   }
-  // }
+  function getCurrentPosition(map, marker) {
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        ({coords: {latitude, longitude} }) => {
+          const coords = {
+            lat: latitude,
+            lng: longitude,
+          };
+          map.setCenter(coords)
+          map.setZoom(8)
+          marker.setPosition(coords)
+        },
+        () => {
+          alert("ocurrio un error")
+        }
+      )
+    }else{
+      alert('tu navegador no dispone de geolocalizacion')
+    }
+  }
   function initMap(){
     const myLatLng = {
     lat: -34.916667,
@@ -212,11 +212,11 @@
       position: myLatLng,
       map: map,
       title: "Estoy acá",
-      icon: "../../img/bastones.png" //<body data-base-url="{{ url('/') }}>
+      icon: "../../img/icons/icon-red.png" //<body data-base-url="{{ url('/') }}>
 
     });
 
-    //getCurrentPosition(map,marker)
+    getCurrentPosition(map,marker)
     const options = {
       componentRestrictions: {country: "ar"},
       fields: ["address_components", "geometry", "icon", "name", "plus_code"],
