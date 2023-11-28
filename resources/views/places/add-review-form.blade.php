@@ -20,7 +20,6 @@
                 <h2 class="fw-bold pb-1">Nueva reseña</h2>
                 <span class="bg-movimiento ms-3 mt-1"></span>
               </div>
-              <h3 class="h5 mt-3">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</h3>
           </div>
           <div class="mx-2 col-12 my-1">
             @if (\Session::has('status.message'))
@@ -31,6 +30,7 @@
             @endif
             </div>
           <div class="col-12">
+            <h3 class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</h3>
             <form action="{{ route('addReviewAction') }}" method="POST" id="new_review_create" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex justify-content-center">
