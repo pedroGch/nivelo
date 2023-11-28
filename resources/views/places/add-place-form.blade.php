@@ -211,8 +211,11 @@
     marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      title: "My location"
+      title: "Estoy acá",
+      icon: "../../img/bastones.png" //<body data-base-url="{{ url('/') }}>
+
     });
+
     //getCurrentPosition(map,marker)
     const options = {
       componentRestrictions: {country: "ar"},
