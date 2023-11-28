@@ -106,15 +106,18 @@
     <div>
       <p class="h5 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </p>
       <p class="mt-5 mb-2 fw-bold"> Lugares nuevos:</p>
-      @forelse ($myPlaces as $place)
+
       <table>
+        @if ($myPlaces)
         <thead>
           <tr class="bg-violeta-ultra-light w-100">
             <th class="col p-2">Nombre</th>
             <th class="col p-2">Fecha</th>
           </tr>
         </thead>
+        @endif
         <tbody>
+          @forelse ($myPlaces as $place)
           <tr>
             <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $place->created_at}}</td>
@@ -127,20 +130,23 @@
             </a>
           </div>
           @endforelse
+        </tbody>
       </table>
     </div>
 
     <div class="pb-4">
       <p class="mt-5 mb-2 fw-bold">Opiniones: </p>
-      @forelse ($madeReviews as $review)
       <table>
+        @if ($myPlaces)
         <thead>
           <tr class="bg-violeta-ultra-light">
             <th class="col p-2">Nombre</th>
             <th class="col p-2">Fecha</th>
           </tr>
         </thead>
+        @endif
         <tbody>
+          @forelse ($madeReviews as $review)
           <tr>
             <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $review->place->name }}</a></td>
             <td width="25%" class="col px-2">{{ $review->created_at}}</td>
@@ -153,6 +159,7 @@
             </a>
           </div>
           @endforelse
+        </tbody>
       </table>
     </div>
 
