@@ -71,7 +71,7 @@
       @else
       @if ($userDB->user_definition->none == 1)
         <ul>
-          <li>No poseo ninguna discapacidad pero me sumé a la "Comunidad ¡Yo, nivelo!"</li>
+          <li>No posee discapacidad pero se suma a la "Comunidad #YoNivelo"</li>
         </ul>
         @endif
 

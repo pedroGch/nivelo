@@ -104,7 +104,7 @@
         @else
           @if ($review->user->user_definition->none == 1)
           <ul>
-            <li>No posee discapacidad pero se sumó a la "Comunidad ¡Yo, nivelo!"</li>
+            <li>No posee discapacidad pero se sumó a la "Comunidad #YoNivelo"</li>
           </ul>
           @endif
 
@@ -143,7 +143,7 @@
       </div>
       <div class="col-12 d-flex justify-content-center">
         @if($review->review)
-        <p>"{{ $review->review }}"</p>
+        <p>"{!! nl2br($review->review) !!}"</p>
         @else
         <p class="h6">Sólo utilizó la calificación de estrellas.</p>
         @endif
