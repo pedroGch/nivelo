@@ -49,6 +49,17 @@ class Review extends Model
     "score"
   ];
 
+  public static $rules = [
+    "review" => "max:500",
+    "score" => "required",
+  ];
+
+  public static $errorMessages = [
+    "review.max" => "Tu reseña no puede superar los 500 caracteres.",
+    "score.required" => "Es obligatorio que selecciones una de las opciones disponibles.",
+  ];
+
+
   /**
    * Método que devuelve la fecha de creación de la review formateada a DD-MM-AAAA
    * utilizando accessors y mutators
@@ -87,7 +98,7 @@ class Review extends Model
     return $result;
   }
 
-  
+
   /* RELACIONES */
 
   /**

@@ -56,11 +56,13 @@ class ReviewController extends Controller
 
       $place = Place::findOrFail($request->place_id);
 
+      $request->validate(Review::$rules, Review::$errorMessages);
+
       Review::Create([
         "place_id" => $request->place_id,
         "user_id" => $userId,
         "review" => $request->review_text,
-        "score" => $request->inlineRadioOptions,
+        "score" => $request->score,
       ]);
       return redirect()
       // ->route('categories')
