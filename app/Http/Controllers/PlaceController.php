@@ -17,8 +17,8 @@ class PlaceController extends Controller
   * @param int $id
   * @return \Illuminate\View\View
   */
-  public function placeDetail(int $category_id, int $place_id) {
-
+  public function placeDetail(int $category_id, int $place_id)
+  {
     $scores = Review::where('place_id', $place_id)->get('score');
 
     ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 3;
@@ -33,7 +33,6 @@ class PlaceController extends Controller
       "uploaded_from_id" => Place::findOrFail($place_id)->uploadedFrom,
       "reviews" => Review::where('place_id', $place_id)->orderBy('created_at', 'desc')->get(),
       "averagePlaceScore" => $averagePlaceScore,
-
     ]);
   }
 
@@ -44,7 +43,9 @@ class PlaceController extends Controller
    */
   public function addPlaceForm()
   {
-    return view('places.add-place-form', ["categories" => Category::all()]);
+    return view('places.add-place-form', [
+      "categories" => Category::all()
+    ]);
   }
 
 

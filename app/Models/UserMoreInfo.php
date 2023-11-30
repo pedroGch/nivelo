@@ -61,15 +61,4 @@ class UserMoreInfo extends Model
     'birth_date.required' => 'La fecha de nacimiento es requerida',
   ];
 
-
-    /* RELACIONES */
-
-    /**
-     *  Define la relación (uno a uno) entre la tabla users y la tabla user_more_info
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    //  public function user(): BelongsTo
-    //  {
-    //      return $this->belongsTo(User::class, 'id', 'id');
-    //  }
 }

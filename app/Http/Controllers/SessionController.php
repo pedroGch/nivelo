@@ -21,7 +21,6 @@ class SessionController extends Controller
   }
 
 
-
   /**
    * Valida los datos del formulario de inicio de sesión y loguea al usuario
    * @param Request $request
@@ -37,11 +36,8 @@ class SessionController extends Controller
         ->withInput();
     }
 
-    // $url = (Auth::user()->rol == 1) ? '/panel_admin' : '/panel_admin';
-
     return redirect('/categorias')->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
   }
-
 
 
   /**
@@ -68,6 +64,7 @@ class SessionController extends Controller
     return view('/session/signup');
   }
 
+
   /**
    * Retorna la vista de la página de creación de cuenta
    * @return \Illuminate\View\View
@@ -76,6 +73,7 @@ class SessionController extends Controller
   {
     return view('/personal_conf/user-conf');
   }
+
 
   /**
    * Retorna la vista de la página de creación de cuenta
@@ -86,96 +84,105 @@ class SessionController extends Controller
     return Socialite::driver('google')->redirect();
   }
 
-/**
- * Retorna la vista de la página de creación de cuenta
- * @return \Illuminate\View\View
- */
-public function googleCallback()
-{
-  $user = Socialite::driver('google')->user();
-  $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
-  $userEmailExist = User::where('email', $user->email)->first();
 
-  if($userExist){
-    Auth::login($userExist);
+  /**
+   * Método que se ejecuta cuando el usuario se loguea con Google
+   * @return \Illuminate\View\View
+   */
+  public function googleCallback()
+  {
+    $user = Socialite::driver('google')->user();
+    $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
+    $userEmailExist = User::where('email', $user->email)->first();
+
+    if($userExist){
+      Auth::login($userExist);
+      return redirect()
+        ->route('categories');
+    }
+
+    if( $userEmailExist){
+      Auth::login($userEmailExist);
+      return redirect()
+        ->route('categories');
+    }
+
+    $newUser = User::Create([
+      'name' => $user->name,
+      'email' => $user->email,
+      'avatar' => $user->avatar,
+      'external_id' => $user->id,
+      'external_auth' => 'google',
+    ]);
+
+    $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
+
+    Auth::login($newUser);
+
     return redirect()
-      ->route('categories');
+      ->route('aboutYouAction');
   }
-  if( $userEmailExist){
-    Auth::login($userEmailExist);
+
+  /**
+   * Método que guarda los datos de la vista aboutYouForm en la base de datos (cómo se moviliza el usuario)
+   * @return \Illuminate\View\View
+   */
+  public function aboutYouAction(Request $request)
+  {
+    $userId = Auth::id();
+    // Obtener los valores de los checkboxes
+    $checkboxValues = [
+      'sticks' => $request->input('sticks')  === 'on' ? true : false,
+      'crutches' => $request->input('crutches')  === 'on' ? true : false,
+      'walker' => $request->input('walker')  === 'on' ? true : false,
+      'difficult_walking' => $request->input('difficult_walking')  === 'on' ? true : false,
+      'manual_wheelchair' => $request->input('manual_wheelchair')  === 'on' ? true : false,
+      'electric_wheelchair' => $request->input('electric_wheelchair')  === 'on' ? true : false,
+      'scooter' => $request->input('scooter')  === 'on' ? true : false,
+      'none' => $request->input('none')  === 'on' ? true : false,
+    ];
+    // Verificar si al menos uno de ellos tiene valor "on"
+    $anyOn = in_array(true, $checkboxValues);
+
+    // Hacer algo en base al resultado
+    if ($anyOn) {
+      $userDefinition = UserDefinition::findOrFail($userId);
+      $userDefinition->update($checkboxValues);
+      return redirect()
+        ->route('userProfile')
+        ->with('status.message', 'Tu perfil se actualizó exitosamente');
+
+    }
     return redirect()
-      ->route('categories');
+      ->route('aboutYouForm')
+      ->with('status.message', 'Tenés que seleccionar al menos una opción')
+      ->with('status.type', 'warning')
+      ->withInput();
   }
-  $newUser = User::Create([
-    'name' => $user->name,
-    'email' => $user->email,
-    'avatar' => $user->avatar,
-    'external_id' => $user->id,
-    'external_auth' => 'google',
-  ]);
 
-  //$userMoreInfo = UserMoreInfo::Create(['user_id'=>$newUser->id]);
-  $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
 
-  Auth::login($newUser);
+  /**
+   * Método que registra un nuevo usuario en la base de datos
+   * @return \Illuminate\View\View
+   */
+  public function signupAction(Request $request)
+  {
+    //valido lo que me llego en la request
+    $request->validate(User::$rules, User::$errorMessages);
+    //selecciono los datos de la request para guardar en la tabla user
+    $data = $request->only(['name', 'surname' ,'username', 'email', 'birth_date','password']);
+    //guardo en la tabla user
+    $newUser = User::create($data);
+    //autentico al usuario
+    Auth::login($newUser);
+    //creo la tabla de user definition
+    $userDefinition = UserDefinition::Create([
+      'user_id'=>$newUser->id
+    ]);
 
-  return redirect()
-    ->route('aboutYouAction');
-}
-
-public function aboutYouAction(Request $request)
-{
-  $userId = Auth::id();
-  // Obtener los valores de los checkboxes
-  $checkboxValues = [
-    'sticks' => $request->input('sticks')  === 'on' ? true : false,
-    'crutches' => $request->input('crutches')  === 'on' ? true : false,
-    'walker' => $request->input('walker')  === 'on' ? true : false,
-    'difficult_walking' => $request->input('difficult_walking')  === 'on' ? true : false,
-    'manual_wheelchair' => $request->input('manual_wheelchair')  === 'on' ? true : false,
-    'electric_wheelchair' => $request->input('electric_wheelchair')  === 'on' ? true : false,
-    'scooter' => $request->input('scooter')  === 'on' ? true : false,
-    'none' => $request->input('none')  === 'on' ? true : false,
-  ];
-  // Verificar si al menos uno de ellos tiene valor "on"
-  $anyOn = in_array(true, $checkboxValues);
-
-  // Hacer algo en base al resultado
-  if ($anyOn) {
-    $userDefinition = UserDefinition::findOrFail($userId);
-    $userDefinition->update($checkboxValues);
+    //redirecciono a la vista de aboutYouForm
     return redirect()
-      ->route('userProfile')
-      ->with('status.message', 'Tu perfil se actualizó exitosamente');
-
+      ->route('aboutYouForm')
+      ->with('status.message', 'Tu perfil fue generado exitosamente');
   }
-  return redirect()
-    ->route('aboutYouForm')
-    ->with('status.message', 'Tenés que seleccionar al menos una opción')
-    ->with('status.type', 'warning')
-    ->withInput();
-}
-
-public function signupAction(Request $request)
-{
-  //valido lo que me llego en la request
-  $request->validate(User::$rules, User::$errorMessages);
-  //selecciono los datos de la request para guardar en la tabla user
-  $data = $request->only(['name', 'surname' ,'username', 'email', 'birth_date','password']);
-
-  //guardo en la tabla user
-  $newUser = User::create($data);
-  //autentico al usuario
-  Auth::login($newUser);
-  //creo la tabla de user definition
-  $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
-  //re direcciono a la vista de aboutYouForm
-  return redirect()
-    ->route('aboutYouForm')
-    ->with('status.message', 'Tu perfil fue generado exitosamente');
-}
-
-
-
-
 }

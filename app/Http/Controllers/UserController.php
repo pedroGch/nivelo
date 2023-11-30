@@ -9,28 +9,27 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Retorna la vista de perfil de usuario
-     * @return \Illuminate\View\View
-     */
-    public function userProfile() {
-      $userAuth = auth()->user();
+  /**
+   * Retorna la vista de perfil de usuario
+   * @return \Illuminate\View\View
+   */
+  public function userProfile() {
+    $userAuth = auth()->user();
 
-      $userDB = User::where('id', $userAuth->id)->first();
+    $userDB = User::where('id', $userAuth->id)->first();
 
-      $myPlaces = Place::where('uploaded_from_id', $userAuth->id)->get();
+    $myPlaces = Place::where('uploaded_from_id', $userAuth->id)->get();
 
-      $madeReviews = Review::where('user_id', $userAuth->id)->orderBy('created_at', 'desc')->get();
+    $madeReviews = Review::where('user_id', $userAuth->id)->orderBy('created_at', 'desc')->get();
 
-      $UserProfileActive = true;
+    $UserProfileActive = true;
 
-        return view('personal_conf.user-profile', [
-          "userAuth" => $userAuth,
-          "userDB" => $userDB,
-          "myPlaces" => $myPlaces,
-          // "reviewedPlaces" => $reviewedPlaces,
-          "madeReviews" => $madeReviews,
-          "UserProfileActive" => $UserProfileActive,
-        ]);
-    }
+      return view('personal_conf.user-profile', [
+        "userAuth" => $userAuth,
+        "userDB" => $userDB,
+        "myPlaces" => $myPlaces,
+        "madeReviews" => $madeReviews,
+        "UserProfileActive" => $UserProfileActive,
+      ]);
+  }
 }

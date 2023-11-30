@@ -117,5 +117,4 @@ class Review extends Model
   public function place(): HasOne {
     return $this->hasOne(Place::class, "place_id", "place_id");
   }
-
 }

@@ -11,8 +11,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-
-
   /**
    * Retorna la vista de detalle de una review
    * @param int $id
@@ -44,8 +42,9 @@ class ReviewController extends Controller
         "place" => Place::findOrFail($place_id)]);
     }
 
+
     /**
-     * Retorna la vista del formulario de carga de una nueva review
+     * Agrega una nueva review a un lugar
      * @param int $category_id
      * @param int $place_id
      * @return \Illuminate\View\View
@@ -66,7 +65,9 @@ class ReviewController extends Controller
       ]);
       return redirect()
       // ->route('categories')
-      ->route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $request->place_id])
+      ->route('placeDetail', [
+        'category_id' => $place->categories->category_id,
+        'place_id' => $request->place_id])
       ->with('status.message', 'Gracias por dejarnos tu opinión');
     }
 }

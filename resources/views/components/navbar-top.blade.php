@@ -7,14 +7,12 @@
       <div class="d-flex align-items-center">
         <div class="pe-2">
           <a href="#">
-          {{-- <img src="{{ url('/img/bookmark.png') }}" alt="favoritos" class=""> --}}
           <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
           </a>
         </div>
         <div>
           <button class="btn text-white pe-3 pb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon  pb-1">
-              {{-- <img src="{{ url('/img/category.png') }}" alt="menú"> --}}
               <ion-icon style="color: #fff" name="menu-outline" size="large" class="icon-hover"></ion-icon>
             </span>
           </button>
@@ -28,7 +26,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
             <li class="pe-2 pt-3 nav-item text-end">
-              <a href="{{ route('userProfile') }}" class="nav-link active text-white link-offcanvas link-offcanvas-hover" aria-current="page" href="#">Mi cuenta ( {{ Auth::user()->email }} )</a>
+              <a href="{{ route('userProfile') }}" class="nav-link active text-white link-offcanvas link-offcanvas-hover" aria-current="page">Mi cuenta ( {{ Auth::user()->email }} )</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
@@ -52,7 +50,6 @@
               </form>
             </li>
           @else
-
             <li class="nav-item text-end">
               <a href="{{ route('signup') }}">Registrate</a>
             </li>
@@ -61,11 +58,8 @@
             </li>
           @endauth
           </ul>
-
         </div>
       </div>
     </div>
   </nav>
-
-
 </div>

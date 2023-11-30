@@ -15,5 +15,4 @@ class HomeController extends Controller
     return view('home');
   }
 
-  // acá vamos a ir agregando los métodos que necesitemos para renderizar las otras vistas
 }
