@@ -2,7 +2,7 @@
 
 {{-- @section('title') Blog @endsection --}}
 
-@section('title', 'About you')
+@section('title', 'Acerca de mí')
 
 @section('content')
 <section>
@@ -77,6 +77,8 @@
             <a href="{{ route('categories') }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Omitir por ahora</a>
           </div>
         </div>
+      </div>
+      <div class="col-12 d-none d-sm-block bg-login">
       </div>
   </div>
 </section>

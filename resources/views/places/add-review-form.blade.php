@@ -36,7 +36,7 @@
             @endif
           </div>
           <div class="col-12">
-            <h3 class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</h3>
+            <p class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</p>
             <form action="{{ route('addReviewAction') }}" method="POST" id="new_review_create" enctype="multipart/form-data">
               @csrf
               <div class="d-flex justify-content-center">

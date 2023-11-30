@@ -11,7 +11,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'Perfil de Usuario')
+@section('title', 'Mi perfil')
 
 @section('header')
 
@@ -97,8 +97,8 @@
     @endif
   </div>
   <div>
-    <p class="h5 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </p>
-    <p class="mt-5 mb-2 fw-bold"> Lugares nuevos:</p>
+    <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
+    <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
     <table>
       @if ($myPlaces)
       <thead>
@@ -126,7 +126,7 @@
     </table>
   </div>
   <div class="pb-4">
-    <p class="mt-5 mb-2 fw-bold">Opiniones: </p>
+    <h4 class="mt-5 mb-2 fw-bold">Opiniones: </h4>
     <table>
       @if ($myPlaces)
       <thead>

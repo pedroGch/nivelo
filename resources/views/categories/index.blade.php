@@ -62,7 +62,7 @@
         <div class="stablished-height col-12 d-flex">
           <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow-sm">
           <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-0 ms-2 shadow-sm">
-            <p class="pt-3 px-4 text-white">{{ $category->name }}</p>
+            <h3 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h3>
           </div>
         </div>
       </a>

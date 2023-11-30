@@ -8,7 +8,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'Categorías')
+@section('title', $category->name)
 
 @section('header')
 

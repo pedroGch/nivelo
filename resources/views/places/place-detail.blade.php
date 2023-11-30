@@ -12,7 +12,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'Detalle del Lugar')
+@section('title', 'Detalle de lugar')
 
 @section('header')
 
@@ -176,7 +176,7 @@
   <div class="row pb-3">
     <div class="mt-3 d-flex align-items-center">
       <div>
-        <p class="h5 ps-2 mt-3 fw-bold">Reseñas:</p>
+        <h3 class="h5 ps-2 mt-3 fw-bold">Reseñas:</h3>
       </div>
     </div>
     <div class="col-12 d-flex">

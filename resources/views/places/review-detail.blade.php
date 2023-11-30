@@ -9,7 +9,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'Detalle Comentario')
+@section('title', 'Detalle de reseña')
 
 @section('header')
 
