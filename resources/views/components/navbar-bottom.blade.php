@@ -5,7 +5,7 @@
   <div class="col-12 col-md-9 col-lg-6 footer-nav">
     <nav class="d-flex justify-content-around">
       <div>
-        <a href="">
+        <a href="#">
           <span class="icon">
             <ion-icon name="location-outline"></ion-icon>
           </span>
@@ -13,7 +13,7 @@
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="#">
           <span class="icon">
             <ion-icon name="notifications-outline"></ion-icon>
           </span>
@@ -22,15 +22,12 @@
       </div>
       <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle shadow-sm">
         <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
-          {{-- <span class="text-white fw-semibold h1 pb-5">
-            +
-          </span> --}}
           <ion-icon class="" name="add-circle-outline" size="large" style="color: #fff"></ion-icon>
           <span class="text">Nuevo lugar</span>
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="#">
           <span class="icon">
             <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
           </span>

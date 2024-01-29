@@ -1,0 +1,41 @@
+DATOS:
+  Carrera: Diseño y Programación Web.
+  Materia: Clientes Web Mobile.
+  Cuatrimestre: 4to cuatrimestre.
+  Año: 2023
+  Turno: noche (virtual)
+  Comisión: DWN4BV
+  Apellido y nombre: Gonzalez Chavez, Pedro.
+                     Scotto, Rocío Belén.
+  Docente: Gallino, Santiago.
+  Carácter de entrega: 2do parcial.
+
+
+CREDENCIALES:
+  rocio.scotto@davinci.edu.ar
+  123456
+
+
+DESCRIPCIÓN DEL PROYECTO:
+
+  Nivelo es una aplicación que brinda información acerca de las características de accesibilidad, para personas con movilidad reducida, que poseen lugares en todo el país. Permite que tanto personas con o sin discapacidad se registren y puedan emitir reseñas sobre lugares ya cargados en la base de datos, como así también, cargar lugares nuevos. La búsqueda de lugares puede realizarse desde la vista de 'Categorías', ya sea a través del buscador (por nombre de lugar o ciudad), o por la navegación entre las diferentes categorías disponibles. 
+
+
+INSTALACIÓN DEL PROYECTO:
+
+* Ejecutar los siguientes comandos: 
+	* 'composer i'
+	* 'php artisan storage:link'
+	* 'npm run db:seeder'
+
+
+Aclaración: este último comando corre las migraciones, los seeders y por último ejecuta el servidor utilizando el comando 'php artisan serve'. 
+
+
+Por último, en el archivo '.env' es necesario chequear (o modificar) la línea: 
+
+'FILESYSTEM_DISK=local'
+
+por:
+
+'FILESYSTEM_DISK=public'

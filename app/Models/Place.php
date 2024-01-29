@@ -64,9 +64,9 @@ class Place extends Model
 {
    // use HasFactory;
 
-   protected $table = "places";
+  protected $table = "places";
 
-   protected $primaryKey = "place_id";
+  protected $primaryKey = "place_id";
 
   protected $fillable = [
     'name',
@@ -109,6 +109,7 @@ class Place extends Model
     'category.integer' => 'La categoría del lugar es obligatoria',
   ];
 
+
   /**
    * Método que devuelve la fecha de creación del lugar formateada a DD-MM-AAAA
    * utilizando accessors y mutators
@@ -118,62 +119,58 @@ class Place extends Model
   {
     return Attribute::make(
       function($value) {
-         $value = new DateTime($value);
-         return $value->format('d-m-Y');
+        $value = new DateTime($value);
+        return $value->format('d-m-Y');
       },
       function($value) {
-          return $value;
+        return $value;
       }
     );
   }
 
 
+  /* RELACIONES */
+
+  /**
+   * Relación de uno a muchos inversa entre Place y Category
+   * esta función devuelve el objeto Category que corresponde al place
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function categories() :BelongsTo
+  {
+    return $this->belongsTo(Category::class, 'category_id', 'category_id');
+  }
 
 
-/* RELACIONES */
-
-/**
- * Relación de uno a muchos inversa entre Place y Category
- * esta función devuelve el objeto Category que corresponde al place
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
-public function categories() :BelongsTo {
-  return $this->belongsTo(Category::class, 'category_id', 'category_id');
-}
-
-
-/**
- * Relación de uno a muchos inversa entre Place y SrcInformation
- * esta función devuelve el objeto SrcInfo que corresponde al place
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
-public function src_information() :BelongsTo {
-  return $this->belongsTo(SrcInformation::class, 'src_info_id', 'src_info_id');
-
-}
+  /**
+   * Relación de uno a muchos inversa entre Place y SrcInformation
+   * esta función devuelve el objeto SrcInfo que corresponde al place
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function src_information() :BelongsTo
+  {
+    return $this->belongsTo(SrcInformation::class, 'src_info_id', 'src_info_id');
+  }
 
 
-/**
- * Relación de uno a muchos inversa entre Place y User
- * esta función devuelve el objeto User que corresponde al place
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
-public function users() :BelongsTo {
-  return $this->belongsTo(User::class, 'uploaded_from_id', 'id');
-
-}
-
-
-/**
- * Relación de uno a muchos inversa entre Place y Review
- * esta función devuelve el objeto Review que corresponde al place
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
-public function reviews() :BelongsTo {
-  return $this->belongsTo(Review::class, 'review_id', 'review_id');
+  /**
+   * Relación de uno a muchos inversa entre Place y User
+   * esta función devuelve el objeto User que corresponde al place
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function users() :BelongsTo
+  {
+    return $this->belongsTo(User::class, 'uploaded_from_id', 'id');
+  }
 
 
-}
-
-
+  /**
+   * Relación de uno a muchos inversa entre Place y Review
+   * esta función devuelve el objeto Review que corresponde al place
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function reviews() :BelongsTo
+  {
+    return $this->belongsTo(Review::class, 'review_id', 'review_id');
+  }
 }

@@ -26,7 +26,6 @@ class UserDefinitionSeeder extends Seeder
           'scooter' => false,
           'none' => true,
           'user_id' => 1,
-
         ],
         [
           'id' => '2',
@@ -54,6 +53,5 @@ class UserDefinitionSeeder extends Seeder
         ]
       ]
     );
-
   }
 }

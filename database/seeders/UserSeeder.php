@@ -9,44 +9,44 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        DB::table('users')->insert(
-          [
-            [
-                'id' => '1',
-                'name' => 'Pedro',
-                'surname' => 'Gonzalez Chavez',
-                'username' => 'pedro_gCH',
-                'email' => 'pedro.gonzalez@davinci.edu.ar',
-                'password'=> Hash::make('123456'),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => '2',
-                'name' => 'Rocío',
-                'surname' => 'Scotto',
-                'username' => 'ro_scotto',
-                'email' => 'rocio.scotto@davinci.edu.ar',
-                'password'=> Hash::make('123456'),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-              'id' => '3',
-              'name' => 'Equipo',
-              'surname' => 'Nivelo',
-              'username' => 'equipo_nivelo',
-              'email' => 'info@nivelo.com.ar',
-              'password'=> Hash::make('123456'),
-              'created_at' => now(),
-              'updated_at' => now(),
-          ],
-          ]
-        );
-    }
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    DB::table('users')->insert(
+      [
+        [
+          'id' => '1',
+          'name' => 'Pedro',
+          'surname' => 'Gonzalez Chavez',
+          'username' => 'pedro_gCH',
+          'email' => 'pedro.gonzalez@davinci.edu.ar',
+          'password'=> Hash::make('123456'),
+          'created_at' => now(),
+          'updated_at' => now(),
+        ],
+        [
+          'id' => '2',
+          'name' => 'Rocío',
+          'surname' => 'Scotto',
+          'username' => 'ro_scotto',
+          'email' => 'rocio.scotto@davinci.edu.ar',
+          'password'=> Hash::make('123456'),
+          'created_at' => now(),
+          'updated_at' => now(),
+        ],
+        [
+          'id' => '3',
+          'name' => 'Equipo',
+          'surname' => 'Nivelo',
+          'username' => 'equipo_nivelo',
+          'email' => 'info@nivelo.com.ar',
+          'password'=> Hash::make('123456'),
+          'created_at' => now(),
+          'updated_at' => now(),
+        ],
+      ]
+    );
+  }
 }

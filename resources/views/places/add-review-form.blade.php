@@ -28,55 +28,75 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
               </div>
             @endif
+            @if($errors->any())
+            <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
+              <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para cargar correctamente tu opinión.</p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
+            @endif
+          </div>
           <div class="col-12">
-            <h3 class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</h3>
+            <p class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</p>
             <form action="{{ route('addReviewAction') }}" method="POST" id="new_review_create" enctype="multipart/form-data">
-                @csrf
-                <div class="d-flex justify-content-center">
-                  <input type="hidden" name="place_id" value="{{$place->place_id}}">
-                  <div class="col-6 col-lg-12 mb-4 d-flex flex-wrap justify-content-lg-around">
-                    <div class="mb-2 form-check form-check-inline">
-                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="5">
-                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">👍 Excelente</label>
-                    </div>
-                    <div class="my-2 form-check form-check-inline">
-                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4">
-                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">😌 Buena</label>
-                    </div>
-                    <div class="my-2 form-check form-check-inline">
-                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3">
-                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio3">😐 Regular</label>
-                    </div>
-                    <div class="my-2 form-check form-check-inline">
-                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
-                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio2">🙁 Mala</label>
-                    </div>
-                    <div class="my-2 form-check form-check-inline">
-                      <input class="fs-6 fw-medium form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
-                      <label class="fs-6 fw-medium form-check-label" for="inlineRadio1">👎 Muy mala</label>
-                    </div>
+              @csrf
+              <div class="d-flex justify-content-center">
+                <input type="hidden" name="place_id" value="{{$place->place_id}}">
+                <div class="col-6 col-lg-12 mb-4 d-flex flex-wrap justify-content-lg-around">
+                  <div class="my-2 form-check form-check-inline">
+                    <input class="fs-6 fw-medium form-check-input" type="radio" name="score" id="excelente" value="5">
+                    <label class="fs-6 fw-medium form-check-label" for="excelente">👍 Excelente</label>
+                  </div>
+                  <div class="my-2 form-check form-check-inline">
+                    <input class="fs-6 fw-medium form-check-input" type="radio" name="score" id="buena" value="4">
+                    <label class="fs-6 fw-medium form-check-label" for="buena">😌 Buena</label>
+                  </div>
+                  <div class="my-2 form-check form-check-inline">
+                    <input class="fs-6 fw-medium form-check-input" type="radio" name="score" id="regular" value="3">
+                    <label class="fs-6 fw-medium form-check-label" for="regular">😐 Regular</label>
+                  </div>
+                  <div class="my-2 form-check form-check-inline">
+                    <input class="fs-6 fw-medium form-check-input" type="radio" name="score" id="mala" value="2">
+                    <label class="fs-6 fw-medium form-check-label" for="mala">🙁 Mala</label>
+                  </div>
+                  <div class="my-2 form-check form-check-inline">
+                    <input class="fs-6 fw-medium form-check-input" type="radio" name="score" id="muy-mala" value="1"
+                    @error('score')
+                    aria-describedby="error-score"
+                    aria-invalid="true"
+                    @enderror>
+                    <label class="fs-6 fw-medium form-check-label" for="muy-mala">👎 Muy mala</label>
                   </div>
                 </div>
-                  <div class="col-12 mb-3">
-                    <label for="review_text">Tu opinión:</label>
-                    <textarea name="review_text" id="review_text" class="form-control p-3"></textarea>
-                  </div>
-                    <div class="mb-4">
-                      <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
-                    </div>
-                  </div>
 
-                </form>
-
-                <div class="mb-4">
-                  <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
-                </div>
+              </div>
+              <div>
+                @error('score')
+                <p class="text-danger" id="error-score">{{ $message }}</p>
+                @enderror
+              </div>
+              <div class="col-12 mb-3">
+                <label for="review_text">Tu opinión:</label>
+                <textarea name="review_text" id="review_text" class="form-control p-3 @error('review_text') is-invalid @enderror"
+                @error('review_text')
+                aria-describedby="error-review_text"
+                aria-invalid="true"
+                @enderror
+                >{{ old('review_text') }}</textarea>
+              </div>
+              @error('format')
+                <p class="text-danger" id="error-review_text">{{ $message }}</p>
+              @enderror
+              <div class="mb-4">
+                <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+              </div>
+          </div>
             </form>
+            <div class="mb-4">
+              <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
 </section>
 

@@ -35,15 +35,14 @@ class UserDefinition extends Model
 ];
 
 
+  /* RELACIONES */
 
-    /* RELACIONES */
-
-    /**
-     *  Define la relación (uno a uno) entre la tabla users y la tabla user_definition
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-     public function user(): BelongsTo
-     {
-         return $this->belongsTo(User::class, 'id', 'id');
-     }
+  /**
+   *  Define la relación (uno a uno) entre la tabla users y la tabla user_definition
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function user(): BelongsTo
+  {
+      return $this->belongsTo(User::class, 'id', 'id');
+  }
 }
