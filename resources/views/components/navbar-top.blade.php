@@ -8,7 +8,7 @@
         <div class="pe-2">
           <a href="#">
           {{-- <img src="{{ url('/img/bookmark.png') }}" alt="favoritos" class=""> --}}
-          <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
+          <ion-icon title="lugares guardados" style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
           </a>
         </div>
         <div>

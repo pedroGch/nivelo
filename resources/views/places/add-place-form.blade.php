@@ -189,11 +189,11 @@
           marker.setPosition(coords)
         },
         () => {
-          alert("ocurrio un error")
+          console.lo("ocurrio un error")
         }
       )
     }else{
-      alert('tu navegador no dispone de geolocalizacion')
+      console.log('tu navegador no dispone de geolocalizacion')
     }
   }
   function initMap(){
