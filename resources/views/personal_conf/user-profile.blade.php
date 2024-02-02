@@ -66,31 +66,52 @@
     @else
       @if ($userDB->user_definition->none == 1)
         <ul>
-          <li>No posee discapacidad pero se suma a la "Comunidad #YoNivelo"</li>
+          <li>No posee discapacidad pero se suma a la "Comunidad #YoNivelo" <span class="bg-movimiento ms-3"></span></li>
         </ul>
       @endif
       @if($userDB->user_definition->none == 0)
-        <ul>
+        <ul class="acerca-de-mi">
         @if($userDB->user_definition->sticks == 1)
-          <li>Camina con bastones</li>
+          <li>
+            <span class="bg-bastones ms-3"></span>
+            <p class="acerca-de-mi-descript">Camina con bastones</p>
+          </li>
         @endif
         @if($userDB->user_definition->crutches == 1)
-          <li>Camina con muletas</li>
+          <li>
+            <span class="bg-muletas ms-3"></span>
+            <p class="acerca-de-mi-descript">Camina con muletas</p>
+          </li>
         @endif
         @if($userDB->user_definition->walker == 1)
-          <li>Utiliza andador</li>
+          <li>
+            <span class="bg-andador ms-3"></span>
+            <p class="acerca-de-mi-descript">Utiliza andador</p>
+          </li>
         @endif
         @if($userDB->user_definition->difficult_walking == 1)
-          <li>Camina con dificultad</li>
+          <li>
+            <span class="bg-dificultad ms-3"></span>
+            <p class="acerca-de-mi-descript">Camina con dificultad</p>
+          </li>
         @endif
         @if($userDB->user_definition->manual_wheelchair == 1)
-          <li>Utiliza silla de ruedas manual</li>
+          <li>
+            <span class="bg-silla-maual ms-3"></span>
+            <p class="acerca-de-mi-descript">Utiliza silla de ruedas manual</p>
+          </li>
         @endif
         @if($userDB->user_definition->electric_wheelchair == 1)
-          <li>Utiliza silla de ruedas eléctrica</li>
+          <li>
+            <span class="bg-silla-electrica ms-3"></span>
+            <p class="acerca-de-mi-descript">Utiliza silla de ruedas eléctrica</p>
+          </li>
         @endif
         @if($userDB->user_definition->scooter == 1)
-          <li>Utiliza scooter</li>
+          <li>
+            <span class="bg-scooter ms-3"></span>
+            <p class="acerca-de-mi-descript">Utiliza scooter</p>
+          </li>
         @endif
           </ul>
       @endif

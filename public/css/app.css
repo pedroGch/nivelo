@@ -337,6 +337,84 @@ ion-icon.icon-hover:hover {
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.acerca-de-mi li {
+  display: flex;
+}
+
+.acerca-de-mi-descript{
+  margin-top: 11px;
+  margin-bottom: 0px;
+}
+
+.bg-bastones {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/bastones.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-muletas {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/muletas.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-andador {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/andador.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-dificultad {
+  width: 42px;
+  height: 62px;
+  background-image: url(../img/camina_dificultad.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-silla-maual {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/silla_ruedas_manual.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-silla-electrica {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/silla_ruedas_electrica.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
+
+.bg-scooter {
+  width: 42px;
+  height: 42px;
+  background-image: url(../img/scooter.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: 5px;
+
+}
 input:-internal-autofill-selected {
     background-color: var(--naranja-principal) !important;
 }
