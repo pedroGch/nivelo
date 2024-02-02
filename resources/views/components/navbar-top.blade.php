@@ -7,12 +7,7 @@
       <div class="d-flex align-items-center">
         <div class="pe-2">
           <a href="#">
-<<<<<<< HEAD
-          {{-- <img src="{{ url('/img/bookmark.png') }}" alt="favoritos" class=""> --}}
-          <ion-icon title="lugares guardados" style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
-=======
           <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
->>>>>>> 06495e78b417c9f88c5a679e86be42e9cd6d7294
           </a>
         </div>
         <div>
