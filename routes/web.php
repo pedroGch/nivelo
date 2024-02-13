@@ -90,3 +90,6 @@ Route::get('/categorias/{category_id}/{place_id}/nueva-resena', [\App\Http\Contr
 Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController::class, 'addReviewAction'])
   ->middleware('auth')
   ->name('addReviewAction');
+
+Route::get('/blog', [\App\Http\Controllers\HomeController::class, 'blogIndex'])
+->name('blogIndex');

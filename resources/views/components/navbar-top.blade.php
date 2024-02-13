@@ -32,7 +32,7 @@
               <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="#">Blog</a>
+              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('blogIndex') }}">Blog</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
