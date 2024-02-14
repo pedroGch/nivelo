@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,26 +18,9 @@ class HomeController extends Controller
 
   public function blogIndex()
   {
+    $noticias = Blog::all();
 
-  $noticias = [
-    [
-        'id' => 1,
-        'titulo' => 'Título de la primera noticia',
-        'descripcion' => 'Descripción de la primera noticia...',
-        'imagen' => 'imagen1.jpg',
-        'alt' => 'Texto alternativo para la imagen 1',
-    ],
-    [
-        'id' => 2,
-        'titulo' => 'Título de la segunda noticia',
-        'descripcion' => 'Descripción de la segunda noticia...',
-        'imagen' => 'imagen2.jpg',
-        'alt' => 'Texto alternativo para la imagen 2',
-    ],
-    // Agrega más noticias si es necesario
-  ];
-
-  return view('blog.index', ['noticias' => $noticias]);
-}
+    return view('blog.index', ['noticias' => $noticias]);
+  }
 
 }
