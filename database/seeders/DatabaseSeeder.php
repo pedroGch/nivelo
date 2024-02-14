@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     $this->call(UserDefinitionSeeder::class);
     //$this->call(UserMoreInfoSeeder::class);
     $this->call(PlaceSeeder::class);
-
+    $this->call(BlogSeeder::class);
       // \App\Models\User::factory(10)->create();
 
       // \App\Models\User::factory()->create([
