@@ -93,3 +93,6 @@ Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController:
 
 Route::get('/blog', [\App\Http\Controllers\HomeController::class, 'blogIndex'])
 ->name('blogIndex');
+
+Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 'leerArticulo'])
+  ->whereNumber('id');
