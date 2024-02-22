@@ -23,4 +23,13 @@ class HomeController extends Controller
     return view('blog.index', ['noticias' => $noticias]);
   }
 
+  public function leerArticulo(int $id)
+  {
+    //dd(Blog::all());
+    return view('blog.articuloCompleto', [
+      'noticia' => Blog::findOrFail($id),
+      'noticias' => Blog::all(),
+    ]);
+  }
+
 }
