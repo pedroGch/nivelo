@@ -435,7 +435,23 @@ table {
   height: 130px;
 }
 
+.card {
+  width: 300px; /* Ancho de la tarjeta */
+  margin: auto; /* Centrar horizontalmente */
+}
 /* MEDIA QUERIES */
+
+.newsContainer{
+  flex-direction: row;
+  display: flex;
+  overflow-x: scroll;
+  padding: 24px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 24px;
+  border-radius: 8px;
+  gap: 12px;
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
