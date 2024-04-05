@@ -27,7 +27,7 @@
         </a>
       </div>
       <div>
-        <a href="#">
+        <a href="{{ route('chatInbox') }}">
           <span class="icon">
             <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
           </span>

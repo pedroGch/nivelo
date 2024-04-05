@@ -453,6 +453,62 @@ table {
   gap: 12px;
 }
 
+/* Estilos para las imágenes redondas */
+.rounded-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.mensaje-extracto{
+  width: 300px; /* Ancho del contenedor */
+}
+.mensaje-extracto-contenedor{
+  width: 150px;
+  overflow: hidden; /* Ocultar texto que exceda el ancho */
+  white-space: nowrap; /* Impide que el texto se divida en varias líneas */
+  text-overflow: ellipsis;
+}
+
+/* Estilos para los mensajes */
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  max-width: 70%; /* Anchura máxima de los mensajes */
+}
+.sent-message {
+  background-color: #007bff;
+  color: #fff;
+  margin-left: auto; /* Alinear mensajes enviados a la derecha */
+}
+.received-message {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Ajustar el margen izquierdo del contenedor principal */
+.custom-container {
+
+  height: calc(94vh - 82px - 63px); /* Establecemos altura del 100% de la ventana del navegador */
+  /*overflow-y: auto;*/ /* Habilitamos el desplazamiento vertical si el contenido excede la altura */
+}
+
+.conversation{
+  height: calc(86vh - 82px - 63px);
+  overflow-y: auto;
+}
+/* Estilo para el borde derecho */
+.conversations-border {
+  border-right: 1px solid #ccc; /* Borde derecho gris */
+  height: 100%; /* Establecemos altura del 100% de la ventana del navegador */
+  position: relative; /* Establecemos el posicionamiento relativo para el contenedor */
+  overflow-y:auto
+}
+
+/* Estilo para fijar el campo de entrada y el botón al fondo */
+
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 
