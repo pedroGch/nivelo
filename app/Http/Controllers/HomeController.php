@@ -18,7 +18,7 @@ class HomeController extends Controller
 
   public function blogIndex()
   {
-    $noticias = Blog::all();
+    $noticias = Blog::orderBy('created_at', 'desc')->get();
 
     return view('blog.index', ['noticias' => $noticias]);
   }
@@ -28,7 +28,7 @@ class HomeController extends Controller
     //dd(Blog::all());
     return view('blog.articuloCompleto', [
       'noticia' => Blog::findOrFail($id),
-      'noticias' => Blog::all(),
+      'noticias' => Blog::orderBy('created_at', 'desc')->take(3)->get(),
     ]);
   }
 
