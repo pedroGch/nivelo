@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Blog de nivelo,'.$noticia->title)
+@section('title', 'Blog :: '.$noticia->title)
 
 
 @section('header')
@@ -28,10 +28,10 @@
               <h3>{{ $noticia->title }}</h3>
             </div>
             <div class="imagenDeTapa">
-              <img src="{{asset('storage/places/kSysaXa4dXROO7kTgdV6hZSEMskBJNZdb4SmpQIE.jpg') }}" class="d-block w-100" alt="una imagen">
+              <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100" alt="{{$noticia->alt}}">
             </div>
             <div class="my-2">
-              <p>{{ $noticia->content }}</p>
+              <p>{!! nl2br($noticia->content) !!}</p>
             </div>
           </article>
         </div>

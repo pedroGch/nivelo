@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Blog de nivelo, noticias de accesibilidad')
+@section('title', 'Blog')
 
 
 @section('header')
@@ -30,7 +30,7 @@
               <h3>{{ $noticia->title }}</h3>
             </div>
             <div class="imagenDeTapa">
-              <img src="{{asset('storage/places/kSysaXa4dXROO7kTgdV6hZSEMskBJNZdb4SmpQIE.jpg') }}" class="d-block w-100 1:3" alt="una imagen">
+              <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}">
             </div>
             <div class="my-2">
               <p>{{ $noticia->descripcion_reducida() }}</p>

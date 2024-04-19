@@ -17,14 +17,27 @@ class BlogSeeder extends Seeder
       [
         [
           'id' => 1,
-          'title' => 'La última tecnología en calefactores solares llega a nuestra tienda online',
-          'image' => 'noticias/calefactor-solar.jpeg',
-          'alt' => 'dos calefactores solares en una terraza',
-          'content' => 'Los calefactores solares son una excelente alternativa para mantener tu hogar cálido y acogedor de manera sostenible y económica. En nuestra tienda online, ofrecemos la última tecnología en calefactores solares, diseñados para proporcionar calor eficiente y ecológico durante todo el año.
+          'title' => 'Accesibilidad y Diseño Universal',
+          'image' => 'blog/accesibilidad-01.jpg',
+          'alt' => 'logo de discapacidad pintado en el piso',
+          'content' => 'La accesibilidad es un conjunto de características que debe disponer un entorno urbano, edificación, producto, servicio o medio de comunicación para ser utilizado en condiciones de comodidad, seguridad, igualdad y autonomía, por todas las personas, incluso por aquellas con capacidades motrices o sensoriales diferentes.
 
-          Nuestros calefactores solares utilizan paneles solares para capturar la energía del sol y convertirla en calor, lo que significa que no se emiten gases de efecto invernadero durante su uso. Además, nuestros calefactores solares son altamente eficientes, lo que significa que necesitan menos energía para calentar tu hogar en comparación con los sistemas de calefacción tradicionales.
+          La accesibilidad es una necesidad para las personas con discapacidad y una ventaja para todos los ciudadanos. Existe una diferencia entre ACCESIBILIDAD Y DISEÑO UNIVERSAL:
 
-          Los calefactores solares también son una excelente opción para los hogares que desean independizarse de la red eléctrica y reducir su dependencia de los combustibles fósiles. En nuestra tienda online, ofrecemos una amplia variedad de calefactores solares para satisfacer las necesidades de cada hogar, desde calefactores portátiles hasta sistemas de calefacción central.',
+          El diseño universal es cómo se piensa, lo que está antes del producto, mientras la accesibilidad es el producto realizado.
+
+          Cuando se habla de accesibilidad no se relaciona a una sola cosa o producto sino a una cadena de accesibilidad, que se refiere a la capacidad de aproximarse, acceder, usar y salir de todo espacio o recinto con independencia, facilidad y sin interrupciones. Si cualquiera de las tres anteriores acciones no es posible de realizar, la cadena se corta y el espacio o situación se torna accesible.
+
+          Importante saber que la accesibilidad es un principio de la Convención Internacional sobre los derechos de las personas con discapacidad, pues permite asegurar la igualdad de oportunidades y  el principio de la autonomía.
+
+          “UNA BUENA ACCESIBILIDAD ES AQUELLA QUE EXISTE PERO QUE PASA DESAPERCIBIDA PARA LA MAYORÍA DE USUARIOS", ARQUITECTO ENRIQUE ROVIRA BELETA.
+
+          Les compartimos un conversatorio realizado en el marco del “Mes de la Inclusión (septiembre 2020)”, organizado por COMUNIDIS, Consejo Municipal para la Inclusión del Municipio de Moreno.
+
+          Como invitado, Cristian Baraldo (@cristianbaraldook), Asesor en ALPI en el Programa de Certificación de Accesibilidad, desde la mirada de la Arquitectura Accesible y El Diseño Universal, generando espacios de trabajo accesibles en grandes empresas.
+
+          Entrevistó Rocío Scotto, del equipo de desarrollo de Nivelo y, en ese entonces, Presidente de COMUNIDIS.
+          ',
         ],
         [
           'id' => 2,
