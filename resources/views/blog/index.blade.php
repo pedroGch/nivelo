@@ -28,6 +28,7 @@
           <article class="col-4">
             <div class="my-2">
               <h3>{{ $noticia->title }}</h3>
+              <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa">
               <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}">
