@@ -33,7 +33,7 @@
               <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}">
             </div>
             <div class="my-2">
-              <p>{{ $noticia->descripcion_reducida() }}</p>
+              <p>{{ $noticia->descripcion_reducida(20) }}</p>
             </div>
             <div class="my-2">
               <div>
