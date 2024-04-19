@@ -24,15 +24,24 @@
 
         <div class="row d-flex col-12 my-2">
           <article class="col-12">
-            <div class="my-2">
+            <div class="my-3">
               <h3>{{ $noticia->title }}</h3>
             </div>
-            <div class="imagenDeTapa">
+            <div class="imagenDeTapa mt-3 mb-5">
               <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100" alt="{{$noticia->alt}}">
             </div>
             <div class="my-2">
               <p>{!! nl2br($noticia->content) !!}</p>
             </div>
+            @if($noticia->video)
+            <div class="my-5">
+              <iframe width="1200" height="720"
+              src="{{ $noticia->video }}"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+            </div>
+            @endif
           </article>
         </div>
         <div class="container">
