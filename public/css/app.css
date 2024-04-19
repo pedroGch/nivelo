@@ -441,6 +441,8 @@ table {
 }
 /* MEDIA QUERIES */
 
+/* SCROLL HORIZONTAL EN ÚLTIMAS NOTICIAS (articuloCompleto.blade.php)*/
+/*
 .newsContainer{
   flex-direction: row;
   display: flex;
@@ -452,6 +454,7 @@ table {
   border-radius: 8px;
   gap: 12px;
 }
+*/
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
