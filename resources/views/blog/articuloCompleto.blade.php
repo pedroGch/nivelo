@@ -54,6 +54,12 @@
               allowfullscreen></iframe>
             </div>
             @endif
+
+            @if ($noticia->source)
+            <div class="my-5">
+              <a href="{{ $noticia->source }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white" target="_blank">Ver fuente</a>
+
+            @endif
           </article>
         </div>
         <div class="container">

@@ -34,12 +34,12 @@
               <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}">
             </div>
             <div class="my-2">
-              <p>{{ $noticia->descripcion_reducida(20) }}</p>
+              <p>{{ $noticia->descripcion_reducida() }}</p>
             </div>
             <div class="my-2">
               <div>
                 <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="get">
-                  <button class="btn bg-verde-principal" type="submit">
+                  <button class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " type="submit">
                     Leer más
                   </button>
                 </form>

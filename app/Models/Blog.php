@@ -49,7 +49,7 @@ class Blog extends Model
    * Esta función devuelve las primeras x palabras de un párrafo
    * @param int $cantidad Esta es la cantidad de palabras a extraer (Opcional)
    */
-  public function descripcion_reducida(int $value = 50): string
+  public function descripcion_reducida(int $value = 25): string
   {
     $text = $this->content;
 
