@@ -46,12 +46,12 @@
               <p>{!! nl2br($noticia->content) !!}</p>
             </div>
             @if($noticia->video)
-            <div class="my-5">
-              <iframe width="1200" height="720"
-              src="{{ $noticia->video }}"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+            <div class="my-5" style="position: relative; padding-bottom: 56.25%; /* 16:9 aspect ratio */ height: 0; overflow: hidden; max-width: 100%;">
+              <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                src="{{ $noticia->video }}"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
             </div>
             @endif
 
@@ -68,10 +68,10 @@
             <span class="bg-movimiento ms-3"></span>
           </div>
           <div class="row my-3">
-            <div class="col-12 newsContainer d-flex justify-content-around">
+            <div class="col-12 newsContainer d-md-flex justify-content-around ">
               @foreach($noticias as $noticia)
               <a href="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" class="text-decoration-none">
-                <div class="col-sm-4">
+                <div class="col-sm-4 py-2">
                   <div class="card">
                     <img src="{{asset('storage/' . $noticia->image ) }}" class="card-img-top" alt="{{ $noticia->alt }}">
                     <div class="card-body">

@@ -22,16 +22,16 @@
           </div>
         </div>
 
-        <div class="row d-flex col-12 my-2">
+        <div class="row d-flex flex-sm-column flex-md-row col-12 my-2 mb-5">
 
           @foreach ($noticias as $noticia)
-          <article class="col-4">
+          <article class="col-12 col-lg-4 py-3">
             <div class="my-2">
               <h3>{{ $noticia->title }}</h3>
               <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa">
-              <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}">
+              <a href="{{ url('/blog/' . $noticia->id . '/leer_mas') }}"><img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}"></a>
             </div>
             <div class="my-2">
               <p>{{ $noticia->descripcion_reducida() }}</p>

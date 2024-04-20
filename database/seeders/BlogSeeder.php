@@ -117,8 +117,6 @@ class BlogSeeder extends Seeder
           'image' => 'blog/accesibilidad-03.jpg',
           'alt' => 'foto de cristian con su silla de ruedas cruzando la calle',
           'content' => 'Video que realizó Cristian Baraldo, asesor de Arquitectura Accesible de la Asociación Civil ALPI (https://alpi.org.ar/), en el marco del Día de la Accesibilidad, que se celebra el 15 de marzo.
-
-          https://www.facebook.com/ALPIAsociacionCivil
           ',
           'video' => 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D280520893607850&width=1200&show_text=false&appId=6354999337924606&height=720',
           'source' => 'https://www.facebook.com/watch/?v=280520893607850',
