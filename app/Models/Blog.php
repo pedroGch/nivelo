@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  * @property string $image
  * @property string $alt
  * @property string $content
+ * @property string $video
+ * @property string $source
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Blog newModelQuery()
@@ -32,11 +34,13 @@ class Blog extends Model
   //use HasFactory;
 
   protected $table = 'blog';
-  protected $fillable = ['title','image','alt','content'];
+  protected $fillable = ['title','image','alt','content', 'video', 'source'];
 
   public static $rules = [
     'title' => 'required|max:255',
-    'content' => 'required'
+    'content' => 'required',
+    
+
   ];
 
   public static $errorMessages = [
