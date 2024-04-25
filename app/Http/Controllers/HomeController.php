@@ -106,4 +106,25 @@ class HomeController extends Controller
         ->with('status.message', 'Error al editar la noticia: ' . $e->getMessage());
     }
   }
+
+  /**
+   * Elimina una noticia de la base de datos
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function deletePostAction(int $id)
+  {
+    try{
+      Blog::findOrFail($id)->delete();
+      //si tenia una magen cargada la borramos de la carpeta storage
+      if($noticia->image && Storage::has($noticia->image)){
+        Storage::delete($noticia->image);
+      }
+      return redirect()->route('blogIndex')
+        ->with('status.message', 'Noticia eliminada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('blogIndex')
+        ->with('status.message', 'Error al eliminar la noticia: ' . $e->getMessage());
+    }
+  }
 }
