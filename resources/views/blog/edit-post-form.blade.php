@@ -1,8 +1,13 @@
+<?php
+/**
+ * @var \App\Models\Noticia $noticia
+*/
+?>
 @extends('layouts.main')
 
 {{-- @section('title') Página Principal @endsection --}}
 
-@section('title', 'Nueva noticia')
+@section('title', 'Editar noticia' . $noticia->title)
 
 @section('header')
 
@@ -12,13 +17,12 @@
 
 @section('content')
 <section class="container margin-navs">
-
   <div class="row d-flex vh-100">
     <div class="mb-2">
       <div class="row my-4 mx-auto">
         <div class="col-12 my-4 border-bottom border-dark-subtle pb-3">
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Cargar una nueva noticia</h2>
+            <h2 class="h3 fw-bold">Editar noticia</h2>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
@@ -42,12 +46,12 @@
           @endif
         </div>
         <div class="col-12 mb-5">
-          <form action="{{ route('addPostAction') }}" method="POST" id="new_post_create" enctype="multipart/form-data">
+          <form action="{{ route('editPostAction', ['id' => $noticia->id]) }}"" method="POST" id="edit_post" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="col-12 mb-4">
                 <label for="title" class="form-label h5 my-3">Título de la noticia:</label>
-                <input type="text"   name="title" class="form-control p-3 @error('title') is-invalid @enderror" id="title" value="{{ old('title') }}"
+                <input type="text"   name="title" class="form-control p-3 @error('title') is-invalid @enderror" id="title" value="{{ old('title', $noticia->title) }}"
                 @error('title')
                 aria-describedby="error-title"
                 aria-invalid="true"
@@ -57,7 +61,12 @@
                 @enderror
               </div>
               <div class="col-12 mb-4 border-bottom border-dark-subtle pb-3">
-                <label for="image" class="block font-bold mb-3 h5"> Imagen principal</label>
+                <label for="image" class="block font-bold mb-3 h5"> Imagen principal actual</label>
+                <div class="mb-3">
+                  <img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100" alt="{{$noticia->alt}}">
+              </div>
+              <div class="col-12 mb-4 border-bottom border-dark-subtle pb-3">
+                <label for="image" class="block font-bold mb-3 h5"> Subir nueva imagen principal</label>
                 <div class="mb-3">
                   <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror"
                   @error('image')
@@ -71,7 +80,7 @@
               </div>
               <div>
                 <label for="alt" class="form-label h5 my-3">Descripción de la imagen:</label>
-                <input type="text" name="alt" class="form-control p-3 @error('alt') is-invalid @enderror" id="alt" value="{{ old('alt') }}"
+                <input type="text" name="alt" class="form-control p-3 @error('alt') is-invalid @enderror" id="alt" value="{{ old('alt', $noticia->alt) }}"
                 @error('alt')
                 aria-describedby="error-alt"
                 aria-invalid="true"
@@ -88,7 +97,7 @@
                   aria-describedby="error-content"
                   aria-invalid="true"
                   @enderror
-                  >{{ old('content') }}</textarea>
+                  >{{ trim(old('contenido', $noticia->content)) }}</textarea>
                   @error('content')
                   <p class="text-danger" id="error-content">{{ $message }}</p>
                   @enderror
@@ -97,7 +106,7 @@
               <div class="col-12">
                 <div class="mb-4 mt-1 d-flex flex-colum pb-4">
                   <label for="video" class="form-label h5 my-3"> Link de video (opcional):</label>
-                  <input type="text" name="video" class="form-control p-3 @error('video') is-invalid @enderror" id="video" value="{{ old('video') }}"
+                  <input type="text" name="video" class="form-control p-3 @error('video') is-invalid @enderror" id="video" value="{{ old('video', $noticia->video) }}"
                   @error('video')
                   aria-describedby="error-video"
                   aria-invalid="true"
@@ -110,7 +119,7 @@
               <div class="col-12">
                 <div class="mb-4 mt-1 d-flex flex-colum pb-4">
                   <label for="source" class="form-label h5 my-3"> Link de la fuente original (opcional):</label>
-                    <input type="text" name="source" class="form-control p-3 @error('source') is-invalid @enderror" id="source"  value="{{ old('source') }}"
+                    <input type="text" name="source" class="form-control p-3 @error('source') is-invalid @enderror" id="source"  value="{{ old('source', $noticia->source) }}"
                     @error('source')
                     aria-describedby="error-source"
                     aria-invalid="true"
@@ -122,7 +131,7 @@
                 </div>
               </div>
               <div class="mb-4">
-                <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+                <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Guardar cambios </button>
               </div>
             </div>
             </form>

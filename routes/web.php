@@ -106,3 +106,11 @@ Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 
 Route::post('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostAction'])
   ->middleware('auth')
   ->name('addPostAction');
+
+Route::get('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostForm'])
+  ->middleware('auth')
+  ->name('editPostForm');
+
+Route::post('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostAction'])
+  ->middleware('auth')
+  ->name('editPostAction');

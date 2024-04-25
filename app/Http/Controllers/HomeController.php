@@ -71,4 +71,39 @@ class HomeController extends Controller
         ->with('status.message', 'Error al agregar la noticia: ' . $e->getMessage());
     }
   }
+
+  /**
+   * Retorna la vista del formulario para editar una noticia
+   * @param int $id
+   * @return \Illuminate\View\View
+   */
+  public function editPostForm(int $id)
+  {
+    return view('blog.edit-post-form', [
+      'noticia' => Blog::findOrFail($id),
+    ]);
+  }
+
+  /**
+   * Edita una noticia en la base de datos
+   * @param Request $request
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function editPostAction(Request $request, int $id)
+  {
+    $request->validate(Blog::$rules, Blog::$errorMessages);
+    try{
+      $data = $request->only(['title', 'content', 'image', 'alt', 'video', 'source']);
+      if($request->hasFile('image')){
+        $data['image'] = $request->file('image')->store('blog');
+      }
+      Blog::findOrFail($id)->update($data);
+      return redirect()->route('blogIndex')
+        ->with('status.message', 'Noticia editada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('blogIndex')
+        ->with('status.message', 'Error al editar la noticia: ' . $e->getMessage());
+    }
+  }
 }
