@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Blog de nivelo, noticias de accesibilidad')
+@section('title', 'Blog')
 
 
 @section('header')
@@ -15,22 +15,24 @@
   <div class="row d-flex vh-100">
     <div class="mb-2">
       <div class="row my-4 mx-auto">
-        <div class="col-12 my-2 border-bottom border-dark-subtle pb-3">
+        <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
+          <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
           <div class="d-flex ">
             <h2 class="h3 fw-bold">Blog</h2>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
 
-        <div class="row d-flex col-12 my-2">
+        <div class="row d-flex flex-sm-column flex-md-row col-12 my-2 mb-5">
 
           @foreach ($noticias as $noticia)
-          <article class="col-4">
+          <article class="col-12 col-lg-4 py-3">
             <div class="my-2">
               <h3>{{ $noticia->title }}</h3>
+              <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa">
-              <img src="{{asset('storage/places/kSysaXa4dXROO7kTgdV6hZSEMskBJNZdb4SmpQIE.jpg') }}" class="d-block w-100 1:3" alt="una imagen">
+              <a href="{{ url('/blog/' . $noticia->id . '/leer_mas') }}"><img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}"></a>
             </div>
             <div class="my-2">
               <p>{{ $noticia->descripcion_reducida() }}</p>
@@ -38,7 +40,7 @@
             <div class="my-2">
               <div>
                 <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="get">
-                  <button class="btn bg-verde-principal" type="submit">
+                  <button class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " type="submit">
                     Leer más
                   </button>
                 </form>

@@ -91,6 +91,8 @@ Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController:
   ->middleware('auth')
   ->name('addReviewAction');
 
+
+// Rutas relacionadas al blog de noticias
 Route::get('/blog', [\App\Http\Controllers\HomeController::class, 'blogIndex'])
 ->name('blogIndex');
 
@@ -100,3 +102,22 @@ Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 
 Route::get('/chat', [\App\Http\Controllers\HomeController::class, 'chatInbox'])
 ->name('chatInbox');
 
+Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
+  ->middleware('auth')
+  ->name('addPostForm');
+
+Route::post('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostAction'])
+  ->middleware('auth')
+  ->name('addPostAction');
+
+Route::get('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostForm'])
+  ->middleware('auth')
+  ->name('editPostForm');
+
+Route::post('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostAction'])
+  ->middleware('auth')
+  ->name('editPostAction');
+
+Route::get('/blog/{id}/eliminar', [\App\Http\Controllers\HomeController::class, 'deletePostAction'])
+  ->middleware('auth')
+  ->name('deletePostAction');
