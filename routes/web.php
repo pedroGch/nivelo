@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 
 // Ruta de landing page
-// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
-//   ->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
+   ->name('home');
 
 // Ruta de landing page
-Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
-->name('login');
+// Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
+// ->name('login');
 
 // Rutas de login y logout
 Route::get('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginForm'])
