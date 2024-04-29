@@ -9,7 +9,7 @@
   <div class="row d-flex vh-100">
     <div class="col-12 col-md-6 col-lg-4 mt-lg-5 ms-lg-5 pt-3 container-xxl bg-white rounded shadow-sm">
       <div class="pt-5 d-flex justify-content-center my-6">
-        <img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo">
+        <a href="{{ route('home') }}"><img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo"></a>
       </div>
       <div class="row pb-5 mt-4 mx-auto border-top redondeo-superior-login shadow-sm-top">
         <div class="col-12 my-4">

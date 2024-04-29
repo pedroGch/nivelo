@@ -18,6 +18,9 @@
           <li class="nav-item  me-4">
             <a class="nav-link text-light" href="#">CONTACTO</a>
           </li>
+          <li class="nav-item  me-4">
+            <a class="nav-link text-light" href="{{ route('login') }}">INGRESAR</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link disabled text-white-50" aria-disabled="true">DESCARGAR</a>
           </li>

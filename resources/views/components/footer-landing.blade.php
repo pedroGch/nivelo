@@ -1,6 +1,6 @@
-<div class="bg-gris-claro d-flex flex-column min-vh-100">
+<div class="bg-gris-claro d-flex flex-column min-vh-40">
    <div class="container container-fluid py-2 align-items-center">
-     <div class="row pt-5">
+     <div class="row pt-5 pb-5">
        <div class="col-4">
         <img src="{{ url('/img/logo_footer.png') }}" alt="logo de nivelo"></a>
        </div>
