@@ -9,8 +9,9 @@
 @endsection
 
 @section('content')
-
-<h2>Inicio</h2>
+<div class="mt-5 pt-5">
+  <h2>Inicio</h2>
+</div>
 
 @endsection
 
