@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
    ->name('home');
 
+// Ruta suscripción
+Route::post('/', [\App\Http\Controllers\SubscriberController::class, 'subscribeAction'])
+   ->name('subscribeAction');
+
 // Ruta de landing page
 // Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
 // ->name('login');

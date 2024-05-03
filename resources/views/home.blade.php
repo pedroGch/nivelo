@@ -47,3 +47,17 @@
 <x-FooterLanding/>
 
 @endsection
+
+
+<script>
+  window.onload = function() {
+      var scrollPosition = sessionStorage.getItem('scrollPosition');
+      if (scrollPosition) {
+          window.scrollTo(0, scrollPosition);
+          sessionStorage.removeItem('scrollPosition');
+      }
+      window.onscroll = function() {
+          sessionStorage.setItem('scrollPosition', window.pageYOffset);
+      };
+  };
+  </script>
