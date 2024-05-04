@@ -42,7 +42,8 @@ body {
 }
 
 ::selection {
-  background-color: #f2eaff;
+  /*background-color: #f2eaff;*/
+  background-color: var(--naranja-principal);
 }
 
 
