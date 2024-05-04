@@ -48,7 +48,7 @@
        <div class="col-4">
         <ul class="navbar-nav">
           <li class="pe-2 pt-2 nav-item text-end">
-            <a class="nav-link" aria-disabled="true" href="#">Acerca de nivelo</a>
+            <a class="nav-link" aria-disabled="true" href="{{ route('about') }}">Acerca de nivelo</a>
           </li>
           <li class="pe-2 pt-2 nav-item text-end">
             <a class="nav-link" aria-disabled="true" href="#">Términos y condiciones</a>

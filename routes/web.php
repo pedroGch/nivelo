@@ -12,6 +12,10 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
 Route::post('/', [\App\Http\Controllers\SubscriberController::class, 'subscribeAction'])
    ->name('subscribeAction');
 
+// Ruta de la página Acerca de
+Route::get('/acerca-de', [\App\Http\Controllers\HomeController::class, 'about'])
+   ->name('about');
+
 // Ruta de landing page
 // Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
 // ->name('login');
