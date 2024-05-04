@@ -10,19 +10,19 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  me-4">
-            <a class="nav-link active text-light" aria-current="page" href="#">HOME</a>
+            <a class="nav-link underlined-hover100 active text-light" aria-current="page" href="#">HOME</a>
           </li>
           <li class="nav-item  me-4">
-            <a class="nav-link text-light" href="#">LA APP</a>
+            <a class="nav-link underlined-hover100 text-light" href="#">LA APP</a>
           </li>
           <li class="nav-item  me-4">
-            <a class="nav-link text-light" href="#">CONTACTO</a>
+            <a class="nav-link underlined-hover100 text-light" href="#">CONTACTO</a>
           </li>
           <li class="nav-item  me-4">
-            <a class="nav-link text-light" href="{{ route('login') }}">INGRESAR</a>
+            <a class="nav-link underlined-hover100 text-light" href="{{ route('login') }}">INGRESAR</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled text-white-50" aria-disabled="true">DESCARGAR</a>
+            <a class="nav-link underlined-hover100 disabled text-white-50" aria-disabled="true">DESCARGAR</a>
           </li>
         </ul>
       </div>

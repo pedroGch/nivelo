@@ -14,6 +14,7 @@
   <div class="row my-5">
     <div class="col-12">
       <h2 class="h2 fw-bolder mt-5 mb-3">Acerca de nivelo</h2>
+      <p>Versión: 1.0.0</p>
       <p><strong>Nivelo es una aplicación web desarrollada en Argentina por un equipo de jóvenes y apasionados desarrolladores comprometidos en brindar soluciones innovadoras a la comunidad a través de las nuevas tecnologías. Nuestra aplicación es completamente gratuita y está diseñada para compartir experiencias y descubrir lugares en todo el país.</strong></p>
 
       <p>Nuestra misión es proporcionar a los usuarios una plataforma donde puedan compartir en primera persona sus vivencias al visitar diversos lugares, desde parques y museos hasta restaurantes y hoteles, con el objetivo de ayudar a otros usuarios con movilidad reducida a planificar sus salidas de manera segura y cómoda.</p>

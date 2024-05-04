@@ -16,6 +16,10 @@ Route::post('/', [\App\Http\Controllers\SubscriberController::class, 'subscribeA
 Route::get('/acerca-de', [\App\Http\Controllers\HomeController::class, 'about'])
    ->name('about');
 
+// Ruta de la página de términos y condiciones
+Route::get('/terminos-y-condiciones', [\App\Http\Controllers\HomeController::class, 'terms'])
+   ->name('terms');
+
 // Ruta de landing page
 // Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
 // ->name('login');
