@@ -48,6 +48,9 @@
        <div class="col-4">
         <ul class="navbar-nav">
           <li class="pe-2 pt-2 nav-item text-end">
+            <b>info@nivelo.com.ar</b>
+          </li>
+          <li class="pe-2 pt-2 nav-item text-end">
             <a class="nav-link underlined-hover50 fw-bold" aria-disabled="true" href="{{ route('about') }}">Acerca de nivelo</a>
           </li>
           <li class="pe-2 pt-2 nav-item text-end">

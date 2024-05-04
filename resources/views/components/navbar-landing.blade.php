@@ -10,14 +10,14 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  me-4">
-            <a class="nav-link underlined-hover100 active text-light" aria-current="page" href="#">HOME</a>
+            <a class="nav-link underlined-hover100 active text-light" aria-current="page" href="{{ route('home') }}#home">HOME</a>
           </li>
           <li class="nav-item  me-4">
-            <a class="nav-link underlined-hover100 text-light" href="#">LA APP</a>
+            <a class="nav-link underlined-hover100 text-light" href="{{ route('home') }}#app">LA APP</a>
           </li>
-          <li class="nav-item  me-4">
+          {{-- <li class="nav-item  me-4">
             <a class="nav-link underlined-hover100 text-light" href="#">CONTACTO</a>
-          </li>
+          </li> --}}
           <li class="nav-item  me-4">
             <a class="nav-link underlined-hover100 text-light" href="{{ route('login') }}">INGRESAR</a>
           </li>

@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="mt-5 pt-5 container">
+<div id="home"  class="mt-5 pt-5 container">
   <div class="row mt-5">
     <div class="col-6 d-flex justify-content-center">
       <img src="{{ url('/img/mockup-cellphone.jpg') }}" alt="mano sosteniendo celular con pantalla de presentación de la app" class="img-fluid">
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="bg-violeta-dark">
+<div id="app" class="bg-violeta-dark">
   <div class="container py-5">
     <div class="row d-flex justify-content-center">
       <div class="col-6">
