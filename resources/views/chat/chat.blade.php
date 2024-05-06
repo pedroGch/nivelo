@@ -12,7 +12,7 @@
 @section('content')
 
 <section class="container margin-navs">
-  <div class="container custom-container"> <!-- Agregamos la clase "custom-container" -->
+  {{-- <div class="container custom-container"> <!-- Agregamos la clase "custom-container" -->
     <div class="row h-100"> <!-- Cambiamos el tamaño a 100% -->
       <!-- Conversaciones -->
       <div class="col-md-4 mb-3 conversations-border"> <!-- Cambiamos el tamaño a 30% y aplicamos el borde derecho -->
@@ -174,7 +174,9 @@
 
       </div>
     </div>
-  </div>
+  </div> --}}
+
+
 </section>
 
 @endsection
