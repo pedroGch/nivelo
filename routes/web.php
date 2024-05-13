@@ -111,8 +111,12 @@ Route::get('/blog', [\App\Http\Controllers\HomeController::class, 'blogIndex'])
 Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 'leerArticulo'])
   ->whereNumber('id');
 
-Route::get('/chat', [\App\Http\Controllers\HomeController::class, 'chatInbox'])
-->name('chatInbox');
+// Route::get('/chat', [\App\Http\Controllers\HomeController::class, 'chatInbox'])
+// ->name('chatInbox');
+Route::get('/chat', function ()
+{
+  return view('chat.chat');
+})->name('chatInbox');
 
 Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
   ->middleware('auth')
