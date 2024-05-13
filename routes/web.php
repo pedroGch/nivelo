@@ -5,12 +5,24 @@ use Illuminate\Support\Facades\Route;
 
 
 // Ruta de landing page
-// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
-//   ->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
+   ->name('home');
+
+// Ruta suscripción
+Route::post('/', [\App\Http\Controllers\SubscriberController::class, 'subscribeAction'])
+   ->name('subscribeAction');
+
+// Ruta de la página Acerca de
+Route::get('/acerca-de', [\App\Http\Controllers\HomeController::class, 'about'])
+   ->name('about');
+
+// Ruta de la página de términos y condiciones
+Route::get('/terminos-y-condiciones', [\App\Http\Controllers\HomeController::class, 'terms'])
+   ->name('terms');
 
 // Ruta de landing page
-Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
-->name('login');
+// Route::get('/', [\App\Http\Controllers\SessionController::class, 'loginForm'])
+// ->name('login');
 
 // Rutas de login y logout
 Route::get('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 'loginForm'])

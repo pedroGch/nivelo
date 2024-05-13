@@ -17,6 +17,24 @@ class HomeController extends Controller
   }
 
   /**
+   * Retorna la vista de la página Acerca de
+   * @return \Illuminate\View\View
+   */
+  public function about()
+  {
+    return view('about');
+  }
+
+  /**
+   * Retorna la vista de la página de términos y condiciones
+   * @return \Illuminate\View\View
+   */
+  public function terms()
+  {
+    return view('terms-conditions');
+  }
+
+  /**
    * Retorna la vista de la página de blog
    * @return \Illuminate\View\View
    */
