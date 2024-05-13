@@ -34,9 +34,9 @@ class ChatComponent extends Component
   #[On('echo:chat-channel,MessageEvent')]
   public function listenForMessage($data)
   {
-    dd($data);
+    //dd($data);
     $this->conversation[] = [
-      'username' => $data->username,
+      'username' => $data['username'],
       'message'  => $data['message']
     ];
   }
