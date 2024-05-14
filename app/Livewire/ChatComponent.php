@@ -22,7 +22,8 @@ class ChatComponent extends Component
     {
       $this->conversation[] = [
         'username' => $m->user->name,
-        'message'  => $m->message
+        'message'  => $m->message,
+        'user_id'  => $m->user_id
       ];
     }
   }

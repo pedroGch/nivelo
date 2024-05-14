@@ -22,6 +22,7 @@ class MessageEvent implements ShouldBroadcastNow
     public $username;
     public $message;
 
+
     public function __construct($user_id, $message)
     {
       $newMessage = New Message();
@@ -29,8 +30,9 @@ class MessageEvent implements ShouldBroadcastNow
       $newMessage->message = $message;
       $newMessage->save();
 
-      $this->message = $message;
-      $this->usename = User::find($user_id)->name;
+      $this->message  = $message;
+      $this->username = User::find($user_id)->name;
+
     }
 
     /**
