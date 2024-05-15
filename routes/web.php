@@ -129,6 +129,15 @@ Route::get('/chat', function ()
   return view('chat.chat');
 })->name('chatInbox');
 
+// Rutas relacionadas al panel de administración
+
+Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'dashboardAdmin'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('dashboard');
+
+// Rutas de administración de noticias
+
 Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
   ->middleware('auth')
   ->middleware('only_admin_allow')

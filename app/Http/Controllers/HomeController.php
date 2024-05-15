@@ -149,4 +149,13 @@ class HomeController extends Controller
         ->with('status.message', 'Error al eliminar la noticia: ' . $e->getMessage());
     }
   }
+
+  /**
+   * Retorna la vista del panel de administración
+   * @return \Illuminate\View\View
+   */
+  public function dashboardAdmin()
+  {
+    return view('admin.dashboard');
+  }
 }
