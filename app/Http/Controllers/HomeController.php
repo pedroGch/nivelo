@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Place;
+use App\Models\User;
+use App\Models\Review;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -161,7 +165,11 @@ class HomeController extends Controller
       'noticias' => Blog::orderBy('created_at', 'desc')->take(3)->get(),
     ]); */
     return view('admin.dashboard', [
-      'noticias' => Blog::all()
+      'noticias' => Blog::all(),
+      'lugares' => Place::all(),
+      'usuarios' => User::where('rol', 'user')->get(),
+      'suscriptores' => Subscriber::all(),
+      'reviews' => Review::all(),
     ]);
   }
 }

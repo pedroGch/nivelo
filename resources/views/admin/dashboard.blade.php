@@ -1,6 +1,10 @@
 <?php
 /**
  * @var \App\Models\Noticia[] $noticias
+ * @var \App\Models\Place[] $lugares
+ * @var \App\Models\User[] $usuarios
+ * @var \App\Models\Subscriber[] $suscriptores
+ * @var \App\Models\Review[] $reviews
  */
 
 ?>
@@ -38,18 +42,57 @@
           @endif
 
         </div>
+        <div class="mt-3 row">
+          <div class="col-md-4 mb-3">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+              <h3 class="mt-2 text-center">Administrar blog</h3>
+              <p class="text-center">Cantidad de noticias: {{ $noticias->count() }}</p>
+              <div class="mb-2">
+                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+              <h3 class="mt-2 text-center">Administrar lugares</h3>
+              <p class="text-center">Cantidad de lugares: {{ $lugares->count() }}</p>
+              <div class="mb-2">
+                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+              <h3 class="mt-2 text-center">Usuarios registrados</h3>
+              <p class="text-center">Cantidad de usuarios: {{ $usuarios->count() }}</p>
+              <div class="mb-2">
+                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+              </div>
+            </div>
+          </div>
 
-        <div class="row d-flex flex-sm-column flex-md-row my-2 mb-5">
-          <div class="col-4 p-4 rounded rounded-3 bg-violeta-ultra-light">
-            <h3 class="mt-2 text-center">Administrar Noticias</h3>
-            <p class="pt-2 text-center">En esta sección podrás administrar las noticias del blog.</p>
-            <p class="text-center">Cantidad de noticias: {{ $noticias->count() }}</p>
-            <div class="mb-2">
-              <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ir</a>
+          <div class="col-md-4 mb-3">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+              <h3 class="mt-2 text-center">Suscriptores</h3>
+              <p class="text-center">Cantidad: {{ $suscriptores->count() }}</p>
+              <div class="mb-2">
+                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+              <h3 class="mt-2 text-center">Reseñas</h3>
+              <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: 0 </p>
+              <div class="mb-2">
+                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </div>
   </div>
