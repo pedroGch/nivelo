@@ -156,6 +156,12 @@ class HomeController extends Controller
    */
   public function dashboardAdmin()
   {
-    return view('admin.dashboard');
+    /*return view('blog.articuloCompleto', [
+      'noticia' => Blog::findOrFail($id),
+      'noticias' => Blog::orderBy('created_at', 'desc')->take(3)->get(),
+    ]); */
+    return view('admin.dashboard', [
+      'noticias' => Blog::all()
+    ]);
   }
 }

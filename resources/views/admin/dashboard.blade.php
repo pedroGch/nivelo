@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var \App\Models\Noticia[] $noticias
+ */
+
+?>
+
 @extends('layouts.main')
 
 @section('title', 'Panel de administración')
@@ -29,21 +36,18 @@
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
           @endif
-          @if($errors->any())
-          <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
-            <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para cargar correctamente el lugar.</p>
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-          </div>
-          @endif
+
         </div>
 
-        <div class="row d-flex flex-sm-column flex-md-row col-12 my-2 mb-5">
-
+        <div class="row d-flex flex-sm-column flex-md-row my-2 mb-5">
+          <div class="col-4 p-4 rounded rounded-3 bg-violeta-ultra-light">
+            <h3 class="mt-2 text-center">Administrar Noticias</h3>
+            <p class="pt-2 text-center">En esta sección podrás administrar las noticias del blog.</p>
+            <p class="text-center">Cantidad de noticias: {{ $noticias->count() }}</p>
+            <div class="mb-2">
+              <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ir</a>
+            </div>
+          </div>
 
         </div>
       </div>
