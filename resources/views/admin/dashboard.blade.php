@@ -48,7 +48,7 @@
               <h3 class="mt-2 text-center">Administrar blog</h3>
               <p class="text-center">Cantidad de noticias: {{ $noticias->count() }}</p>
               <div class="mb-2">
-                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+                <a href="{{ route('blogAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
               </div>
             </div>
           </div>
