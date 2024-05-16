@@ -9,14 +9,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Message extends Model
 {
   use HasFactory;
-  /**
-   * Get the user that owns the Message
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-   */
-  public function user(): BelongsTo
+
+  protected $table = 'messages';
+
+  public function chat()
   {
-    return $this->belongsTo(User::class);
+      return $this->belongsTo(Chat::class);
+  }
+
+  public function sender()
+  {
+      return $this->belongsTo(User::class, 'sender_id');
   }
 
 }
