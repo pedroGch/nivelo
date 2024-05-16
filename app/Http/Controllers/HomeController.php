@@ -90,10 +90,10 @@ class HomeController extends Controller
         $data['image'] = $request->file('image')->store('blog');
       }
       Blog::create($data);
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia agregada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al agregar la noticia: ' . $e->getMessage());
     }
   }
@@ -125,10 +125,10 @@ class HomeController extends Controller
         $data['image'] = $request->file('image')->store('blog');
       }
       Blog::findOrFail($id)->update($data);
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia editada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al editar la noticia: ' . $e->getMessage());
     }
   }
@@ -146,10 +146,10 @@ class HomeController extends Controller
       if($noticia->image && Storage::has($noticia->image)){
         Storage::delete($noticia->image);
       }
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia eliminada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al eliminar la noticia: ' . $e->getMessage());
     }
   }

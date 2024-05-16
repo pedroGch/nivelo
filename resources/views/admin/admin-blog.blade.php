@@ -1,7 +1,6 @@
 <?php
 /**
  * @var \App\Models\Noticia[] $noticias
- * @var \App\Models\Noticia $noticia
  */
 
 ?>
@@ -39,8 +38,13 @@
           @endif
         </div>
         <div class="mt-3 row">
-          <div class="lg:mx-6 mb-8 mt-2 flex justify-center flex-row flex-wrap">
-            <table>
+          <div class="lg:mx-6 mb-8 mt-2 mb-5 flex justify-center flex-row flex-wrap">
+            <div>
+              <form action="{{ route('addPostAction') }}" method="GET">
+                <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar noticia nueva</button>
+              </form>
+            </div>
+            <table class="mb-4">
               <thead class="border-2">
                 <tr>
                   <th class="p-3">ID</th>
@@ -59,18 +63,17 @@
                   </td>
                   <td class="text-sm p-3 border-2" width="50%">{{ $noticia->title }}</td>
                   <td class="text-sm p-3 border-2">{{ $noticia->created_at }}</td>
-                  <td class="p-3 border-2" width="15%>
-                    <form action="{{ url('/tienda/' . $noticia->id . '/editar') }}" method="GET">
+                  <td class="p-3 border-2" width="15%">
+                    <form action="{{ url('/blog/' . $noticia->id . '/editar') }}" method="GET">
                       <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Editar</button>
                     </form>
-                    <button type="button" onclick="borrarNoticia({{ $noticia->id }}, '{{ $noticia->title }}')" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Eliminar
+                    <button type="button" onclick="borrarNoticia({{ $noticia->id }}, '{{ $noticia->title }}')" class="mb-3 form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Eliminar
                     </button>
                     <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="GET">
                       <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Leer más</button>
                     </form>
                   </td>
                 </tr>
-
               @endforeach
               </tbody>
             </table>
@@ -98,10 +101,10 @@
       text:'"' + title + '"',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#459646',
+      confirmButtonColor: '#13BA41',
       cancelButtonColor: '#d33',
-      confirmButtonText: '¡Sí, borrar!',
-      cancelButtonText: 'Mejor no'
+      confirmButtonText: 'Borrar',
+      cancelButtonText: 'Cancelar'
   }).then((result) => {
       if (result.isConfirmed) {
         fetch(`/blog/${id}/eliminar`, {
