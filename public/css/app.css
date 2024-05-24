@@ -69,6 +69,14 @@ h2.titulo{
   background-color: var(--verde-principal) !important;
 }
 
+.bg-rojo {
+  background-color: #933838;
+}
+
+.btn-rojo-hover:hover {
+  background-color: #7d2d2d;
+}
+
 .bg-violeta-principal{
   background-color: var(--violeta-principal);
 }

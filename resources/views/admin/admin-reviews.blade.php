@@ -155,7 +155,7 @@
                       <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
                     </form>
                     <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ocultar</button>
+                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-rojo btn-rojo-hover text-white">Ocultar</button>
                     </form>
                   </td>
                 </tr>
