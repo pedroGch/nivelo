@@ -58,17 +58,17 @@
                     @if($review->pic_1 || $review->pic_2 || $review->pic_3)
                     <div class="d-flex">
                       @if($review->pic_1)
-                      <div>
+                      <div class="p-1">
                         <img src="{{asset('storage/' . $review->pic_1)}}" class="d-block w-100" alt="{{$review->alt_pic_1}}">
                       </div>
                       @endif
                       @if($review->pic_2)
-                      <div>
+                      <div class="p-1">
                         <img src="{{asset('storage/' . $review->pic_2)}}" class="d-block w-100" alt="{{$review->alt_pic_2}}">
                       </div>
                       @endif
                       @if($review->pic_3)
-                      <div>
+                      <div class="p-1">
                         <img src="{{asset('storage/' . $review->pic_3)}}" class="d-block w-100" alt="{{$review->alt_pic_3}}">
                       </div>
                       @endif
