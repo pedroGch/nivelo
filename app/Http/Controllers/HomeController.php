@@ -180,4 +180,16 @@ class HomeController extends Controller
       'noticias' => Blog::all(),
     ]);
   }
+
+  /**
+   * Retorna la vista del administrador de reseñas
+   * @return \Illuminate\View\View
+   */
+  public function reviewsAdmin()
+  {
+    return view('admin.admin-reviews', [
+      'reviews' => Review::all(),
+      'reviewsPendientes' => Review::where('status', 'pending')->get(),
+    ]);
+  }
 }

@@ -87,7 +87,7 @@
               <h3 class="mt-2 text-center">Reseñas</h3>
               <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: {{ $reviewsPendientes->count() }} </p>
               <div class="mb-2">
-                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
+                <a href="{{ route('reviewsAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
               </div>
             </div>
           </div>

@@ -141,6 +141,11 @@ Route::get('/dashboard/administrar-blog', [\App\Http\Controllers\HomeController:
   ->middleware('only_admin_allow')
   ->name('blogAdmin');
 
+Route::get('/dashboard/administrar-resenas', [\App\Http\Controllers\HomeController::class, 'reviewsAdmin'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('reviewsAdmin');
+
 // Rutas de administración de noticias
 
 Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
