@@ -5,6 +5,7 @@
  * @var \App\Models\User[] $usuarios
  * @var \App\Models\Subscriber[] $suscriptores
  * @var \App\Models\Review[] $reviews
+ * @var \App\Models\Review[] $reviewsPendientes
  */
 
 ?>
@@ -84,7 +85,7 @@
           <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
               <h3 class="mt-2 text-center">Reseñas</h3>
-              <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: 0 </p>
+              <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: {{ $reviewsPendientes->count() }} </p>
               <div class="mb-2">
                 <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ver</a>
               </div>

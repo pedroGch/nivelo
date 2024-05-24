@@ -166,6 +166,7 @@ class HomeController extends Controller
       'usuarios' => User::where('rol', 'user')->get(),
       'suscriptores' => Subscriber::all(),
       'reviews' => Review::all(),
+      'reviewsPendientes' => Review::where('status', 'pending')->get(),
     ]);
   }
 
