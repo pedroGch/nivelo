@@ -192,4 +192,40 @@ class HomeController extends Controller
       'reviewsPendientes' => Review::where('status', 'pending')->get(),
     ]);
   }
+
+  /**
+   * Método para aprobar una reseña
+   * @param int $review_id
+   * @return \Illuminate\Http\RedirectResponse
+   * @throws \Exception
+   */
+  public function approveReviewAction(int $review_id)
+  {
+    try{
+      Review::findOrFail($review_id)->update(['status' => 'approved']);
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Reseña aprobada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Error al aprobar la reseña: ' . $e->getMessage());
+    }
+  }
+
+  /**
+   * Método para ocultar una reseña
+   * @param int $review_id
+   * @return \Illuminate\Http\RedirectResponse
+   * @throws \Exception
+   */
+  public function hideReviewAction(int $review_id)
+  {
+    try{
+      Review::findOrFail($review_id)->update(['status' => 'hidden']);
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Reseña ocultada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Error al ocultar la reseña: ' . $e->getMessage());
+    }
+  }
 }

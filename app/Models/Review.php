@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null $pic_2
  * @property string|null $pic_3
  * @property int $score
+ * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Review newModelQuery()
@@ -46,7 +47,8 @@ class Review extends Model
     "place_id",
     "user_id",
     "review",
-    "score"
+    "score",
+    "status",
   ];
 
   public static $rules = [

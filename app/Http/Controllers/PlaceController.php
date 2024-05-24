@@ -31,7 +31,10 @@ class PlaceController extends Controller
       "category" => Category::findOrFail($category_id),
       "src_information" => Place::findOrFail($place_id)->srcInformation,
       "uploaded_from_id" => Place::findOrFail($place_id)->uploadedFrom,
-      "reviews" => Review::where('place_id', $place_id)->orderBy('created_at', 'desc')->get(),
+      "reviews" => Review::where('place_id', $place_id)
+                          ->where('status', 'approved')
+                          ->orderBy('created_at', 'desc')
+                          ->get(),
       "averagePlaceScore" => $averagePlaceScore,
     ]);
   }

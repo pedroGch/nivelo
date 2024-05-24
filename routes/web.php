@@ -172,3 +172,16 @@ Route::get('/blog/{id}/eliminar', [\App\Http\Controllers\HomeController::class, 
   ->middleware('auth')
   ->middleware('only_admin_allow')
   ->name('deletePostAction');
+
+
+// Rutas de administración de reseñas
+
+Route::get('/dashboard/administrar-resenas/{id}/aprobar', [\App\Http\Controllers\HomeController::class, 'approveReviewAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('approveReviewAction');
+
+Route::get('/dashboard/administrar-resenas/{id}/ocultar', [\App\Http\Controllers\HomeController::class, 'hideReviewAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('hideReviewAction');

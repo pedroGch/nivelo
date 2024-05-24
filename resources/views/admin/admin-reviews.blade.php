@@ -53,7 +53,7 @@
               <tbody class="border-2">
               @foreach ($reviews as $review)
                 <tr class="border-2">
-                  <td class="p-3 border-2">{{ $review->id }}</td>
+                  <td class="p-3 border-2">{{ $review->review_id }}</td>
                   <td class="text-sm p-3 border-2" width="50%">
                     @if($review->pic_1 || $review->pic_2 || $review->pic_3)
                     <div class="d-flex">
@@ -144,20 +144,18 @@
                   <td class="text-sm p-4">
                     @if($review->status == 'pending')
                     <img src="{{ url('/img/icons/status-pending.png') }}" alt="pendiente" class="me-1 mt-2 mb-2">
-                    @elseif($review->status == 'prohibited')
-                    <img src="{{ url('/img/icons/status-prohibited.png') }}" alt="prohibido" class="me-1 mt-2 mb-2">
+                    @elseif($review->status == 'hidden')
+                    <img src="{{ url('/img/icons/status-hidden.png') }}" alt="oculto" class="me-1 mt-2 mb-2">
                     @else
                     <img src="{{ url('/img/icons/status-approved.png') }}" alt="aprobado" class="me-1 mt-2 mb-2">
                     @endif
                   </td>
                   <td class="p-3 border-2" width="15%">
-                    <form action="#" method="GET">
+                    <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
                       <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
                     </form>
-                    <button type="button" onclick="borrarReview({{ $review->id }}, '{{ $review->review }}')" class="mb-3 form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Rechazar
-                    </button>
-                    <form action="#" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Detalle</button>
+                    <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
+                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Ocultar</button>
                     </form>
                   </td>
                 </tr>

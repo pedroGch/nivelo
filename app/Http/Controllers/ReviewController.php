@@ -62,6 +62,7 @@ class ReviewController extends Controller
         "user_id" => $userId,
         "review" => $request->review_text,
         "score" => $request->score,
+        "status" => "pending",
       ]);
       return redirect()
       // ->route('categories')
