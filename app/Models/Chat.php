@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Chat extends Model
 {
   use HasFactory;
+  protected $fillable = [
+    'sender_id',
+    'receiver_id',
+  ];
 
   protected $table = 'chats';
 
