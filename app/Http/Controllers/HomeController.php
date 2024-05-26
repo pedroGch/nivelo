@@ -59,10 +59,6 @@ class HomeController extends Controller
     ]);
   }
 
-  public function chatInbox()
-  {
-    return view('chat.chat');
-  }
   /**
    * Retorna la vista del formulario para agregar una nueva noticia
    * @return \Illuminate\View\View
