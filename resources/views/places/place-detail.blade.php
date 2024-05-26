@@ -171,6 +171,15 @@
     <p>{{ $place->src_information->name }}</p>
     @if($place->src_information->src_info_id == 2)
     <p>Lugar cargado por: {{ $place->users->username }} </p>
+
+      {{-- @if($user->id !== Auth::id()) --}}
+        <form action="{{ route('startChat') }}" method="POST">
+          @csrf
+          <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
+          <button type="submit" class="btn btn-primary">Chatea con {{ $place->users->username }}</button>
+        </form>
+      {{-- @endif --}}
+
     @endif
   </div>
   <div class="row pb-3">
