@@ -19,32 +19,57 @@ class ChatComponent extends Component
 
   public function mount($chat_id)
   {
-      $this->chat_id = $chat_id;
-      $this->chat = Chat::find($chat_id);
+    $this->chat_id = $chat_id;
+    $this->loadMessages();
+  }
+  public function loadMessages()
+  {
+    $messages = Message::where('chat_id', $this->chat_id)->get();
+    $this->conversation = [];
 
-      $messages = Message::where('chat_id', $chat_id)->get();
-
-      foreach ($messages as $m)
-      {
+    foreach ($messages as $m)
+    {
+      if (isset($m->user_id)) {
         $this->conversation[] = [
+
           'message'  => $m->message,
           'user_id'  => $m->user_id
         ];
+      } else {
+        $this->conversation[] = [
+
+          'message'  => $m->message,
+          'user_id'  => null
+        ];
       }
+    }
   }
   public function submitMessage()
   {
-    MessageEvent::dispatch(Auth::user()->id, $this->chat_id, $this->message);
+    //MessageEvent::dispatch(Auth::user()->id, $this->chat_id, $this->message);
+    //$this->message = "";
+
+    $user_id = Auth::user()->id;
+    $chat_id = $this->chat_id;
+    $message = $this->message;
+
+    // Emitir el evento MessageEvent
+    event(new MessageEvent($user_id, $chat_id, $message));
+
+    // Limpiar el campo del mensaje
     $this->message = "";
   }
   #[On('echo:chat-channel,MessageEvent')]
   public function listenForMessage($data)
   {
-    $this->conversation[] = [
-      'username' => $data['username'],
-      'message'  => $data['message'],
-      'user_id'  => $data['user_id']
-    ];
+
+    if ($data['chat_id'] == $this->chat_id) {
+      $this->conversation[] = [
+
+          'message'  => $data['message'],
+          'user_id'  => $data['user_id']
+      ];
+  }
   }
 
   public function chatInbox(Chat $chat)
