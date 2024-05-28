@@ -114,7 +114,7 @@ Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 
 Route::get('/chat', [\App\Livewire\ChatComponent::class, 'chatInbox'])
   ->name('chatInbox');
 
-Route::post('/start-chat', [\App\Livewire\ChatComponent::class, 'startChat'])
+Route::post('/start-chat/{chat_id?}', [\App\Livewire\ChatComponent::class, 'startChat'])
   ->name('startChat');
 
 //RUTA PARA ENVIAR MENSAJES

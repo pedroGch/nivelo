@@ -14,33 +14,47 @@ class ChatComponent extends Component
 {
   public $message;
   public $conversation = [];
-  public $chat;
+  public $chats = [];
   public $chat_id;
+  public $selectedChat;
 
-  public function mount($chat_id)
+  public function mount($chat_id = null)
   {
-    $this->chat_id = $chat_id;
-    $this->loadMessages();
+    $this->loadChats();
+
+    if ($chat_id) {
+        $this->chat_id = $chat_id;
+        $this->loadMessages();
+    }
   }
+
+  public function loadChats()
+  {
+    $user_id = Auth::id();
+    $this->chats = Chat::where('sender_id', $user_id)
+      ->orWhere('receiver_id', $user_id)
+      ->get();
+  }
+
   public function loadMessages()
   {
-    $messages = Message::where('chat_id', $this->chat_id)->get();
-    $this->conversation = [];
+    if ($this->chat_id) {
+      $messages = Message::where('chat_id', $this->chat_id)->get();
+      $this->conversation = [];
 
-    foreach ($messages as $m)
-    {
-      if (isset($m->user_id)) {
-        $this->conversation[] = [
-
-          'message'  => $m->message,
-          'user_id'  => $m->user_id
-        ];
-      } else {
-        $this->conversation[] = [
-
-          'message'  => $m->message,
-          'user_id'  => null
-        ];
+      foreach ($messages as $m)
+      {
+        if (isset($m->user_id)) {
+          $this->conversation[] = [
+            'message'  => $m->message,
+            'user_id'  => $m->user_id
+          ];
+        } else {
+          $this->conversation[] = [
+            'message'  => $m->message,
+            'user_id'  => null
+          ];
+        }
       }
     }
   }
@@ -78,7 +92,11 @@ class ChatComponent extends Component
 
     return view('chat.chat', compact('chat'));
   }
-
+  public function selectChat($chat_id)
+  {
+      $this->chat_id = $chat_id;
+      $this->loadMessages();
+  }
   public function render()
   {
     return view('livewire.chat-component', ['chat_id' => '8']);
