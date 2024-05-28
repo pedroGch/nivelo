@@ -12,6 +12,12 @@ class Message extends Model
 
   protected $table = 'messages';
 
+  protected $fillable = [
+    'chat_id',
+    'user_id',
+    'message',
+  ];
+
   public function chat()
   {
       return $this->belongsTo(Chat::class);
