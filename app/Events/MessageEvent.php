@@ -21,17 +21,22 @@ class MessageEvent implements ShouldBroadcastNow
      */
     public $username;
     public $message;
+    public $chat_id;
 
 
-    public function __construct($user_id, $message)
+    public function __construct($user_id, $chat_id, $message)
     {
-      $newMessage = New Message();
-      $newMessage->user_id = $user_id;
-      $newMessage->message = $message;
-      $newMessage->save();
+        // Crear un nuevo mensaje y guardarlo en la base de datos
+        $newMessage = new Message();
+        $newMessage->user_id = $user_id;
+        $newMessage->chat_id = $chat_id;
+        $newMessage->message = $message;
+        $newMessage->save();
 
-      $this->message  = $message;
-      $this->username = User::find($user_id)->name;
+        // Asignar valores a las propiedades del evento
+        $this->message = $message;
+        $this->username = User::find($user_id)->name;
+        $this->chat_id = $chat_id;
 
     }
 
@@ -44,6 +49,15 @@ class MessageEvent implements ShouldBroadcastNow
     {
         return [
             new Channel('chat-channel'),
+        ];
+    }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'username' => $this->username,
+            'message' => $this->message,
+            'chat_id' => $this->chat_id,
         ];
     }
 }
