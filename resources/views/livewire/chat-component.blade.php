@@ -138,4 +138,9 @@
 
       </div>
     </div>
+    <script>
+      Livewire.on('messageSent', () => {
+          @this.call('loadMessages');
+      });
+  </script>
 </div>
