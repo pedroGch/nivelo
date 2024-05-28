@@ -4,105 +4,21 @@
       <!-- Conversaciones -->
       <div class="col-md-4 mb-3 conversations-border"> <!-- Cambiamos el tamaño a 30% y aplicamos el borde derecho -->
         <!-- Conversación 1 -->
-        <div class="d-flex align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 1</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 1
-              </p>
-            </span>
-          </div>
-        </div>
-        <!-- Conversación 2 -->
-        <div class="d-flex align-items-center mt-3">
-          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Persona 2" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 2</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 2
-              </p>
-            </span>
-          </div>
-        </div>        <div class="d-flex align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 1</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 1
-              </p>
-            </span>
-          </div>
-        </div>
-        <!-- Conversación 2 -->
-        <div class="d-flex align-items-center mt-3">
-          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Persona 2" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 2</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 2
-              </p>
-            </span>
-          </div>
-        </div>        <div class="d-flex align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 1</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 1
-              </p>
-            </span>
-          </div>
-        </div>
-        <!-- Conversación 2 -->
-        <div class="d-flex align-items-center mt-3">
-          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Persona 2" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 2</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 2
-              </p>
-            </span>
-          </div>
-        </div>        <div class="d-flex align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 1</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 1
-              </p>
-            </span>
-          </div>
-        </div>
-        <!-- Conversación 2 -->
-        <div class="d-flex align-items-center mt-3">
-          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Persona 2" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 2</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 2
-              </p>
-            </span>
-          </div>
-        </div>        <div class="d-flex align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
-          <div>
-            <h5>Nombre Persona 1</h5>
-            <span class="mensaje-extracto">
-              <p class="mensaje-extracto-contenedor">
-                Último mensaje enviado por Persona 1
-              </p>
-            </span>
-          </div>
-        </div>
+        @foreach ($chats as $chat)
+          <a href="#" wire:click.prevent="selectChat({{ $chat->id }})">
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
+              <div>
+                <h5>{{ $chat->sender_id == Auth::id() ? $chat->receiver->name : $chat->sender->name }}</h5>
+                <span class="mensaje-extracto">
+                  <p class="mensaje-extracto-contenedor">
+                    Último mensaje enviado por Persona 1
+                  </p>
+                </span>
+              </div>
+            </div>
+          </a>
+        @endforeach
       </div>
 
       <!-- Bloque de Conversación -->
@@ -127,13 +43,13 @@
           </div>
 
           <!-- Campo de entrada y botón para enviar mensaje -->
-          <div class="input-group mt-3">
-            <form wire:submit.prevent="submitMessage">
+
+            <form wire:submit.prevent="submitMessage"  class="input-group mt-3">
               <input wire:model="message" class="form-control" placeholder="Escribe tu mensaje...">
               <input type="hidden" wire:model="chat_id">
               <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
-          </div>
+
         </div>
 
       </div>
