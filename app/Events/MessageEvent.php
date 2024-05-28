@@ -55,7 +55,7 @@ class MessageEvent implements ShouldBroadcastNow
     public function broadcastWith(): array
     {
         return [
-            'username' => $this->username,
+            'user_id' => $this->chat_id,
             'message' => $this->message,
             'chat_id' => $this->chat_id,
         ];
