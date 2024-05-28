@@ -110,9 +110,10 @@
         <!-- Contenedor de mensajes -->
         <div class="row">
           <div class="conversation">
+
             @foreach ($conversation as $convoItem )
               <!-- Mensajes enviados emisor -->
-              @if (Auth::user()->id == $convoItem['user_id'])
+              @if (isset($convoItem['user_id']) && Auth::user()->id == $convoItem['user_id'])
                 <div class="message sent-message">
                   {{$convoItem['message']}}
                 </div>
@@ -127,9 +128,10 @@
 
           <!-- Campo de entrada y botón para enviar mensaje -->
           <div class="input-group mt-3">
-            <form wire:submit="submitMessage">
-            <input wire:model="message" wire:key="{{now()}}" class="form-control" placeholder="Escribe tu mensaje...">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <form wire:submit.prevent="submitMessage">
+              <input wire:model="message" class="form-control" placeholder="Escribe tu mensaje...">
+              <input type="hidden" wire:model="chat_id">
+              <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
           </div>
         </div>

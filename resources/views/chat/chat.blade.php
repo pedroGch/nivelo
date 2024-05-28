@@ -13,7 +13,7 @@
 
 <section class="container margin-navs">
   <div class="container custom-container">
-    @livewire('chat-component')
+    @livewire('chat-component', ['chat_id' => $chat_id])
   </div>
 
 
