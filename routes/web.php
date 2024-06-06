@@ -117,9 +117,8 @@ Route::get('/chat', [\App\Livewire\ChatComponent::class, 'chatInbox'])
 Route::post('/start-chat/{chat_id?}', [\App\Livewire\ChatComponent::class, 'startChat'])
   ->name('startChat');
 
-//RUTA PARA ENVIAR MENSAJES
-//Route::post('/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
-
+Route::get('/nearby-places', [\App\Http\Controllers\PlaceController::class, 'nearbyPlaces'])
+  ->name('nearbyPlaces');
 
 
 Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
