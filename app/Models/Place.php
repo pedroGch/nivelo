@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $place_id
  * @property string $name
- * @property string $coordinates
  * @property string|null $description
  * @property int $access_entrance
  * @property int $assisted_access_entrance
@@ -73,7 +72,6 @@ class Place extends Model
     'address',
     'city',
     'province',
-    'coordinates',
     'description',
     'main_img',
     'alt_main_img',
@@ -88,6 +86,8 @@ class Place extends Model
     'review_id',
     'category_id',
     'uploaded_from_id',
+    'latitude',
+    'longitude',
   ];
 
   public static $rules = [
