@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('province')->nullable();
-            $table->string('coordinates')->nullable();
             $table->text('description')->nullable();
             $table->string('main_img')->nullable();
             $table->string('alt_main_img')->nullable();
@@ -28,12 +27,16 @@ return new class extends Migration
             $table->boolean('adult_changing_table')->default(false);
             $table->boolean('parking')->default(false);
             $table->boolean('elevator')->default(false);
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
             $table->unsignedInteger('src_info_id')->foreign('src_info_id')->references('src_info_id')->on('src_information')->ondelete('restrict')->onupdate('cascade');; // FK
             $table->unsignedInteger('review_id')->nullable()->foreign('review_id')->references('review_id')->on('reviews')->ondelete('restrict')->onupdate('cascade');; // FK
             $table->unsignedInteger('category_id')->foreign('category_id')->references('category_id')->on('categories')->ondelete('restrict')->onupdate('cascade');; // FK
             $table->unsignedInteger('uploaded_from_id')->foreign('uploaded_from_id')->references('id')->on('users')->ondelete('restrict')->onupdate('cascade');; // FK
             $table->timestamps();
         });
+        //DB::statement('ALTER TABLE places ADD coordinates POINT');
+        //DB::statement('CREATE SPATIAL INDEX ubicacion_spatialindex ON places (coordinates)');
     }
 
     /**
