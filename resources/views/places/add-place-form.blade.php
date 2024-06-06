@@ -55,6 +55,8 @@
                 <input type="hidden" name="cityPlace" id="cityPlace">
                 <input type="hidden" name="provincePlace" id="provincePlace">
                 <input type="hidden" name="coordinatesPlace" id="coordinatesPlace">
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
               </div>
               <div class="col-12 mb-3">
                 <div id="gmp-map"></div>
@@ -180,12 +182,13 @@
             lat: latitude,
             lng: longitude,
           };
+          console.log(cords);
           map.setCenter(coords)
           map.setZoom(8)
           marker.setPosition(coords)
         },
         () => {
-          console.lo("ocurrio un error")
+          console.log("ocurrio un error")
         }
       )
     }else{
@@ -227,12 +230,13 @@
       map.setCenter(aPlace.geometry.location)
       marker.setPosition(aPlace.geometry.location)
 
-
       document.getElementById('namePlace').value = aPlace.name
       document.getElementById('addressPlace').value = aPlace.address_components[0].long_name
       document.getElementById('cityPlace').value = aPlace.address_components[1].long_name
       document.getElementById('provincePlace').value = aPlace.address_components[2].long_name
-      document.getElementById('coordinatesPlace').value = aPlace.plus_code.global_code
+      document.getElementById('latitude').value = aPlace.geometry.location.lat()
+      document.getElementById('longitude').value = aPlace.geometry.location.lng()
+
     })
   }
 
