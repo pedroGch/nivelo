@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\UserMoreInfo;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlaceController extends Controller
 {
@@ -62,12 +63,15 @@ class PlaceController extends Controller
     if ($request->hasFile('main_img')) {
       $data = $request->file('main_img')->store('places');
     }
+
+    $latitude = $request->latitude;
+    $longitude = $request->longitude;
+
     $newPlace = Place::Create([
       'name' => $request->place_name,
       'address' => $request->addressPlace,
       'city' => $request->cityPlace,
       'province' => $request->provincePlace,
-      'coordinates' => $request->coordinatesPlace,
       'description' => $request->place_description,
       'main_img' => $data,
       'alt_main_img' => 'imagen subida por el usuario '.$userId,
@@ -82,10 +86,11 @@ class PlaceController extends Controller
       'review_id' => null,
       'category_id' => $request->category,
       'uploaded_from_id' => $userId,
+      'latitude'=> $request->latitude,
+      'longitude'=> $request->longitude,
     ]);
 
     $placeId = $newPlace->place_id;
-
     return redirect()
       ->route('addReviewForm', ['category_id' => $request->category, 'place_id' => $placeId])
       ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
@@ -123,5 +128,18 @@ class PlaceController extends Controller
         "placesResult" => $placesResult,
         "searchPlace" => $searchPlace,
       ]);
+  }
+
+  public function nearbyPlaces(Request $request)
+  {
+    $latitude = $request->query('latitude');
+    $longitude = $request->query('longitude');
+
+    $places = Place::selectRaw("*, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance", [$latitude, $longitude, $latitude])
+        ->having('distance', '<', 20) // 20 kilometers
+        ->orderBy('distance')
+        ->get();
+
+    return response()->json($places);
   }
 }
