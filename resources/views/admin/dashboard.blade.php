@@ -6,6 +6,7 @@
  * @var \App\Models\Subscriber[] $suscriptores
  * @var \App\Models\Review[] $reviews
  * @var \App\Models\Review[] $reviewsPendientes
+ * @var \App\Models\Place[] $categoriasLugares
  */
 
 ?>
@@ -95,6 +96,13 @@
         </div>
 
       </div>
+      <div class="row mb-5">
+        <div class="col-12 mt-3 mb-5">
+          <div style="width: 1200px; height: 400px;" class=" d-flex justify-content-around">
+            <canvas id="cuadroCategorias"></canvas>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -108,3 +116,47 @@
 <x-NavbarBottom/>
 
 @endsection
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('cuadroCategorias').getContext('2d');
+      var categories = @json(array_keys($categoriasLugares));
+      var counts = @json(array_values($categoriasLugares));
+
+      var cuadroCategorias = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: categories,
+              datasets: [{
+                  label: 'Lugares',
+                  data: counts,
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      ticks: {
+                        precision: 0 // Configura la precisión a 0 para mostrar números enteros
+                      }
+                  }
+              },
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Cantidad de lugares por categoría',
+                    font: {
+                        family: 'Montserrat', // Cambia la familia de fuentes aquí
+                        size: 32, // Cambia el tamaño de la fuente aquí
+                        weight: '500' // Opcional: cambia el peso de la fuente (por ejemplo, 'bold', 'normal', etc.)
+                    }
+                },
+        }
+          }
+      });
+  });
+</script>
