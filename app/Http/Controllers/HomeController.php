@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Place;
+use App\Models\User;
+use App\Models\Review;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -82,10 +86,10 @@ class HomeController extends Controller
         $data['image'] = $request->file('image')->store('blog');
       }
       Blog::create($data);
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia agregada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al agregar la noticia: ' . $e->getMessage());
     }
   }
@@ -117,10 +121,10 @@ class HomeController extends Controller
         $data['image'] = $request->file('image')->store('blog');
       }
       Blog::findOrFail($id)->update($data);
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia editada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al editar la noticia: ' . $e->getMessage());
     }
   }
@@ -138,11 +142,103 @@ class HomeController extends Controller
       if($noticia->image && Storage::has($noticia->image)){
         Storage::delete($noticia->image);
       }
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Noticia eliminada correctamente');
     } catch (\Exception $e){
-      return redirect()->route('blogIndex')
+      return redirect()->route('blogAdmin')
         ->with('status.message', 'Error al eliminar la noticia: ' . $e->getMessage());
+    }
+  }
+
+  /**
+   * Retorna la vista del panel de administración
+   * @return \Illuminate\View\View
+   */
+  public function dashboardAdmin()
+  {
+    // Obtener los datos de las categorías
+    $categoriasLugares = [
+      'Alojamiento' => Place::where('category_id', 1)->count(),
+      'Recreación' => Place::where('category_id', 2)->count(),
+      'Comercio' => Place::where('category_id', 3)->count(),
+      'Plazas' => Place::where('category_id', 4)->count(),
+      'Playas' => Place::where('category_id', 5)->count(),
+      'Gastronomía' => Place::where('category_id', 6)->count(),
+      'Oficinas del Estado' => Place::where('category_id', 7)->count(),
+      'Educación' => Place::where('category_id', 8)->count(),
+      'Deporte' => Place::where('category_id', 9)->count(),
+      'Salud' => Place::where('category_id', 10)->count(),
+      'Transporte' => Place::where('category_id', 11)->count(),
+      'Albergues Transitorios' => Place::where('category_id', 12)->count(),
+    ];
+
+    return view('admin.dashboard', [
+      'noticias' => Blog::all(),
+      'lugares' => Place::all(),
+      'usuarios' => User::where('rol', 'user')->get(),
+      'suscriptores' => Subscriber::all(),
+      'reviews' => Review::all(),
+      'reviewsPendientes' => Review::where('status', 'pending')->get(),
+      'categoriasLugares' => $categoriasLugares,
+    ]);
+  }
+
+  /**
+   * Retorna la vista del administrador del blog
+   * @return \Illuminate\View\View
+   */
+  public function blogAdmin()
+  {
+    return view('admin.admin-blog', [
+      'noticias' => Blog::all(),
+    ]);
+  }
+
+  /**
+   * Retorna la vista del administrador de reseñas
+   * @return \Illuminate\View\View
+   */
+  public function reviewsAdmin()
+  {
+    return view('admin.admin-reviews', [
+      'reviews' => Review::all(),
+      'reviewsPendientes' => Review::where('status', 'pending')->get(),
+    ]);
+  }
+
+  /**
+   * Método para aprobar una reseña
+   * @param int $review_id
+   * @return \Illuminate\Http\RedirectResponse
+   * @throws \Exception
+   */
+  public function approveReviewAction(int $review_id)
+  {
+    try{
+      Review::findOrFail($review_id)->update(['status' => 'approved']);
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Reseña aprobada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Error al aprobar la reseña: ' . $e->getMessage());
+    }
+  }
+
+  /**
+   * Método para ocultar una reseña
+   * @param int $review_id
+   * @return \Illuminate\Http\RedirectResponse
+   * @throws \Exception
+   */
+  public function hideReviewAction(int $review_id)
+  {
+    try{
+      Review::findOrFail($review_id)->update(['status' => 'hidden']);
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Reseña ocultada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('reviewsAdmin')
+        ->with('status.message', 'Error al ocultar la reseña: ' . $e->getMessage());
     }
   }
 }

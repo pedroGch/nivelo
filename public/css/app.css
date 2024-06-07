@@ -46,7 +46,9 @@ body {
   background-color: var(--naranja-principal);
 }
 
-
+.h-100px {
+  height: 100px;
+}
 
 .w-100{
   width: 100%;
@@ -65,6 +67,14 @@ h2.titulo{
 }
 .bg-verde-principal{
   background-color: var(--verde-principal) !important;
+}
+
+.bg-rojo {
+  background-color: #933838;
+}
+
+.btn-rojo-hover:hover {
+  background-color: #7d2d2d;
 }
 
 .bg-violeta-principal{

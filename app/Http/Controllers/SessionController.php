@@ -36,7 +36,9 @@ class SessionController extends Controller
         ->withInput();
     }
 
-    return redirect('/categorias')->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
+    $url = (Auth::user()->rol == 'admin') ? '/dashboard' : '/categorias';
+
+    return redirect($url)->with('status.message', 'Hola ' . Auth::user()->name . ', iniciaste sesión con éxito');
   }
 
 

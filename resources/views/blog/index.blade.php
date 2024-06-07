@@ -34,7 +34,7 @@
             <div class="imagenDeTapa">
               <a href="{{ url('/blog/' . $noticia->id . '/leer_mas') }}"><img src="{{asset('storage/' . $noticia->image)}}" class="d-block w-100 1:3" alt="{{$noticia->alt}}"></a>
             </div>
-            <div class="my-2">
+            <div class="my-2 h-100px">
               <p>{{ $noticia->descripcion_reducida() }}</p>
             </div>
             <div class="my-2">

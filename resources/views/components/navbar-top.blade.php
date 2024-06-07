@@ -28,6 +28,13 @@
             <li class="pe-2 pt-3 nav-item text-end">
               <a href="{{ route('userProfile') }}" class="nav-link active text-white link-offcanvas link-offcanvas-hover" aria-current="page">Mi cuenta ( {{ Auth::user()->email }} )</a>
             </li>
+            @if (Auth::user()->rol == 'admin')
+
+              <li class="pe-2 pt-2 nav-item text-end">
+                <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('dashboard') }}">Panel de administración</a>
+              </li>
+
+            @endif
             <li class="pe-2 pt-2 nav-item text-end">
               <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
             </li>

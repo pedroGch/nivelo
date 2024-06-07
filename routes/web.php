@@ -32,7 +32,8 @@ Route::post('/iniciar-sesion', [\App\Http\Controllers\SessionController::class, 
   ->name('loginAction');
 
 Route::post('/cerrar-sesion', [\App\Http\Controllers\SessionController::class, 'logoutAction'])
-  ->name('logoutAction');
+  ->name('logoutAction')
+  ->middleware('auth');
 
 Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'loginWithGoogle'])
   ->name('loginGoogle');
@@ -40,6 +41,7 @@ Route::get('/sesion-google', [\App\Http\Controllers\SessionController::class, 'l
 // Rutas de perfil de usuario
 Route::get('/mi-perfil', [\App\Http\Controllers\UserController::class, 'userProfile'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('userProfile');
 
 
@@ -63,23 +65,28 @@ Route::get('/google-callback', [\App\Http\Controllers\SessionController::class, 
   // Rutas de la aplicación (se requiere estar logueado)
 Route::get('/categorias', [\App\Http\Controllers\CategoryController::class, 'index'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('categories');
 
   Route::get('/buscar-lugar', [\App\Http\Controllers\PlaceController::class, 'searchPlaces'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('searchPlaces');
 
 Route::get('/categorias/{category_id}', [\App\Http\Controllers\CategoryController::class, 'categoryDetail']) //{id}
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('categoryDetail');
 
 Route::get('/categorias/{category_id}/{place_id}', [\App\Http\Controllers\PlaceController::class, 'placeDetail']) //{id}
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('placeDetail')
   ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+']);
 
 Route::get('/categorias/{category_id}/{place_id}/{review_id}', [\App\Http\Controllers\ReviewController::class, 'reviewDetail'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('reviewDetail')
   ->where(['category_id' => '[0-9]+', 'place_id' => '[0-9]+', 'review_id' => '[0-9]+']); //{id}
 
@@ -87,20 +94,24 @@ Route::get('/categorias/{category_id}/{place_id}/{review_id}', [\App\Http\Contro
   // Formulario de carga de un nuevo lugar
 Route::get('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceForm'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('addPlaceForm');
 
 Route::post('/nuevo-lugar', [\App\Http\Controllers\PlaceController::class, 'addPlaceAction'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('addPlaceAction');
 
 
   // Formulario de carga de una nueva reseña
 Route::get('/categorias/{category_id}/{place_id}/nueva-resena', [\App\Http\Controllers\ReviewController::class, 'addReviewForm'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('addReviewForm');
 
 Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController::class, 'addReviewAction'])
   ->middleware('auth')
+  ->middleware('user_and_admin_allow')
   ->name('addReviewAction');
 
 
@@ -121,22 +132,59 @@ Route::get('/nearby-places', [\App\Http\Controllers\PlaceController::class, 'nea
   ->name('nearbyPlaces');
 
 
+// Rutas relacionadas al panel de administración
+
+Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'dashboardAdmin'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('dashboard');
+
+Route::get('/dashboard/administrar-blog', [\App\Http\Controllers\HomeController::class, 'blogAdmin'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('blogAdmin');
+
+Route::get('/dashboard/administrar-resenas', [\App\Http\Controllers\HomeController::class, 'reviewsAdmin'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('reviewsAdmin');
+
+// Rutas de administración de noticias
+
 Route::get('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostForm'])
   ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('addPostForm');
 
 Route::post('/blog/nueva-noticia', [\App\Http\Controllers\HomeController::class, 'addPostAction'])
   ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('addPostAction');
 
 Route::get('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostForm'])
   ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('editPostForm');
 
 Route::post('/blog/{id}/editar', [\App\Http\Controllers\HomeController::class, 'editPostAction'])
   ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('editPostAction');
 
 Route::get('/blog/{id}/eliminar', [\App\Http\Controllers\HomeController::class, 'deletePostAction'])
   ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('deletePostAction');
+
+
+// Rutas de administración de reseñas
+
+Route::get('/dashboard/administrar-resenas/{id}/aprobar', [\App\Http\Controllers\HomeController::class, 'approveReviewAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('approveReviewAction');
+
+Route::get('/dashboard/administrar-resenas/{id}/ocultar', [\App\Http\Controllers\HomeController::class, 'hideReviewAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('hideReviewAction');
