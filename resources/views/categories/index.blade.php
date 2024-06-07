@@ -98,6 +98,8 @@
   };
   let map;
   let marker;
+  let directionsService;
+  let directionsRenderer;
   function successCallback(position) {
     myLatLng.lat = position.coords.latitude;
     myLatLng.lng = position.coords.longitude;
@@ -137,6 +139,28 @@
     });
   }
 
+  function calculateAndDisplayRoute(destination) {
+    if (!myLatLng) {
+      alert('Ubicación del usuario no disponible');
+      return;
+    }
+
+    directionsService.route(
+      {
+        origin: myLatLng,
+        destination: destination,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      (response, status) => {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(response);
+        } else {
+          window.alert('No se pudieron obtener direcciones debido a: ' + status);
+        }
+      }
+    );
+  }
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   } else {
@@ -146,6 +170,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('show-nearby-places').addEventListener('click', function(event) {
       event.preventDefault();
+
       fetch(`{{ route('nearbyPlaces') }}?latitude=${myLatLng.lat}&longitude=${myLatLng.lng}`)
       .then(response => response.json())
       .then(places => {
@@ -165,12 +190,17 @@
             map: map,
             icon: "../../img/icons/icon-red.png",
             title: place.name,
+          }).addListener('click', function() {
+            //infowindow.open(map, marker);
+            calculateAndDisplayRoute({ lat: parseFloat(place.latitude), lng: parseFloat(place.longitude) });
           });
 
           const listItem = document.createElement('li');
           listItem.classList.add('list-group-item');
           listItem.textContent = `${place.name} - ${place.address} (${place.distance.toFixed(2)} km)`;
           placesList.appendChild(listItem);
+
+
         });
         marker = new google.maps.Marker({
           position: myLatLng,
@@ -178,6 +208,14 @@
           title: "Estoy acá",
           icon: "../../img/icons/icon-red.png"
         });
+
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+        map.addListener('click', function(event) {
+            calculateAndDisplayRoute(event.latLng);
+        });
+
         const nearbyPlacesModal = new bootstrap.Modal(document.getElementById('showNearbyPlaces'));
         nearbyPlacesModal.show();
       });
