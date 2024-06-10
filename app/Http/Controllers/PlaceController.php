@@ -184,4 +184,20 @@ class PlaceController extends Controller
     ]);
   }
 
+  public function removeFavoritePlace(Request $request, $placeId)
+  {
+    $user = Auth::user();
+    $place = Place::find($placeId);
+
+    if (!$place) {
+        return redirect()->back()->with('status.message', 'Lugar no encontrado')->with('status.type', 'danger');
+    }
+
+    // if (!$user->favoritePlaces()->where('place_id', $place->place_id)->exists()) {
+    //     return redirect()->back()->with('status.message', 'El lugar no está en tus favoritos')->with('status.type', 'warning');
+    // }
+
+    $user->favoritePlaces()->detach($place->place_id);
+    return redirect()->back()->with('status.message', 'Lugar eliminado de favoritos')->with('status.type', 'success');
+  }
 }

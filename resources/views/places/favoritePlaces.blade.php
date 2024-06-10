@@ -95,6 +95,15 @@
               </div>
             @endswitch
           </div>
+          <div class="my-3">
+            <form action="{{ route('places.unfavorite', $place->place_id) }}" method="POST">
+              @csrf
+              <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
+                <ion-icon style="color: #fff" name="trash-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                <span class="fw-semibold">Quitar de Favoritos</span>
+              </button>
+            </form>
+          </div>
         </div>
       </a>
     </div>
