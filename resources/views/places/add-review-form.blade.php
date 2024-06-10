@@ -36,7 +36,7 @@
             @endif
           </div>
           <div class="col-12">
-            <p class="h5 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</p>
+            <p class="h4 my-4">¿Cómo fue tu experiencia en <b>{{ $place->name }}</b>?</p>
             <form action="{{ route('addReviewAction') }}" method="POST" id="new_review_create" enctype="multipart/form-data">
               @csrf
               <div class="d-flex justify-content-center">
@@ -75,7 +75,7 @@
                 @enderror
               </div>
               <div class="col-12 mb-3">
-                <label for="review_text">Tu opinión:</label>
+                <label for="review_text" class="h5">Tu opinión:</label>
                 <textarea name="review_text" id="review_text" class="form-control p-3 @error('review_text') is-invalid @enderror"
                 @error('review_text')
                 aria-describedby="error-review_text"
@@ -86,10 +86,52 @@
               @error('format')
                 <p class="text-danger" id="error-review_text">{{ $message }}</p>
               @enderror
-              <div class="mb-4">
-                <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+              <div class="col-12 mb-3">
+                <p class="h5 my-4">Podés subir hasta tres fotos para ayudar a otros usuarios a conocer más en detalle la accesibilidad de este lugar. </p>
+                <p>Te invitamos a que puedas describir en pocas palabras lo que se ve en cada foto; es opcional, pero brindará accesibilidad para las personas con discapacidad visual que utilicen la app.</p>
+                <div class="my-3">
+                  <label for="pic_1" class="h5 mt-4">Foto 1:</label>
+                  <input type="file" name="pic_1" id="pic_1" class="form-control p-3 @error('pic_1') is-invalid @enderror"
+                  @error('pic_1')
+                  aria-describedby="error-pic_1"
+                  aria-invalid="true"
+                  @enderror
+                  >
+                </div>
+                <div>
+                  <label for="alt_pic_1">Descripción foto 1:</label>
+                  <input type="text" name="alt_pic_1" id="alt_pic_1" class="form-control p-3 @error('alt_pic_1') is-invalid @enderror">
+                </div>
+                <div class="my-3">
+                  <label for="pic_2" class="h5  mt-4">Foto 2:</label>
+                  <input type="file" name="pic_2" id="pic_2" class="form-control p-3 @error('pic_2') is-invalid @enderror"
+                  @error('pic_2')
+                  aria-describedby="error-pic_2"
+                  aria-invalid="true"
+                  @enderror
+                  >
+                </div>
+                <div>
+                  <label for="alt_pic_2">Descripción foto 2:</label>
+                  <input type="text" name="alt_pic_2" id="alt_pic_2" class="form-control p-3 @error('alt_pic_2') is-invalid @enderror">
+                </div>
+                <div class="my-3">
+                  <label for="pic_3" class="h5  mt-4">Foto 3:</label>
+                  <input type="file" name="pic_3" id="pic_3" class="form-control p-3 @error('pic_3') is-invalid @enderror"
+                  @error('pic_3')
+                  aria-describedby="error-pic_3"
+                  aria-invalid="true"
+                  @enderror
+                  >
+                </div>
+                <div class="mb-4">
+                  <label for="alt_pic_3">Descripción foto 3:</label>
+                  <input type="text" name="alt_pic_3" id="alt_pic_3" class="form-control p-3 @error('alt_pic_3') is-invalid @enderror">
+                </div>
+                <div class="mb-4">
+                  <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+                </div>
               </div>
-          </div>
             </form>
             <div class="mb-4">
               <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>

@@ -8,6 +8,8 @@ use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ReviewController extends Controller
 {
@@ -43,7 +45,7 @@ class ReviewController extends Controller
     }
 
 
-    /**
+     /**
      * Agrega una nueva review a un lugar
      * @param int $category_id
      * @param int $place_id
@@ -51,25 +53,62 @@ class ReviewController extends Controller
      */
     public function addReviewAction(Request $request)
     {
-      $userId = Auth::id();
+        $userId = Auth::id();
 
-      $place = Place::findOrFail($request->place_id);
+        $place = Place::findOrFail($request->place_id);
 
-      $request->validate(Review::$rules, Review::$errorMessages);
+        $request->validate(Review::$rules, Review::$errorMessages);
 
-      Review::Create([
-        "place_id" => $request->place_id,
-        "user_id" => $userId,
-        "review" => $request->review_text,
-        "score" => $request->score,
-        "status" => "pending",
-      ]);
-      return redirect()
-      // ->route('categories')
-      ->route('placeDetail', [
-        'category_id' => $place->categories->category_id,
-        'place_id' => $request->place_id])
-      ->with('status.message', 'Gracias por dejarnos tu opinión');
+        $data = $request->only('place_id', 'user_id', 'review', 'score');
+
+        // Procesar imágenes si están presentes
+        $images = ['pic_1', 'pic_2', 'pic_3'];
+        $altImages = ['alt_pic_1', 'alt_pic_2', 'alt_pic_3'];
+        foreach ($images as $image) {
+            if ($request->hasFile($image)) {
+                $request->validate([
+                    $image => 'image|mimes:jpeg,png,jpg|max:2048',
+                ]);
+
+                $file = $request->file($image);
+
+                // create image manager with desired driver
+                $manager = new ImageManager(new Driver());
+
+                // read image from file system
+                $img = $manager->read($file->getRealPath());
+
+                // resize image proportionally to 510px width and height
+                $img->scale(width: 510, height: 510);
+
+                $fileName = $userId . '_' . $image . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $img->save(public_path('storage/reviews/' . $fileName), 80); // Guarda la imagen con calidad 80
+
+                $data[$image] = 'reviews/' . $fileName; // Guarda la ruta de la imagen en el array de datos
+
+                // Get the index of the current image
+                $index = array_search($image, $images);
+
+                // Use the index to get the corresponding alt image
+                $altImage = $altImages[$index];
+
+                // Store the alt image in the data array, or a default value if it's not set
+                $data[$altImage] = $request->input($altImage) ?? 'foto no descripta subida por el usuario';
+            }
+        }
+
+        // Crear la review con las imágenes procesadas
+        Review::create(array_merge($data, [
+            'user_id' => $userId,
+            'status' => 'pending',
+        ]));
+
+        return redirect()
+            ->route('placeDetail', [
+                'category_id' => $place->categories->category_id,
+                'place_id' => $request->place_id
+            ])
+            ->with('status.message', 'Gracias por dejarnos tu opinión');
     }
 }
 
