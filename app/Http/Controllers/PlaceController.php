@@ -178,8 +178,10 @@ class PlaceController extends Controller
   {
     $user = Auth::user();
     $favorites = $user->favoritePlaces;
-    dd('estoy');
-    return view('favoritePlaces', compact('favorites', 'favoriteCount'));
+
+    return view('places.favoritePlaces', [
+      "placesResult" => $favorites,
+    ]);
   }
 
 }

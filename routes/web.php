@@ -194,4 +194,5 @@ Route::post('/places/{placeId}/favorite', [\App\Http\Controllers\PlaceController
   ->name('places.favorite');
 
 Route::get('/mis-lugares-favoritos', [\App\Http\Controllers\PlaceController::class, 'showFavoritePlaces'])
+  ->middleware('auth')
   ->name('showFavoritePlaces');
