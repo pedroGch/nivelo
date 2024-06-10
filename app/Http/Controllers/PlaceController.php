@@ -174,4 +174,12 @@ class PlaceController extends Controller
     return redirect()->back()->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
   }
 
+  public function showFavoritePlaces()
+  {
+    $user = Auth::user();
+    $favorites = $user->favoritePlaces;
+    dd('estoy');
+    return view('favoritePlaces', compact('favorites', 'favoriteCount'));
+  }
+
 }
