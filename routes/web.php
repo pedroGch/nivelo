@@ -188,3 +188,7 @@ Route::get('/dashboard/administrar-resenas/{id}/ocultar', [\App\Http\Controllers
   ->middleware('auth')
   ->middleware('only_admin_allow')
   ->name('hideReviewAction');
+
+Route::post('/places/{placeId}/favorite', [\App\Http\Controllers\PlaceController::class, 'addFavoritePlace'])
+  ->middleware('auth')
+  ->name('places.favorite');

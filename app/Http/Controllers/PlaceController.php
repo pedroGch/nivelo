@@ -145,4 +145,33 @@ class PlaceController extends Controller
 
     return response()->json($places);
   }
+
+  public function addFavoritePlace(Request $request, $placeId)
+  {
+    $user = Auth::user();
+    $place = Place::find($placeId);
+    $favorites = $user->favoritePlaces;
+    //$favoriteCount = $favorites->count();
+    $placeExist = false;
+
+    foreach ($favorites as $aPlace) {
+
+      if($aPlace->place_id  == $placeId){
+        $placeExist = true;
+
+      }
+    }
+
+    if (!$place) {
+      return redirect()->back()->with('status.message', 'Lugar no encontrado')->with('status.type', 'danger');
+    }
+
+    if ($placeExist) {
+      return redirect()->back()->with('status.message', 'El lugar ya está en tus favoritos')->with('status.type', 'warning');
+    }
+
+    $user->favoritePlaces()->attach($place->place_id);
+    return redirect()->back()->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
+  }
+
 }
