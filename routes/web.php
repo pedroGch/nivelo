@@ -192,3 +192,6 @@ Route::get('/dashboard/administrar-resenas/{id}/ocultar', [\App\Http\Controllers
 Route::post('/places/{placeId}/favorite', [\App\Http\Controllers\PlaceController::class, 'addFavoritePlace'])
   ->middleware('auth')
   ->name('places.favorite');
+
+Route::get('/mis-lugares-favoritos', [\App\Http\Controllers\PlaceController::class, 'showFavoritePlaces'])
+  ->name('showFavoritePlaces');
