@@ -88,6 +88,7 @@ class Place extends Model
     'uploaded_from_id',
     'latitude',
     'longitude',
+
   ];
 
   public static $rules = [
@@ -172,5 +173,9 @@ class Place extends Model
   public function reviews() :BelongsTo
   {
     return $this->belongsTo(Review::class, 'review_id', 'review_id');
+  }
+  public function favoritedBy()
+  {
+    return $this->belongsToMany(User::class, 'user_place_favorites', 'place_id', 'user_id');
   }
 }

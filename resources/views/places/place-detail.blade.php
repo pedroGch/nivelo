@@ -38,7 +38,24 @@
         <p class="h5 titulo fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="text-decoration-none text-reset">{{ $category->name }}</a></p>
       </div>
       <div class="mt-3">
-        <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
+        <div class="row">
+          <div class="col-12">
+            <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
+          </div>
+          <div class="col-12">
+            <div class="d-flex">
+              <div class="my-3">
+                <form action="{{ route('places.favorite', $place->place_id) }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white">
+                    <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                    <span class="fw-semibold">Agregar a Favoritos</span>
+                  </button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="mt-3 align-items-center border-bottom border-top border-dark-subtle pb-3">
         <div>

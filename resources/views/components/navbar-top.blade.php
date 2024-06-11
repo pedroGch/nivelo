@@ -6,7 +6,7 @@
       </div>
       <div class="d-flex align-items-center">
         <div class="pe-2">
-          <a href="#">
+          <a href="{{ route('showFavoritePlaces') }}">
           <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="icon-hover"></ion-icon>
           </a>
         </div>

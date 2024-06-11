@@ -145,4 +145,9 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, 'sender_id');
     }
 
+  public function favoritePlaces()
+    {
+      return $this->belongsToMany(Place::class, 'user_place_favorites', 'user_id', 'place_id');
+    }
+
 }

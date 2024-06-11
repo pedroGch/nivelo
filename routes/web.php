@@ -201,4 +201,15 @@ Route::get('/dashboard/administrar-resenas/{id}/ocultar', [\App\Http\Controllers
   ->middleware('only_admin_allow')
   ->name('hideReviewAction');
 
+Route::post('/places/{placeId}/favorite', [\App\Http\Controllers\PlaceController::class, 'addFavoritePlace'])
+  ->middleware('auth')
+  ->name('places.favorite');
+
+Route::get('/mis-lugares-favoritos', [\App\Http\Controllers\PlaceController::class, 'showFavoritePlaces'])
+  ->middleware('auth')
+  ->name('showFavoritePlaces');
+
+Route::post('/places/{placeId}/unfavorite', [\App\Http\Controllers\PlaceController::class, 'removeFavoritePlace'])
+  ->middleware('auth')
+  ->name('places.unfavorite');
 
