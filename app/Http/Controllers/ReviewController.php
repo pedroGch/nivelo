@@ -57,6 +57,22 @@ class ReviewController extends Controller
 
         $place = Place::findOrFail($request->place_id);
 
+        // Verificar si ya existe una review del mismo usuario para este lugar
+        $existingReview = Review::where('place_id', $request->place_id)
+        ->where('user_id', $userId)
+        ->first();
+
+          if ($existingReview) {
+
+              [
+                'existingReview' => $existingReview,
+                'category' => $place->categories,
+                'place' => $place,
+              ];
+              return redirect()->back()->with('status.message', '¡Ya opinaste sobre este lugar!')->with('status.type', 'danger')
+              ->with('status.link', route('editReviewForm', ['review_id' => $existingReview->review_id]));
+          }
+
         $request->validate(Review::$rules, Review::$errorMessages);
 
         $data = $request->only('place_id', 'user_id', 'review', 'score');

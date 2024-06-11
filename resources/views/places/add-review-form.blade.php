@@ -23,11 +23,14 @@
           </div>
           <div class="mx-2 col-12 my-1">
             @if (\Session::has('status.message'))
-              <div class="alert alert-success d-flex align-items-center row alert-dismissible fade show" role="alert">
-                {!! \Session::get('status.message') !!}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-              </div>
-            @endif
+            <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
+              {!! \Session::get('status.message') !!}
+              @if (\Session::has('status.link'))
+                <p>Para editar tu reseña hacé <a href="{{ \Session::get('status.link') }}" class="text-reset  ms-2">click acá</a></p>
+              @endif
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+          @endif
             @if($errors->any())
             <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
               <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para cargar correctamente tu opinión.</p>
