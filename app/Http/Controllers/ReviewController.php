@@ -108,7 +108,7 @@ class ReviewController extends Controller
                 'category_id' => $place->categories->category_id,
                 'place_id' => $request->place_id
             ])
-            ->with('status.message', 'Gracias por dejarnos tu opinión');
+            ->with('status.message', 'Gracias por dejarnos tu opinión. Una vez aprobada por el equipo de nivelo, será visible en la página.');
     }
 }
 
