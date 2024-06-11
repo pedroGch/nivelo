@@ -35,17 +35,6 @@
           <div class="col-12">
               <form action="{{ route('signupAction') }}" method="POST">
                   @csrf
-                  {{-- <div class="mb-4">
-                      <label for="name" class="form-label d-none">Nombre</label>
-                      <input type="text" name="name" class="form-control p-3 @error('name') is-invalid @enderror" id="name"  placeholder="Nombre" value="{{ old('name') }}"
-                      @error('name')
-                      aria-describedby="error-name"
-                      aria-invalid="true"
-                      @enderror>
-                      @error('name')
-                      <p class="text-danger" id="error-name">{{ $message }}</p>
-                      @enderror
-                  </div> --}}
                   <div class="mb-4">
                     <div class="form-floating">
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nombre" value="{{ old('name') }}"
@@ -104,16 +93,7 @@
                         @error('password')
                         <p class="text-danger" id="error-password">{{ $message }}</p>
                         @enderror
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <div class="form-floating">
-                        <input type="password" name="password-repeat" class="form-control @error('password-repeat') is-invalid @enderror" id="password-repeat" placeholder="Repetir contraseña"
-                            @error('password-repeat') aria-describedby="error-password-repeat" aria-invalid="true" @enderror>
-                        <label for="password-repeat">Repetir contraseña</label>
-                        @error('password-repeat')
-                        <p class="text-danger" id="error-password-repeat">{{ $message }}</p>
-                        @enderror
+                        <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y" onclick="togglePassword('password')">Mostrar</button>
                     </div>
                   </div>
                   <div class="form-check d-flex justify-content-center">
@@ -149,4 +129,11 @@
     </div>
   </div>
 </section>
+<script>
+  function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+    field.setAttribute('type', type);
+  }
+</script>
 @endsection
