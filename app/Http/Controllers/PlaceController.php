@@ -70,6 +70,13 @@ class PlaceController extends Controller
     $latitude = $request->latitude;
     $longitude = $request->longitude;
 
+    // Verificar si ya existe un lugar con las mismas coordenadas
+    $existingPlace = Place::where('latitude', $latitude)->where('longitude', $longitude)->first();
+
+    if ($existingPlace) {
+        return redirect()->back()->with('status.message', 'Ya existe un lugar con las mismas coordenadas')->with('status.type', 'warning');
+    }
+
     $newPlace = Place::Create([
       'name' => $request->place_name,
       'address' => $request->addressPlace,
