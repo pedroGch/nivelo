@@ -110,5 +110,94 @@ class ReviewController extends Controller
             ])
             ->with('status.message', 'Gracias por dejarnos tu opinión. Una vez aprobada por el equipo de nivelo, será visible en la página.');
     }
+
+    /**
+     * Retorna la vista del formulario de edición de una review
+     * @param int $review_id
+     * @return \Illuminate\View\View
+     */
+    public function editReviewForm(int $review_id)
+    {
+        return view('places.edit-review-form', [
+            'review' => Review::findOrFail($review_id),
+            'place' => Review::findOrFail($review_id)->place,
+            'category' => Review::findOrFail($review_id)->place->categories,
+        ]);
+    }
+
+
+    /**
+     * Edita una review
+     * @param int $review_id
+     * @return \Illuminate\View\View
+     */
+    public function editReviewAction(Request $request)
+    {
+        $userId = Auth::id();
+
+        $review = Review::findOrFail($request->review_id);
+
+        $request->validate(Review::$rules, Review::$errorMessages);
+
+        $data = $request->only('review', 'score');
+
+        // Procesar imágenes si están presentes
+        $images = ['pic_1', 'pic_2', 'pic_3'];
+        $altImages = ['alt_pic_1', 'alt_pic_2', 'alt_pic_3'];
+        foreach ($images as $image) {
+            if ($request->hasFile($image)) {
+                $request->validate([
+                    $image => 'image|mimes:jpeg,png,jpg|max:2048',
+                ]);
+
+                $file = $request->file($image);
+
+                // create image manager with desired driver
+                $manager = new ImageManager(new Driver());
+
+                // read image from file system
+                $img = $manager->read($file->getRealPath());
+
+                // resize image proportionally to 510px width and height
+                $img->scale(width: 510, height: 510);
+
+                $fileName = $userId . '_' . $image . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $img->save(public_path('storage/reviews/' . $fileName), 80); // Guarda la imagen con calidad 80
+
+                $data[$image] = 'reviews/' . $fileName; // Guarda la ruta de la imagen en el array de datos
+
+                // Get the index of the current image
+                $index = array_search($image, $images);
+
+                // Use the index to get the corresponding alt image
+                $altImage = $altImages[$index];
+
+                // Store the alt image in the data array, or a default value if it's not set
+                $data[$altImage] = $request->input($altImage) ?? 'foto no descripta subida por el usuario';
+            } else {
+                // Si no se subió una nueva imagen, se mantiene la imagen actual
+                $data[$image] = $review->$image;
+
+                // Obtener el nombre de la propiedad alt image como una cadena
+                $altImagePropertyName = $altImages[array_search($image, $images)];
+
+                // Usar el nombre de la propiedad para acceder a la propiedad del objeto $review
+                $data[$altImagePropertyName] = $review->$altImagePropertyName;
+            }
+        }
+        // Actualizar la review con las imágenes procesadas
+        $review->update(array_merge($data, [
+            'status' => 'pending',
+        ]));
+
+        return redirect()
+            ->route('reviewDetail', [
+                'category_id' => $review->place->categories->category_id,
+                'place_id' => $review->place_id,
+                'review_id' => $request->review_id
+            ])
+            ->with('status.message', 'Tu reseña fue correctamente editada. Una vez aprobada por el equipo de nivelo, será visible en la página.');
+
+    }
 }
 
