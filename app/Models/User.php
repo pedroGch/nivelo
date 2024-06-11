@@ -57,7 +57,7 @@ class User extends Authenticatable
         'email',
         'birth_date',
         'password',
-        'password-repeat',
+
         'avatar',
         'external_id',
         'external_auth',
@@ -70,7 +70,7 @@ class User extends Authenticatable
       'email' => "required|email",
       'birth_date' => "required",
       'password' => "required",
-      'password-repeat' => "required|same:password",
+
       'terms' => "accepted",
     ];
 
@@ -80,8 +80,7 @@ class User extends Authenticatable
       'email.required' => 'El email es requerido',
       'email.email' => 'El email debe ser válido',
       'password.required' => 'El password es requerido',
-      'password-repeat.required' => 'Es necesario que repitas tu contraseña',
-      'password-repeat.same' => 'Las contraseñas no coinciden',
+
       'username.required' => 'El nombre de usuario es requerido',
       'surname.required' => 'El apellido es requerido',
       'username.max' => 'El nombre no puede contener más de 30 carateres',
