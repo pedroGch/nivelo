@@ -204,3 +204,7 @@ Route::post('/places/{placeId}/unfavorite', [\App\Http\Controllers\PlaceControll
 Route::get('/ver-mapa', [\App\Http\Controllers\PlaceController::class, 'mapViewForm'])
   ->middleware('auth')
   ->name('mapViewForm');
+
+Route::get('/categories/{category_id}/places',  [\App\Http\Controllers\PlaceController::class, 'getPlacesByCategory'])
+  ->middleware('auth')
+  ->name('getPlacesByCategory');
