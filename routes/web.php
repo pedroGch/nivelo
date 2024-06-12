@@ -201,3 +201,6 @@ Route::post('/places/{placeId}/unfavorite', [\App\Http\Controllers\PlaceControll
   ->middleware('auth')
   ->name('places.unfavorite');
 
+Route::get('/ver-mapa', [\App\Http\Controllers\PlaceController::class, 'mapViewForm'])
+  ->middleware('auth')
+  ->name('mapViewForm');

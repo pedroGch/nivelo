@@ -207,4 +207,12 @@ class PlaceController extends Controller
     $user->favoritePlaces()->detach($place->place_id);
     return redirect()->back()->with('status.message', 'Lugar eliminado de favoritos')->with('status.type', 'success');
   }
+
+  public function mapViewForm()
+  {
+    $categories = Category::all()->sortBy('name');
+    return view('places.map-places-view', [
+      'categories'=> $categories
+    ]);
+  }
 }

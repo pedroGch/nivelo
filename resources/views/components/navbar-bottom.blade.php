@@ -5,7 +5,7 @@
   <div class="col-12 col-md-9 col-lg-6 footer-nav">
     <nav class="d-flex justify-content-around">
       <div>
-        <a href="#">
+        <a href="{{ route('mapViewForm') }}">
           <span class="icon">
             <ion-icon name="location-outline"></ion-icon>
           </span>
