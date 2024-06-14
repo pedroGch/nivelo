@@ -113,12 +113,57 @@ class PlaceController extends Controller
   public function searchPlaces (Request $request)
   {
     $searchPlace = $request->buscar;
+    $categoryId = $request->category_id;
 
-    $placesResult = Place::where('name', 'LIKE', "%$searchPlace%")
-      ->orWhere('address', 'LIKE', "%$searchPlace%")
-      ->orWhere('city', 'LIKE', "%$searchPlace%")
-      ->orWhere('province', 'LIKE', "%$searchPlace%")
-      ->get();
+    $query = Place::query();
+    // Agrupa las condiciones de búsqueda manual
+    if (!is_null($searchPlace)) {
+      $query = $query->where(function ($query) use ($searchPlace) {
+          $query->where('name', 'LIKE', "%$searchPlace%")
+              ->orWhere('address', 'LIKE', "%$searchPlace%")
+              ->orWhere('city', 'LIKE', "%$searchPlace%")
+              ->orWhere('province', 'LIKE', "%$searchPlace%");
+      });
+    }
+    if (!is_null($categoryId)) {
+      $query->where('category_id', $categoryId);
+    }
+
+    // Primero, verifica si el parámetro 'features' está presente en la solicitud
+    if ($request->has('features')) {
+      $features = $request->input('features');
+
+      // Luego, para cada característica conocida, verifica si está en el array de 'features' y aplica el filtro
+      if (in_array('access_entrance', $features)) {
+          $query->where('access_entrance', true);
+      }
+
+      if (in_array('assisted_access_entrance', $features)) {
+          $query->where('assisted_access_entrance', true);
+      }
+
+      if (in_array('internal_circulation', $features)) {
+          $query->where('internal_circulation', true);
+      }
+
+      if (in_array('bathroom', $features)) {
+          $query->where('bathroom', true);
+      }
+
+      if (in_array('adult_changing_table', $features)) {
+          $query->where('adult_changing_table', true);
+      }
+
+      if (in_array('parking', $features)) {
+          $query->where('parking', true);
+      }
+
+      if (in_array('elevator', $features)) {
+          $query->where('elevator', true);
+      }
+    }
+
+    $placesResult = $query->get();
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $placesResult
     foreach ($placesResult as $place) {
@@ -137,6 +182,8 @@ class PlaceController extends Controller
       return view('categories.search-results', [
         "placesResult" => $placesResult,
         "searchPlace" => $searchPlace,
+        "categories" => Category::all(),
+        "request" => $request, // Pasar la instancia de Request a la vista
       ]);
   }
 

@@ -115,6 +115,18 @@ Route::post('/categorias/nueva-resena', [\App\Http\Controllers\ReviewController:
   ->name('addReviewAction');
 
 
+  // Formulario de edición de una reseña
+Route::get('/resenas/{review_id}/editar', [\App\Http\Controllers\ReviewController::class, 'editReviewForm'])
+  ->middleware('auth')
+  ->middleware('user_and_admin_allow')
+  ->middleware('only_specific_user_allow')
+  ->name('editReviewForm');
+
+Route::post('/resenas/{review_id}/editar', [\App\Http\Controllers\ReviewController::class, 'editReviewAction'])
+  ->middleware('auth')
+  ->middleware('user_and_admin_allow')
+  ->name('editReviewAction');
+
 // Rutas relacionadas al blog de noticias
 Route::get('/blog', [\App\Http\Controllers\HomeController::class, 'blogIndex'])
 ->name('blogIndex');

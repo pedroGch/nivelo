@@ -48,6 +48,12 @@ class Review extends Model
     "user_id",
     "review",
     "score",
+    "pic_1",
+    "alt_pic_1",
+    "pic_2",
+    "alt_pic_2",
+    "pic_3",
+    "alt_pic_3",
     "status",
   ];
 

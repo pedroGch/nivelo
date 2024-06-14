@@ -216,6 +216,15 @@
     @forelse($reviews as $review)
     <div class="col-12 col-md-6 col-xl-4">
       <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+        @if ($review->user_id == Auth::id())
+        <div class="d-flex justify-content-end">
+          <a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}">
+            <span class="icon ps-3">
+              <ion-icon name="create-outline" aria-label="Editar" size="large" style="color: #000;"></ion-icon>
+            </span>
+          </a>
+        </div>
+        @endif
         <div class="mx-2 border-bottom border-dark-subtle pb-3">
           <p class="h5 mt-3 fw-bold text-center">Comentario de:  {{ $review->user->username}}</p>
           <div class="d-flex justify-content-center">
