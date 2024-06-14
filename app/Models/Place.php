@@ -165,14 +165,10 @@ class Place extends Model
   }
 
 
-  /**
-   * Relación de uno a muchos inversa entre Place y Review
-   * esta función devuelve el objeto Review que corresponde al place
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-   */
-  public function reviews() :BelongsTo
+
+  public function reviews(): HasMany
   {
-    return $this->belongsTo(Review::class, 'review_id', 'review_id');
+    return $this->hasMany(Review::class, 'place_id', 'place_id');
   }
   public function favoritedBy()
   {

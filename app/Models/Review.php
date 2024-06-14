@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * App\Models\Review
  *
@@ -118,11 +118,8 @@ class Review extends Model
   }
 
 
-  /**
-   * Relación uno a uno con Place
-   * @return \Illuminate\Database\Eloquent\Relations\HasOne
-   */
-  public function place(): HasOne {
-    return $this->hasOne(Place::class, "place_id", "place_id");
+  public function place(): BelongsTo
+  {
+      return $this->belongsTo(Place::class, 'place_id', 'place_id');
   }
 }
