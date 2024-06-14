@@ -202,7 +202,11 @@
               <p class="card-text">Puntaje: 4.5</p>
               <div class="d-flex justify-content-end">
                 <button class="btn btn-primary me-2" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
-                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reviewsModal${place.place_id}">Opiniones</button>
+                <button
+                  class="btn btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#reviewsModal${place.place_id}"
+                  onclick="loadReviews(${place.place_id})"> Opiniones</button>
               </div>
             </div>
           </div>
@@ -218,7 +222,7 @@
             <h5 class="modal-title" id="reviewsModalLabel${place.place_id}">Opiniones sobre ${place.name}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="reviewsContainer${place.place_id}">
             <!-- Aquí irían las opiniones del lugar -->
           </div>
           <div class="modal-footer">
@@ -229,6 +233,33 @@
     </div>`;
     accordionContainer.insertAdjacentHTML('beforeend', placeHTML);
     });
+  }
+  function loadReviews(placeId) {
+    fetch(`/places/${placeId}/reviews`)
+      .then(response => response.json())
+      .then(reviews => {
+        const reviewsContainer = document.getElementById(`reviewsContainer${placeId}`);
+        reviewsContainer.innerHTML = ''; // Limpiar el contenido anterior
+
+        if (reviews.length === 0) {
+          reviewsContainer.innerHTML = '<p>No hay opiniones disponibles.</p>';
+          return;
+        }
+
+        reviews.forEach(review => {
+          const reviewHTML = `
+            <div class="d-flex mb-3">
+              <img src="${review.user.profile_picture}" alt="Foto del usuario" class="img-fluid me-3 rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+              <div>
+                <h6 class="mb-1">${review.user.username}</h6>
+                <p class="mb-0">Puntaje: ${review.score}</p>
+                <p class="mb-0">Comentario: ${review.review}</p>
+              </div>
+            </div>`;
+          reviewsContainer.insertAdjacentHTML('beforeend', reviewHTML);
+        });
+      })
+      .catch(error => console.error('Error al obtener las opiniones:', error));
   }
 </script>
 @endsection
