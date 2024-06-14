@@ -219,8 +219,8 @@ class PlaceController extends Controller
   public function getPlacesByCategory($category_id)
   {
     // Obtiene la categoría por su ID
-    $category = Place::where('category_id', $category_id)->get();
-    // Retorna los lugares
-    return response()->json($category);
+    $places = Place::where('category_id', $category_id)->get();
+
+    return response()->json($places);
   }
 }
