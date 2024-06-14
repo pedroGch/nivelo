@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-md-8 col-sm-12">
                       <select class="form-select d-inline" aria-label="Default select example" name="category" id="category">
-                        <option selected>Elegí una categoría</option>
+                        <option selected value="-1">Elegí una categoría</option>
                           @foreach($categories as $category)
                             <option class="@error('category') is-invalid @enderror" value="{{ $category->category_id }}"
                               {{ old('category') == $category->category_id ? 'selected' : '' }}
@@ -50,8 +50,11 @@
                   <div class="col-12 mb-3">
                     <div class="row">
                       <div class="col-6 mx-auto">
-                        <!-- Contenido del elemento -->
-                        <p class="text-center fw-bold"> Aún no aplicaste ningún filtro </p>
+                        <p  id="sin_filtro" class="text-center fw-bold"> Aún no aplicaste ningún filtro </p>
+                      </div>
+                      <div class="col-12" id="con_filtro">
+                        <div class="container my-4" id="getPlacesAccordion">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -61,7 +64,6 @@
           </div>
           <div class="col-12">
             <div id="gmp-map" style="height: 500px;"></div>
-            <ul id="places-list" class="list-group mt-3"></ul>
           </div>
         </div>
       </div>
@@ -75,6 +77,11 @@
   let map
   let marker
   let autocomplete
+  let semaforo = {
+    red: '../../img/icons/icon-red.png',
+    yellow: '../../img/icons/icon-yellow.png',
+    green: '../../img/icons/icon-green.png'
+  }
   function getCurrentPosition(map, marker) {
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(
@@ -83,9 +90,9 @@
             lat: latitude,
             lng: longitude,
           };
-          console.log(cords);
+
           map.setCenter(coords)
-          map.setZoom(8)
+          map.setZoom(12)
           marker.setPosition(coords)
         },
         () => {
@@ -112,7 +119,7 @@
       position: myLatLng,
       map: map,
       title: "Estoy acá",
-      icon: "../../img/icons/icon-red.png" //<body data-base-url="{{ url('/') }}>
+      icon: "../../img/icons/icon-red.png"
 
     });
 
@@ -123,24 +130,106 @@
       strictBounds: false
 
     }
-
-    autocomplete = new google.maps.places.Autocomplete(place_name, options)
-
-    autocomplete.addListener("place_changed",() =>{
-      const aPlace = autocomplete.getPlace()
-      map.setCenter(aPlace.geometry.location)
-      marker.setPosition(aPlace.geometry.location)
-
-      document.getElementById('namePlace').value = aPlace.name
-      document.getElementById('addressPlace').value = aPlace.address_components[0].long_name
-      document.getElementById('cityPlace').value = aPlace.address_components[1].long_name
-      document.getElementById('provincePlace').value = aPlace.address_components[2].long_name
-      document.getElementById('latitude').value = aPlace.geometry.location.lat()
-      document.getElementById('longitude').value = aPlace.geometry.location.lng()
-
-    })
   }
+  document.getElementById('category').addEventListener('change', function() {
+    const categoryId = this.value;
+    const accordionContainer = document.getElementById('getPlacesAccordion');
+    const sin_filtro = document.getElementById('sin_filtro');
+    const con_filtro = document.getElementById('con_filtro');
 
+    if (categoryId == -1){
+      sin_filtro.classList.remove('d-none');
+      con_filtro.classList.add('d-none');
+
+    }else{
+      sin_filtro.classList.add('d-none');
+      con_filtro.classList.remove('d-none');
+      fetch(`/categories/${categoryId}/places`)
+        .then(response => response.json())
+        .then(places => {
+
+          if (places.length != 0) {
+            places.forEach(place => {
+              const position = {
+                lat: parseFloat(place.latitude),
+                lng: parseFloat(place.longitude)
+              };
+
+              new google.maps.Marker({
+                position: position,
+                map: map,
+                title: place.name
+              });
+              insertPlaces(places, accordionContainer);
+            });
+          }else{
+            console.log(places.length);
+            accordionContainer.innerHTML = '';
+            const placeHTML = `<p class="text-center fw-bold">No hay resultados para esta categoría</p>`
+            accordionContainer.insertAdjacentHTML('beforeend', placeHTML);
+          }
+      })
+      .catch(error => console.error('Error fetching places:', error));
+    }
+  })
+  function viewOnMap(lat, lng) {
+    const coords = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    // Centrar el mapa en las nuevas coordenadas
+    map.setCenter(coords);
+    map.setZoom(14); // Ajustar el nivel de zoom según sea necesario
+
+    // Agregar un marcador en las nuevas coordenadas
+    new google.maps.Marker({
+      position: coords,
+      map: map,
+      title: "Lugar seleccionado"
+    });
+  }
+  function insertPlaces(places, accordionContainer) {
+    accordionContainer.innerHTML = '';
+
+    places.forEach((place, index) => {
+    const placeHTML = `
+    <div class="container">
+      <div class="card mb-3 w-100" id="placeCard${place.place_id}">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${place.name}</h5>
+              <p class="card-text">Puntaje: 4.5</p>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary me-2" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reviewsModal${place.place_id}">Opiniones</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Reviews -->
+    <div class="modal fade" id="reviewsModal${place.place_id}" tabindex="-1" aria-labelledby="reviewsModalLabel${place.place_id}" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reviewsModalLabel${place.place_id}">Opiniones sobre ${place.name}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Aquí irían las opiniones del lugar -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+    accordionContainer.insertAdjacentHTML('beforeend', placeHTML);
+    });
+  }
 </script>
 @endsection
 
