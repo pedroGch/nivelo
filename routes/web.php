@@ -220,3 +220,7 @@ Route::get('/ver-mapa', [\App\Http\Controllers\PlaceController::class, 'mapViewF
 Route::get('/categories/{category_id}/places',  [\App\Http\Controllers\PlaceController::class, 'getPlacesByCategory'])
   ->middleware('auth')
   ->name('getPlacesByCategory');
+
+Route::get('/places/{place_id}/reviews', [\App\Http\Controllers\ReviewController::class, 'getReviewPlaces'])
+  ->middleware('auth')
+  ->name('getReviewPlaces');
