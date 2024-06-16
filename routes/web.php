@@ -224,3 +224,5 @@ Route::get('/categories/{category_id}/places',  [\App\Http\Controllers\PlaceCont
 Route::get('/places/{place_id}/reviews', [\App\Http\Controllers\ReviewController::class, 'getReviewPlaces'])
   ->middleware('auth')
   ->name('getReviewPlaces');
+
+  require __DIR__.'/auth.php';
