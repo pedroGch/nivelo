@@ -51,7 +51,7 @@
           </form>
           <div class="row">
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿Olvidaste tu contraseña?</p>
+              <p>¿Olvidaste tu contraseña? <a href="{{ route('password.request') }}">Hace click acá</a></p>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
               <a href="<?= url('/sesion-google') ?>" class="form-control btn bg-violeta-principal btn-violeta-active rounded-pill p-3 text-white shadow-sm fw-semibold">Google</a>
