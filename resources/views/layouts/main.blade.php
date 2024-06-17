@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
     <title> @yield('title') :: nivelo</title>
     @vite(['resources/js/app.js'])
 </head>
@@ -34,6 +35,17 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
+          console.log('ServiceWorker registrado con éxito:', registration);
+        }, function(error) {
+          console.log('Registro de ServiceWorker fallido:', error);
+        });
+      });
+    }
+  </script>
 </body>
 
 </html>
