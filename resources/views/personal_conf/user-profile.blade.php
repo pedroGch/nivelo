@@ -41,7 +41,7 @@
   </div>
   <div class="my-4">
     <a href="{{ route('editProfileForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-      <span class="fw-semibold">Editar perfíl</span>
+      <span class="fw-semibold">Editar perfil</span>
     </a>
   </div>
   <div>
