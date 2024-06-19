@@ -57,7 +57,7 @@ class User extends Authenticatable
         'email',
         'birth_date',
         'password',
-
+        'bio',
         'avatar',
         'external_id',
         'external_auth',
@@ -67,6 +67,7 @@ class User extends Authenticatable
       'name' => "required|max:30",
       'surname' => "required|max:30",
       'username' => "required|max:30",
+      'bio' => "max:255",
       'email' => "required|email",
       'birth_date' => "required",
       'password' => "required",
@@ -80,7 +81,7 @@ class User extends Authenticatable
       'email.required' => 'El email es requerido',
       'email.email' => 'El email debe ser válido',
       'password.required' => 'El password es requerido',
-
+      'bio.max' => 'Tu descripción no puede superar los 255 caracteres',
       'username.required' => 'El nombre de usuario es requerido',
       'surname.required' => 'El apellido es requerido',
       'username.max' => 'El nombre no puede contener más de 30 carateres',
