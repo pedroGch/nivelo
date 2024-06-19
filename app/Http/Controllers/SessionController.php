@@ -187,4 +187,12 @@ class SessionController extends Controller
       ->route('aboutYouForm')
       ->with('status.message', 'Tu perfil fue generado exitosamente');
   }
+  public function editProfileForm()
+  {
+    return view('/profile/edit');
+  }
+  public function editProfileAction()
+  {
+
+  }
 }
