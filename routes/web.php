@@ -225,4 +225,10 @@ Route::get('/places/{place_id}/reviews', [\App\Http\Controllers\ReviewController
   ->middleware('auth')
   ->name('getReviewPlaces');
 
+Route::get('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'editProfileForm'])
+  ->name('editProfileForm');
+
+Route::post('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'editProfileAction'])
+  ->name('editProfileAction');
+
   require __DIR__.'/auth.php';
