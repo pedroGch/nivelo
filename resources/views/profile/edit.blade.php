@@ -56,19 +56,19 @@
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="password_old" name="password_old" class="form-control" id="password_old" placeholder="Contraseña anterior" value="{{ old('password_old') }}">
+            <input type="password" name="password_old" class="form-control" id="password_old" placeholder="Contraseña anterior" value="{{ old('password_old') }}">
             <label for="password_old">Contraseña anterior</label>
           </div>
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="password_new" name="password_new" class="form-control" id="password_new" placeholder="Contraseña nueva" value="{{ old('password_new') }}">
+            <input type="password" name="password_new" class="form-control" id="password_new" placeholder="Contraseña nueva" value="{{ old('password_new') }}">
             <label for="password_new">Contraseña nueva</label>
           </div>
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="password_repeat" name="password_repeat" class="form-control" id="password_repeat" placeholder="Repetir contraseña nueva" value="{{ old('password_repeat') }}">
+            <input type="password" name="password_repeat" class="form-control" id="password_repeat" placeholder="Repetir contraseña nueva" value="{{ old('password_repeat') }}">
             <label for="password_repeat">Repetir contraseña nueva</label>
           </div>
         </div>
