@@ -37,6 +37,13 @@ class CategoryController extends Controller
     foreach ($places as $place) {
       $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
 
+      $fiveStarReviews = Review::where('place_id', $place->place_id)->where('score', 5)->count();
+
+      $place->notablePlace = false;
+      if($fiveStarReviews == 10) {
+        $place->notablePlace = true;
+      }
+
       if (count($totalScores) > 0) {
         $totalScore = array_sum($totalScores);
         $averageScore = $totalScore / count($totalScores);
