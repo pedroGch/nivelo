@@ -110,8 +110,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
     </div>
     @endforelse
   </div>
-
-  {{ $places->links() }}
+  <div>
+    {{ $places->links() }}
+  </div>
 </section>
 
 @endsection

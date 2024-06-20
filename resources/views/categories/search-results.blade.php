@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \App\Models\Place[] $places
+ * @var \App\Models\Place[] $placesResult
  * @var string $searchPlace
  */
 ?>
@@ -210,6 +210,9 @@
         </div>
     </div>
     @endforelse
+  </div>
+  <div class="pt-4">
+    {{ $placesResult->links() }}
   </div>
 </section>
 

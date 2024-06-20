@@ -163,7 +163,7 @@ class PlaceController extends Controller
       }
     }
 
-    $placesResult = $query->get();
+    $placesResult = $query->paginate(8);
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $placesResult
     foreach ($placesResult as $place) {
