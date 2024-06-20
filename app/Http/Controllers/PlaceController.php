@@ -27,6 +27,14 @@ class PlaceController extends Controller
 
     $averagePlaceScore = max(1, min(5, $averagePlaceScore));
 
+    $fiveStarReviews = Review::where('place_id', $place_id)->where('score', 5)->count();
+
+    $notablePlace = false;
+    if($fiveStarReviews == 10) {
+      $notablePlace = true;
+    }
+
+
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
       "category" => Category::findOrFail($category_id),
@@ -37,6 +45,7 @@ class PlaceController extends Controller
                           ->orderBy('created_at', 'desc')
                           ->get(),
       "averagePlaceScore" => $averagePlaceScore,
+      "notablePlace" => $notablePlace,
     ]);
   }
 

@@ -5,6 +5,7 @@
  * @var \App\Models\Review[] $reviews
  * @var \App\Models\User $user_more_info
  * @var $averagePlaceScore
+ * @var $notablePlace
  *
  */
 
@@ -40,7 +41,10 @@
       <div class="mt-3">
         <div class="row">
           <div class="col-12">
-            <h2 class="fw-bold ps-2">{{ $place->name }}</h2>
+            <h2 class="fw-bold ps-2">{{ $place->name }}
+              @if($notablePlace) <span class="badge bg-naranja-principal">Lugar destacado</span>
+              @endif</h2>
+
           </div>
           <div class="col-12">
             <div class="d-flex">
@@ -134,8 +138,15 @@
       </div>
     </div>
     </div>
-    <div class="col-12 col-lg-5">
-      <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
+    <div class="col-12 col-lg-5 position-relative">
+      @if($notablePlace)
+      <div class="position-absolute top-0 end-0 pt-4">
+        <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 80px">
+      </div>
+      @endif
+      <div>
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
+      </div>
     </div>
   </div>
   <div class="row border-bottom border-dark-subtle pb-3">
