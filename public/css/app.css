@@ -582,6 +582,31 @@ table {
 
 /* Estilo para fijar el campo de entrada y el botón al fondo */
 
+/* Paginación */
+/* Estilos personalizados para la paginación */
+.custom-pagination .page-link {
+  background-color: #fff; /* Color de fondo */
+  border: 1px solid #5813ac5d; /* Borde */
+  color: #000; /* Color del texto */
+}
+
+/* Estilo para el enlace activo */
+.custom-pagination .page-item.active .page-link {
+  background-color: var(--violeta-dark); /* Color de fondo */
+  color: #fff; /* Color del texto */
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #e9ecef; /* Color de fondo al pasar el ratón */
+  color: var(--violeta-principal); /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para botón deshabilitado*/
+.custom-pagination .page-item.disabled .page-link {
+  color: #6c757d; /* Color del texto */
+  pointer-events: none; /* Deshabilitar eventos de puntero */
+  background-color: rgb(235, 235, 235);
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}

@@ -1,8 +1,9 @@
 <?php
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * @var \App\Models\Category $category
- * @var \App\Models\Place[] $places
+ * @var \App\Models\Place[] | \Illuminate\Database\Eloquent\Collection | \Illuminate\Pagination\LengthAwarePaginator $places
  */
 ?>
 
@@ -109,6 +110,8 @@
     </div>
     @endforelse
   </div>
+
+  {{ $places->links() }}
 </section>
 
 @endsection
