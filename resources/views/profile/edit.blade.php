@@ -56,20 +56,23 @@
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="password" name="password_old" class="form-control" id="password_old" placeholder="Contraseña anterior" value="{{ old('password_old') }}">
+            <input type="password" name="password_old" class="form-control" id="password_old" placeholder="Contraseña anterior" value="{{ old('password_old') }}"
+            @error('password_old') aria-describedby="error-password_old" aria-invalid="true" @enderror>
             <label for="password_old">Contraseña anterior</label>
+            @error('password_old')
+            <p class="text-danger" id="error-password_old">{{ $message }}</p>
+            @enderror
           </div>
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="password" name="password_new" class="form-control" id="password_new" placeholder="Contraseña nueva" value="{{ old('password_new') }}">
+            <input type="password" name="password_new" class="form-control" id="password_new" placeholder="Contraseña nueva" value="{{ old('password_new') }}"
+            @error('password_new') aria-describedby="error-password_new" aria-invalid="true" @enderror>
             <label for="password_new">Contraseña nueva</label>
-          </div>
-        </div>
-        <div class="mb-4">
-          <div class="form-floating">
-            <input type="password" name="password_repeat" class="form-control" id="password_repeat" placeholder="Repetir contraseña nueva" value="{{ old('password_repeat') }}">
-            <label for="password_repeat">Repetir contraseña nueva</label>
+            @error('password_new')
+            <p class="text-danger" id="error-password_new">{{ $message }}</p>
+            @enderror
+            <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y" onclick="togglePassword('password_new')">Mostrar</button>
           </div>
         </div>
         <div class="mb-4">
@@ -85,6 +88,13 @@
     </div>
   </div>
 </section>
+<script>
+  function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+    field.setAttribute('type', type);
+  }
+</script>
 @endsection
 
 @section('footer')

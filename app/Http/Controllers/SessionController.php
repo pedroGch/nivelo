@@ -8,6 +8,7 @@ use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
 
 class SessionController extends Controller
 {
@@ -191,8 +192,61 @@ class SessionController extends Controller
   {
     return view('/profile/edit');
   }
-  public function editProfileAction()
+  public function editProfileAction(Request $request)
   {
+    if(!isset($request->username) && !isset($request->bio) && !isset($request->password_old)){
 
+      return redirect()
+        ->route('userProfile')
+        ->with('status.message', 'Tu perfil no sufrio cambios.')
+        ->with('status.type', 'warning');
+    }
+
+    $user = Auth::user();
+    // Validar nombre de usuario si está presente en la solicitud
+    if (isset($request->username)) {
+      $request->validate([
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+      ],[
+        'username.unique' => 'El nombre de usuario ya está en uso.',
+      ]);
+      $user->username = $request->username;
+    }
+
+    // Validar contraseñas si están presentes en la solicitud
+    if (isset($request->password_old) || isset($request->password_new)) {
+      $request->validate([
+        'password_old' => 'required|string|min:6',
+        'password_new' => 'required|string|min:6',
+      ], [
+        'password_old.required' => 'Debes ingresar tu contraseña actual.',
+        'password_new.required' => 'Debes ingresar una nueva contraseña.',
+        'password_new.min' => 'La longitud debe ser de al menos 6 caracteres.',
+      ]);
+
+      if (Hash::check($request->password_old, $user->password)) {
+        $user->password = Hash::make($request->password_new);
+      } else {
+        return back()->withErrors(['password_old' => 'La contraseña actual es incorrecta.']);
+      }
+    }
+
+    // Validar la bio si está presente en la solicitud
+    if (isset($request->bio)) {
+      $request->validate([
+        'bio' => 'nullable|string|max:255',
+      ], [
+        'bio.max' => 'La biografía no puede exceder los 255 caracteres.',
+      ]);
+      $user->bio = $request->bio;
+    }
+
+
+    // Guardar los cambios
+    $user->save();
+
+    return redirect()
+      ->route('userProfile')
+      ->with('status.message', 'Perfil actualizado correctamente.');
   }
 }
