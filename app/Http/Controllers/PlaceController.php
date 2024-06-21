@@ -186,6 +186,14 @@ class PlaceController extends Controller
       } else {
         $place->totalAverageScore = 3; // Otra opción si no hay reseñas
       }
+
+      // Verificar si el lugar es destacado
+      $fiveStarReviews = Review::where('place_id', $place->place_id)->where('score', 5)->count();
+
+      $place->notablePlace = false;
+      if($fiveStarReviews == 10) {
+        $place->notablePlace = true;
+      }
     }
 
       return view('categories.search-results', [
