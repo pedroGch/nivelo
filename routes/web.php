@@ -231,4 +231,10 @@ Route::get('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'e
 Route::post('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'editProfileAction'])
   ->name('editProfileAction');
 
+Route::get('/administrar/lugares', [\App\Http\Controllers\HomeController::class, 'AdminPlacesView'])
+  ->name('AdminPlacesView');
+
+Route::get('/lugares/{id}/eliminar', [\App\Http\Controllers\PlaceController::class, 'deletePlaceById'])
+  ->name('deletePlaceById');
+
   require __DIR__.'/auth.php';

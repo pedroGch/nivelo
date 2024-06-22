@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Place;
 use App\Models\User;
 use App\Models\Review;
+use App\Models\Category;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 
@@ -240,5 +241,12 @@ class HomeController extends Controller
       return redirect()->route('reviewsAdmin')
         ->with('status.message', 'Error al ocultar la reseña: ' . $e->getMessage());
     }
+  }
+
+  public function AdminPlacesView()
+  {
+    $categories = Category::all();
+
+    return view('admin.admin-places',['categorias' => $categories]);
   }
 }
