@@ -237,4 +237,9 @@ Route::get('/administrar/lugares', [\App\Http\Controllers\HomeController::class,
 Route::get('/lugares/{id}/eliminar', [\App\Http\Controllers\PlaceController::class, 'deletePlaceById'])
   ->name('deletePlaceById');
 
+Route::get('/administrar/categorias', [\App\Http\Controllers\CategoryController::class, 'getAllCategories'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('getAllCategories');
+
   require __DIR__.'/auth.php';

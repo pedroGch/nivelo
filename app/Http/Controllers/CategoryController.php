@@ -69,6 +69,12 @@ class CategoryController extends Controller
     } else {
       return 0; // Otra opción si no hay puntajes
     }
-}
+  }
+
+  public function getAllCategories()
+  {
+      $categories = Category::all();
+      return response()->json($categories);
+  }
 
 }

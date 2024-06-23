@@ -101,7 +101,6 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Ícono</th>
-                    <th>Imagen</th>
                     <th>Descripción</th>
                     <th>Acciones</th>
                   </tr>
@@ -183,6 +182,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('categories-tab').addEventListener('shown.bs.tab', function (event) {
+      loadCategories();
+    });
     document.getElementById('categorySelect').addEventListener('change', function() {
       const category_id = this.value;
       fetch(`/categories/${category_id}/places`)
@@ -242,5 +244,26 @@
           });
         }
     });
+  }
+
+  function loadCategories() {
+    fetch(`/administrar/categorias`)
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById('categoriesTableBody');
+        tbody.innerHTML = '';
+        data.forEach(category => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${category.name}</td>
+            <td><img src="${category.icon}" alt="${category.name}" class="img-fluid" style="width: 30px; height: 30px;"></td>
+            <td>${category.alt_img_cat}</td>
+            <td>
+              <button class="btn btn-sm btn-primary">Editar</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
   }
 </script>
