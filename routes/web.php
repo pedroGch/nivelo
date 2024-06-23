@@ -247,4 +247,14 @@ Route::post('/administrar/add/categorie', [\App\Http\Controllers\CategoryControl
   ->middleware('only_admin_allow')
   ->name('addCategorieAction');
 
-  require __DIR__.'/auth.php';
+Route::get('/categorias/{id}/editar', [\App\Http\Controllers\CategoryController::class, 'editCategorieForm'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editCategorieForm');
+
+Route::post('/categorias/{id}/editar', [\App\Http\Controllers\CategoryController::class, 'editCategorieAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editCategorieAction');
+
+require __DIR__.'/auth.php';

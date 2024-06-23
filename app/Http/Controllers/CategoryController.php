@@ -103,4 +103,51 @@ class CategoryController extends Controller
     }
   }
 
+  public function editCategorieForm($id)
+  {
+    $categorie = Category::where('category_id', $id)->get();
+    return response()->json($categorie);
+  }
+
+  public function editCategorieAction(Request $request, $id)
+  {
+    try{
+      // Validar los datos del formulario
+      $request->validate([
+        'name' => 'required|string|max:255',
+        'alt_img_cat' => 'nullable|string|max:255',
+        'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image_cat' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $category = Category::findOrFail($id);
+
+      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
+
+      if($request->hasFile('image')){
+        $data['image'] = $request->file('image')->store('categories');
+        $category->image = $data['image'];
+      }
+      if($request->hasFile('icon')){
+        $data['icon'] = $request->file('icon')->store('categories');
+        $category->icon = $data['icon'];
+      }
+
+      // Actualizar los campos de la categoría
+      $category->name = $data['name'];
+      $category->alt_img_cat = $data['alt_img_cat'];
+
+      // Guardar los cambios en la base de datos
+      $category->save();
+
+      // Redirigir con un mensaje de éxito
+      return redirect()->route('AdminPlacesView')->with('status.message', 'Categoría actualizada con éxito')->with('status.type', 'success');
+    } catch (\Exception $e){
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Error al modificar la categoría: ' . $e->getMessage());
+    }
+  }
+
+
+
 }

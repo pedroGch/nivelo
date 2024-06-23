@@ -158,7 +158,7 @@
                   <label for="imageDescription" class="form-label">Descripción de la Imagen</label>
                   <input type="text" class="form-control" id="imageDescription" name="alt_img_cat">
                 </div>
-                <button type="submit" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar Categoría</button>
+                <button type="submit" id="btnCategoriaAction" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar Categoría</button>
               </form>
             </div>
           </div>
@@ -181,7 +181,15 @@
 @endsection
 
 <script>
+
   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('addCategoryModal').addEventListener('hidden.bs.modal', function () {
+      // Reset form when modal is hidden
+      document.getElementById('addCategoryForm').reset();
+      document.getElementById('addCategoryForm').action = '{{route('addCategorieAction')}}';
+      document.getElementById('addCategoryModalLabel').innerText = 'Agregar categoría';
+      document.getElementById('btnCategoriaAction').innerText = 'Agregar categoría';
+    });
     document.getElementById('categories-tab').addEventListener('shown.bs.tab', function (event) {
       loadCategories();
     });
@@ -259,11 +267,36 @@
             <td><img src="${category.icon}" alt="${category.name}" class="img-fluid" style="width: 30px; height: 30px;"></td>
             <td>${category.alt_img_cat}</td>
             <td>
-              <button class="btn btn-sm btn-primary">Editar</button>
+              <button class="btn btn-sm btn-primary" onclick="editCategory(${category.category_id})">Editar</button>
             </td>
           `;
           tbody.appendChild(row);
         });
+      });
+  }
+
+  function editCategory(id) {
+    fetch(`/categorias/${id}/editar`, {
+        method: 'get',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        document.getElementById('categoryName').value = data[0].name;
+        document.getElementById('imageDescription').value = data[0].alt_img_cat;
+        // No podemos previsualizar archivos cargados (icon e imagen), solo podemos cambiarlos.
+
+        const form = document.getElementById('addCategoryForm');
+        form.action = `/categorias/${id}/editar`;
+        const modal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
+        document.getElementById('addCategoryModalLabel').innerText = 'Modificar categoría';
+        document.getElementById('btnCategoriaAction').innerText = 'Modificar categoría';
+
+        modal.show();
       });
   }
 </script>
