@@ -91,7 +91,7 @@
             <div class="row">
               <div class="col-12 col-lg-3">
                 <button type="button" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-                  Agregar categoría
+                  Nueva categoría
                 </button>
               </div>
             </div>
@@ -140,25 +140,25 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="addCategoryForm" action="#" method="POST" enctype="multipart/form-data">
+              <form id="addCategoryForm" action="{{route('addCategorieAction')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                   <label for="categoryName" class="form-label">Nombre de la Categoría</label>
-                  <input type="text" class="form-control" id="categoryName" name="name" required>
+                  <input type="text" class="form-control" id="categoryName" name="name">
                 </div>
                 <div class="mb-3">
                   <label for="categoryIcon" class="form-label">Ícono</label>
-                  <input type="file" class="form-control" id="categoryIcon" name="icon" accept="image/*" required>
+                  <input type="file" class="form-control" id="categoryIcon" name="icon" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="categoryImage" class="form-label">Imagen</label>
-                  <input type="file" class="form-control" id="categoryImage" name="image" accept="image/*" required>
+                  <input type="file" class="form-control" id="categoryImage" name="image_cat" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="imageDescription" class="form-label">Descripción de la Imagen</label>
-                  <input type="text" class="form-control" id="imageDescription" name="image_description" required>
+                  <input type="text" class="form-control" id="imageDescription" name="alt_img_cat">
                 </div>
-                <button type="submit" class="btn btn-primary">Agregar Categoría</button>
+                <button type="submit" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar Categoría</button>
               </form>
             </div>
           </div>

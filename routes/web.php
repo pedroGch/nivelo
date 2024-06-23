@@ -242,4 +242,9 @@ Route::get('/administrar/categorias', [\App\Http\Controllers\CategoryController:
   ->middleware('only_admin_allow')
   ->name('getAllCategories');
 
+Route::post('/administrar/add/categorie', [\App\Http\Controllers\CategoryController::class, 'addCategorieAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('addCategorieAction');
+
   require __DIR__.'/auth.php';

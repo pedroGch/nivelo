@@ -73,8 +73,34 @@ class CategoryController extends Controller
 
   public function getAllCategories()
   {
-      $categories = Category::all();
-      return response()->json($categories);
+    $categories = Category::all();
+    return response()->json($categories);
+  }
+
+  public function addCategorieAction(Request $request)
+  {
+
+    try{
+      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
+      if($request->hasFile('image')){
+        $data['image'] = $request->file('image')->store('categories');
+      }
+      if($request->hasFile('icon')){
+        $data['icon'] = $request->file('icon')->store('categories');
+      }
+
+      Category::create([
+        'name' => $data['name'],
+        'image_cat' => $data['image_cat'],
+        'alt_img_cat' => $data['alt_img_cat'],
+        'icon' => $data['icon'],
+      ]);
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Categoría agregada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Error al agregar la categoría: ' . $e->getMessage());
+    }
   }
 
 }
