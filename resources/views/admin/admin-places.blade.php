@@ -209,8 +209,9 @@
               <td>${place.city}</td>
               <td>${place.province}</td>
               <td>
-                <a href="/lugares/${place.place_id}/editar" class="btn btn-sm btn-primary">Editar</a>
-                <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm btn-danger">Eliminar</button>
+                  <a href="/lugares/${place.place_id}/editar" class="btn btn-sm btn-primary">Editar</a>
+                  <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm btn-danger">Eliminar</button>
+                  ${category_id === 'pending' ? `<button onclick="autorizarLugar(${place.place_id})" class="btn btn-sm btn-success">Autorizar</button>` : ''}
               </td>
             `;
             tbody.appendChild(row);
@@ -298,5 +299,41 @@
 
         modal.show();
       });
+  }
+  function autorizarLugar(id) {
+    Swal.fire({
+        title: '¿Estás seguro que querés autorizar este lugar?',
+        text: 'Este lugar será autorizado y visible para todos.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#13BA41',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Autorizar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/lugares/${id}/autorizar`, {
+                method: 'post',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(data => {
+                console.log(data);
+                if (data.status == 200) {
+                    // Actualizar la fila de la tabla
+                    document.getElementById(`placeRow${id}`).remove();
+                    Swal.fire('Autorizado', 'El lugar ha sido autorizado.', 'success');
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                Swal.fire('Error', 'Hubo un problema al autorizar el lugar.', 'error');
+            });
+        }
+    });
   }
 </script>

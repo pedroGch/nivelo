@@ -257,4 +257,9 @@ Route::post('/categorias/{id}/editar', [\App\Http\Controllers\CategoryController
   ->middleware('only_admin_allow')
   ->name('editCategorieAction');
 
+Route::post('/lugares/{id}/autorizar', [\App\Http\Controllers\PlaceController::class, 'authorizePlace'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('authorizePlace');
+
 require __DIR__.'/auth.php';

@@ -267,7 +267,10 @@ class PlaceController extends Controller
   {
     if ($category_id === 'all'){
       $places = Place::all();
-    }else{
+    }elseif ($category_id === 'pending') {
+      $places = Place::where('status', 0)->get();
+    }
+    else{
       $places = Place::where('category_id', $category_id)->get();
     }
     return response()->json($places);
@@ -283,5 +286,13 @@ class PlaceController extends Controller
       'message' => 'Lugar eliminado correctamente',
       'status' => 200
     ]);
+  }
+
+  public function authorizePlace($id)
+  {
+    $place = Place::findOrFail($id);
+    $place->status = true;
+    $place->save();
+    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
   }
 }

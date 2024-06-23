@@ -49,7 +49,7 @@ class CategoryController extends Controller
       "category" => Category::findOrFail($category_id),
       "places" => $places,
     ]);
-}
+  }
 
 
   /**
@@ -83,10 +83,10 @@ class CategoryController extends Controller
     try{
       $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('categories');
+        $data['image'] = $request->file('image')->store('/storage/categories');
       }
       if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('categories');
+        $data['icon'] = $request->file('icon')->store('/storage/categories');
       }
 
       Category::create([
@@ -125,11 +125,11 @@ class CategoryController extends Controller
       $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
 
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('categories');
+        $data['image'] = $request->file('image')->store('/storage/categories');
         $category->image = $data['image'];
       }
       if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('categories');
+        $data['icon'] = $request->file('icon')->store('/storage/categories');
         $category->icon = $data['icon'];
       }
 
