@@ -246,7 +246,20 @@ class HomeController extends Controller
   public function AdminPlacesView()
   {
     $categories = Category::all();
-
-    return view('admin.admin-places',['categorias' => $categories]);
+    $categoriasLugares = [
+      'Alojamiento' => Place::where('category_id', 1)->count(),
+      'Recreación' => Place::where('category_id', 2)->count(),
+      'Comercio' => Place::where('category_id', 3)->count(),
+      'Plazas' => Place::where('category_id', 4)->count(),
+      'Playas' => Place::where('category_id', 5)->count(),
+      'Gastronomía' => Place::where('category_id', 6)->count(),
+      'Oficinas del Estado' => Place::where('category_id', 7)->count(),
+      'Educación' => Place::where('category_id', 8)->count(),
+      'Deporte' => Place::where('category_id', 9)->count(),
+      'Salud' => Place::where('category_id', 10)->count(),
+      'Transporte' => Place::where('category_id', 11)->count(),
+      'Albergues Transitorios' => Place::where('category_id', 12)->count(),
+    ];
+    return view('admin.admin-places',['categorias' => $categories,'categoriasLugares' => $categoriasLugares,]);
   }
 }

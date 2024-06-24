@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Models\Noticia[] $noticias
+ * @var \App\Models\Place[] $categoriasLugares
  */
 
 ?>
@@ -43,6 +43,9 @@
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button" role="tab" aria-controls="categories" aria-selected="false">Categorías</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="estadistics-tab" data-bs-toggle="tab" data-bs-target="#estadistics" type="button" role="tab" aria-controls="estadistics" aria-selected="false">Estadísticas</button>
           </li>
         </ul>
         <div class="tab-content" id="adminTabContent">
@@ -110,6 +113,19 @@
                 </tbody>
               </table>
             </div>
+          </div>
+          <div class="tab-pane fade" id="estadistics" role="tabpanel" aria-labelledby="estadistics-tab">
+            <h3 class="mt-3">Cantidad de lugares por categoría</h3>
+            <!-- Contenido de administración de categorías -->
+            <div class="row">
+              <div class="col-12 col-lg-3">
+                  <div style="width: 1200px; height: 400px;" >
+                    <canvas id="cuadroCategorias"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -183,6 +199,44 @@
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
+    let ctx = document.getElementById('cuadroCategorias').getContext('2d');
+      let categories = @json(array_keys($categoriasLugares));
+      let counts = @json(array_values($categoriasLugares));
+
+      let cuadroCategorias = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: categories,
+              datasets: [{
+                  label: 'Lugares',
+                  data: counts,
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      ticks: {
+                        precision: 0 // Configura la precisión a 0 para mostrar números enteros
+                      }
+                  }
+              },
+              plugins: {
+                title: {
+                    display: true,
+                    font: {
+                        family: 'Montserrat', // Cambia la familia de fuentes aquí
+                        size: 32, // Cambia el tamaño de la fuente aquí
+                        weight: '500' // Opcional: cambia el peso de la fuente (por ejemplo, 'bold', 'normal', etc.)
+                    }
+                },
+        }
+          }
+      });
     document.getElementById('addCategoryModal').addEventListener('hidden.bs.modal', function () {
       // Reset form when modal is hidden
       document.getElementById('addCategoryForm').reset();
