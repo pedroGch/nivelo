@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \App\Models\Place[] $places
+ * @var \App\Models\Place[] $placesResult
  * @var string $searchPlace
  */
 ?>
@@ -137,8 +137,15 @@
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
     @forelse ($placesResult as $place)
     <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
-      <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+      @if($place->notablePlace)
+      <div class="position-absolute top-0 end-0 pt-1">
+        <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 70px">
+      </div>
+      @endif
+      <div>
+        <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
+          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+      </div>
         <div class="card-body">
           <p class="h6">{{ $place->categories->name }}</p>
           <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
@@ -210,6 +217,9 @@
         </div>
     </div>
     @endforelse
+  </div>
+  <div class="pt-4">
+    {{ $placesResult->links() }}
   </div>
 </section>
 

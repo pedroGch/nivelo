@@ -31,11 +31,19 @@ class CategoryController extends Controller
   {
     $places = Place::where('category_id', $category_id)
       ->where('status', true)
-      ->get();
+      ->get()
+      ->paginate(8);
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $places
     foreach ($places as $place) {
       $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
+
+      $fiveStarReviews = Review::where('place_id', $place->place_id)->where('score', 5)->count();
+
+      $place->notablePlace = false;
+      if($fiveStarReviews == 10) {
+        $place->notablePlace = true;
+      }
 
       if (count($totalScores) > 0) {
         $totalScore = array_sum($totalScores);
