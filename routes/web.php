@@ -267,4 +267,9 @@ Route::get('/administrar/usuarios', [\App\Http\Controllers\HomeController::class
   ->middleware('only_admin_allow')
   ->name('AdminUsersView');
 
+Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Controllers\UserController::class, 'toggleBlock'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('toggleBlock');
+
 require __DIR__.'/auth.php';
