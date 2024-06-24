@@ -62,6 +62,7 @@ class User extends Authenticatable
         'external_id',
         'external_auth',
         'terms',
+        'status'
     ];
     public static $rules = [
       'name' => "required|max:30",

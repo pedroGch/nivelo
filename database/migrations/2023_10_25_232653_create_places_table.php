@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('main_img')->nullable();
             $table->string('alt_main_img')->nullable();
             $table->boolean('access_entrance')->default(false);
+            $table->boolean('status')->default(false);
             $table->boolean('assisted_access_entrance')->default(false);
             $table->boolean('internal_circulation')->default(false);
             $table->boolean('bathroom')->default(false);

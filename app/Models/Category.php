@@ -31,7 +31,12 @@ class Category extends Model
 {
    // use HasFactory;
 
-   protected $table = "categories";
-
-   protected $primaryKey = "category_id";
+  protected $table = "categories";
+  protected $fillable = [
+    'name',
+    'image_cat',
+    'alt_img_cat',
+    'icon',
+  ];
+  protected $primaryKey = "category_id";
 }
