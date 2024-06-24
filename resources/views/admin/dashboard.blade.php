@@ -67,7 +67,7 @@
               <h3 class="mt-2 text-center">Usuarios registrados</h3>
               <p class="text-center">Cantidad de usuarios: {{ $usuarios->count() }}</p>
               <div class="mb-2">
-                <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Administrar</a>
+                <a href="{{route('AdminUsersView')}}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Administrar</a>
               </div>
             </div>
           </div>

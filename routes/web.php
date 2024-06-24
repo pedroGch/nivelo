@@ -262,4 +262,9 @@ Route::post('/lugares/{id}/autorizar', [\App\Http\Controllers\PlaceController::c
   ->middleware('only_admin_allow')
   ->name('authorizePlace');
 
+Route::get('/administrar/usuarios', [\App\Http\Controllers\HomeController::class, 'AdminUsersView'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('AdminUsersView');
+
 require __DIR__.'/auth.php';

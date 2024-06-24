@@ -262,4 +262,11 @@ class HomeController extends Controller
     ];
     return view('admin.admin-places',['categorias' => $categories,'categoriasLugares' => $categoriasLugares,]);
   }
+
+  public function AdminUsersView()
+  {
+    $users = User::all();
+
+    return view('admin.admin-users',['users' => $users]);
+  }
 }
