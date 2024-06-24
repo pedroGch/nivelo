@@ -29,7 +29,9 @@ class CategoryController extends Controller
    */
   public function categoryDetail(int $category_id)
   {
-    $places = Place::where('category_id', $category_id)->get();
+    $places = Place::where('category_id', $category_id)
+      ->where('status', true)
+      ->get();
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $places
     foreach ($places as $place) {
