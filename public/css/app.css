@@ -633,6 +633,10 @@ table {
   padding-bottom: 200px;
 }
 
+.no_maring-right{
+  margin-right: 0px !important;
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 
