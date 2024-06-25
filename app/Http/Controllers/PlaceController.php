@@ -27,6 +27,14 @@ class PlaceController extends Controller
 
     $averagePlaceScore = max(1, min(5, $averagePlaceScore));
 
+    $fiveStarReviews = Review::where('place_id', $place_id)->where('score', 5)->count();
+
+    $notablePlace = false;
+    if($fiveStarReviews == 10) {
+      $notablePlace = true;
+    }
+
+
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
       "category" => Category::findOrFail($category_id),
@@ -37,6 +45,7 @@ class PlaceController extends Controller
                           ->orderBy('created_at', 'desc')
                           ->get(),
       "averagePlaceScore" => $averagePlaceScore,
+      "notablePlace" => $notablePlace,
     ]);
   }
 
@@ -163,7 +172,7 @@ class PlaceController extends Controller
       }
     }
 
-    $placesResult = $query->get();
+    $placesResult = $query->paginate(8);
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $placesResult
     foreach ($placesResult as $place) {
@@ -176,6 +185,14 @@ class PlaceController extends Controller
         $place->totalAverageScore = $averageScore;
       } else {
         $place->totalAverageScore = 3; // Otra opción si no hay reseñas
+      }
+
+      // Verificar si el lugar es destacado
+      $fiveStarReviews = Review::where('place_id', $place->place_id)->where('score', 5)->count();
+
+      $place->notablePlace = false;
+      if($fiveStarReviews == 10) {
+        $place->notablePlace = true;
       }
     }
 
@@ -265,9 +282,34 @@ class PlaceController extends Controller
 
   public function getPlacesByCategory($category_id)
   {
-    // Obtiene la categoría por su ID
-    $places = Place::where('category_id', $category_id)->get();
-
+    if ($category_id === 'all'){
+      $places = Place::all();
+    }elseif ($category_id === 'pending') {
+      $places = Place::where('status', 0)->get();
+    }
+    else{
+      $places = Place::where('category_id', $category_id)->get();
+    }
     return response()->json($places);
+  }
+
+  public function deletePlaceById($id)
+  {
+    $place = Place::where('place_id', $id)->first();
+
+    $place->delete();
+
+    return response()->json([
+      'message' => 'Lugar eliminado correctamente',
+      'status' => 200
+    ]);
+  }
+
+  public function authorizePlace($id)
+  {
+    $place = Place::findOrFail($id);
+    $place->status = true;
+    $place->save();
+    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
   }
 }

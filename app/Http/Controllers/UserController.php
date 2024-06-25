@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -31,5 +32,18 @@ class UserController extends Controller
         "madeReviews" => $madeReviews,
         "UserProfileActive" => $UserProfileActive,
       ]);
+  }
+
+  public function getUserDefinition(){
+    $definition = UserDefinition::all();
+    return response()->json($definition);
+  }
+
+  public function toggleBlock($id)
+  {
+    $user = User::where('id', $id)->first();
+    $user->status = !$user->status;
+    $user->save();
+    return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con exíto')->with('status.type', 'success');
   }
 }

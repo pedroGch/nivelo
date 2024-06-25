@@ -38,6 +38,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '10',
           'uploaded_from_id'=> '3',
+          'status' => false,
         ],
         [
           'place_id'=> '2',
@@ -61,6 +62,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '3',
@@ -88,6 +90,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '4',
@@ -111,6 +114,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '5',
@@ -134,6 +138,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '10',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '6',
@@ -161,6 +166,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '7',
@@ -184,6 +190,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '2',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '8',
@@ -207,6 +214,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '3',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '9',
@@ -230,6 +238,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '2',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '10',
@@ -253,6 +262,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '11',
@@ -276,7 +286,91 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '5',
           'uploaded_from_id'=> '3',
+          'status' => true,
+        ],
+        [
+          'place_id'=> '12',
+          'name'=> 'Alamos Del Mar Apart Hotel & Spa',
+          'address'=> 'Betbeder 249 (Esq. Azopardo)',
+          'city'=> 'Valeria del Mar, Pinamar',
+          'province'=> 'Buenos Aires',
+          'latitude'=> -37.14031818218002,
+          'longitude'=> -56.87687092816567,
+          'description'=> 'Situado en la localidad de Valeria del Mar (Pdo. de Pinamar), a tan solo 360 km de la Capital Federal, Alamos del Mar Apart Hotel & Spa conjuga las modernas tendencias en apart hoteles de diseño con la exquisita combinación de paisajes de caminos ondulantes, bosques y playa de fina arena. Cabe destacar que Valeria del Mar ha preservado su litoral marino con sus grandes extensiones de médanos, permitiéndole disfrutar más aún de sus playas.
+
+          Al ingresar a nuestro apart hotel sentirá un cambio de dimensión, en sus ambientes usted disfrutará del confort, la tranquilidad y la seguridad que hacen de Alamos del Mar la diferencia a la hora de elegir un exclusivo lugar para su descanso.
+
+          Alamos del Mar es un sitio nuevo y diferente, donde el huésped se encontrará rodeado de comodidades, en medio de un balneario excepcional, con edificaciones de estilo moderno, su centro comercial que crece día a día y junto a sus exclusivas playas, donde la serenidad es su característica distintiva.
+
+          Los esperamos para ofrecerles servicios de excelencia en Hotelería y Gastronomía, para que sus vacaciones sean lo que usted y su familia esperan, siendo éste nuestro principal objetivo.
+
+
+
+          Estacionamiento accesible
+
+          Ingreso accesible o asistido (80 cm o más, rampas)
+
+          Circuito interior accesible
+
+          Baño adaptado en zona común
+
+          Ascensor (80 cm o más)
+
+          Ascensor con parada lumínica
+
+          Botonera Braille
+
+          Parada sonora
+
+          Habitación accesible
+
+          Información Accesible
+
+          Video con subtítulos
+
+          Alimentos sin TACC',
+          'main_img'=> 'places/12.jpg',
+          'alt_main_img' => 'complejo con pileta',
+          'access_entrance'=> true,
+          'assisted_access_entrance'=> true,
+          'internal_circulation'=> true,
+          'bathroom'=> true,
+          'adult_changing_table'=> false,
+          'parking'=> true,
+          'elevator'=> true,
+          'src_info_id'=> '1',
+          'review_id'=> NULL,
+          'category_id'=> '1',
+          'uploaded_from_id'=> '3',
+          'status' => true,
+        ],
+        [
+          'place_id'=> '13',
+          'name'=> 'Be Hollywood',
+          'address'=> 'Humboldt 1726',
+          'city'=> 'CABA',
+          'province'=> 'Buenos Aires',
+          'latitude'=> -34.58439584463534,
+          'longitude'=> -58.4352569606773,
+          'description'=> 'Be Hollywwod Hotel sorprende con su calidez y excelencia en servicio, ofreciendo a sus huéspedes desayuno y wifi gratuito,, una terraza con vista panorámica de Palermo Hollywood, barrio con un sin fin de bares y restaurantes, casas de decoración, galerías de arte y boutiques de moda.
+
+          Posee acceso para huéspedes con movilidad reducida.',
+          'main_img'=> 'places/13.jpg',
+          'alt_main_img' => 'habitación con cama doble',
+          'access_entrance'=> true,
+          'assisted_access_entrance'=> true,
+          'internal_circulation'=> true,
+          'bathroom'=> true,
+          'adult_changing_table'=> false,
+          'parking'=> true,
+          'elevator'=> true,
+          'src_info_id'=> '1',
+          'review_id'=> NULL,
+          'category_id'=> '1',
+          'uploaded_from_id'=> '3',
+          'status' => true,
         ]
+
       ]
     );
   }

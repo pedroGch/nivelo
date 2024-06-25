@@ -39,9 +39,21 @@
       </div>
     </div>
   </div>
+  <div class="my-4">
+    <a href="{{ route('editProfileForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+      <span class="fw-semibold">Editar perfil</span>
+    </a>
+  </div>
   <div>
     <p class="h5 mt-5 mb-2 fw-bold"> Nombre y apellido:</p>
     <p> {{ $userDB->name }} {{ $userDB->surname }}</p>
+    <p class="h5 mt-5 mb-2 fw-bold"> sobre mí:</p>
+    @if ($userDB->bio)
+      <p> {{ $userDB->bio }}</p>
+    @else
+      <p>Por el momento no te tenes una descripción, animate hace <a href="#">editá tu perfíl</a> y presentate</p>
+    @endif
+
     <p class="h5 mt-5 mb-2 fw-bold"> Email: </p>
     <p> {{ $userDB->email }} </p>
     <p class="h5 mt-5 mb-2 fw-bold"> Nombre de usuario: </p>

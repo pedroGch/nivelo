@@ -1,8 +1,9 @@
 <?php
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * @var \App\Models\Category $category
- * @var \App\Models\Place[] $places
+ * @var \App\Models\Place[] | \Illuminate\Database\Eloquent\Collection | \Illuminate\Pagination\LengthAwarePaginator $places
  */
 ?>
 
@@ -36,8 +37,15 @@
   <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
     @forelse ($places as $place)
     <div class="card col-6 col-lg-3 shadow-sm" style="width: 18rem;">
-      <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+      @if($place->notablePlace)
+      <div class="position-absolute top-0 end-0 pt-1">
+        <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 70px">
+      </div>
+      @endif
+      <div>
+        <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
+          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+      </div>
         <div class="card-body">
           <p class="h6">{{ $category->name }}</p>
           <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
@@ -108,6 +116,9 @@
       </div>
     </div>
     @endforelse
+  </div>
+  <div>
+    {{ $places->links() }}
   </div>
 </section>
 

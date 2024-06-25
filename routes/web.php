@@ -225,4 +225,51 @@ Route::get('/places/{place_id}/reviews', [\App\Http\Controllers\ReviewController
   ->middleware('auth')
   ->name('getReviewPlaces');
 
-  require __DIR__.'/auth.php';
+Route::get('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'editProfileForm'])
+  ->name('editProfileForm');
+
+Route::post('/editar-perfil', [\App\Http\Controllers\SessionController::class, 'editProfileAction'])
+  ->name('editProfileAction');
+
+Route::get('/administrar/lugares', [\App\Http\Controllers\HomeController::class, 'AdminPlacesView'])
+  ->name('AdminPlacesView');
+
+Route::get('/lugares/{id}/eliminar', [\App\Http\Controllers\PlaceController::class, 'deletePlaceById'])
+  ->name('deletePlaceById');
+
+Route::get('/administrar/categorias', [\App\Http\Controllers\CategoryController::class, 'getAllCategories'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('getAllCategories');
+
+Route::post('/administrar/add/categorie', [\App\Http\Controllers\CategoryController::class, 'addCategorieAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('addCategorieAction');
+
+Route::get('/categorias/{id}/editar', [\App\Http\Controllers\CategoryController::class, 'editCategorieForm'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editCategorieForm');
+
+Route::post('/categorias/{id}/editar', [\App\Http\Controllers\CategoryController::class, 'editCategorieAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editCategorieAction');
+
+Route::post('/lugares/{id}/autorizar', [\App\Http\Controllers\PlaceController::class, 'authorizePlace'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('authorizePlace');
+
+Route::get('/administrar/usuarios', [\App\Http\Controllers\HomeController::class, 'AdminUsersView'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('AdminUsersView');
+
+Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Controllers\UserController::class, 'toggleBlock'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('toggleBlock');
+
+require __DIR__.'/auth.php';

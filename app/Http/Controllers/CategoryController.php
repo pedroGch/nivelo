@@ -29,11 +29,20 @@ class CategoryController extends Controller
    */
   public function categoryDetail(int $category_id)
   {
-    $places = Place::where('category_id', $category_id)->get();
+    $places = Place::where('category_id', $category_id)
+      ->where('status', true)
+      ->paginate(8);
 
     // Obtener los puntajes promedio para cada lugar y agregarlos al array $places
     foreach ($places as $place) {
       $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
+
+      $fiveStarReviews = Review::where('place_id', $place->place_id)->where('score', 5)->count();
+
+      $place->notablePlace = false;
+      if($fiveStarReviews == 10) {
+        $place->notablePlace = true;
+      }
 
       if (count($totalScores) > 0) {
         $totalScore = array_sum($totalScores);
@@ -49,7 +58,7 @@ class CategoryController extends Controller
       "category" => Category::findOrFail($category_id),
       "places" => $places,
     ]);
-}
+  }
 
 
   /**
@@ -69,6 +78,85 @@ class CategoryController extends Controller
     } else {
       return 0; // Otra opción si no hay puntajes
     }
-}
+  }
+
+  public function getAllCategories()
+  {
+    $categories = Category::all();
+    return response()->json($categories);
+  }
+
+  public function addCategorieAction(Request $request)
+  {
+
+    try{
+      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
+      if($request->hasFile('image')){
+        $data['image'] = $request->file('image')->store('/storage/categories');
+      }
+      if($request->hasFile('icon')){
+        $data['icon'] = $request->file('icon')->store('/storage/categories');
+      }
+
+      Category::create([
+        'name' => $data['name'],
+        'image_cat' => $data['image_cat'],
+        'alt_img_cat' => $data['alt_img_cat'],
+        'icon' => $data['icon'],
+      ]);
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Categoría agregada correctamente');
+    } catch (\Exception $e){
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Error al agregar la categoría: ' . $e->getMessage());
+    }
+  }
+
+  public function editCategorieForm($id)
+  {
+    $categorie = Category::where('category_id', $id)->get();
+    return response()->json($categorie);
+  }
+
+  public function editCategorieAction(Request $request, $id)
+  {
+    try{
+      // Validar los datos del formulario
+      $request->validate([
+        'name' => 'required|string|max:255',
+        'alt_img_cat' => 'nullable|string|max:255',
+        'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image_cat' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+      $category = Category::findOrFail($id);
+
+      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
+
+      if($request->hasFile('image')){
+        $data['image'] = $request->file('image')->store('/storage/categories');
+        $category->image = $data['image'];
+      }
+      if($request->hasFile('icon')){
+        $data['icon'] = $request->file('icon')->store('/storage/categories');
+        $category->icon = $data['icon'];
+      }
+
+      // Actualizar los campos de la categoría
+      $category->name = $data['name'];
+      $category->alt_img_cat = $data['alt_img_cat'];
+
+      // Guardar los cambios en la base de datos
+      $category->save();
+
+      // Redirigir con un mensaje de éxito
+      return redirect()->route('AdminPlacesView')->with('status.message', 'Categoría actualizada con éxito')->with('status.type', 'success');
+    } catch (\Exception $e){
+      return redirect()->route('AdminPlacesView')
+        ->with('status.message', 'Error al modificar la categoría: ' . $e->getMessage());
+    }
+  }
+
+
 
 }
