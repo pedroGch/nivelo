@@ -88,6 +88,7 @@ class Place extends Model
     'uploaded_from_id',
     'latitude',
     'longitude',
+    'status',
 
   ];
 

@@ -38,6 +38,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '10',
           'uploaded_from_id'=> '3',
+          'status' => false,
         ],
         [
           'place_id'=> '2',
@@ -61,6 +62,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '3',
@@ -88,6 +90,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '4',
@@ -111,6 +114,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '5',
@@ -134,6 +138,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '10',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '6',
@@ -161,6 +166,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '7',
@@ -184,6 +190,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '2',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '8',
@@ -207,6 +214,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '3',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '9',
@@ -230,6 +238,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '2',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '10',
@@ -253,6 +262,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '6',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '11',
@@ -276,6 +286,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '5',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '12',
@@ -331,6 +342,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ],
         [
           'place_id'=> '13',
@@ -356,6 +368,7 @@ class PlaceSeeder extends Seeder
           'review_id'=> NULL,
           'category_id'=> '1',
           'uploaded_from_id'=> '3',
+          'status' => true,
         ]
 
       ]

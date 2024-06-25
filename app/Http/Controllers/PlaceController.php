@@ -282,9 +282,34 @@ class PlaceController extends Controller
 
   public function getPlacesByCategory($category_id)
   {
-    // Obtiene la categoría por su ID
-    $places = Place::where('category_id', $category_id)->get();
-
+    if ($category_id === 'all'){
+      $places = Place::all();
+    }elseif ($category_id === 'pending') {
+      $places = Place::where('status', 0)->get();
+    }
+    else{
+      $places = Place::where('category_id', $category_id)->get();
+    }
     return response()->json($places);
+  }
+
+  public function deletePlaceById($id)
+  {
+    $place = Place::where('place_id', $id)->first();
+
+    $place->delete();
+
+    return response()->json([
+      'message' => 'Lugar eliminado correctamente',
+      'status' => 200
+    ]);
+  }
+
+  public function authorizePlace($id)
+  {
+    $place = Place::findOrFail($id);
+    $place->status = true;
+    $place->save();
+    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
   }
 }

@@ -39,7 +39,15 @@
           @endif
         </div>
         <div class="mt-3 row">
-          <div class="lg:mx-6 mb-8 mt-2 mb-5 flex justify-center flex-row flex-wrap">
+          <div class="d-flex justify-content-end mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="sortPendingReviews" onclick="sortReviews()">
+              <label class="form-check-label" for="sortPendingReviews">
+                Ordenar por pendientes
+              </label>
+            </div>
+          </div>
+          <div class="lg:mx-6  mt-2 mb-5 flex justify-center flex-row flex-wrap">
             <table class="mb-4">
               <thead class="border-2">
                 <tr>
@@ -50,7 +58,7 @@
                   <th class="p-3">Acciones</th>
                 </tr>
               </thead>
-              <tbody class="border-2">
+              <tbody class="border-2" id="reviewsTableBody">
               @foreach ($reviews as $review)
                 <tr class="border-2">
                   <td class="p-3 border-2">{{ $review->review_id }}</td>
@@ -85,61 +93,9 @@
                     <p><b>Reseña:</b> -</p>
                     @endif
                     <div class="col-12 mt-2">
-                      <p><b>Calificación: </b></p>
-                      @switch($review->score)
-                        @case($review->score == 1)
-                          <div class="d-flex">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluidpt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                          </div>
-                        @break
-                        @case($review->score == 2)
-                          <div class="d-flex">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                          </div>
-                        @break
-                        @case($review->score == 3)
-                          <div class="d-flex">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                          </div>
-                        @break
-                        @case($review->score == 4)
-                          <div class="d-flex">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                          </div>
-                        @break
-                        @case($review->score == 5)
-                          <div class="d-flex">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                            <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                          </div>
-                        @break
-
-                        @default
-                        <div class="d-flex">
-                          <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                        </div>
-                      @endswitch
+                      <p><b>Calificación: {{$review->score}} </b></p>
                     </div>
-                    <p class="pt-3"><b>Usuario:</b> {{ $review->user->username }}</p>
+                    <p ><b>Usuario:</b> {{ $review->user->username }}</p>
                   </td>
                   <td class="text-sm p-4">
                     @if($review->status == 'pending')
@@ -151,11 +107,13 @@
                     @endif
                   </td>
                   <td class="p-3 border-2" width="15%">
-                    <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
-                    </form>
+                    @if ($review->status == "pending")
+                      <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
+                        <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
+                      </form>
+                    @endif
                     <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-rojo btn-rojo-hover text-white">Ocultar</button>
+                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-rojo btn-rojo-hover text-white">Ocultar</button>
                     </form>
                   </td>
                 </tr>
@@ -180,6 +138,30 @@
 @endsection
 
 <script>
+  function sortReviews() {
+    const tableBody = document.getElementById('reviewsTableBody');
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    const sortPending = document.getElementById('sortPendingReviews').checked;
+
+    rows.sort((a, b) => {
+        const aStatus = a.querySelector('img').alt;
+        const bStatus = b.querySelector('img').alt;
+
+        if (sortPending) {
+            if (aStatus === 'pendiente' && bStatus !== 'pendiente') return -1;
+            if (aStatus !== 'pendiente' && bStatus === 'pendiente') return 1;
+            return 0; // maintain order among similar status
+        } else {
+            return a.rowIndex - b.rowIndex;
+        }
+    });
+
+    // Clear the table body
+    tableBody.innerHTML = '';
+
+    // Append sorted rows back to the table body
+    rows.forEach(row => tableBody.appendChild(row));
+}
   function borrarReview(id, review) {
     Swal.fire({
       title: '¿Estás seguro que querés eliminar la noticia?',
