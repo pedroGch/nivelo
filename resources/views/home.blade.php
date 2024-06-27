@@ -102,8 +102,9 @@
         <p class=" pt-3 h5 lh-base">Consideramos que estar "al mismo nivel" implica tener las mismas oportunidades para decidir sobre nuestras vidas, y la accesibilidad es la condición previa que posibilita el acceso a todos los derechos fundamentales.</p>
         <p class=" pt-3 h5 lh-base"><strong>Creemos que nivelar el mundo es responsabilidad de todos.</strong></p>
         <p class=" pt-3 h5 lh-base">Yo, me sumo.</p>
-        <a href="{{ route('login') }}"><button class="mt-4 btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold w-50">#YoNivelo</button></a>
-
+        <a href="{{ route('login') }}">
+          <button class="mt-4 btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold w-50">#YoNivelo</button>
+        </a>
       </div>
       <div class="col-12 col-lg-6 d-flex justify-content-center pb-lg-5 order-1 order-lg-2">
         <img src="{{ url('/img/mockup-cellphone.jpg') }}" alt="mano sosteniendo celular que muestra en la pantalla la app" class="img-fluid rounded-5">

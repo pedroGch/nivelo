@@ -1,7 +1,7 @@
 <div class="bg-gris-claro d-flex flex-column min-vh-40">
    <div class="container container-fluid py-2 align-items-center">
      <div class="row py-4 py-lg-5">
-       <div class="col-12 col-md-3 col-lg-4 d-flex justify-content-center justify-content-lg-end">
+       <div class="col-12 col-md-3 col-lg-4 d-flex justify-content-center justify-content-lg-start">
         <img src="{{ url('/img/logo_footer.png') }}" alt="logo de nivelo" height="180px"></a>
        </div>
        <div class="col-12 col-md-5 col-lg-4">

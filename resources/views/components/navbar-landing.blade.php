@@ -7,7 +7,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end pt-3" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  me-4">
             <a class="nav-link underlined-hover100 active text-light" aria-current="page" href="{{ route('home') }}#home">HOME</a>
