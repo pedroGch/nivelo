@@ -38,14 +38,46 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
+        navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
           console.log('ServiceWorker registrado con éxito:', registration);
         }, function(error) {
           console.log('Registro de ServiceWorker fallido:', error);
         });
       });
     }
+
+    let deferredPrompt; // Variable global para guardar el evento
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Save the event so it can be triggered later.
+      deferredPrompt = e;
+      console.log('Evento beforeinstallprompt capturado');
+      document.getElementById('installButton').style.display = 'block'; // Mostrar el botón de instalación
+    });
+
+    // Función para el botón que dispara el pop-up de instalación
+    function instalarApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt(); // Mostrar el prompt de instalación
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('El usuario aceptó instalar la app');
+          } else {
+            console.log('El usuario no aceptó instalar la app');
+          }
+          deferredPrompt = null; // Resetear la variable después de usarla
+        }).catch((error) => {
+          console.error('Error durante el prompt de instalación:', error);
+        });
+      } else {
+        console.log('No se ha capturado el evento beforeinstallprompt');
+      }
+    }
   </script>
+</body>
+</html>
 </body>
 
 </html>

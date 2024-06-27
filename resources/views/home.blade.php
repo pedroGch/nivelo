@@ -94,7 +94,11 @@
         </div>
       </div>
 
-      <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Descargá la app</button>
+      <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25"
+        onclick="instalarApp()"
+      >
+      Descargá la app
+    </button>
     </div>
   </div>
 </div>
@@ -137,7 +141,6 @@
 
 @endsection
 
-
 <script>
   window.onload = function() {
       var scrollPosition = sessionStorage.getItem('scrollPosition');
@@ -149,4 +152,4 @@
           sessionStorage.setItem('scrollPosition', window.pageYOffset);
       };
   };
-  </script>
+</script>
