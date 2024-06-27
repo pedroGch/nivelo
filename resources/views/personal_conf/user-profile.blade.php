@@ -181,14 +181,14 @@
     <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
     <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
     <table>
-      @if ($myPlaces)
+      @unless ($myPlaces->isEmpty())
       <thead>
         <tr class="bg-violeta-ultra-light w-100">
           <th class="col p-2">Nombre</th>
           <th class="col p-2">Fecha</th>
         </tr>
       </thead>
-      @endif
+      @endunless
       <tbody>
         @forelse ($myPlaces as $place)
         <tr>
@@ -209,14 +209,14 @@
   <div class="pb-4">
     <h4 class="mt-5 mb-2 fw-bold">Opiniones: </h4>
     <table>
-      @if ($myPlaces)
+      @unless ($madeReviews->isEmpty())
       <thead>
         <tr class="bg-violeta-ultra-light">
           <th class="col p-2">Nombre</th>
           <th class="col p-2">Fecha</th>
         </tr>
       </thead>
-      @endif
+      @endunless
       <tbody>
         @forelse ($madeReviews as $review)
         <tr>
