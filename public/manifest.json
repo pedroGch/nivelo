@@ -1,12 +1,22 @@
 {
-  "resources/css/app.css": {
-    "file": "assets/app-2acba993.css",
-    "isEntry": true,
-    "src": "resources/css/app.css"
-  },
-  "resources/js/app.js": {
-    "file": "assets/app-7d02d1c2.js",
-    "isEntry": true,
-    "src": "resources/js/app.js"
-  }
+  "name": "Nivelo",
+  "short_name": "Nivelo",
+  "theme_color": "#4a2980",
+  "background_color": "#f1e1ff",
+  "display": "minimal-ui",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "img/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
