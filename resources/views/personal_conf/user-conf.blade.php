@@ -34,7 +34,7 @@
         <div class="col-12">
           <form action="{{ route('aboutYouAction') }}" method="POST">
             @csrf
-            <div class="row ">
+            <div class="row">
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="sticks" name="sticks"  autocomplete="off">
                 <label class="bg-gris-claro border border-0 shadow-sm btn-form-w fw-semibold btn rounded-pill bg-bastones bg-conf-icono" for="sticks">Bastón/es</label>
@@ -65,7 +65,7 @@
               </div>
               <div class="mb-4 d-flex justify-content-center col-6">
                 <input type="checkbox" class="btn-check" id="none" name="none"  autocomplete="off">
-                <label class="bg-gris-claro border border-0 shadow-sm btn-form-w fw-semibold btn rounded-pill bg-acompaniante bg-conf-icono" for="none">Ninguna de las anteriores</label>
+                <label class="bg-gris-claro border border-0 shadow-sm btn-form-w fw-semibold btn rounded-pill bg-acompaniante bg-conf-icono" for="none">Ninguna</label>
               </div>
             </div>
             <div class="mb-4">

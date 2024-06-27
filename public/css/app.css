@@ -372,27 +372,25 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-bastones {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/bastones.png);
   background-repeat: no-repeat;
-  background-size: 30px;
   background-position-y: 5px;
 
 }
 
 .bg-muletas {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/muletas.png);
   background-repeat: no-repeat;
-  background-size: 30px;
   background-position-y: 5px;
 
 }
 
 .bg-andador {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/andador.png);
   background-repeat: no-repeat;
@@ -402,8 +400,8 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-dificultad {
-  width: 42px;
-  height: 62px;
+  /* width: 42px; */
+  height: 42px;
   background-image: url(../img/camina_dificultad.png);
   background-repeat: no-repeat;
   background-size: 30px;
@@ -412,7 +410,7 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-silla-maual {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/silla_ruedas_manual.png);
   background-repeat: no-repeat;
@@ -422,7 +420,7 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-silla-electrica {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/silla_ruedas_electrica.png);
   background-repeat: no-repeat;
@@ -432,7 +430,7 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-scooter {
-  width: 42px;
+  /* width: 42px; */
   height: 42px;
   background-image: url(../img/scooter.png);
   background-repeat: no-repeat;
