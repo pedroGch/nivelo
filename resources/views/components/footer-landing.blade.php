@@ -1,11 +1,11 @@
 <div class="bg-gris-claro d-flex flex-column min-vh-40">
    <div class="container container-fluid py-2 align-items-center">
-     <div class="row pt-5 pb-5">
-       <div class="col-4">
-        <img src="{{ url('/img/logo_footer.png') }}" alt="logo de nivelo"></a>
+     <div class="row py-4 py-lg-5">
+       <div class="col-12 col-md-3 col-lg-4 d-flex justify-content-center justify-content-lg-end">
+        <img src="{{ url('/img/logo_footer.png') }}" alt="logo de nivelo" height="180px"></a>
        </div>
-       <div class="col-4">
-        <h2 class="h5 mb-3">Suscribite para ser parte del lanzamiento</h2>
+       <div class="col-12 col-md-5 col-lg-4">
+        <h2 class="h5 pt-2 pb-2 pt-lg-0">Suscribite para ser parte del lanzamiento</h2>
         <form action="#" method="POST">
           @csrf
           <input
@@ -45,18 +45,22 @@
             Suscribirme
         </form>
        </div>
-       <div class="col-4">
+       <div class="col-12 col-md-4 px-3 px-md-0">
         <ul class="navbar-nav">
-          <li class="pe-2 pt-2 nav-item text-end">
+          <li class="pe-2 pt-2 nav-item text-center  text-md-end">
             <b>info@nivelo.com.ar</b>
           </li>
-          <li class="pe-2 pt-2 nav-item text-end">
+          <li class="pe-2 pt-2 nav-item text-center text-md-end">
             <a class="nav-link underlined-hover50 fw-bold" aria-disabled="true" href="{{ route('about') }}">Acerca de nivelo</a>
           </li>
-          <li class="pe-2 pt-2 nav-item text-end">
+          <li class="pe-2 pt-2 nav-item text-center text-md-end">
             <a class="nav-link underlined-hover50 fw-bold" aria-disabled="true" href="{{ route('terms') }}">Términos y condiciones</a>
           </li>
         </ul>
+       </div>
+       <div>
+        <hr>
+        <p>© 2024 Nivelo. Todos los derechos reservados.</p>
        </div>
      </div>
    </div>
