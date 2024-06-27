@@ -1,5 +1,5 @@
 <div class="fixed-top">
-  <nav class="navbar bg-violeta-dark navbar-expand-lg shadow-sm">
+  <nav class="navbar bg-violeta-dark navbar-expand-lg shadow-sm navbar-dark">
     <div class="container container-fluid py-2 d-flex align-items-center">
       <div>
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo"></a>
