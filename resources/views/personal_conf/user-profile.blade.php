@@ -77,52 +77,100 @@
       </div>
     @else
       @if ($userDB->user_definition->none == 1)
-        <ul>
-          <li>No posee discapacidad pero se suma a la "Comunidad #YoNivelo" <span class="bg-movimiento ms-3"></span></li>
+        <ul class="list-unstyled">
+          <li>
+            <div class="row mb-1">
+              <div class="col-2 d-flex justify-content-center"><span class="bg-movimiento ms-3"></span></div>
+              <div class="col-10">
+                <p class="acerca-de-mi-descript">No posee discapacidad pero se suma a la "Comunidad #YoNivelo"</p>
+              </div>
+          </li>
         </ul>
       @endif
       @if($userDB->user_definition->none == 0)
         <ul class="acerca-de-mi">
         @if($userDB->user_definition->sticks == 1)
-          <li>
-            <span class="bg-bastones ms-3"></span>
-            <p class="acerca-de-mi-descript">Camina con bastones</p>
-          </li>
+        <li>
+          <div class="row mb-1">
+            <div class="col-1 p-2 d-flex justify-content-center">
+              <img src="{{ url('/img/bastones.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+            </div>
+            <div class="col-11">
+              <p class="acerca-de-mi-descript">Utiliza bastón/es</p>
+            </div>
+          </div>
+        </li>
         @endif
         @if($userDB->user_definition->crutches == 1)
-          <li>
-            <span class="bg-muletas ms-3"></span>
-            <p class="acerca-de-mi-descript">Camina con muletas</p>
-          </li>
+        <li>
+          <div class="row mb-1">
+            <div class="col-1 p-2 d-flex justify-content-center">
+              <img src="{{ url('/img/muletas.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+            </div>
+            <div class="col-11">
+              <p class="acerca-de-mi-descript">Camina con muletas</p>
+            </div>
+          </div>
+        </li>
         @endif
         @if($userDB->user_definition->walker == 1)
           <li>
-            <span class="bg-andador ms-3"></span>
-            <p class="acerca-de-mi-descript">Utiliza andador</p>
+            <div class="row mb-1">
+              <div class="col-1 p-2 d-flex justify-content-center">
+                <img src="{{ url('/img/andador.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+              </div>
+              <div class="col-11">
+                <p class="acerca-de-mi-descript">Utiliza andador</p>
+              </div>
+            </div>
           </li>
-        @endif
-        @if($userDB->user_definition->difficult_walking == 1)
+          @endif
+          @if($userDB->user_definition->difficult_walking == 1)
           <li>
-            <span class="bg-dificultad ms-3"></span>
-            <p class="acerca-de-mi-descript">Camina con dificultad</p>
+            <div class="row mb-1">
+              <div class="col-1 p-2 d-flex justify-content-center">
+                <img src="{{ url('/img/camina_dificultad.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+              </div>
+              <div class="col-11">
+                <p class="acerca-de-mi-descript">Camina con dificultad</p>
+              </div>
+            </div>
           </li>
-        @endif
-        @if($userDB->user_definition->manual_wheelchair == 1)
+          @endif
+          @if($userDB->user_definition->manual_wheelchair == 1)
           <li>
-            <span class="bg-silla-maual ms-3"></span>
-            <p class="acerca-de-mi-descript">Utiliza silla de ruedas manual</p>
+            <div class="row mb-1">
+              <div class="col-1 p-2 d-flex justify-content-center">
+                <img src="{{ url('/img/silla_ruedas_manual.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+              </div>
+              <div class="col-11">
+                <p class="acerca-de-mi-descript">Utiliza silla de ruedas manual</p>
+              </div>
+            </div>
           </li>
         @endif
         @if($userDB->user_definition->electric_wheelchair == 1)
           <li>
-            <span class="bg-silla-electrica ms-3"></span>
-            <p class="acerca-de-mi-descript">Utiliza silla de ruedas eléctrica</p>
+            <div class="row">
+              <div class="col-1 p-2 d-flex justify-content-center">
+                <img src="{{ url('/img/silla_ruedas_electrica.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+              </div>
+              <div class="col-11">
+                <p class="acerca-de-mi-descript">Utiliza silla de ruedas eléctrica</p>
+              </div>
+            </div>
           </li>
         @endif
         @if($userDB->user_definition->scooter == 1)
           <li>
-            <span class="bg-scooter ms-3"></span>
-            <p class="acerca-de-mi-descript">Utiliza scooter</p>
+            <div class="row">
+              <div class="col-1 p-2 d-flex justify-content-center">
+                <img src="{{ url('/img/scooter.png') }}" class="bg-gris-claro rounded-5 p-2" alt="">
+              </div>
+              <div class="col-11">
+                <p class="acerca-de-mi-descript">Utiliza scooter</p>
+              </div>
+            </div>
           </li>
         @endif
           </ul>
@@ -133,14 +181,14 @@
     <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
     <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
     <table>
-      @if ($myPlaces)
+      @unless ($myPlaces->isEmpty())
       <thead>
         <tr class="bg-violeta-ultra-light w-100">
           <th class="col p-2">Nombre</th>
           <th class="col p-2">Fecha</th>
         </tr>
       </thead>
-      @endif
+      @endunless
       <tbody>
         @forelse ($myPlaces as $place)
         <tr>
@@ -161,14 +209,14 @@
   <div class="pb-4">
     <h4 class="mt-5 mb-2 fw-bold">Opiniones: </h4>
     <table>
-      @if ($myPlaces)
+      @unless ($madeReviews->isEmpty())
       <thead>
         <tr class="bg-violeta-ultra-light">
           <th class="col p-2">Nombre</th>
           <th class="col p-2">Fecha</th>
         </tr>
       </thead>
-      @endif
+      @endunless
       <tbody>
         @forelse ($madeReviews as $review)
         <tr>

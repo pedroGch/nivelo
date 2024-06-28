@@ -54,10 +54,6 @@ body {
   width: 100%;
 }
 
-h2.titulo-h1{
-  font-size: var(--H-1);
-}
-
 h2.titulo{
   font-size: var(--H-2);
 }
@@ -319,6 +315,13 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   letter-spacing: 0.005em;
 }
 
+/* NAVBAR LANDING*/
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+/****/
+
 .p-links {
   color: var(--violeta-contenedor-dark) !important;
   text-decoration: underline !important;
@@ -360,7 +363,7 @@ ion-icon.icon-hover:hover {
 }
 
 .acerca-de-mi li {
-  display: flex;
+  list-style: none;
 }
 
 .acerca-de-mi-descript{
@@ -369,67 +372,54 @@ ion-icon.icon-hover:hover {
 }
 
 .bg-bastones {
-  width: 42px;
   height: 42px;
   background-image: url(../img/bastones.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-muletas {
-  width: 42px;
   height: 42px;
   background-image: url(../img/muletas.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-andador {
-  width: 42px;
   height: 42px;
   background-image: url(../img/andador.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-dificultad {
-  width: 42px;
-  height: 62px;
+  height: 42px;
   background-image: url(../img/camina_dificultad.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-silla-maual {
-  width: 42px;
   height: 42px;
   background-image: url(../img/silla_ruedas_manual.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-silla-electrica {
-  width: 42px;
   height: 42px;
   background-image: url(../img/silla_ruedas_electrica.png);
   background-repeat: no-repeat;
-  background-size: 30px;
-  background-position-y: 5px;
+
 
 }
 
 .bg-scooter {
-  width: 42px;
   height: 42px;
   background-image: url(../img/scooter.png);
   background-repeat: no-repeat;
@@ -621,16 +611,14 @@ table {
   background-repeat: repeat-x;
 }
 
-.p-100px {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  padding-left: 80px;
-  padding-right: 50px;
+.p-t-b-80px {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 20px;
 }
 
-.p-t-b-200px {
-  padding-top: 200px;
-  padding-bottom: 200px;
+h2.titulo-h1-mb {
+  font-size: 2rem;
 }
 
 .no_maring-right{
@@ -641,7 +629,12 @@ table {
 @media (min-width: 576px) {}
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  h2.titulo-h1{
+    font-size: var(--H-1);
+  }
+
+}
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
@@ -650,7 +643,18 @@ table {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
 
+  .p-100px {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 80px;
+    padding-right: 50px;
+  }
+
+  .p-t-b-200px {
+    padding-top: 200px;
+    padding-bottom: 200px;
   }
 }
 

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->date('birth_date')->nullable();
             $table->string('profile_pic')->nullable();
-            $table->string('rol')->default('usuario');
+            $table->string('rol')->default('user');
             $table->timestamps();
         });
     }
