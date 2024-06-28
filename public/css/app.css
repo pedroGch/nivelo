@@ -624,7 +624,7 @@ h2.titulo-h1-mb {
 .no_maring-right{
   margin-right: 0px !important;
 }
-
+/* BRILLO EN HOVER DE IMÁGENES*/
 .image-hover-bright {
   transition: filter 0.3s ease;
 }
@@ -632,6 +632,25 @@ h2.titulo-h1-mb {
 .image-hover-bright:hover {
   filter: brightness(1.1);
 }
+/* END BRILLO EN HOVER DE IMÁGENES*/
+
+/* ALTO FIJO EN REVIEWS */
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.review-item {
+  display: flex;
+}
+
+.review-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* END ALTO FIJO EN REVIEWS */
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
