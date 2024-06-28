@@ -625,6 +625,14 @@ h2.titulo-h1-mb {
   margin-right: 0px !important;
 }
 
+.image-hover-bright {
+  transition: filter 0.3s ease;
+}
+
+.image-hover-bright:hover {
+  filter: brightness(1.1);
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 
