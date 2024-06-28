@@ -20,12 +20,22 @@
           <span class="text">Notificaciones</span>
         </a>
       </div>
-      <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle shadow-sm">
-        <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
-          <ion-icon class="" name="add-circle-outline" size="large" style="color: #fff"></ion-icon>
-          <span class="text">Nuevo lugar</span>
-        </a>
+
+      @if (Auth::user()->status)
+        <div class="btn bg-verde-principal btn-verde-hover py-2 px-4 rounded-circle shadow-sm">
+          <a href="{{ route('addPlaceForm') }}" class="text-decoration-none">
+            <ion-icon class="" name="add-circle-outline" size="large" style="color: #fff"></ion-icon>
+            <span class="text">Nuevo lugar</span>
+          </a>
       </div>
+      @else
+        <div class="btn bg-secondary py-2 px-4 rounded-circle shadow-sm">
+          <a href="#" class="text-decoration-none">
+            <ion-icon class="" name="add-circle-outline" size="large" style="color: #fff"></ion-icon>
+            <span class="text">Nuevo lugar</span>
+          </a>
+        </div>
+      @endif
       <div>
         <a href="{{ route('chatInbox') }}">
           <span class="icon">

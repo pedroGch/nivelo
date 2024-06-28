@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <div class="my-4">
+  <div class="my-4 col-12 col-lg-3">
     <a href="{{ route('editProfileForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
       <span class="fw-semibold">Editar perfil</span>
     </a>
@@ -180,6 +180,16 @@
   <div>
     <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
     <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
+    @if ($status)
+      <p> No subiste ningún lugar aún.</p>
+      <div class="my-4">
+        <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+          <span class="fw-semibold">Cargar un lugar</span>
+        </a>
+      </div>
+    @else
+      <p class="alert alert-dark" role="alert"> No podes subir lugares nuevos. Comunicate con el equipo de nivelo.</p>
+    @endif
     <table>
       @unless ($myPlaces->isEmpty())
       <thead>
@@ -196,12 +206,7 @@
           <td width="25%" class="col px-2">{{ $place->created_at}}</td>
         </tr>
         @empty
-        <p> No subiste ningún lugar aún.</p>
-        <div class="my-4">
-          <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-            <span class="fw-semibold">Cargar un lugar</span>
-          </a>
-        </div>
+
         @endforelse
       </tbody>
     </table>

@@ -216,10 +216,17 @@
     </div>
     <div class="col-12 d-flex">
       <div class="my-3">
-        <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-          <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
-          <span class="fw-semibold">Opiná sobre este lugar</span>
+        @if (!$status)
+        <a href="#" disable class="btn w-100 rounded-pill p-3 shadow-sm bg-secondary text-white " >
+          <span class="fw-semibold">No podes realizar reseñas</span>
         </a>
+        @else
+          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+            <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
+            <span class="fw-semibold">Opiná sobre este lugar</span>
+          </a>
+        @endif
+
       </div>
     </div>
   </div>

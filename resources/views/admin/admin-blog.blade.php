@@ -39,7 +39,7 @@
         </div>
         <div class="mt-3 row">
           <div class="lg:mx-6 mb-8 mt-2 mb-5 flex justify-center flex-row flex-wrap">
-            <div>
+            <div class="col-12 col-lg-3">
               <form action="{{ route('addPostAction') }}" method="GET">
                 <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar noticia nueva</button>
               </form>
