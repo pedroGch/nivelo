@@ -41,10 +41,10 @@
       <div class="mt-3">
         <div class="row">
           <div class="col-12">
-            <h2 class="fw-bold ps-2">{{ $place->name }}
+            <h2 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
               @if($notablePlace) <span class="badge bg-naranja-principal">Lugar destacado</span>
               @endif</h2>
-
+            <p class="h4 ps-2">{{ $place->getSecondPartOfName() }}</p>
           </div>
           <div class="col-12">
             <div class="d-flex">

@@ -141,6 +141,19 @@ class Place extends Model
     return $name[0];
   }
 
+  /**
+   * Esta función corta un string cuando encuentra la primera coma y se queda solo con el texto que sigue a partir de la coma.
+   * @return string
+   */
+  public function getSecondPartOfName() : string
+  {
+    $name = $this->name;
+    $name = explode(',', $name);
+
+    $secondaryPart = array_shift($name);
+    return trim(implode(',', $name));
+  }
+
   /* RELACIONES */
 
   /**
