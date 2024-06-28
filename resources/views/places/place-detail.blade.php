@@ -203,7 +203,7 @@
         <form action="{{ route('startChat') }}" method="POST" class="mb-3">
           @csrf
           <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
-          <button type="submit" class="btn btn-primary">Chatea con {{ $place->users->username }}</button>
+          <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
         </form>
       @endif
     @endif
