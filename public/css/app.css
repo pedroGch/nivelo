@@ -649,8 +649,62 @@ h2.titulo-h1-mb {
   display: flex;
   flex-direction: column;
 }
-
 /* END ALTO FIJO EN REVIEWS */
+
+/* ALTO FIJO EN CARDS DE LUGARES */
+.place-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.place-card {
+  width: 100%; /* Ocupa el ancho disponible */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc; /* Borde para visualización */
+}
+
+.place-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Hace que el contenedor sea cuadrado */
+  overflow: hidden; /* Oculta cualquier desbordamiento */
+}
+
+.place-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen como un cover */
+}
+
+.place-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem; /* Espaciado interno */
+}
+
+.place-name {
+  font-size: 1.25rem; /* Tamaño de fuente del nombre del lugar */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Espaciado inferior del nombre */
+}
+
+.place-details {
+  font-size: 1rem; /* Tamaño de fuente de los detalles */
+  margin-bottom: 0.5rem; /* Espaciado inferior de los detalles */
+}
+
+.place-rating {
+  display: flex;
+  align-items: center;
+}
+
+/* END ALTO FIJO EN CARDS DE LUGARES */
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}

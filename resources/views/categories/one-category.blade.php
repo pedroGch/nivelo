@@ -48,7 +48,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
       </div>
         <div class="card-body">
           <p class="h6">{{ $category->name }}</p>
-          <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
+          <h3 class="h5 fw-bold mt-3">{{ $place->getFirstPartOfName() }}</h3>
           <p class="h6">{{ $place->city }}</p>
           <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
             @switch($place->totalAverageScore)

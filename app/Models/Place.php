@@ -130,6 +130,16 @@ class Place extends Model
     );
   }
 
+  /**
+   * Esta función corta un string cuando encuentra la primera coma y se queda solo con la primer parte.
+   * @return string
+   */
+  public function getFirstPartOfName() : string
+  {
+    $name = $this->name;
+    $name = explode(',', $name);
+    return $name[0];
+  }
 
   /* RELACIONES */
 
