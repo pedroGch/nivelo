@@ -37,7 +37,7 @@
     @forelse ($placesResult as $place)
     <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
       <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid image-hover-bright" alt="{{ $place->alt_main_img }}">
         <div class="card-body">
           <p class="h6">{{ $place->categories->name }}</p>
           <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
