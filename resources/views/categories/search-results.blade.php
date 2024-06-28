@@ -144,7 +144,7 @@
       @endif
       <div>
         <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid image-hover-bright" alt="{{ $place->alt_main_img }}">
       </div>
         <div class="card-body">
           <p class="h6">{{ $place->categories->name }}</p>
