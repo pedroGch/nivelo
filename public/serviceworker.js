@@ -3,6 +3,7 @@ const urlsToCache = [
   '/',
   // '/offline',
   './css/app.css',
+  './css/bootstrap/css/bootstrap.min.css',
   './build/assets/app-7d02d1c2.js',
   './img/icons/notable-place.png'
 ];
