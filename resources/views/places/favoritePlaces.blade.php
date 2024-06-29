@@ -35,79 +35,82 @@
   </div>
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
     @forelse ($placesResult as $place)
-    <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
-      <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
-        <div class="card-body">
-          <p class="h6">{{ $place->categories->name }}</p>
-          <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
-          <p class="h6">{{ $place->city }}</p>
-          <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
-            @switch($place->totalAverageScore)
-              @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)
+      <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
+        <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
+          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
+          <div class="card-body">
+            <p class="h6">{{ $place->categories->name }}</p>
+            <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
+            <p class="h6">{{ $place->city }}</p>
+            <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
+              @switch($place->totalAverageScore)
+                @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)
+                  <div class="d-flex">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  </div>
+                @break
+                @case($place->totalAverageScore >= 2 && $place->totalAverageScore < 3)
+                  <div class="d-flex">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  </div>
+                @break
+                @case($place->totalAverageScore >= 3 && $place->totalAverageScore < 4)
+                  <div class="d-flex">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  </div>
+                @break
+                @case($place->totalAverageScore >= 4 && $place->totalAverageScore < 5)
+                  <div class="d-flex">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  </div>
+                @break
+                @case($place->totalAverageScore == 5)
+                  <div class="d-flex">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
+                  </div>
+                @break
+                @default
                 <div class="d-flex">
                   <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
                 </div>
-              @break
-              @case($place->totalAverageScore >= 2 && $place->totalAverageScore < 3)
-                <div class="d-flex">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                </div>
-              @break
-              @case($place->totalAverageScore >= 3 && $place->totalAverageScore < 4)
-                <div class="d-flex">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                </div>
-              @break
-              @case($place->totalAverageScore >= 4 && $place->totalAverageScore < 5)
-                <div class="d-flex">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                </div>
-              @break
-              @case($place->totalAverageScore == 5)
-                <div class="d-flex">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                </div>
-              @break
-              @default
-              <div class="d-flex">
-                <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-              </div>
-            @endswitch
+              @endswitch
+            </div>
+            <div class="my-3">
+              <form action="{{ route('places.unfavorite', $place->place_id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
+                  <ion-icon style="color: #fff" name="trash-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                  <span class="fw-semibold">Quitar de Favoritos</span>
+                </button>
+              </form>
+            </div>
           </div>
-          <div class="my-3">
-            <form action="{{ route('places.unfavorite', $place->place_id) }}" method="POST">
-              @csrf
-              <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
-                <ion-icon style="color: #fff" name="trash-outline" size="large" class="me-2 icon-hover"></ion-icon>
-                <span class="fw-semibold">Quitar de Favoritos</span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
     @empty
+      <div class="alert alert-warning align-self-center" role="alert">
+        Todavía no agregaste ningun lugar.
+      </div>
     @endforelse
   </div>
 </section>
