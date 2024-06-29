@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserMoreInfo;
 use DateTime;
@@ -20,6 +21,7 @@ class PlaceController extends Controller
   */
   public function placeDetail(int $category_id, int $place_id)
   {
+    $status = Auth::user()->status;
     $scores = Review::where('place_id', $place_id)->get('score');
 
     ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 3;
@@ -46,6 +48,7 @@ class PlaceController extends Controller
                           ->get(),
       "averagePlaceScore" => $averagePlaceScore,
       "notablePlace" => $notablePlace,
+      "status" => $status,
     ]);
   }
 

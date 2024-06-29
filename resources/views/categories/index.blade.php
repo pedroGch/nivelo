@@ -295,8 +295,7 @@
             calculateAndDisplayRoute(event.latLng);
         });
 
-        const nearbyPlacesModal = new bootstrap.Modal(document.getElementById('showNearbyPlaces'));
-        nearbyPlacesModal.show();
+
       });
     });
   });

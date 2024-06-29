@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\User;
 use App\Models\UserDefinition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
    */
   public function userProfile() {
     $userAuth = auth()->user();
-
+    $status = Auth::user()->status;
     $userDB = User::where('id', $userAuth->id)->first();
 
     $myPlaces = Place::where('uploaded_from_id', $userAuth->id)->get();
@@ -31,6 +32,7 @@ class UserController extends Controller
         "myPlaces" => $myPlaces,
         "madeReviews" => $madeReviews,
         "UserProfileActive" => $UserProfileActive,
+        "status" => $status,
       ]);
   }
 
