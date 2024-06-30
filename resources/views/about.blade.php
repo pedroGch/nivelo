@@ -3,8 +3,11 @@
 @section('title', 'Acerca de nivelo')
 
 @section('header')
-
+@if($user = Auth::user())
+<x-NavbarTop :aboutViewActive="$aboutViewActive ? 'true' : 'false'"/>
+@else
 <x-NavbarLanding/>
+@endif
 
 @endsection
 

@@ -706,6 +706,12 @@ h2.titulo-h1-mb {
 
 /* END ALTO FIJO EN CARDS DE LUGARES */
 
+.link-active {
+  color: var(--naranja-principal) !important;
+}
+
+/*************** MEDIA QUERIES ****************/
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {}
 

@@ -16,8 +16,11 @@ class CategoryController extends Controller
   public function index()
   {
     $categories = Category::all()->sortBy('name');
+
+    $categoriesViewActive = true;
     return view('/categories/index', [
-      'categories'=> $categories
+      'categories'=> $categories,
+      'categoriesViewActive' => $categoriesViewActive,
     ]);
   }
 

@@ -4,7 +4,11 @@
 
 @section('header')
 
+@if($user = Auth::user())
+<x-NavbarTop :termsViewActive="$termsViewActive ? 'true' : 'false'"/>
+@else
 <x-NavbarLanding/>
+@endif
 
 @endsection
 

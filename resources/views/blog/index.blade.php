@@ -5,7 +5,7 @@
 
 @section('header')
 
-<x-NavbarTop/>
+<x-NavbarTop :blogViewActive="$blogViewActive ? 'true' : 'false'"/>
 
 @endsection
 

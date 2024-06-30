@@ -13,7 +13,7 @@
 
 @section('header')
 
-<x-NavbarTop/>
+<x-NavbarTop :categoriesViewActive="$categoriesViewActive ? 'true' : 'false'" />
 
 @endsection
 

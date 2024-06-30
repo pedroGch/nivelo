@@ -17,7 +17,7 @@
 
 @section('header')
 
-<x-NavbarTop/>
+<x-NavbarTop  :dashboardViewActive="$dashboardViewActive ? 'true' : 'false'" />
 
 @endsection
 

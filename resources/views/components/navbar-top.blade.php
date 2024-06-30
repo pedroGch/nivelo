@@ -1,3 +1,11 @@
+@props(['UserProfileActive' => $UserProfileActive ?? false]);
+@props(['dashboardViewActive' => $dashboardViewActive ?? false]);
+@props(['categoriesViewActive' => $categoriesViewActive ?? false]);
+@props(['blogViewActive' => $blogViewActive ?? false]);
+@props(['aboutViewActive' => $aboutViewActive ?? false]);
+@props(['termsViewActive' => $termsViewActive ?? false]);
+
+
 <div class="fixed-top">
   <nav class="navbar bg-violeta-dark">
     <div class="container container-fluid py-2 d-flex align-items-center">
@@ -26,26 +34,26 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
             <li class="pe-2 pt-3 nav-item text-end">
-              <a href="{{ route('userProfile') }}" class="nav-link active text-white link-offcanvas link-offcanvas-hover" aria-current="page">Mi cuenta ( {{ Auth::user()->email }} )</a>
+              <a href="{{ route('userProfile') }}" class="nav-link active text-white @if($UserProfileActive) link-active @endif link-offcanvas link-offcanvas-hover" aria-current="page">Mi cuenta ( {{ Auth::user()->email }} )</a>
             </li>
             @if (Auth::user()->rol == 'admin')
 
               <li class="pe-2 pt-2 nav-item text-end">
-                <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('dashboard') }}">Panel de administración</a>
+                <a class="nav-link text-white @if($dashboardViewActive) link-active @endif link-offcanvas link-offcanvas-hover" href="{{ route('dashboard') }}">Panel de administración</a>
               </li>
 
             @endif
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
+              <a class="nav-link text-white @if($categoriesViewActive) link-active @endif link-offcanvas link-offcanvas-hover" href="{{ route('categories') }}">Categorías</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('blogIndex') }}">Blog</a>
+              <a class="nav-link text-white @if($blogViewActive) link-active @endif  link-offcanvas link-offcanvas-hover" href="{{ route('blogIndex') }}">Blog</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a href="{{ route('about') }}" class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
+              <a href="{{ route('about') }}" class="nav-link text-white @if($aboutViewActive) link-active @endif link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a href="{{route('terms')}}"class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Términos y condiciones</a>
+              <a href="{{route('terms')}}"class="nav-link text-white @if($termsViewActive) link-active @endif link-offcanvas link-offcanvas-hover" aria-disabled="true">Términos y condiciones</a>
             </li>
             @auth
             <li class="nav-item pt-2 text-end link-offcanvas link-offcanvas-hover">

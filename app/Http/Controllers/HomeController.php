@@ -27,7 +27,9 @@ class HomeController extends Controller
    */
   public function about()
   {
-    return view('about');
+    $aboutViewActive = true;
+    return view('about',
+    ['aboutViewActive' => $aboutViewActive]);
   }
 
   /**
@@ -36,7 +38,9 @@ class HomeController extends Controller
    */
   public function terms()
   {
-    return view('terms-conditions');
+    $termsViewActive = true;
+    return view('terms-conditions',
+    ['termsViewActive' => $termsViewActive]);
   }
 
   /**
@@ -47,7 +51,11 @@ class HomeController extends Controller
   {
     $noticias = Blog::orderBy('created_at', 'desc')->get();
 
-    return view('blog.index', ['noticias' => $noticias]);
+    $blogViewActive = true;
+
+    return view('blog.index', [
+      'noticias' => $noticias,
+      'blogViewActive' => $blogViewActive,]);
   }
 
   /**
@@ -173,6 +181,8 @@ class HomeController extends Controller
       'Albergues Transitorios' => Place::where('category_id', 12)->count(),
     ];
 
+    $dashboardViewActive = true;
+
     return view('admin.dashboard', [
       'noticias' => Blog::all(),
       'lugares' => Place::all(),
@@ -181,6 +191,7 @@ class HomeController extends Controller
       'reviews' => Review::all(),
       'reviewsPendientes' => Review::where('status', 'pending')->get(),
       'categoriasLugares' => $categoriasLugares,
+      'dashboardViewActive' => $dashboardViewActive,
     ]);
   }
 

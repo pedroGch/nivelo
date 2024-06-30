@@ -15,7 +15,7 @@
 
 @section('header')
 
-<x-NavbarTop/>
+<x-NavbarTop :UserProfileActive="$UserProfileActive ? 'true' : 'false'"/>
 
 @endsection
 
