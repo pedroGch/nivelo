@@ -106,7 +106,7 @@
                       aria-invalid="true"
                       @enderror>
                       <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault" for="terms">
-                          Acepto los <a href="#" class="fw-bold text-reset text-decoration-none">términos y
+                          Acepto los <a href="{{route('terms')}}" class="fw-bold text-reset text-decoration-none">términos y
                               condiciones</a>
                       </label>
                   </div>
