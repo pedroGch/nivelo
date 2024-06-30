@@ -16,7 +16,7 @@
 <div class="mt-5 pt-5 container">
   <div class="row my-5">
     <div class="col-12">
-      <h2 class="h2 fw-bolder mt-5 mb-3">Acerca de nivelo</h2>
+      <h2 class="h2 fw-bolder mt-2 mb-3">Acerca de nivelo</h2>
       <p>Versión: 1.0.0</p>
       <p><strong>Nivelo es una aplicación web desarrollada en Argentina por un equipo de jóvenes y apasionados desarrolladores comprometidos en brindar soluciones innovadoras a la comunidad a través de las nuevas tecnologías. Nuestra aplicación es completamente gratuita y está diseñada para compartir experiencias y descubrir lugares en todo el país.</strong></p>
 
@@ -38,7 +38,11 @@
 
 @section('footer')
 
+@if($user = Auth::user())
+<x-NavbarBottom/>
+@else
 <x-FooterLanding/>
+@endif
 
 @endsection
 

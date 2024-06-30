@@ -1,3 +1,4 @@
+{{-- @props(['favoritesProfileActive' => $UserProfileActive ?? false]); --}}
 @props(['UserProfileActive' => $UserProfileActive ?? false]);
 @props(['dashboardViewActive' => $dashboardViewActive ?? false]);
 @props(['categoriesViewActive' => $categoriesViewActive ?? false]);
