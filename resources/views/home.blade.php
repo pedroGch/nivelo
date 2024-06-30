@@ -85,11 +85,11 @@
         </div>
       </div>
 
-      {{-- <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25"
+      <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25"
         onclick="instalarApp()"
       >
       Descargá la app
-    </button> --}}
+    </button>
     </div>
   </div>
 </div>
