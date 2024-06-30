@@ -188,10 +188,21 @@ class SessionController extends Controller
       ->route('aboutYouForm')
       ->with('status.message', 'Tu perfil fue generado exitosamente');
   }
+
+  /**
+   * Retorna la vista del formulario de edición de perfil del usuario
+   * @return \Illuminate\View\View
+   */
   public function editProfileForm()
   {
     return view('/profile/edit');
   }
+
+  /**
+   * Actualiza la información del usuario
+   * @param Request $request
+   * @return \Illuminate\View\View
+   */
   public function editProfileAction(Request $request)
   {
     if(!isset($request->username) && !isset($request->bio) && !isset($request->password_old)){

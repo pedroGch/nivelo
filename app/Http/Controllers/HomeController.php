@@ -65,7 +65,6 @@ class HomeController extends Controller
    */
   public function leerArticulo(int $id)
   {
-    //dd(Blog::all());
     return view('blog.articuloCompleto', [
       'noticia' => Blog::findOrFail($id),
       'noticias' => Blog::orderBy('created_at', 'desc')->take(3)->get(),
@@ -254,6 +253,10 @@ class HomeController extends Controller
     }
   }
 
+  /**
+   * Retorna la vista del administrador de lugares
+   * @return \Illuminate\View\View
+   */
   public function AdminPlacesView()
   {
     $categories = Category::all();
@@ -274,6 +277,10 @@ class HomeController extends Controller
     return view('admin.admin-places',['categorias' => $categories,'categoriasLugares' => $categoriasLugares,]);
   }
 
+  /**
+   * Retorna la vista del administrador de usuarios
+   * @return \Illuminate\View\View
+   */
   public function AdminUsersView()
   {
     $users = User::all();

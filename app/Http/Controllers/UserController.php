@@ -36,11 +36,20 @@ class UserController extends Controller
       ]);
   }
 
+  /**
+   * Obtiene la definición de los usuarios
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function getUserDefinition(){
     $definition = UserDefinition::all();
     return response()->json($definition);
   }
 
+  /**
+   * Permite cambiar el estado de un usuario (bloqueado/desbloqueado)
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function toggleBlock($id)
   {
     $user = User::where('id', $id)->first();
