@@ -12,7 +12,7 @@
 
 @section('header')
 
-<x-NavbarTop/>
+<x-NavbarTop :favoritesPlacesActive="$favoritesPlacesActive ? 'true' : 'false'"/>
 
 @endsection
 

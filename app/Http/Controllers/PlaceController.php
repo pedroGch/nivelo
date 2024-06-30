@@ -258,8 +258,10 @@ class PlaceController extends Controller
     $user = Auth::user();
     $favorites = $user->favoritePlaces;
 
+    $favoritesPlacesActive = true;
     return view('places.favoritePlaces', [
       "placesResult" => $favorites,
+      "favoritesPlacesActive" => $favoritesPlacesActive,
     ]);
   }
 
