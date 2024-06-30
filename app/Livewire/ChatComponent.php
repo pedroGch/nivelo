@@ -130,7 +130,10 @@ class ChatComponent extends Component
           ]);
       }
 
+      $chatInboxActive = true;
       //return redirect()->route('chatInbox', ['chat_id' => $chat->id]);
-      return view('chat.chat', ['chat_id' => $chat->id]);
+      return view('chat.chat', [
+        'chat_id' => $chat->id,
+        'chatInboxActive' => $chatInboxActive,]);
   }
 }
