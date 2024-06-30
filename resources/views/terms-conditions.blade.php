@@ -17,7 +17,10 @@
 <div class="mt-5 pt-5 container">
   <div class="row my-5">
     <div class="col-12">
-      <h2 class="h2 fw-bolder mt-2 mb-3">Términos y condiciones de uso de nivelo</h2>
+      <div class="d-flex">
+        <a href="#" onclick="event.preventDefault(); window.history.back();"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="mt-2 me-4" height="40px"></a>
+        <h2 class="h2 fw-bolder mt-2 mb-3">Términos y condiciones de uso de nivelo</h2>
+      </div>
       <p>Bienvenido a nivelo, una plataforma gratuita dedicada a compartir experiencias y descubrir lugares en todo el país. Antes de utilizar nuestros servicios, te pedimos que leas detenidamente los siguientes términos y condiciones. Al acceder y utilizar la aplicación nivelo, aceptas cumplir y estar sujeto a estos términos y condiciones. Si no estás de acuerdo con alguno de estos términos, por favor no utilices nuestra aplicación.</p>
 
       <ol>
