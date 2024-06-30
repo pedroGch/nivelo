@@ -55,6 +55,6 @@ class UserController extends Controller
     $user = User::where('id', $id)->first();
     $user->status = !$user->status;
     $user->save();
-    return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con exíto')->with('status.type', 'success');
+    return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con éxito')->with('status.type', 'success');
   }
 }
