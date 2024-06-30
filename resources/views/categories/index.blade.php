@@ -139,8 +139,8 @@
     <div class="col-12 col-md-6 col-xl-4 position-relative">
       <a href=" {{ route('categoryDetail', ['category_id' => $category->category_id ]) }} ">
         <div class="stablished-height col-12 d-flex">
-          <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow-sm">
-          <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-0 ms-2 shadow-sm">
+          <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow-sm img-fluid image-hover-bright">
+          <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-0 ms-2 shadow-sm image-hover-bright">
             <h3 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h3>
           </div>
         </div>

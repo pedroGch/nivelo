@@ -217,8 +217,10 @@
       @unless ($madeReviews->isEmpty())
       <thead>
         <tr class="bg-violeta-ultra-light">
-          <th class="col p-2">Nombre</th>
+          <th class="col p-2">Lugar</th>
+          <th class="col p-2">Puntaje</th>
           <th class="col p-2">Fecha</th>
+          <th class="col p-2">Estado</th>
         </tr>
       </thead>
       @endunless
@@ -226,7 +228,35 @@
         @forelse ($madeReviews as $review)
         <tr>
           <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $review->place->categories->category_id, 'place_id' => $review->place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $review->place->name }}</a></td>
+          <td width="25%" class="col px-2">
+            @switch($review->score)
+              @case($review->score == 1)
+                <p>⭐️</p>
+              @break
+              @case($review->score == 2)
+                <p>⭐️⭐️</p>
+              @break
+              @case($review->score == 3)
+                <p>⭐️⭐️⭐️</p>
+              @break
+              @case($review->score == 4)
+                <p>⭐️⭐️⭐️⭐️</p>
+              @break
+              @case($review->score == 5)
+                <p>⭐️⭐️⭐️⭐️⭐️</p>
+              @break
+              @default
+                <p>⭐️</p>
+            @endswitch
           <td width="25%" class="col px-2">{{ $review->created_at}}</td>
+          <td width="25%" class="col px-2">
+            @if ($review->status == 'approved')
+              <p class="text-success">Aprobado</p>
+            @elseif ($review->status == 'rejected')
+              <p class="text-danger">Rechazado</p>
+            @else
+              <p class="text-warning">Pendiente</p>
+            @endif
         </tr>
         @empty
         <p>No has opinado sobre ningún lugar.</p>

@@ -92,7 +92,7 @@
                 @enderror
                 >{{ old('review', $review->review) }}</textarea>
               </div>
-              @error('format')
+              @error('review')
                 <p class="text-danger" id="error-review">{{ $message }}</p>
               @enderror
               <div class="col-12 mb-3">

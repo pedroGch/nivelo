@@ -89,9 +89,11 @@ class ChatComponent extends Component
   public function chatInbox(Chat $chat)
   {
     //$this->authorize('view', $chat);
+    $chatInboxActive = true;
 
-    return view('chat.chat', compact('chat'));
+    return view('chat.chat', compact('chat', 'chatInboxActive'));
   }
+
   public function selectChat($chat_id)
   {
       $this->chat_id = $chat_id;

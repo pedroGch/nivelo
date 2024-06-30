@@ -35,61 +35,16 @@
   </div>
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
     @forelse ($placesResult as $place)
-      <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
-        <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top" alt="{{ $place->alt_main_img }}">
-          <div class="card-body">
-            <p class="h6">{{ $place->categories->name }}</p>
-            <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
-            <p class="h6">{{ $place->city }}</p>
-            <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
-              @switch($place->totalAverageScore)
-                @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)
-                  <div class="d-flex">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  </div>
-                @break
-                @case($place->totalAverageScore >= 2 && $place->totalAverageScore < 3)
-                  <div class="d-flex">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  </div>
-                @break
-                @case($place->totalAverageScore >= 3 && $place->totalAverageScore < 4)
-                  <div class="d-flex">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  </div>
-                @break
-                @case($place->totalAverageScore >= 4 && $place->totalAverageScore < 5)
-                  <div class="d-flex">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  </div>
-                @break
-                @case($place->totalAverageScore == 5)
-                  <div class="d-flex">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                    <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid ps-3 pt-1">
-                  </div>
-                @break
-                @default
+    <div class="card col-6 col-lg-3 shadow-sm-sm" style="width: 18rem;">
+      <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
+        <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid image-hover-bright" alt="{{ $place->alt_main_img }}">
+        <div class="card-body">
+          <p class="h6">{{ $place->categories->name }}</p>
+          <h3 class="h5 fw-bold mt-3">{{ $place->name }}</h3>
+          <p class="h6">{{ $place->city }}</p>
+          <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
+            @switch($place->totalAverageScore)
+              @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)
                 <div class="d-flex">
                   <img src="{{ url('/img/icon_star_fill_30.png') }}" alt="ícono estrella" class="img-fluid pt-1">
                 </div>

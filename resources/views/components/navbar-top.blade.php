@@ -42,7 +42,7 @@
               <a class="nav-link text-white link-offcanvas link-offcanvas-hover" href="{{ route('blogIndex') }}">Blog</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
-              <a class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
+              <a href="{{ route('about') }}" class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Acerca de nivelo</a>
             </li>
             <li class="pe-2 pt-2 nav-item text-end">
               <a href="{{route('terms')}}"class="nav-link text-white link-offcanvas link-offcanvas-hover" aria-disabled="true">Términos y condiciones</a>
