@@ -33,6 +33,6 @@
 
 @section('footer')
 
-<x-NavbarBottom/>
+<x-NavbarBottom :chatInboxActive="$chatInboxActive ? 'true' : 'false'"  />
 
 @endsection

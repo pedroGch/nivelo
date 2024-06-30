@@ -266,6 +266,6 @@
 
 @section('footer')
 
-<x-NavbarBottom/>
+<x-NavbarBottom :mapViewActive="$mapViewActive ? 'true' : 'false'"/>
 
 @endsection

@@ -59,8 +59,11 @@ class PlaceController extends Controller
    */
   public function addPlaceForm()
   {
+    $addPlaceActive = true;
+
     return view('places.add-place-form', [
-      "categories" => Category::all()
+      "categories" => Category::all(),
+      "addPlaceActive" => $addPlaceActive,
     ]);
   }
 
@@ -114,7 +117,9 @@ class PlaceController extends Controller
 
     $placeId = $newPlace->place_id;
     return redirect()
-      ->route('addReviewForm', ['category_id' => $request->category, 'place_id' => $placeId])
+      ->route('addReviewForm', [
+        'category_id' => $request->category,
+        'place_id' => $placeId,])
       ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
   }
 
@@ -278,8 +283,10 @@ class PlaceController extends Controller
   public function mapViewForm()
   {
     $categories = Category::all()->sortBy('name');
+    $mapViewActive = true;
     return view('places.map-places-view', [
-      'categories'=> $categories
+      'categories'=> $categories,
+      'mapViewActive' => $mapViewActive,
     ]);
   }
 

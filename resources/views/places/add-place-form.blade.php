@@ -245,6 +245,6 @@
 
 @section('footer')
 
-<x-NavbarBottom/>
+<x-NavbarBottom :addPlaceActive="$addPlaceActive ? 'true' : 'false'" />
 
 @endsection
