@@ -33,7 +33,7 @@
       </div>
       <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
         <div>
-          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal text-white w-standard " >
+          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -47,7 +47,7 @@
         @csrf
         <div class="input-group">
           <input type="text" class="form-control buscador-principal" name="buscar" id="buscar" placeholder="Lugar, ciudad o provincia" aria-label="buscar" aria-describedby="buscar">
-          <button class="btn bg-verde-principal" type="submit" id="button-addon2">
+          <button class="btn bg-verde-principal btn-verde-hover" type="submit" id="button-addon2">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#FFF" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
@@ -55,7 +55,7 @@
         </div>
         <div class="mt-3">
           <p class="d-inline-flex gap-1">
-          <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal btn-verde-hover text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Búsqueda avanzada
             </button>
           </p>
