@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="offcanvas offcanvas-end bg-violeta-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
+        <div class="offcanvas-header d-flex justify-content-between">
           <img src="{{ url('/img/logo_h_blanco.png') }}" alt="logo de nivelo">
-          <button type="button" class="btn text-white" data-bs-dismiss="offcanvas"  aria-label="Close"><ion-icon name="close-outline" size="large"></ion-icon></button>
+          <button type="button" class="btn text-white pt-4" data-bs-dismiss="offcanvas"  aria-label="Close"><ion-icon name="close-outline" size="large"></ion-icon></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
