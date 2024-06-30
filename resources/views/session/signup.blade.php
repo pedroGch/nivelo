@@ -93,7 +93,7 @@
                         @error('password')
                         <p class="text-danger" id="error-password">{{ $message }}</p>
                         @enderror
-                        <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y" onclick="togglePassword('password')">Mostrar</button>
+                        <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y pe-2 me-3" onclick="togglePassword('password')">Mostrar</button>
                     </div>
                   </div>
                   <div class="form-check d-flex justify-content-center">
@@ -106,8 +106,7 @@
                       aria-invalid="true"
                       @enderror>
                       <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault" for="terms">
-                          Acepto los <a href="{{route('terms')}}" class="fw-bold text-reset text-decoration-none">términos y
-                              condiciones</a>
+                          Acepto los <a href="{{route('terms')}}" class="fw-bold text-reset text-decoration-none">términos y condiciones</a>
                       </label>
                   </div>
                   @error('terms')
