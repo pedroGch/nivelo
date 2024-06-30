@@ -22,6 +22,8 @@ class PlaceController extends Controller
   public function placeDetail(int $category_id, int $place_id)
   {
     $status = Auth::user()->status;
+    $user = Auth::user();
+    $place = Place::findOrFail($place_id);
     $scores = Review::where('place_id', $place_id)->get('score');
 
     ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 3;
@@ -36,6 +38,14 @@ class PlaceController extends Controller
       $notablePlace = true;
     }
 
+    $favorites = $user->favoritePlaces;
+    $placeExist = false;
+
+    foreach ($favorites as $aPlace) {
+      if($aPlace->place_id  == $place_id){
+        $placeExist = true;
+      }
+    }
 
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
@@ -49,6 +59,7 @@ class PlaceController extends Controller
       "averagePlaceScore" => $averagePlaceScore,
       "notablePlace" => $notablePlace,
       "status" => $status,
+      "placeExist" => $placeExist,
     ]);
   }
 
@@ -262,7 +273,10 @@ class PlaceController extends Controller
     }
 
     $user->favoritePlaces()->attach($place->place_id);
-    return redirect()->back()->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
+
+    return redirect()->back()
+    ->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
+
   }
 
   /**
