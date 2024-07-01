@@ -34,7 +34,7 @@
       </div>
       {{-- <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
         <div>
-          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal text-white w-standard " >
+          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -48,7 +48,7 @@
         @csrf
         <div class="input-group">
           <input type="text" class="form-control buscador-principal" name="buscar" id="buscar" placeholder="Lugar, ciudad o provincia" aria-label="buscar" aria-describedby="buscar">
-          <button class="btn bg-verde-principal" type="submit" id="button-addon2">
+          <button class="btn bg-verde-principal btn-verde-hover" type="submit" id="button-addon2">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#FFF" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
@@ -56,13 +56,13 @@
         </div>
         <div class="mt-3">
           <p class="d-inline-flex gap-1">
-          <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Búsqueda avanzada
             </button>
           </p>
           <div class="collapse" id="collapseExample">
             <div>
-              <label for="category_id" class="form-label h5">Categoría:</label>
+              <label for="category_id" class="form-label h5 fw-semibold">Categoría:</label>
             <select class="form-select" id="category_id" name="category_id">
               <option value="">Todas</option>
               @foreach ($categories as $category)
@@ -72,10 +72,13 @@
               @endforeach
             </select>
             </div>
-            <div>
-              <fieldset class="mt-4">
-                <legend class="h5">Características de accesibilidad:</legend>
-                <div class="d-flex justify-content-around my-3">
+            <div class="border p-2 mt-3 pb-4 rounded-2">
+              <fieldset class="mt-3">
+                <div class="d-flex">
+                  <div class="me-4"><img src="./img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
+                  <legend class="h5 fw-semibold pt-3">Características de accesibilidad:</legend>
+                </div>
+                <div class="d-flex justify-content-around mt-4 mb-2">
                   <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="access_entrance" id="access_entrance" name="features[]"{{ in_array('access_entrance', $request->features ?? []) ? 'checked' : '' }}>
                       <label class="form-check-label" for="access_entrance">
@@ -101,7 +104,7 @@
                       </label>
                   </div>
                 </div>
-                <div class="d-flex justify-content-around">
+                <div class="d-flex justify-content-around mb-4">
                   <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="adult_changing_table" id="adult_changing_table" name="features[]"{{ in_array('adult_changing_table', $request->features ?? []) ? 'checked' : '' }}>
                       <label class="form-check-label" for="adult_changing_table">
@@ -124,8 +127,8 @@
               </fieldset>
             </div>
           <div class="my-3">
-            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white" type="submit">Aplicar filtros</button>
-            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
+            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="submit">Aplicar filtros</button>
+            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
               Resetear filtros
                     </button>
           </div>

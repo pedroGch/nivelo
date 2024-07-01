@@ -6,6 +6,7 @@
  * @var \App\Models\User $user_more_info
  * @var $averagePlaceScore
  * @var $notablePlace
+ * @var $placeExist bool
  *
  */
 
@@ -49,13 +50,25 @@
           <div class="col-12">
             <div class="d-flex">
               <div class="my-3">
+                @if(!$placeExist)
                 <form action="{{ route('places.favorite', $place->place_id) }}" method="POST">
                   @csrf
                   <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white">
                     <ion-icon style="color: #fff" name="bookmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
                     <span class="fw-semibold">Agregar a Favoritos</span>
+
+
+
                   </button>
               </form>
+              @else
+              <form action="{{ route('places.unfavorite', $place->place_id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white">
+                  <ion-icon style="color: #fff" name="bookmark" size="large" class="me-2 icon-hover"></ion-icon>
+                  <span class="fw-semibold">Quitar de Favoritos</span>
+                </button>
+              @endif
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@
   <div class="row d-flex vh-100 no_maring-right">
     <div class="col-12 col-md-6 col-lg-4 mt-lg-5 ms-lg-5 pt-3 container-xxl bg-white rounded shadow-sm">
       <div class="pt-5 d-flex justify-content-center my-6">
+        <a href="#" onclick="event.preventDefault(); window.history.back();"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="mt-2 me-4" height="40px"></a>
         <a href="{{ route('home') }}"><img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo"></a>
       </div>
       <div class="row pb-5 mt-4 mx-auto border-top redondeo-superior-login shadow-sm-top">
@@ -51,7 +52,7 @@
           </form>
           <div class="row">
             <div class="col-12 mb-3 d-flex justify-content-center">
-              <p>¿Olvidaste tu contraseña? <a href="{{ route('password.request') }}">Hace click acá</a></p>
+              <p>¿Olvidaste tu contraseña? <a href="{{ route('password.request') }}" class="fw-bold text-reset text-decoration-none">Hacé click acá</a></p>
             </div>
             <div class="col-12 mb-3 d-flex justify-content-center">
               <a href="<?= url('/sesion-google') ?>" class="form-control btn bg-violeta-principal btn-violeta-active rounded-pill p-3 text-white shadow-sm fw-semibold">Google</a>

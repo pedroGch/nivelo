@@ -36,16 +36,25 @@ class UserController extends Controller
       ]);
   }
 
+  /**
+   * Obtiene la definición de los usuarios
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function getUserDefinition(){
     $definition = UserDefinition::all();
     return response()->json($definition);
   }
 
+  /**
+   * Permite cambiar el estado de un usuario (bloqueado/desbloqueado)
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function toggleBlock($id)
   {
     $user = User::where('id', $id)->first();
     $user->status = !$user->status;
     $user->save();
-    return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con exíto')->with('status.type', 'success');
+    return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con éxito')->with('status.type', 'success');
   }
 }

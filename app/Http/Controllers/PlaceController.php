@@ -22,6 +22,8 @@ class PlaceController extends Controller
   public function placeDetail(int $category_id, int $place_id)
   {
     $status = Auth::user()->status;
+    $user = Auth::user();
+    $place = Place::findOrFail($place_id);
     $scores = Review::where('place_id', $place_id)->get('score');
 
     ($scores->count() > 0) ? $totalPlaceScore = $scores->sum('score') : $totalPlaceScore = 3;
@@ -36,6 +38,14 @@ class PlaceController extends Controller
       $notablePlace = true;
     }
 
+    $favorites = $user->favoritePlaces;
+    $placeExist = false;
+
+    foreach ($favorites as $aPlace) {
+      if($aPlace->place_id  == $place_id){
+        $placeExist = true;
+      }
+    }
 
     return view('places.place-detail', [
       "place" => Place::findOrFail($place_id),
@@ -49,6 +59,7 @@ class PlaceController extends Controller
       "averagePlaceScore" => $averagePlaceScore,
       "notablePlace" => $notablePlace,
       "status" => $status,
+      "placeExist" => $placeExist,
     ]);
   }
 
@@ -212,6 +223,12 @@ class PlaceController extends Controller
       ]);
   }
 
+  /**
+   * Retorna los lugares cercanos a una ubicación,
+   * en un radio de X kilómetros
+   * @param Request $request
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function nearbyPlaces(Request $request)
   {
     $latitude = $request->query('latitude');
@@ -225,6 +242,12 @@ class PlaceController extends Controller
     return response()->json($places);
   }
 
+  /**
+   * Agrega un lugar a la lista de favoritos del usuario
+   * @param Request $request
+   * @param int $placeId
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function addFavoritePlace(Request $request, $placeId)
   {
     $user = Auth::user();
@@ -250,9 +273,16 @@ class PlaceController extends Controller
     }
 
     $user->favoritePlaces()->attach($place->place_id);
-    return redirect()->back()->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
+
+    return redirect()->back()
+    ->with('status.message', 'Lugar agregado a favoritos')->with('status.type', 'success');
+
   }
 
+  /**
+   * Muestra los lugares favoritos del usuario
+   * @return \Illuminate\View\View
+   */
   public function showFavoritePlaces()
   {
     $user = Auth::user();
@@ -265,6 +295,12 @@ class PlaceController extends Controller
     ]);
   }
 
+  /**
+   * Elimina un lugar de la lista de favoritos del usuario
+   * @param Request $request
+   * @param int $placeId
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function removeFavoritePlace(Request $request, $placeId)
   {
     $user = Auth::user();
@@ -282,6 +318,10 @@ class PlaceController extends Controller
     return redirect()->back()->with('status.message', 'Lugar eliminado de favoritos')->with('status.type', 'success');
   }
 
+  /**
+   * Retorna la vista del mapa
+   * @return \Illuminate\View\View
+   */
   public function mapViewForm()
   {
     $categories = Category::all()->sortBy('name');
@@ -292,6 +332,11 @@ class PlaceController extends Controller
     ]);
   }
 
+  /**
+   * Retorna los lugares de una categoría en particular
+   * @param int $category_id
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function getPlacesByCategory($category_id)
   {
     if ($category_id === 'all'){
@@ -305,6 +350,11 @@ class PlaceController extends Controller
     return response()->json($places);
   }
 
+  /**
+   * Elimina un lugar por su ID
+   * @param int $id
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function deletePlaceById($id)
   {
     $place = Place::where('place_id', $id)->first();
@@ -317,6 +367,11 @@ class PlaceController extends Controller
     ]);
   }
 
+  /**
+   * Autorizar un lugar subido por un usuario
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function authorizePlace($id)
   {
     $place = Place::findOrFail($id);

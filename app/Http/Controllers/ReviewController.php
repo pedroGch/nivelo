@@ -215,6 +215,13 @@ class ReviewController extends Controller
             ->with('status.message', 'Tu reseña fue correctamente editada. Una vez aprobada por el equipo de nivelo, será visible en la página.');
 
     }
+
+    /**
+     * Muestra las reseñas de un lugar por su ID
+     * @param int $place_id
+     * @return \Illuminate\Http\JsonResponse
+     * 
+     */
     public function getReviewPlaces($place_id)
     {
       $reviews = Review::where('place_id', $place_id)->with('user')->get();

@@ -23,8 +23,6 @@ class SubscriberController extends Controller
           return redirect()->route('home')->with('status.message', 'Hubo un error, intenta nuevamente.');
         }
 
-        // Guardar el email en la base de datos
-        // ...
 
         return redirect()->route('home');
     }

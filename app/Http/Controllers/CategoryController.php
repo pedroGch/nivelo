@@ -83,12 +83,19 @@ class CategoryController extends Controller
     }
   }
 
+  /**
+   * Retorna todas las categorías en formato JSON
+   * @return \Illuminate\Http\JsonResponse
+   */
   public function getAllCategories()
   {
     $categories = Category::all();
     return response()->json($categories);
   }
 
+  /**
+   * Agrega una nueva categoría a la base de datos
+   */
   public function addCategorieAction(Request $request)
   {
 
@@ -115,12 +122,24 @@ class CategoryController extends Controller
     }
   }
 
+  /**
+   * Muestra el formulario para editar una categoría
+   * @param Request $request
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function editCategorieForm($id)
   {
     $categorie = Category::where('category_id', $id)->get();
     return response()->json($categorie);
   }
 
+  /**
+   * Actualiza una categoría en la base de datos
+   * @param Request $request
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function editCategorieAction(Request $request, $id)
   {
     try{

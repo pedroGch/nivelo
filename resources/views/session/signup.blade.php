@@ -8,7 +8,8 @@
 <section>
   <div class="row d-flex vh-100 no_maring-right">
     <div class="mt-lg-5 ms-lg-5 pt-3 container-xxl col-12 col-md-6 col-lg-4 bg-white rounded shadow-sm">
-      <div class="d-flex justify-content-center my-6">
+      <div class="d-flex justify-content-center my-6 pt-3">
+        <a href="#" onclick="event.preventDefault(); window.history.back();"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="mt-2 me-4" height="40px"></a>
         <a href="{{ route('home') }}"><img src="{{ url('/img/logo_horizontal.png') }}" alt="logo de nivelo"></a>
       </div>
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-sm-top">
@@ -93,7 +94,7 @@
                         @error('password')
                         <p class="text-danger" id="error-password">{{ $message }}</p>
                         @enderror
-                        <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y" onclick="togglePassword('password')">Mostrar</button>
+                        <button type="button" class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y pe-2 me-3" onclick="togglePassword('password')">Mostrar</button>
                     </div>
                   </div>
                   <div class="form-check d-flex justify-content-center">
@@ -106,8 +107,7 @@
                       aria-invalid="true"
                       @enderror>
                       <label class="ms-2 mb-2 form-check-label" for="flexCheckDefault" for="terms">
-                          Acepto los <a href="#" class="fw-bold text-reset text-decoration-none">términos y
-                              condiciones</a>
+                          Acepto los <a href="{{route('terms')}}" class="fw-bold text-reset text-decoration-none">términos y condiciones</a>
                       </label>
                   </div>
                   @error('terms')
