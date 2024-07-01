@@ -177,7 +177,7 @@
         @if($place->access_entrance == 1)
         <li>Entrada accesible</li>
         @endif
-        @if($place->access_entrance_assisted == 1)
+        @if($place->assisted_access_entrance == 1)
         <li>Entrada accesible (con asistencia)</li>
         @endif
         @if($place->internal_circulation == 1)
