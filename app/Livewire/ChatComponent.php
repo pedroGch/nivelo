@@ -89,9 +89,14 @@ class ChatComponent extends Component
   public function chatInbox(Chat $chat)
   {
     //$this->authorize('view', $chat);
+    $existingChats = true;
     $chatInboxActive = true;
-
-    return view('chat.chat', compact('chat', 'chatInboxActive'));
+    $chats = Chat::all();
+    if ($chats->isEmpty()){
+      $existingChats = false;
+    }
+//dd($existingChats);
+    return view('chat.chat', compact('chat', 'chatInboxActive', 'existingChats'));
   }
 
   public function selectChat($chat_id)
@@ -109,7 +114,7 @@ class ChatComponent extends Component
       $request->validate([
           'receiver_id' => 'required|exists:users,id',
       ]);
-
+      $existingChats = true;
       $sender_id = Auth::id();
       $receiver_id = $request->input('receiver_id');
 
@@ -134,6 +139,8 @@ class ChatComponent extends Component
       //return redirect()->route('chatInbox', ['chat_id' => $chat->id]);
       return view('chat.chat', [
         'chat_id' => $chat->id,
-        'chatInboxActive' => $chatInboxActive,]);
+        'chatInboxActive' => $chatInboxActive,
+        'existingChats' => $existingChats,
+      ]);
   }
 }

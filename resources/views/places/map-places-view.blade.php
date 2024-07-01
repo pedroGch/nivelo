@@ -34,6 +34,7 @@
                     <div class="col-md-8 col-sm-12">
                       <select class="form-select d-inline" aria-label="Default select example" name="category" id="category">
                         <option selected value="-1">Elegí una categoría</option>
+                        <option  value="0">Lugares cercanos</option>
                           @foreach($categories as $category)
                             <option class="@error('category') is-invalid @enderror" value="{{ $category->category_id }}"
                               {{ old('category') == $category->category_id ? 'selected' : '' }}
@@ -49,11 +50,20 @@
 
                   <div class="col-12 mb-3">
                     <div class="row">
-                      <div class="col-6 mx-auto">
-                        <p  id="sin_filtro" class="text-center fw-bold"> Aún no aplicaste ningún filtro </p>
+                      <div class="col-12">
+                        <div class="col-6 mx-auto">
+                          <p  id="sin_filtro" class="text-center fw-bold"> Aún no aplicaste ningún filtro </p>
+                        </div>
                       </div>
-                      <div class="col-12" id="con_filtro">
-                        <div class="container my-4" id="getPlacesAccordion">
+                      <div class="col-12 col-lg-6">
+                        <div class="col-12">
+                          <div id="gmp-map" style="height: 500px;"></div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-6" style="overflow-y: auto; height: 500px;">
+                        <div class="col-12" id="con_filtro">
+                          <div class="container my-4" id="getPlacesAccordion">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -61,9 +71,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div id="gmp-map" style="height: 500px;"></div>
           </div>
         </div>
       </div>
@@ -73,10 +80,14 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&callback=initMap&libraries=places&v=weekly" defer></script>
 <script>
-  let inputLugarNombre
-  let map
-  let marker
-  let autocomplete
+  const accordionContainer = document.getElementById('getPlacesAccordion');
+  let inputLugarNombre;
+  let map;
+  let marker;
+  let autocomplete;
+  let coords;
+  let directionsService;
+  let directionsRenderer;
   let semaforo = {
     red: '../../img/icons/icon-red.png',
     yellow: '../../img/icons/icon-yellow.png',
@@ -86,7 +97,7 @@
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(
         ({coords: {latitude, longitude} }) => {
-          const coords = {
+          coords = {
             lat: latitude,
             lng: longitude,
           };
@@ -131,47 +142,6 @@
 
     }
   }
-  document.getElementById('category').addEventListener('change', function() {
-    const categoryId = this.value;
-    const accordionContainer = document.getElementById('getPlacesAccordion');
-    const sin_filtro = document.getElementById('sin_filtro');
-    const con_filtro = document.getElementById('con_filtro');
-
-    if (categoryId == -1){
-      sin_filtro.classList.remove('d-none');
-      con_filtro.classList.add('d-none');
-
-    }else{
-      sin_filtro.classList.add('d-none');
-      con_filtro.classList.remove('d-none');
-      fetch(`/categories/${categoryId}/places`)
-        .then(response => response.json())
-        .then(places => {
-
-          if (places.length != 0) {
-            places.forEach(place => {
-              const position = {
-                lat: parseFloat(place.latitude),
-                lng: parseFloat(place.longitude)
-              };
-
-              new google.maps.Marker({
-                position: position,
-                map: map,
-                title: place.name
-              });
-              insertPlaces(places, accordionContainer);
-            });
-          }else{
-            console.log(places.length);
-            accordionContainer.innerHTML = '';
-            const placeHTML = `<p class="text-center fw-bold">No hay resultados para esta categoría</p>`
-            accordionContainer.insertAdjacentHTML('beforeend', placeHTML);
-          }
-      })
-      .catch(error => console.error('Error fetching places:', error));
-    }
-  })
   function viewOnMap(lat, lng) {
     const coords = { lat: parseFloat(lat), lng: parseFloat(lng) };
     // Centrar el mapa en las nuevas coordenadas
@@ -189,6 +159,7 @@
     accordionContainer.innerHTML = '';
 
     places.forEach((place, index) => {
+    let encodedPlaceName = encodeURIComponent(place.name);
     const placeHTML = `
     <div class="container">
       <div class="card mb-3 w-100" id="placeCard${place.place_id}">
@@ -200,13 +171,17 @@
             <div class="card-body">
               <h5 class="card-title">${place.name}</h5>
               <p class="card-text">Puntaje: 4.5</p>
+              <p class="card-text">${place.address}</p>
               <div class="d-flex justify-content-end">
                 <button class="btn btn-primary me-2" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
                 <button
-                  class="btn btn-secondary"
+                  class="btn btn-secondary me-2"
                   data-bs-toggle="modal"
                   data-bs-target="#reviewsModal${place.place_id}"
-                  onclick="loadReviews(${place.place_id})"> Opiniones</button>
+                  onclick="loadReviews(${place.place_id})"> Opiniones
+                </button>
+                <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Ver en maps</a>
+
               </div>
             </div>
           </div>
@@ -261,6 +236,89 @@
       })
       .catch(error => console.error('Error al obtener las opiniones:', error));
   }
+  function calculateAndDisplayRoute(destination) {
+    if (!coords) {
+      alert('Ubicación del usuario no disponible');
+      return;
+    }
+
+    directionsService.route(
+      {
+        origin: coords,
+        destination: destination,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      (response, status) => {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(response);
+        } else {
+          window.alert('No se pudieron obtener direcciones debido a: ' + status);
+        }
+      }
+    );
+  }
+  function drawPlacesOnMap(places,accordionContainer,categoryId) {
+    if (places.length != 0) {
+            places.forEach(place => {
+              const position = {
+                lat: parseFloat(place.latitude),
+                lng: parseFloat(place.longitude)
+              };
+
+              new google.maps.Marker({
+                position: position,
+                map: map,
+                title: place.name
+              });
+              insertPlaces(places, accordionContainer);
+
+            });
+            if (categoryId == 0){
+              directionsService = new google.maps.DirectionsService();
+              directionsRenderer = new google.maps.DirectionsRenderer();
+              directionsRenderer.setMap(map);
+              map.addListener('click', function(event) {
+                calculateAndDisplayRoute(event.latLng);
+              });
+            }
+          }else{
+            console.log(places.length);
+            accordionContainer.innerHTML = '';
+            const placeHTML = `<p class="text-center fw-bold">No hay resultados para esta categoría</p>`
+            accordionContainer.insertAdjacentHTML('beforeend', placeHTML);
+          }
+  }
+  document.getElementById('category').addEventListener('change', function() {
+    const categoryId = this.value;
+
+    const sin_filtro = document.getElementById('sin_filtro');
+    const con_filtro = document.getElementById('con_filtro');
+
+    if (categoryId == -1){
+      sin_filtro.classList.remove('d-none');
+      con_filtro.classList.add('d-none');
+
+    }
+    if (categoryId == 0) {
+      sin_filtro.classList.add('d-none');
+      con_filtro.classList.remove('d-none');
+      fetch(`{{ route('nearbyPlaces') }}?latitude=${coords.lat}&longitude=${coords.lng}`)
+      .then(response => response.json())
+      .then(places => {
+        drawPlacesOnMap(places,accordionContainer,categoryId);
+      });
+    }
+    else{
+      sin_filtro.classList.add('d-none');
+      con_filtro.classList.remove('d-none');
+      fetch(`/categories/${categoryId}/places`)
+        .then(response => response.json())
+        .then(places => {
+          drawPlacesOnMap(places,accordionContainer);
+      })
+      .catch(error => console.error('Error fetching places:', error));
+    }
+  })
 </script>
 @endsection
 
