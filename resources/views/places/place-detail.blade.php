@@ -158,19 +158,20 @@
       </div>
       @endif
       <div>
-        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3 image-hover-bright">
       </div>
     </div>
   </div>
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="col-12">
       <div class="mt-3 d-flex align-items-center">
-        <div>
-          <p class="h5 ps-2 mt-3 fw-bold">Características:</p>
+        <div class="d-flex">
+          <div class="me-4"><img src="/img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
+          <p class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</p>
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 ps-5">
       <div class="row ms-3 my-3 flex justify-content-center align-items-center">
         <ul>
         @if($place->access_entrance == 1)
