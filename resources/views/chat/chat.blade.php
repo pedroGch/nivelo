@@ -14,9 +14,10 @@
 <section class="container margin-navs">
   <div>
     <h2 class="fw-bold py-3">Chats</h2>
+    <span class="bg-movimiento ms-3"></span>
   </div>
 
-  @if(empty($chats))
+  @if($existingChats == false)
     <div class="alert alert-warning align-self-center" role="alert">
       Aún no hay chats iniciados.
     </div>
