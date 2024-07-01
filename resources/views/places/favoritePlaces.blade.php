@@ -66,6 +66,14 @@
       <div class="alert alert-warning align-self-center" role="alert">
         Todavía no agregaste ningun lugar.
       </div>
+
+      <div>
+        <p class="h4 lh-md text-center px-5 pt-5">Con nivelo podés buscar lugares por nombre, categoría y características de accesibilidad, o navegar por el mapa y descubrir lugares cercanos.</p>
+      </div>
+
+      <div class="my-4 d-flex justify-content-center">
+        <a href="{{ route('mapViewForm') }}" class="my-3 form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-50 fw-bold">Explorar lugares cercanos</a>
+      </div>
     @endforelse
   </div>
 </section>

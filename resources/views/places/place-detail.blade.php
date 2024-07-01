@@ -218,6 +218,15 @@
           <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
           <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
         </form>
+      @else
+      <div class="alert alert-warning align-self-center" role="alert">
+        <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+      </div>
+      <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+        @csrf
+        <input type="hidden" name="receiver_id" value="3">
+        <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: Equipo de nivelo</button>
+      </form>
       @endif
     @endif
   </div>
