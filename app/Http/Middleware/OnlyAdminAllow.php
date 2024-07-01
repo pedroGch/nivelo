@@ -17,7 +17,7 @@ class OnlyAdminAllow
     {
       //chequea que el rol del usuario sea admin
       if (auth()->user()->rol != 'admin') {
-          return redirect()->route('categories')->with('status.message', 'No tenés permisos para acceder a esta página')->with('status.type', 'danger');
+          return redirect()->route('login')->with('status.message', 'No tenés permisos para acceder a esta página')->with('status.type', 'danger');
       }
         return $next($request);
     }
