@@ -181,12 +181,14 @@
     <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
     <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
     @if ($status)
+      @if($myPlaces->isEmpty())
       <p> No subiste ningún lugar aún.</p>
       <div class="my-4">
         <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
           <span class="fw-semibold">Cargar un lugar</span>
         </a>
       </div>
+      @endif
     @else
       <p class="alert alert-dark" role="alert"> No podes subir lugares nuevos. Comunicate con el equipo de nivelo.</p>
     @endif
@@ -196,14 +198,24 @@
         <tr class="bg-violeta-ultra-light w-100">
           <th class="col p-2">Nombre</th>
           <th class="col p-2">Fecha</th>
+          <th class="col p-2">Estado</th>
         </tr>
       </thead>
       @endunless
       <tbody>
         @forelse ($myPlaces as $place)
         <tr>
-          <td width="50%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $place->name }}</a></td>
-          <td width="25%" class="col px-2">{{ $place->created_at}}</td>
+          <td width="62%" class="col p-2"><a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none p-links">{{ $place->name }}</a></td>
+          <td width="30%" class="col p-2">{{ $place->created_at}}</td>
+          <td width="30%" class="col p-2">
+            @if($place->status == 0)
+            <p class="text-warning">Pendiente</p>
+            @elseif ($place->status == 1)
+            <p class="text-success">Aprobado</p>
+            @else
+            <p class="text-danger">Rechazado</p>
+            @endif
+          </td>
         </tr>
         @empty
 

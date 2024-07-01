@@ -359,7 +359,9 @@ class PlaceController extends Controller
   {
     $place = Place::where('place_id', $id)->first();
 
-    $place->delete();
+    $place->status = 2;
+    $place->save();
+    // $place->delete();
 
     return response()->json([
       'message' => 'Lugar eliminado correctamente',
