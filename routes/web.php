@@ -135,12 +135,15 @@ Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 
   ->whereNumber('id');
 
 Route::get('/chat', [\App\Livewire\ChatComponent::class, 'chatInbox'])
+  ->middleware('auth')
   ->name('chatInbox');
 
 Route::post('/start-chat/{chat_id?}', [\App\Livewire\ChatComponent::class, 'startChat'])
+  ->middleware('auth')
   ->name('startChat');
 
 Route::get('/nearby-places', [\App\Http\Controllers\PlaceController::class, 'nearbyPlaces'])
+  ->middleware('auth')
   ->name('nearbyPlaces');
 
 
@@ -232,9 +235,13 @@ Route::post('/editar-perfil', [\App\Http\Controllers\SessionController::class, '
   ->name('editProfileAction');
 
 Route::get('/administrar/lugares', [\App\Http\Controllers\HomeController::class, 'AdminPlacesView'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('AdminPlacesView');
 
 Route::get('/lugares/{id}/eliminar', [\App\Http\Controllers\PlaceController::class, 'deletePlaceById'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('deletePlaceById');
 
 Route::get('/administrar/categorias', [\App\Http\Controllers\CategoryController::class, 'getAllCategories'])

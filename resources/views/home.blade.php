@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div id="home"  class="pt-5">
+<div id="home" class="pt-5">
   <div class="mt-4 bg-home">
     <div class="container">
       <div class="row p-t-b-80px p-t-b-200px">
@@ -20,7 +20,14 @@
           <a href="{{ route('home') }}#app"><button class="mt-4 btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold w-50">Saber más</button></a>
         </div>
         <div class="col-lg-5">
-
+          <div class="mx-2 col-12 my-1 mt-5">
+            @if (\Session::has('status.message'))
+            <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
+              {!! \Session::get('status.message') !!}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+            @endif
+          </div>
         </div>
       </div>
     </div>

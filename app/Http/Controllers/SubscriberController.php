@@ -18,9 +18,9 @@ class SubscriberController extends Controller
         try {
           $data = $request->only(['name-subscriber', 'email-subscriber']);
           Subscriber::create($data);
-          return redirect()->route('home')->with('status.message', '¡Gracias por suscribirte!');
+          return redirect()->route('home')->with('subscribe.message', '¡Gracias por suscribirte!');
         } catch (\Exception $e) {
-          return redirect()->route('home')->with('status.message', 'Hubo un error, intenta nuevamente.');
+          return redirect()->route('home')->with('subscribe.message', 'Hubo un error, intenta nuevamente.');
         }
 
 
