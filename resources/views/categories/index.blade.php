@@ -30,15 +30,16 @@
     <div class="row pt-3">
       <div class="col-6 col-md-9 d-flex mt-3 ps-2">
         <h2 class="h3 fw-bold">Categorías</h2>
+        <span class="bg-movimiento ms-3"></span>
       </div>
-      <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
+      {{-- <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
         <div>
           <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
   <div class="row my-3">
