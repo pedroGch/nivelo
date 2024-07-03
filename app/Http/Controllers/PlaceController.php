@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PlaceCreated;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
@@ -125,6 +126,9 @@ class PlaceController extends Controller
       'latitude'=> $request->latitude,
       'longitude'=> $request->longitude,
     ]);
+
+    event(new PlaceCreated($newPlace));
+
 
     $placeId = $newPlace->place_id;
     return redirect()

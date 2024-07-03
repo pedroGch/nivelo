@@ -13,7 +13,7 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications = Notification::where('user_id', auth()->id())->get();
-        return view('notifications.index', compact('notifications'));
+        return view('notifications.notifications', compact('notifications'));
     }
 
     /**
@@ -24,6 +24,6 @@ class NotificationController extends Controller
     {
         $notification = Notification::find($id);
         $notification->update(['read' => true]);
-        return redirect()->route('notifications.index');
+        return redirect()->route('notifications.notifications');
     }
 }

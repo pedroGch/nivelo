@@ -47,7 +47,8 @@
 
 @section('footer')
 
-<x-NavbarBottom :notificationsViewActive="$notificationsViewActive ? 'true' : 'false'" />
+<x-NavbarBottom />
+{{-- <x-NavbarBottom :notificationsViewActive="$notificationsViewActive ? 'true' : 'false'" /> --}}
 
 
 @endsection
