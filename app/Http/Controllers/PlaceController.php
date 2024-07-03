@@ -125,10 +125,8 @@ class PlaceController extends Controller
       'uploaded_from_id' => $userId,
       'latitude'=> $request->latitude,
       'longitude'=> $request->longitude,
+      'status' => 0, // Estado inicial del lugar: pendiente de aprobación
     ]);
-
-    event(new PlaceCreated($newPlace));
-
 
     $placeId = $newPlace->place_id;
     return redirect()
@@ -374,15 +372,15 @@ class PlaceController extends Controller
   }
 
   /**
-   * Autorizar un lugar subido por un usuario
-   * @param int $id
-   * @return \Illuminate\Http\RedirectResponse
-   */
-  public function authorizePlace($id)
-  {
-    $place = Place::findOrFail($id);
-    $place->status = true;
-    $place->save();
-    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
-  }
+     * Autorizar un lugar subido por un usuario
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function authorizePlace($id)
+    {
+        $place = Place::findOrFail($id);
+        $place->status = 1;
+        $place->save();
+        return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
+    }
 }

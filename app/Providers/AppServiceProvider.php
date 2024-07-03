@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Place;
+use App\Observers\PlaceObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use App\Services\LocationService;
@@ -24,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
       Paginator::useBootstrapFive();
+      Place::observe(PlaceObserver::class);
     }
 }
