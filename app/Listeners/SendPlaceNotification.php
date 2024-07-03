@@ -13,7 +13,7 @@ class SendPlaceNotification
     public function handle(PlaceCreated $event)
     {
         $place = $event->place;
-        $users = User::all(); // Puedes filtrar usuarios por proximidad aquí
+        $users = User::all(); // Después filtrar usuarios por proximidad acá
 
         foreach ($users as $user) {
             if ($this->isNearby($user, $place)) {
