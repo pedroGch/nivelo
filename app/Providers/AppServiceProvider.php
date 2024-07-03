@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Services\LocationService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,8 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
-    }
+      $this->app->singleton(LocationService::class, function ($app) {
+          return new LocationService();
+      });
+  }
 
     /**
      * Bootstrap any application services.

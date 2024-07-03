@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LocationController;
 
 
 // Ruta de landing page
@@ -288,6 +290,9 @@ Route::get('/notificaciones', [App\Http\Controllers\NotificationController::clas
 Route::get('/notificaciones/leer/{id}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])
   ->middleware('auth')
   ->name('notificationsRead');
+
+Route::post('/guardar-ubicacion', [LocationController::class, 'store'])->name('saveLocation');
+
 
 
 require __DIR__.'/auth.php';

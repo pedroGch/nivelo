@@ -21,7 +21,7 @@
         </a>
       </div>
       <div>
-        <a href="#">
+        <a href="{{ route('notificationsView') }}">
           <span class="icon pb-2">
             <img src="{{ url('/img/icons/bell-icon-outline.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
           </span>

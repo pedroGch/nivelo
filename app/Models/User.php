@@ -22,6 +22,8 @@ use Illuminate\Validation\Rule;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property float|null $latitude
+ * @property float|null $longitude
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
@@ -39,6 +41,8 @@ use Illuminate\Validation\Rule;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLongitude($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -62,34 +66,37 @@ class User extends Authenticatable
         'external_id',
         'external_auth',
         'terms',
-        'status'
+        'status',
+        'latitude',
+        'longitude'
     ];
-    public static $rules = [
-      'name' => "required|max:30",
-      'surname' => "required|max:30",
-      'username' => "required|max:30",
-      'bio' => "max:255",
-      'email' => "required|email",
-      'birth_date' => "required",
-      'password' => "required",
 
-      'terms' => "accepted",
+    public static $rules = [
+        'name' => "required|max:30",
+        'surname' => "required|max:30",
+        'username' => "required|max:30",
+        'bio' => "max:255",
+        'email' => "required|email",
+        'birth_date' => "required",
+        'password' => "required",
+        'terms' => "accepted",
     ];
 
     public static $errorMessages = [
-      'name.required' => 'El nombre es requerido',
-      'name.max' => 'El nombre es no puede contener más de 30 carateres',
-      'email.required' => 'El email es requerido',
-      'email.email' => 'El email debe ser válido',
-      'password.required' => 'El password es requerido',
-      'bio.max' => 'Tu descripción no puede superar los 255 caracteres',
-      'username.required' => 'El nombre de usuario es requerido',
-      'surname.required' => 'El apellido es requerido',
-      'username.max' => 'El nombre no puede contener más de 30 carateres',
-      'surname.max' => 'El apellido no puede contener más de 30 carateres',
-      'birth_date.required' => 'La fecha de nacimiento es requerida',
-      'terms.accepted' => 'Es necesario que aceptes los términos y condiciones',
+        'name.required' => 'El nombre es requerido',
+        'name.max' => 'El nombre es no puede contener más de 30 caracteres',
+        'email.required' => 'El email es requerido',
+        'email.email' => 'El email debe ser válido',
+        'password.required' => 'El password es requerido',
+        'bio.max' => 'Tu descripción no puede superar los 255 caracteres',
+        'username.required' => 'El nombre de usuario es requerido',
+        'surname.required' => 'El apellido es requerido',
+        'username.max' => 'El nombre no puede contener más de 30 caracteres',
+        'surname.max' => 'El apellido no puede contener más de 30 caracteres',
+        'birth_date.required' => 'La fecha de nacimiento es requerida',
+        'terms.accepted' => 'Es necesario que aceptes los términos y condiciones',
     ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -110,7 +117,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
     /* RELACIONES */
 
     /**
@@ -122,7 +128,6 @@ class User extends Authenticatable
         return $this->hasOne(UserDefinition::class, 'id', 'id');
     }
 
-
     /**
      * Relación (uno a muchos) entre la tabla users y la tabla review
      * Devuelve un array con los objetos Review asociados al usuario
@@ -131,6 +136,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class, 'user_id', 'id');
     }
+
     public function sentChats()
     {
         return $this->hasMany(Chat::class, 'sender_id');
@@ -148,19 +154,16 @@ class User extends Authenticatable
 
     public function favoritePlaces()
     {
-      return $this->belongsToMany(Place::class, 'user_place_favorites', 'user_id', 'place_id');
+        return $this->belongsToMany(Place::class, 'user_place_favorites', 'user_id', 'place_id');
     }
-
 
     /**
      * obtener las notificaciones del usuario
      * Relación (uno a muchos) entre la tabla users y la tabla notification
      * @return HasMany
-     *
      */
     public function notifications(): HasMany
     {
         return $this->hasMany(Notification::class);
     }
-
 }

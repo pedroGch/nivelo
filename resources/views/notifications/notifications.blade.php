@@ -34,55 +34,95 @@
         <span class="bg-movimiento ms-3"></span>
       </div>
     </div>
-  </div>
-  <div>
-    <ul>
-      @foreach($notifications as $notification)
-          <li>
-              <a href="{{ route('notificationsRead', $notification->id) }}" class="{{ $notification->read ? '' : 'font-weight-bold' }}">
-                  {{ $notification->message }}
-              </a>
-          </li>
-      @endforeach
-    </ul>
+    <div class="col-12 col-md-3 d-flex justify-content-end">
+      <button id="getLocationButton" class="btn btn-primary">Guardar Ubicación</button>
+    </div>
   </div>
 
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
     @forelse ($notifications as $notification)
-    <div class="card col-6 col-lg-3 shadow-sm" style="width: 18rem;">
-      @if ($notification->read == 0)
-      <div class="card-body">
-        <p class="h6">{{ $notification->message }}</p>
-        <p class="h6">{{ $notification->created_at->diffForHumans() }}</p>
-        <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
-          <form action="{{ route('notificationsRead', $notification->id) }}" method="GET">
-            @csrf
-            <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
-              <ion-icon style="color: #fff" name="checkmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
-              <span class="fw-semibold">Marcar como leída</span>
-            </button>
-          </form>
-        </div>
-      </div>
-      @endif
-    </div>
-    @empty
-    <div class="col-12 d-flex justify-content-center">
-      <h2 class="h5 fw-bold">No hay notificaciones</h2>
-    </div>
-    @endforelse
+            @if ($notification->read == 0)
+                <div class="col-10 shadow-sm my-4">
+                    <div class="card-body">
+                        <p class="h5">{{ $notification->message }}</p>
+                        <p class="h6">{{ $notification->created_at->diffForHumans() }}</p>
+                        <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
+                            <form action="{{ route('notificationsRead', $notification->id) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
+                                    <ion-icon style="color: #fff" name="checkmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                                    <span class="fw-semibold">Marcar como leída</span>
+                                </button>
+                            </form>
+                            <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white ms-3">
+                                <span class="fw-semibold">Ver lugar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @empty
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="h5 fw-bold">No hay notificaciones</h2>
+            </div>
+        @endforelse
   </div>
-
-
-
-
 </section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&libraries=places"></script>
+
+<script>
+  document.getElementById('getLocationButton').addEventListener('click', function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  });
+
+  function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    console.log("Latitude: " + lat + " Longitude: " + lng);
+
+    // Enviar la ubicación al servidor
+    fetch('{{ route("saveLocation") }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+      },
+      body: JSON.stringify({
+        latitude: lat,
+        longitude: lng
+      })
+    }).then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.");
+        break;
+    }
+  }
+</script>
+
 @endsection
 
 @section('footer')
 
 <x-NavbarBottom />
-{{-- <x-NavbarBottom :notificationsViewActive="$notificationsViewActive ? 'true' : 'false'" /> --}}
-
 
 @endsection

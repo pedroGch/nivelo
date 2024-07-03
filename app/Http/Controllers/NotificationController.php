@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -23,7 +24,9 @@ class NotificationController extends Controller
     public function markAsRead($id)
     {
         $notification = Notification::find($id);
-        $notification->update(['read' => true]);
+        if ($notification && $notification->user_id == Auth::id()) {
+          $notification->update(['read' => true]);
+        }
         return redirect()->route('notificationsView');
     }
 }

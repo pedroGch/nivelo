@@ -16,6 +16,8 @@ return new class extends Migration
           $table->foreignId('user_id')->constrained()->onDelete('cascade');
           $table->text('message');
           $table->boolean('read')->default(false);
+          $table->unsignedBigInteger('category_id')->nullable();
+          $table->unsignedBigInteger('place_id')->nullable();
           $table->timestamps();
         });
     }
