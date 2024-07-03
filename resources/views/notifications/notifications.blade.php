@@ -34,9 +34,6 @@
         <span class="bg-movimiento ms-3"></span>
       </div>
     </div>
-    <div class="col-12 col-md-3 d-flex justify-content-end">
-      <button id="getLocationButton" class="btn btn-primary">Guardar Ubicación</button>
-    </div>
   </div>
 
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
@@ -51,10 +48,10 @@
                                 @csrf
                                 <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
                                     <ion-icon style="color: #fff" name="checkmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
-                                    <span class="fw-semibold">Marcar como leída</span>
+                                    <span class="fw-semibold">Marcar como leído</span>
                                 </button>
                             </form>
-                            <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white ms-3">
+                            <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white ms-3 px-4">
                                 <span class="fw-semibold">Ver lugar</span>
                             </a>
                         </div>
@@ -72,7 +69,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&libraries=places"></script>
 
 <script>
-  document.getElementById('getLocationButton').addEventListener('click', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
