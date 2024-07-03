@@ -146,9 +146,21 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, 'sender_id');
     }
 
-  public function favoritePlaces()
+    public function favoritePlaces()
     {
       return $this->belongsToMany(Place::class, 'user_place_favorites', 'user_id', 'place_id');
+    }
+
+
+    /**
+     * obtener las notificaciones del usuario
+     * Relación (uno a muchos) entre la tabla users y la tabla notification
+     * @return HasMany
+     *
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
     }
 
 }
