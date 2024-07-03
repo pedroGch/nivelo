@@ -24,6 +24,6 @@ class NotificationController extends Controller
     {
         $notification = Notification::find($id);
         $notification->update(['read' => true]);
-        return redirect()->route('notifications.notifications');
+        return redirect()->route('notificationsView');
     }
 }
