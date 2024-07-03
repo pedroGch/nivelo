@@ -279,4 +279,15 @@ Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Co
   ->middleware('only_admin_allow')
   ->name('toggleBlock');
 
+// Rutas para el manejo de las notificaciones
+
+Route::get('/notificaciones', [App\Http\Controllers\NotificationController::class, 'index'])
+  ->middleware('auth')
+  ->name('notifications.index');
+
+Route::get('/notificaciones/leer/{id}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])
+  ->middleware('auth')
+  ->name('notifications.read');
+
+
 require __DIR__.'/auth.php';
