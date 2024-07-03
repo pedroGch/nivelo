@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Place;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -13,13 +14,11 @@ use Illuminate\Queue\SerializesModels;
 class PlaceCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $place;
 
-    /**
-     * Create a new event instance.
-     */
-    public function __construct()
+    public function __construct(Place $place)
     {
-        //
+        $this->place = $place;
     }
 
     /**
