@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="<?= url('css/bootstrap/css/bootstrap.min.css')?>">
     <link rel="stylesheet" href="<?= url('css/app.css')?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +39,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
+        navigator.serviceWorker.register('./firebase-messaging-sw.js').then(function(registration) {
           console.log('ServiceWorker registrado con éxito:', registration);
         }, function(error) {
           console.log('Registro de ServiceWorker fallido:', error);

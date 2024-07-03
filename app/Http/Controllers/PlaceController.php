@@ -11,6 +11,8 @@ use App\Models\UserMoreInfo;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Events\PlaceCreated;
+use Illuminate\Support\Facades\Event;
 
 class PlaceController extends Controller
 {
@@ -80,59 +82,63 @@ class PlaceController extends Controller
 
 
   /**
-   * Retorna la vista del formulario de carga de un nuevo lugar
-   * @return \Illuminate\View\View
-   */
-  public function addPlaceAction(Request $request)
-  {
-    $userId = Auth::id();
+     * Retorna la vista del formulario de carga de un nuevo lugar.
+     * @return \Illuminate\View\View
+     */
+    public function addPlaceAction(Request $request)
+    {
+        $userId = Auth::id();
 
-    $request->validate(Place::$rules, Place::$errorMessages);
+        $request->validate(Place::$rules, Place::$errorMessages);
 
-    if ($request->hasFile('main_img')) {
-      $data = $request->file('main_img')->store('places');
+        if ($request->hasFile('main_img')) {
+            $data = $request->file('main_img')->store('places');
+        }
+
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+
+        // Verificar si ya existe un lugar con las mismas coordenadas
+        $existingPlace = Place::where('latitude', $latitude)->where('longitude', $longitude)->first();
+
+        if ($existingPlace) {
+            return redirect()->back()->with('status.message', 'Ya existe un lugar con las mismas coordenadas')->with('status.type', 'warning');
+        }
+
+        $newPlace = Place::Create([
+            'name' => $request->place_name,
+            'address' => $request->addressPlace,
+            'city' => $request->cityPlace,
+            'province' => $request->provincePlace,
+            'description' => $request->place_description,
+            'main_img' => $data,
+            'alt_main_img' => 'imagen subida por el usuario ' . $userId,
+            'access_entrance' => $request->acces_entrance === 'on',
+            'assisted_access_entrance' => $request->asisted_entrance === 'on',
+            'internal_circulation' => $request->internal_circulation === 'on',
+            'bathroom' => $request->bathroom === 'on',
+            'adult_changing_table' => $request->adult_changing_table === 'on',
+            'parking' => $request->parking === 'on',
+            'elevator' => $request->elevator === 'on',
+            'src_info_id' => 2,
+            'review_id' => null,
+            'category_id' => $request->category,
+            'uploaded_from_id' => $userId,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        // Disparar el evento PlaceCreated
+        event(new PlaceCreated($newPlace));
+
+        $placeId = $newPlace->place_id;
+        return redirect()
+            ->route('addReviewForm', [
+                'category_id' => $request->category,
+                'place_id' => $placeId,
+            ])
+            ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
     }
-
-    $latitude = $request->latitude;
-    $longitude = $request->longitude;
-
-    // Verificar si ya existe un lugar con las mismas coordenadas
-    $existingPlace = Place::where('latitude', $latitude)->where('longitude', $longitude)->first();
-
-    if ($existingPlace) {
-        return redirect()->back()->with('status.message', 'Ya existe un lugar con las mismas coordenadas')->with('status.type', 'warning');
-    }
-
-    $newPlace = Place::Create([
-      'name' => $request->place_name,
-      'address' => $request->addressPlace,
-      'city' => $request->cityPlace,
-      'province' => $request->provincePlace,
-      'description' => $request->place_description,
-      'main_img' => $data,
-      'alt_main_img' => 'imagen subida por el usuario '.$userId,
-      'access_entrance' => $request->acces_entrance === 'on',
-      'assisted_access_entrance' => $request->asisted_entrance === 'on',
-      'internal_circulation' => $request->internal_circulation === 'on',
-      'bathroom' => $request->bathroom === 'on',
-      'adult_changing_table' => $request->adult_changing_table === 'on',
-      'parking' => $request->parking === 'on',
-      'elevator' => $request->elevator === 'on',
-      'src_info_id' => 2,
-      'review_id' => null,
-      'category_id' => $request->category,
-      'uploaded_from_id' => $userId,
-      'latitude'=> $request->latitude,
-      'longitude'=> $request->longitude,
-    ]);
-
-    $placeId = $newPlace->place_id;
-    return redirect()
-      ->route('addReviewForm', [
-        'category_id' => $request->category,
-        'place_id' => $placeId,])
-      ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
-  }
 
     /**
    * Retorna una vista con los resultados

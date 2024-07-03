@@ -1,7 +1,6 @@
 const CACHE_NAME = 'nivelo-cache';
 const urlsToCache = [
   '/',
-  // '/offline',
   './css/app.css',
   './css/bootstrap/css/bootstrap.min.css',
   './build/assets/app-7d02d1c2.js',
@@ -37,6 +36,9 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+  if (event.request.method === 'POST') {
+    return;
+  }
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -67,4 +69,32 @@ self.addEventListener('activate', event => {
       );
     })
   );
+});
+
+// Importar las bibliotecas de Firebase
+importScripts('https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging-compat.js');
+
+// Configuración de Firebase
+firebase.initializeApp({
+  apiKey: "AIzaSyDN4tZLcnoU2Y8GrcNtuBwohRtWoBPna5Q",
+  authDomain: "niveloapp.firebaseapp.com",
+  projectId: "niveloapp",
+  storageBucket: "niveloapp.appspot.com",
+  messagingSenderId: "420723030687",
+  appId: "1:420723030687:web:30025239c292674b8880aa",
+  measurementId: "G-49LMQBNTPS"
+});
+
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: payload.notification.icon
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });

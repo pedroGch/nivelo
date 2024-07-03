@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FCMTokenController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -279,4 +280,8 @@ Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Co
   ->middleware('only_admin_allow')
   ->name('toggleBlock');
 
-require __DIR__.'/auth.php';
+// Ruta para guardar el token para Firebase Messaging
+Route::post('/fcm-token', [FCMTokenController::class, 'store'])->middleware('auth');
+
+
+  require __DIR__.'/auth.php';
