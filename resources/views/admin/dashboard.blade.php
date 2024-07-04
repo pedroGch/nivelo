@@ -91,7 +91,7 @@
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{ $reviewsPendientes->count() }}
-                <span class="visually-hidden">Lugares pendientes de aprobación</span>
+                <span class="visually-hidden">Reseñas pendientes de aprobación</span>
               </span>
               <h3 class="mt-2 text-center">Reseñas</h3>
               <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: {{ $reviewsPendientes->count() }} </p>
