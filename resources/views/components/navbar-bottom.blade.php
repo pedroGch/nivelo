@@ -1,10 +1,10 @@
-@props(['mapViewActive' => $mapViewActive ?? false]);
-@props(['notificationsViewActive' => $notificationsViewActive ?? false]);
-@props(['addPlaceActive' => $addPlaceActive ?? false]);
-@props(['chatInboxActive' => $chatInboxActive ?? false]);
-@props(['UserProfileActive' => $UserProfileActive ?? false]);
-
-@props(['unreadNotifications']);
+@props(['mapViewActive' => $mapViewActive ?? false])
+@props(['notificationsViewActive' => $notificationsViewActive ?? false])
+@props(['addPlaceActive' => $addPlaceActive ?? false])
+@props(['chatInboxActive' => $chatInboxActive ?? false])
+@props(['UserProfileActive' => $UserProfileActive ?? false])
+@props(['unreadNotifications'])
+@props(['unreadMessages'])
 
 <div class="row d-flex fixed-bottom justify-content-center bg-gris-claro shadow-top">
   <div class="col-12 col-md-9 col-lg-6 footer-nav">
@@ -25,7 +25,6 @@
       </div>
       <div>
         <a href="{{ route('notificationsView') }}">
-          @if($notificationsViewActive)
           <span class="icon pb-2 position-relative">
             @if($unreadNotifications > 0)
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
@@ -33,19 +32,12 @@
               <span class="visually-hidden">Nuevas notificaciones</span>
             </span>
             @endif
+            @if($notificationsViewActive)
             <img src="{{ url('/img/icons/bell-icon-fill.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
-          </span>
-          @else
-          <span class="icon pb-2 position-relative">
-            @if($unreadNotifications > 0)
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
-              {{ $unreadNotifications }}
-              <span class="visually-hidden">Nuevas notificaciones</span>
-            </span>
-            @endif
+            @else
             <img src="{{ url('/img/icons/bell-icon-outline.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
+            @endif
           </span>
-          @endif
           <span class="text">Notificaciones</span>
         </a>
       </div>
@@ -64,18 +56,16 @@
             @endif
             <span class="text">Nuevo lugar</span>
           </a>
-      </div>
+        </div>
       @else
         <div class="btn bg-secondary py-2 px-4 rounded-circle shadow-sm">
           <a href="#" class="text-decoration-none">
             @if ($addPlaceActive)
             <span class="icon pb-2">
             <img src="{{ url('/img/icons/plus-icon-fill.png') }}" alt="nuevo lugar" class="img-fluid">
-            </span>
             @else
             <span class="icon pb-2">
             <img src="{{ url('/img/icons/plus-icon-outline.png') }}" alt="nuevo lugar" class="img-fluid">
-            </span>
             @endif
             <span class="text">Nuevo lugar</span>
           </a>
@@ -83,23 +73,19 @@
       @endif
       <div>
         <a href="{{ route('chatInbox') }}">
-          @if($chatInboxActive)
           <span class="icon pb-2 position-relative">
+            @if($unreadMessages > 0)
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
-              +99
+              {{ $unreadMessages }}
               <span class="visually-hidden">Nuevos mensajes</span>
             </span>
+            @endif
+            @if($chatInboxActive)
             <img src="{{ url('/img/icons/chat-icon-fill.png') }}" alt="chat" class="img-fluid">
-          </span>
-          @else
-          <span class="icon pb-2 position-relative">
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
-              +99
-              <span class="visually-hidden">Nuevos mensajes</span>
-            </span>
+            @else
             <img src="{{ url('/img/icons/chat-icon-outline.png') }}" alt="chat" class="img-fluid">
+            @endif
           </span>
-          @endif
           <span class="text">Chat</span>
         </a>
       </div>

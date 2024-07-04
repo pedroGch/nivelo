@@ -1,16 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Blog de nivelo, noticias de accesibilidad')
-
+@section('title', 'Chat')
 
 @section('header')
-
 <x-NavbarTop/>
-
 @endsection
 
 @section('content')
-
 <section class="container margin-navs">
   <div>
     <h2 class="fw-bold py-3">Chats</h2>
@@ -38,14 +34,9 @@
       @endif
     </div>
   @endif
-
-
 </section>
-
 @endsection
 
 @section('footer')
-
-<x-NavbarBottom :chatInboxActive="$chatInboxActive ? 'true' : 'false'"  />
-
+<x-NavbarBottom :chatInboxActive="$chatInboxActive ? 'true' : 'false'" :unreadMessages="$unreadMessages" />
 @endsection
