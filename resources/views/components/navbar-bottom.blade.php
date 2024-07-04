@@ -1,4 +1,5 @@
 @props(['mapViewActive' => $mapViewActive ?? false]);
+@props(['notificationsViewActive' => $notificationsViewActive ?? false]);
 @props(['addPlaceActive' => $addPlaceActive ?? false]);
 @props(['chatInboxActive' => $chatInboxActive ?? false]);
 @props(['UserProfileActive' => $UserProfileActive ?? false]);
@@ -22,6 +23,15 @@
       </div>
       <div>
         <a href="{{ route('notificationsView') }}">
+          @if($notificationsViewActive)
+          <span class="icon pb-2 position-relative">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+              +99
+              <span class="visually-hidden">Nuevas notificaciones</span>
+            </span>
+            <img src="{{ url('/img/icons/bell-icon-fill.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
+          </span>
+          @else
           <span class="icon pb-2 position-relative">
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
               +99
@@ -29,6 +39,7 @@
             </span>
             <img src="{{ url('/img/icons/bell-icon-outline.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
           </span>
+          @endif
           <span class="text">Notificaciones</span>
         </a>
       </div>

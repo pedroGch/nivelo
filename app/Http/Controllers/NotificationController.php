@@ -14,7 +14,8 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications = Notification::where('user_id', auth()->id())->get();
-        return view('notifications.notifications', compact('notifications'));
+        $notificationsViewActive = true;
+        return view('notifications.notifications', compact('notifications', 'notificationsViewActive'));
     }
 
     /**

@@ -120,6 +120,6 @@
 
 @section('footer')
 
-<x-NavbarBottom />
+<x-NavbarBottom :notificationsViewActive="$notificationsViewActive ? 'true' : 'false'" />
 
 @endsection
