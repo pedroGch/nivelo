@@ -56,7 +56,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
                 {{ $lugaresPendientes->count() }}
                 <span class="visually-hidden">Lugares pendientes de aprobación</span>
               </span>
@@ -89,7 +89,7 @@
 
           <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
                 {{ $reviewsPendientes->count() }}
                 <span class="visually-hidden">Reseñas pendientes de aprobación</span>
               </span>
