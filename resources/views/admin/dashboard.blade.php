@@ -2,6 +2,7 @@
 /**
  * @var \App\Models\Noticia[] $noticias
  * @var \App\Models\Place[] $lugares
+ * @var \App\Models\Place[] $lugaresPendientes
  * @var \App\Models\User[] $usuarios
  * @var \App\Models\Subscriber[] $suscriptores
  * @var \App\Models\Review[] $reviews
@@ -56,7 +57,7 @@
           <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
               <h3 class="mt-2 text-center">Lugares y categorias</h3>
-              <p class="text-center">Cantidad de lugares: {{ $lugares->count() }}</p>
+              <p class="text-center">Total: {{ $lugares->count() }} | Pendientes: {{ $lugaresPendientes->count() }} </p>
               <div class="mb-2">
                 <a href="{{route('AdminPlacesView')}}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Administrar</a>
               </div>
