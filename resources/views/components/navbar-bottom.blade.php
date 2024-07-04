@@ -22,7 +22,11 @@
       </div>
       <div>
         <a href="{{ route('notificationsView') }}">
-          <span class="icon pb-2">
+          <span class="icon pb-2 position-relative">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+              +99
+              <span class="visually-hidden">Nuevas notificaciones</span>
+            </span>
             <img src="{{ url('/img/icons/bell-icon-outline.png') }}" alt="Notificaciones" width="22px" class="img-fluid">
           </span>
           <span class="text">Notificaciones</span>
@@ -63,11 +67,19 @@
       <div>
         <a href="{{ route('chatInbox') }}">
           @if($chatInboxActive)
-          <span class="icon pb-2">
+          <span class="icon pb-2 position-relative">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+              +99
+              <span class="visually-hidden">Nuevos mensajes</span>
+            </span>
             <img src="{{ url('/img/icons/chat-icon-fill.png') }}" alt="chat" class="img-fluid">
           </span>
           @else
-          <span class="icon pb-2">
+          <span class="icon pb-2 position-relative">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+              +99
+              <span class="visually-hidden">Nuevos mensajes</span>
+            </span>
             <img src="{{ url('/img/icons/chat-icon-outline.png') }}" alt="chat" class="img-fluid">
           </span>
           @endif
