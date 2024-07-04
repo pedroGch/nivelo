@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Place;
+use App\Observers\PlaceObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Services\LocationService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,8 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
-    }
+      $this->app->singleton(LocationService::class, function ($app) {
+          return new LocationService();
+      });
+  }
 
     /**
      * Bootstrap any application services.
@@ -21,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
       Paginator::useBootstrapFive();
+      Place::observe(PlaceObserver::class);
     }
 }

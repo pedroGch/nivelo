@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PlaceCreated;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
@@ -124,6 +125,7 @@ class PlaceController extends Controller
       'uploaded_from_id' => $userId,
       'latitude'=> $request->latitude,
       'longitude'=> $request->longitude,
+      'status' => 0, // Estado inicial del lugar: pendiente de aprobación
     ]);
 
     $placeId = $newPlace->place_id;
@@ -359,7 +361,9 @@ class PlaceController extends Controller
   {
     $place = Place::where('place_id', $id)->first();
 
-    $place->delete();
+    $place->status = 2;
+    $place->save();
+    // $place->delete();
 
     return response()->json([
       'message' => 'Lugar eliminado correctamente',
@@ -368,15 +372,15 @@ class PlaceController extends Controller
   }
 
   /**
-   * Autorizar un lugar subido por un usuario
-   * @param int $id
-   * @return \Illuminate\Http\RedirectResponse
-   */
-  public function authorizePlace($id)
-  {
-    $place = Place::findOrFail($id);
-    $place->status = true;
-    $place->save();
-    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
-  }
+     * Autorizar un lugar subido por un usuario
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function authorizePlace($id)
+    {
+        $place = Place::findOrFail($id);
+        $place->status = 1;
+        $place->save();
+        return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
+    }
 }

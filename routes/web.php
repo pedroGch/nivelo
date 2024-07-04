@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LocationController;
 
 
 // Ruta de landing page
@@ -135,12 +137,15 @@ Route::get('/blog/{id}/leer_mas', [\App\Http\Controllers\HomeController::class, 
   ->whereNumber('id');
 
 Route::get('/chat', [\App\Livewire\ChatComponent::class, 'chatInbox'])
+  ->middleware('auth')
   ->name('chatInbox');
 
 Route::post('/start-chat/{chat_id?}', [\App\Livewire\ChatComponent::class, 'startChat'])
+  ->middleware('auth')
   ->name('startChat');
 
 Route::get('/nearby-places', [\App\Http\Controllers\PlaceController::class, 'nearbyPlaces'])
+  ->middleware('auth')
   ->name('nearbyPlaces');
 
 
@@ -232,9 +237,13 @@ Route::post('/editar-perfil', [\App\Http\Controllers\SessionController::class, '
   ->name('editProfileAction');
 
 Route::get('/administrar/lugares', [\App\Http\Controllers\HomeController::class, 'AdminPlacesView'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('AdminPlacesView');
 
 Route::get('/lugares/{id}/eliminar', [\App\Http\Controllers\PlaceController::class, 'deletePlaceById'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
   ->name('deletePlaceById');
 
 Route::get('/administrar/categorias', [\App\Http\Controllers\CategoryController::class, 'getAllCategories'])
@@ -271,5 +280,19 @@ Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Co
   ->middleware('auth')
   ->middleware('only_admin_allow')
   ->name('toggleBlock');
+
+// Rutas para el manejo de las notificaciones
+
+Route::get('/notificaciones', [App\Http\Controllers\NotificationController::class, 'index'])
+  ->middleware('auth')
+  ->name('notificationsView');
+
+Route::get('/notificaciones/leer/{id}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])
+  ->middleware('auth')
+  ->name('notificationsRead');
+
+Route::post('/guardar-ubicacion', [LocationController::class, 'store'])->name('saveLocation');
+
+
 
 require __DIR__.'/auth.php';

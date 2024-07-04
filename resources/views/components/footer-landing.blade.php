@@ -6,7 +6,7 @@
        </div>
        <div class="col-12 col-md-5 col-lg-4">
         <h2 class="h5 pt-2 pb-2 pt-lg-0">Suscribite para ser parte del lanzamiento</h2>
-        <form action="#" method="POST">
+        <form action="{{ route('subscribeAction') }}" method="POST">
           @csrf
           <input
           type="text"
@@ -35,9 +35,9 @@
           @error('email-subscriber')
           <p class="text-danger" id="error-email-subscriber">{{ $message }}</p>
           @enderror
-          @if (\Session::has('status.message'))
+          @if (\Session::has('subscribe.message'))
           <div class="alert alert-{{ \Session::get('status.type', 'success') }} d-flex align-items-center row alert-dismissible fade show" role="alert">
-            {!! \Session::get('status.message') !!}
+            {!! \Session::get('subscribe.message') !!}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
           </div>
           @endif

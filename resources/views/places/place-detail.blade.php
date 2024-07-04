@@ -158,25 +158,26 @@
       </div>
       @endif
       <div>
-        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3 image-hover-bright">
       </div>
     </div>
   </div>
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="col-12">
       <div class="mt-3 d-flex align-items-center">
-        <div>
-          <p class="h5 ps-2 mt-3 fw-bold">Características:</p>
+        <div class="d-flex">
+          <div class="me-4"><img src="/img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
+          <p class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</p>
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 ps-5">
       <div class="row ms-3 my-3 flex justify-content-center align-items-center">
         <ul>
         @if($place->access_entrance == 1)
         <li>Entrada accesible</li>
         @endif
-        @if($place->access_entrance_assisted == 1)
+        @if($place->assisted_access_entrance == 1)
         <li>Entrada accesible (con asistencia)</li>
         @endif
         @if($place->internal_circulation == 1)
@@ -218,6 +219,15 @@
           <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
           <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
         </form>
+      @else
+      <div class="alert alert-warning align-self-center" role="alert">
+        <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+      </div>
+      <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+        @csrf
+        <input type="hidden" name="receiver_id" value="3">
+        <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: Equipo de nivelo</button>
+      </form>
       @endif
     @endif
   </div>
