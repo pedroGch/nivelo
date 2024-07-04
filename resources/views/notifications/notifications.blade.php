@@ -2,6 +2,7 @@
 
 /**
  * @var \App\Models\Notification[] $notifications
+ * @var int $unreadNotifications
  */
 ?>
 
