@@ -8,13 +8,16 @@
 
 @section('content')
 <section class="container margin-navs">
-  <div>
-    <h2 class="fw-bold py-3">Chats</h2>
-    <span class="bg-movimiento ms-3"></span>
+  <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
+    <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
+    <div class="d-flex ">
+      <h2 class="h3 fw-bold">Chats</h2>
+      <span class="bg-movimiento ms-3"></span>
+    </div>
   </div>
 
   @if($existingChats == false)
-    <div class="alert alert-warning align-self-center" role="alert">
+    <div class="alert alert-warning align-self-center mt-3" role="alert">
       Aún no hay chats iniciados.
     </div>
 
