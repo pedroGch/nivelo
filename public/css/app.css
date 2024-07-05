@@ -652,56 +652,43 @@ h2.titulo-h1-mb {
 /* END ALTO FIJO EN REVIEWS */
 
 /* ALTO FIJO EN CARDS DE LUGARES */
-.place-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Espacio entre las tarjetas */
-}
-
+/* Que todas las cards tengan el mismo alto */
 .place-card {
-  width: 100%; /* Ocupa el ancho disponible */
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc; /* Borde para visualización */
+  height: 100%;
 }
 
-.place-image-wrapper {
+.place-card .place-image-wrapper {
+  flex: 1 0 auto;
+  overflow: hidden;
+  height: 0;
+  padding-top: 100%; /* Mantener proporción cuadrada */
   position: relative;
-  width: 100%;
-  padding-top: 100%; /* Hace que el contenedor sea cuadrado */
-  overflow: hidden; /* Oculta cualquier desbordamiento */
 }
 
-.place-image {
+.place-card .place-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la imagen como un cover */
+  object-fit: cover;
 }
 
-.place-content {
-  flex-grow: 1;
+.place-card .card-body {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem; /* Espaciado interno */
 }
 
-.place-name {
-  font-size: 1.25rem; /* Tamaño de fuente del nombre del lugar */
-  font-weight: bold;
-  margin-bottom: 0.5rem; /* Espaciado inferior del nombre */
-}
-
-.place-details {
-  font-size: 1rem; /* Tamaño de fuente de los detalles */
-  margin-bottom: 0.5rem; /* Espaciado inferior de los detalles */
-}
-
-.place-rating {
-  display: flex;
-  align-items: center;
+.place-card .place-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de líneas que queremos mostrar */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3em; /* Aproximadamente la altura de dos líneas de texto */
 }
 
 /* END ALTO FIJO EN CARDS DE LUGARES */
