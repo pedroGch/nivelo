@@ -136,9 +136,10 @@
   </div>
   <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
     @forelse ($placesResult as $place)
-    <div class="card col-6 col-lg-3 shadow-sm-sm place-card mb-4">
-      @if($place->notablePlace)
-      <div class="position-absolute top-0 end-0 pt-1">
+    <div class="card col-6 col-lg-3 shadow-sm-sm place-card mb-4 position-relative">
+      {{-- @if($place->notablePlace) --}}
+      @if($place->notablePlace || $place->place_id == 5)
+      <div class="position-absolute top-0 end-0 pt-1 z-3">
         <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 70px">
       </div>
       @endif

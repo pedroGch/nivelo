@@ -290,6 +290,19 @@ class PlaceController extends Controller
     $user = Auth::user();
     $favorites = $user->favoritePlaces;
 
+    foreach ($favorites as $place) {
+      $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
+
+      if (count($totalScores) > 0) {
+        $totalScore = array_sum($totalScores);
+        $averageScore = $totalScore / count($totalScores);
+        $averageScore = max(1, min(5, $averageScore));
+        $place->totalAverageScore = $averageScore;
+      } else {
+        $place->totalAverageScore = 3; // Otra opción si no hay reseñas
+      }
+    }
+
     $favoritesPlacesActive = true;
     return view('places.favoritePlaces', [
       "placesResult" => $favorites,
