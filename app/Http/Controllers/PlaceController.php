@@ -372,15 +372,26 @@ class PlaceController extends Controller
   }
 
   /**
-     * Autorizar un lugar subido por un usuario
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function authorizePlace($id)
-    {
-        $place = Place::findOrFail($id);
-        $place->status = 1;
-        $place->save();
-        return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
-    }
+   * Autorizar un lugar subido por un usuario
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function authorizePlace($id)
+  {
+      $place = Place::findOrFail($id);
+      $place->status = 1;
+      $place->save();
+      return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
+  }
+
+  public function editPlaceForm($id)
+  {
+    $place = Place::where('place_id', $id)->first();
+    $addPlaceActive = true;
+    return view('places.edit-place-form', [
+      "place" => $place,
+      "categories" => Category::all(),
+      "addPlaceActive" => $addPlaceActive,
+    ]);
+  }
 }
