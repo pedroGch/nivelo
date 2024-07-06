@@ -142,8 +142,8 @@
         <p class="ps-2">{{ $place->address }}, {{ $place->city }}, {{ $place->province }}.</p>
       </div>
       <div class="col-12 d-flex">
-        <div class="my-3">
-          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
+        <div class="my-3" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
+          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -367,7 +367,49 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="showNearbyPlaces" tabindex="-1" aria-labelledby="showNearbyPlacesLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nearbyPlacesModalLabel">{{$place->getFirstPartOfName()}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="gmp-map" style="height: 500px;"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&callback=initMap&libraries=places&v=weekly" defer></script>
+
+<script>
+  let myLatLng = {
+    lat: {{ $place->latitude }},
+    lng: {{ $place->longitude }}
+  };
+  let map;
+  let marker;
+  function initMap(){
+    map = new google.maps.Map(document.getElementById("gmp-map"), {
+      zoom: 10,
+      center: myLatLng,
+      fullscreenControl: true,
+      zoomControl: true,
+      streetViewControl: true
+    });
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: "Estoy acá",
+      icon: "../../img/icons/icon-red.png" //<body data-base-url="{{ url('/') }}>
+    });
+  }
+</script>
 @endsection
 
 @section('footer')

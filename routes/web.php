@@ -271,6 +271,11 @@ Route::post('/lugares/{id}/autorizar', [\App\Http\Controllers\PlaceController::c
   ->middleware('only_admin_allow')
   ->name('authorizePlace');
 
+Route::get('/lugares/{id}/editar', [\App\Http\Controllers\PlaceController::class, 'editPlaceForm'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editPlaceForm');
+
 Route::get('/administrar/usuarios', [\App\Http\Controllers\HomeController::class, 'AdminUsersView'])
   ->middleware('auth')
   ->middleware('only_admin_allow')
