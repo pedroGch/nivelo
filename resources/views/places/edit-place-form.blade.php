@@ -19,7 +19,7 @@
         <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
           <a href="{{ route('AdminPlacesView') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Editar lugar</h2>
+            <h1 class="h3 fw-bold">Editar lugar</h1>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
@@ -38,17 +38,21 @@
           @endif
         </div>
         <div class="col-12 mb-5">
+          <h2>Vas a editar {{$place->name}}</h2>
           <form action="{{ route('addPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="col-12 my-4 border-bottom border-dark-subtle pb-3">
                 <label for="category" class="form-label my-3 h5">¿Qué tipo de lugar es?</label>
                 <select class="form-select mb-3" aria-label="Default select example" name="category" id="category">
-                  <option selected>Elegí una categoría</option>
+                  <option>Elegí una categoría</option>
                   @foreach($categories as $category)
                     <option class="@error('category') is-invalid @enderror" value="{{ $category->category_id }}"
                       {{ old('category') == $category->category_id ? 'selected' : '' }}
                       @error('category')
+                      @if ($category->category_id == $place->category_id)
+                        selected
+                      @endif
                       aria-describedby="error-category"
                       aria-invalid="true"
                       @enderror
@@ -114,7 +118,9 @@
                   aria-describedby="error-place_description"
                   aria-invalid="true"
                   @enderror
-                  >{{ old('place_description') }}</textarea>
+                  >
+                    {{ trim(old('place_description', $place->description)) }}
+                  </textarea>
                   @error('place_description')
                   <p class="text-danger" id="error-place_description">{{ $message }}</p>
                   @enderror
