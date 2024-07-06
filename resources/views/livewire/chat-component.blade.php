@@ -11,7 +11,8 @@
               <h3 class="h5">{{ $chat->sender_id == Auth::id() ? $chat->receiver->username : $chat->sender->name }}</h3>
               <span class="mensaje-extracto">
                 <p class="mensaje-extracto-contenedor">
-                  Último mensaje enviado por {{ $chat->sender_id == Auth::id() ? 'tú' : $chat->sender->name }}
+                  {{-- Último mensaje enviado por {{ $chat->sender_id == Auth::id() ? 'tú' : $chat->sender->name }} --}}
+                  Iniciado el {{ $chat->created_at }}
                 </p>
               </span>
             </div>
@@ -29,12 +30,14 @@
             <!-- Mensajes enviados emisor -->
             @if (isset($convoItem['user_id']) && Auth::user()->id == $convoItem['user_id'])
               <div class="message sent-message">
-                {{$convoItem['message']}}
+                <p>{{$convoItem['message']}}</p>
+                <small class="text-muted">{{$convoItem['created_at']}}</small>
               </div>
             @else
               <!-- Mensajes recibidos receptor -->
               <div class="message received-message">
-                {{$convoItem['message']}}
+                <p>{{$convoItem['message']}}</p>
+                <small class="text-muted">{{$convoItem['created_at']}}</small>
               </div>
             @endif
           @endforeach

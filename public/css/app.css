@@ -532,7 +532,7 @@ table {
   width: 300px; /* Ancho del contenedor */
 }
 .mensaje-extracto-contenedor{
-  width: 150px;
+  width: 250px;
   overflow: hidden; /* Ocultar texto que exceda el ancho */
   white-space: nowrap; /* Impide que el texto se divida en varias líneas */
   text-overflow: ellipsis;
@@ -567,7 +567,8 @@ table {
   padding: 1rem;
   height: calc(80vh - 82px - 63px);
   overflow-y: auto;
-  background-color: #f7f7f770;
+  background-color: #f0f0f01c; /* Color de fondo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 /* Estilo para el borde derecho */
 .conversations-border {

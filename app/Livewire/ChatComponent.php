@@ -29,35 +29,42 @@ class ChatComponent extends Component
   }
 
   public function loadChats()
-  {
+{
     $user_id = Auth::id();
     $this->chats = Chat::where('sender_id', $user_id)
-      ->orWhere('receiver_id', $user_id)
-      ->get();
-  }
+        ->orWhere('receiver_id', $user_id)
+        ->with(['messages' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])
+        ->get()
+        ->sortByDesc(function ($chat) {
+            return $chat->messages->first()->created_at ?? $chat->created_at;
+        });
+}
 
-  public function loadMessages()
-  {
+public function loadMessages()
+{
     if ($this->chat_id) {
-      $messages = Message::where('chat_id', $this->chat_id)->get();
-      $this->conversation = [];
+        $messages = Message::where('chat_id', $this->chat_id)->get();
+        $this->conversation = [];
 
-      foreach ($messages as $m)
-      {
-        if (isset($m->user_id)) {
-          $this->conversation[] = [
-            'message'  => $m->message,
-            'user_id'  => $m->user_id
-          ];
-        } else {
-          $this->conversation[] = [
-            'message'  => $m->message,
-            'user_id'  => null
-          ];
+        foreach ($messages as $m) {
+            if (isset($m->user_id)) {
+                $this->conversation[] = [
+                    'message'  => $m->message,
+                    'user_id'  => $m->user_id,
+                    'created_at' => $m->created_at->diffForHumans(),
+                ];
+            } else {
+                $this->conversation[] = [
+                    'message'  => $m->message,
+                    'user_id'  => null,
+                    'created_at' => $m->created_at->diffForHumans(),
+                ];
+            }
         }
-      }
     }
-  }
+}
 
   public function submitMessage()
   {

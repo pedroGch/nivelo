@@ -29,6 +29,11 @@
             @if($errors->any())
             <div class="alert alert-danger d-flex align-items-center row alert-dismissible fade show" role="alert">
               <p>❌ Hay errores en los datos ingresados. Por favor, corregilos para poder registrarte.</p>
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
             @endif
@@ -36,6 +41,7 @@
           <div class="col-12">
               <form action="{{ route('signupAction') }}" method="POST">
                   @csrf
+                  <div><input type="hidden" name="avatar" id="avatar" value="03.jpg"></div>
                   <div class="mb-4">
                     <div class="form-floating">
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nombre" value="{{ old('name') }}"
