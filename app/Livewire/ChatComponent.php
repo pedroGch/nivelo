@@ -16,6 +16,7 @@ class ChatComponent extends Component
   public $chats = [];
   public $chat_id;
   public $selectedChat;
+  public $selectedChatId;
 
   public function mount($chat_id = null)
   {
@@ -97,6 +98,7 @@ class ChatComponent extends Component
   public function selectChat($chat_id)
   {
       $this->chat_id = $chat_id;
+      $this->selectedChatId = $chat_id;
       $this->loadMessages();
       $this->markMessagesAsRead($chat_id); // Llamar al método para marcar mensajes como leídos
   }

@@ -546,12 +546,12 @@ table {
   max-width: 70%; /* Anchura máxima de los mensajes */
 }
 .sent-message {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--verde-light);
+  color: #000;
   margin-left: auto; /* Alinear mensajes enviados a la derecha */
 }
 .received-message {
-  background-color: #f0f0f0;
+  background-color: var(--violeta-ultra-light);
   color: #000;
 }
 
@@ -563,8 +563,11 @@ table {
 }
 
 .conversation{
-  height: calc(86vh - 82px - 63px);
+  /* height: calc(86vh - 82px - 63px); */
+  padding: 1rem;
+  height: calc(80vh - 82px - 63px);
   overflow-y: auto;
+  background-color: #f7f7f770;
 }
 /* Estilo para el borde derecho */
 .conversations-border {
@@ -573,6 +576,16 @@ table {
   position: relative; /* Establecemos el posicionamiento relativo para el contenedor */
   overflow-y:auto
 }
+
+.selected-chat {
+  background-color: #f0f0f01c; /* Color de fondo para el chat seleccionado */
+  border-left: 5px solid var(--naranja-principal);
+  padding-left: 1rem;/* Indicador visual para el chat seleccionado */
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
 
 /* Estilo para fijar el campo de entrada y el botón al fondo */
 
