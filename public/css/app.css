@@ -532,7 +532,7 @@ table {
   width: 300px; /* Ancho del contenedor */
 }
 .mensaje-extracto-contenedor{
-  width: 250px;
+  width: 300px;
   overflow: hidden; /* Ocultar texto que exceda el ancho */
   white-space: nowrap; /* Impide que el texto se divida en varias líneas */
   text-overflow: ellipsis;
