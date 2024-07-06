@@ -231,6 +231,7 @@ class SessionController extends Controller
         'password_new' => 'required|string|min:6',
       ], [
         'password_old.required' => 'Debes ingresar tu contraseña actual.',
+        'password_old.min' => 'La longitud debe ser de al menos 6 caracteres.',
         'password_new.required' => 'Debes ingresar una nueva contraseña.',
         'password_new.min' => 'La longitud debe ser de al menos 6 caracteres.',
       ]);
@@ -252,6 +253,11 @@ class SessionController extends Controller
       $user->bio = $request->bio;
     }
 
+    // Validar el avatar si está presente en la solicitud
+     // Actualizar el avatar seleccionado
+     if ($request->has('avatar')) {
+      $user->avatar = $request->input('avatar');
+  }
 
     // Guardar los cambios
     $user->save();

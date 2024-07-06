@@ -16,14 +16,28 @@ use Illuminate\Validation\Rule;
  *
  * @property int $id
  * @property string $name
- * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $surname
+ * @property string $username
  * @property mixed $password
+ * @property string $email
+ * @property string $bio
+ * @property string $status
+ * @property string $email_verified_at
  * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $birth_date
+ * @property string $profile_pic
+ * @property string $rol
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $avatar
+ * @property string $alt
+ * @property string $external_id
+ * @property string $external_auth
  * @property float|null $latitude
  * @property float|null $longitude
+ * * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
@@ -63,6 +77,7 @@ class User extends Authenticatable
         'password',
         'bio',
         'avatar',
+        'alt',
         'external_id',
         'external_auth',
         'terms',
@@ -77,9 +92,10 @@ class User extends Authenticatable
         'username' => "required|max:30",
         'bio' => "max:255",
         'email' => "required|email",
-        'birth_date' => "required",
+        'birth_date' => "nullable|date",
         'password' => "required",
         'terms' => "accepted",
+        'avatar' => 'required|string|in:01.jpg,02.jpg,03.jpg,04.jpg,05.jpg,06.jpg',
     ];
 
     public static $errorMessages = [
@@ -93,7 +109,7 @@ class User extends Authenticatable
         'surname.required' => 'El apellido es requerido',
         'username.max' => 'El nombre no puede contener más de 30 caracteres',
         'surname.max' => 'El apellido no puede contener más de 30 caracteres',
-        'birth_date.required' => 'La fecha de nacimiento es requerida',
+        'birth_date.date' => 'La fecha de nacimiento debe ser válida',
         'terms.accepted' => 'Es necesario que aceptes los términos y condiciones',
     ];
 
