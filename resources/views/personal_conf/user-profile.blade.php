@@ -47,11 +47,11 @@
   <div>
     <p class="h5 mt-5 mb-2 fw-bold"> Nombre y apellido:</p>
     <p> {{ $userDB->name }} {{ $userDB->surname }}</p>
-    <p class="h5 mt-5 mb-2 fw-bold"> sobre mí:</p>
+    <p class="h5 mt-5 mb-2 fw-bold"> Sobre mí:</p>
     @if ($userDB->bio)
       <p> {{ $userDB->bio }}</p>
     @else
-      <p>Por el momento no te tenes una descripción, animate hace <a href="#">editá tu perfíl</a> y presentate</p>
+      <p>Por el momento tu biografía se encuentra vacía, ¡animate! <a href="{{ route('editProfileForm') }}" class="fw-bold text-reset text-decoration-none">editá tu perfíl</a> y presentate.</p>
     @endif
 
     <p class="h5 mt-5 mb-2 fw-bold"> Email: </p>
@@ -61,7 +61,7 @@
   </div>
   <div class="border-bottom border-dark-subtle pb-3">
     <div class="mt-5 mb-2 d-flex align-items-center">
-      <p class="h5 fw-bold"> Acerca de mí: </p>
+      <p class="h5 fw-bold"> Cómo me movilizo: </p>
       <a href="{{ route('aboutYouForm') }}">
         <span class="icon ps-3">
           <ion-icon name="create-outline" aria-label="Editar" size="large" style="color: #000;"></ion-icon>
@@ -82,7 +82,7 @@
             <div class="row mb-1">
               <div class="col-2 d-flex justify-content-center"><span class="bg-movimiento ms-3"></span></div>
               <div class="col-10">
-                <p class="acerca-de-mi-descript">No posee discapacidad pero se suma a la "Comunidad #YoNivelo"</p>
+                <p class="acerca-de-mi-descript">No posee discapacidad pero se suma a la <b>"Comunidad #YoNivelo"</b></p>
               </div>
           </li>
         </ul>
