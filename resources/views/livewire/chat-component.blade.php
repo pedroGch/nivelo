@@ -6,7 +6,7 @@
       @foreach ($chats as $chat)
         <a href="#" wire:click.prevent="selectChat({{ $chat->id }})">
           <div class="d-flex align-items-center">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
+            <img src="{{ url('/img/avatars/05.jpg') }}" alt="avatar" class="rounded-image me-3">
             <div>
               <h3 class="h5">{{ $chat->sender_id == Auth::id() ? $chat->receiver->name : $chat->sender->name }}</h3>
               <span class="mensaje-extracto">
