@@ -8,7 +8,7 @@
           <div class="d-flex align-items-center">
             <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Persona 1" class="rounded-image me-3">
             <div>
-              <h5>{{ $chat->sender_id == Auth::id() ? $chat->receiver->name : $chat->sender->name }}</h5>
+              <h3 class="h5">{{ $chat->sender_id == Auth::id() ? $chat->receiver->name : $chat->sender->name }}</h3>
               <span class="mensaje-extracto">
                 <p class="mensaje-extracto-contenedor">
                   Último mensaje enviado por {{ $chat->sender_id == Auth::id() ? 'tú' : $chat->sender->name }}
