@@ -83,7 +83,6 @@
           <ul class="list-unstyled">
             <li>
               <div class="row mb-1">
-                <div class="col-2 d-flex justify-content-center"><span class="bg-movimiento ms-3"></span></div>
                 <div class="col-10">
                   <p class="acerca-de-mi-descript">No posee discapacidad pero se suma a la <b>"Comunidad #YoNivelo"</b></p>
                 </div>
