@@ -12,6 +12,7 @@ use App\Models\UserMoreInfo;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PlaceController extends Controller
 {
@@ -405,6 +406,56 @@ class PlaceController extends Controller
       "place" => $place,
       "categories" => Category::all(),
       "addPlaceActive" => $addPlaceActive,
+    ]);
+  }
+
+  public function editPlaceAction(Request $request)
+  {
+    $place = Place::find($request->input('placeId'));
+
+     // Si el lugar no existe, redirigir con un mensaje de error
+    if (!$place) {
+      return redirect()->route('AdminPlacesView')->with('status', [
+        'type' => 'danger',
+        'message' => 'El lugar no existe.'
+      ]);
+    }
+
+    // Validar los datos entrantes
+    $validator = Validator::make($request->all(), [
+      'category' => 'required|exists:categories,category_id',
+      'place_description' => 'required|string',
+      // 'access_entrance' => 'nullable|boolean',
+      // 'asisted_entrance' => 'nullable|boolean',
+      // 'internal_circulation' => 'nullable|boolean',
+      // 'bathroom' => 'nullable|boolean',
+      // 'adult_changing_table' => 'nullable|boolean',
+      // 'parking' => 'nullable|boolean',
+      // 'elevator' => 'nullable|boolean'
+    ]);
+    // Si la validación falla, redirigir con errores
+    if ($validator->fails()) {
+      return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Actualizar los datos del lugar
+    $place->category_id = $request->input('category');
+    $place->description = $request->input('place_description');
+    $place->access_entrance = $request->has('acces_entrance');
+    $place->assisted_access_entrance = $request->has('asisted_entrance');
+    $place->internal_circulation = $request->has('internal_circulation');
+    $place->bathroom = $request->has('bathroom');
+    $place->adult_changing_table = $request->has('adult_changing_table');
+    $place->parking = $request->has('parking');
+    $place->elevator = $request->has('elevator');
+
+    // Guardar los cambios en la base de datos
+    $place->save();
+
+     // Redirigir con un mensaje de éxito
+    return redirect()->route('AdminPlacesView')->with('status', [
+      'type' => 'success',
+      'message' => 'El lugar ha sido actualizado exitosamente.'
     ]);
   }
 }
