@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row p-t-b-80px p-t-b-200px">
         <div class="col-lg-6 bg-white p-100px rounded-5">
-          <h2 class="fw-bolder titulo-h1 titulo-h1-mb">Conocé nivelo</h2>
+          <h1 class="fw-bolder titulo-h1 titulo-h1-mb">Conocé nivelo</h1>
           <p class="h5 lh-base pt-md-2 pt-lg-3">La App que revolucionará la accesibilidad para personas con movilidad reducida en nuestro país.</p>
           <a href="{{ route('home') }}#app"><button class="mt-4 btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold w-50">Saber más</button></a>
         </div>

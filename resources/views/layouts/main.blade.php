@@ -18,7 +18,7 @@
 
 <body>
   <header>
-    <h1 class="d-none">Nivelo</h1>
+    <h2 class="d-none">Nivelo</h2>
     @yield('header')
   </header>
 

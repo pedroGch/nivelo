@@ -15,7 +15,7 @@
       <div class="row my-4 mx-auto border-top redondeo-superior-login  shadow-sm-top">
         <div class="col-12 my-4">
           <div class="d-flex ">
-            <h2 class="fw-bold">Registrate</h2>
+            <h1 class="fw-bold">Registrate</h1>
             <span class="bg-movimiento ms-3 mt-1"></span>
           </div>
         </div>

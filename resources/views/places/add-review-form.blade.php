@@ -17,7 +17,7 @@
         <div class="row my-4 mx-auto pb-5">
           <div class="col-12 mb-4">
               <div class="d-flex border-bottom border-dark-subtle">
-                <h2 class="fw-bold pb-1">Nueva reseña</h2>
+                <h1 class="fw-bold pb-1">Nueva reseña</h1>
                 <span class="bg-movimiento ms-3 mt-1"></span>
               </div>
           </div>

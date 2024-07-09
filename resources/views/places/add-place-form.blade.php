@@ -18,7 +18,7 @@
       <div class="row my-4 mx-auto">
         <div class="col-12 my-4 border-bottom border-dark-subtle pb-3">
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Cargar un nuevo lugar</h2>
+            <h1 class="h3 fw-bold">Cargar un nuevo lugar</h1>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
