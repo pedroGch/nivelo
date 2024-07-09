@@ -29,16 +29,13 @@
     @endif
   </div>
   <div class="row">
-    <div class="col-6 col-md-9 d-flex mt-3 align-items-center">
-      <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
-      <h2 class="h5 fw-bold ps-2">Resultados de tu búsqueda:</h2>
-    </div>
-    <div class="col-6 col-md-3 d-flex justify-content-end">
-      <div>
-        <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm-sm bg-verde-principal text-white w-standard " >
-          <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
-          <span class="fw-semibold mt-2">Ver mapa</span>
-        </a>
+    <div class="row border-bottom border-dark-subtle pb-3 d-flex">
+      <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
+        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
+        <div class="d-flex ">
+          <h2 class="h3 fw-bold">Resultados de tu búsqueda</h2>
+          <span class="bg-movimiento ms-3"></span>
+        </div>
       </div>
     </div>
   </div>
