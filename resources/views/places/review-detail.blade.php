@@ -33,7 +33,16 @@
       <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
       <p class="h5 fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / </p>
     </div>
-    <h2 class="h3 fw-bold ps-2 mt-3">Comentario de: {{ $review->user->username }}</h2>
+    <div class="d-flex">
+      <h2 class="h3 fw-bold ps-2 mt-3">Comentario de: {{ $review->user->username }}</h2>
+      @if($review->user_id != Auth::id())
+          <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+            @csrf
+            <input type="hidden" name="receiver_id" value="{{ $review->user_id }}">
+            <button type="submit" class="text-dark ms-4 mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-100">Chateá con: {{ $review->user->username }}</button>
+          </form>
+        @endif
+    </div>
   </div>
   <div class="row border-bottom border-dark-subtle pb-4">
     <div>
