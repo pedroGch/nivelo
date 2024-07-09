@@ -11,7 +11,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
    ->name('home');
 
 // Ruta suscripción
-Route::post('/', [\App\Http\Controllers\SubscriberController::class, 'subscribeAction'])
+Route::post('/suscribirse', [\App\Http\Controllers\SubscriberController::class, 'subscribeAction'])
    ->name('subscribeAction');
 
 // Ruta de la página Acerca de

@@ -140,7 +140,7 @@
 
 @endsection
 
-<script>
+{{-- <script>
   window.onload = function() {
       var scrollPosition = sessionStorage.getItem('scrollPosition');
       if (scrollPosition) {
@@ -151,4 +151,4 @@
           sessionStorage.setItem('scrollPosition', window.pageYOffset);
       };
   };
-</script>
+</script> --}}
