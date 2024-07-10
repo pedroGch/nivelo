@@ -39,7 +39,7 @@
         </div>
         <div class="col-12 mb-5">
           <h2>Vas a editar {{$place->name}}</h2>
-          <form action="{{ route('addPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
+          <form action="{{ route('editPlaceAction') }}" method="POST" id="new_place_create" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="col-12 my-4 border-bottom border-dark-subtle pb-3">
@@ -48,11 +48,8 @@
                   <option>Elegí una categoría</option>
                   @foreach($categories as $category)
                     <option class="@error('category') is-invalid @enderror" value="{{ $category->category_id }}"
-                      {{ old('category') == $category->category_id ? 'selected' : '' }}
+                      {{ old('category', $place->category_id) == $category->category_id ? 'selected' : '' }}
                       @error('category')
-                      @if ($category->category_id == $place->category_id)
-                        selected
-                      @endif
                       aria-describedby="error-category"
                       aria-invalid="true"
                       @enderror
@@ -63,48 +60,56 @@
                 <p class="text-danger" id="error-category">{{ $message }}</p>
                 @enderror
               </div>
+              <input type="hidden" name="placeId" value="{{$place->place_id}}">
               <div class="col-12 border-bottom border-dark-subtle pb-3">
                 <div class="row">
                   <h3 class="mt-1 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                     <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"
-                    @if(old('acces_entrance')) checked @endif
+                      @if(old('acces_entrance', $place->access_entrance)) checked @endif
                     />
                     <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="acces_entrance">Entrada</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                     <input type="checkbox" class="btn-check" id="asisted_entrance" name="asisted_entrance" autocomplete="off"
-                    @if(old('asisted_entrance')) checked @endif
+                      @if(old('asisted_entrance', $place->asisted_entrance)) checked @endif
                     >
-                    <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada  (con asistencia)</label>
+                    <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="asisted_entrance">Entrada (con asistencia)</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                    <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation"  autocomplete="off"
-                    @if(old('internal_circulation')) checked @endif
+                    <input type="checkbox" class="btn-check" id="internal_circulation" name="internal_circulation" autocomplete="off"
+                      @if(old('internal_circulation', $place->internal_circulation)) checked @endif
                     >
-                    <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna </label>
+                    <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill" for="internal_circulation">Circulación interna</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                    <input type="checkbox" class="btn-check" id="bathroom" name="bathroom"  autocomplete="off"
-                    @if(old('bathroom')) checked @endif
+                    <input type="checkbox" class="btn-check" id="bathroom" name="bathroom" autocomplete="off"
+                      @if(old('bathroom', $place->bathroom)) checked @endif
                     >
                     <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="bathroom">Baño adaptado</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                    <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table"  autocomplete="off"
-                    @if(old('adult_changing_table')) checked @endif
+                    <input type="checkbox" class="btn-check" id="adult_changing_table" name="adult_changing_table" autocomplete="off"
+                      @if(old('adult_changing_table', $place->adult_changing_table)) checked @endif
                     >
                     <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="adult_changing_table">Cambiador para adultos</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                    <input type="checkbox" class="btn-check" id="parking" name="parking"  autocomplete="off"
-                    @if(old('parking')) checked @endif
+                    <input type="checkbox" class="btn-check" id="parking" name="parking" autocomplete="off"
+                      @if(old('parking', $place->parking)) checked @endif
                     >
                     <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="parking">Estacionamiento</label>
                   </div>
+
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
-                    <input type="checkbox" class="btn-check" id="elevator" name="elevator"  autocomplete="off"
-                    @if(old('elevator')) checked @endif
+                    <input type="checkbox" class="btn-check" id="elevator" name="elevator" autocomplete="off"
+                      @if(old('elevator', $place->elevator)) checked @endif
                     >
                     <label class="bg-gris-claro border border-0 shadow-sm p-btn-chicos text-center btn-form-w-center fw-semibold btn rounded-pill ps-3" for="elevator">Ascensor / Plataforma</label>
                   </div>

@@ -29,7 +29,7 @@
     @endif
     <div class="row pt-3">
       <div class="col-6 col-md-9 d-flex mt-3 ps-2">
-        <h2 class="h3 fw-bold">Categorías</h2>
+        <h1 class="h3 fw-bold">Categorías</h1>
         <span class="bg-movimiento ms-3"></span>
       </div>
       {{-- <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">

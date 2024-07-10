@@ -34,7 +34,7 @@
     <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
       <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
       <div class="d-flex ">
-        <h2 class="h3 fw-bold">Mi perfil</h2>
+        <h1 class="h3 fw-bold">Mi perfil</h1>
         <span class="bg-movimiento ms-3"></span>
       </div>
     </div>
@@ -83,7 +83,6 @@
           <ul class="list-unstyled">
             <li>
               <div class="row mb-1">
-                <div class="col-2 d-flex justify-content-center"><span class="bg-movimiento ms-3"></span></div>
                 <div class="col-10">
                   <p class="acerca-de-mi-descript">No posee discapacidad pero se suma a la <b>"Comunidad #YoNivelo"</b></p>
                 </div>

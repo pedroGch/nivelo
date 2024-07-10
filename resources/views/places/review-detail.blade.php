@@ -34,8 +34,8 @@
       <p class="h5 fw-bold ps-2"><a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id]) }}" class="text-decoration-none text-reset">{{ $place->name }}  </a> / </p>
     </div>
     <div class="d-flex">
-      <h2 class="h3 fw-bold ps-2 mt-3">Comentario de: {{ $review->user->username }}</h2>
-      @if($review->user_id != Auth::id())
+      <h1 class="h3 fw-bold ps-2 mt-3">Comentario de: {{ $review->user->username }}</h1>
+          @if($review->user_id != Auth::id())
           <form action="{{ route('startChat') }}" method="POST" class="mb-3">
             @csrf
             <input type="hidden" name="receiver_id" value="{{ $review->user_id }}">

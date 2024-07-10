@@ -31,7 +31,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
       <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
-      <h2 class="h5 fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / {{ $category->name }}</h2>
+      <h1 class="h5 fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / {{ $category->name }}</h1>
     </div>
   </div>
   <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
