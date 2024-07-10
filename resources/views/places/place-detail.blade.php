@@ -257,19 +257,11 @@
     @forelse($reviews as $review)
     <div class="col-12 col-md-6 col-xl-4 review-item">
       <div class="p-3 rounded rounded-3 bg-violeta-ultra-light review-content">
-        @if ($review->user_id == Auth::id())
-        <div class="d-flex justify-content-end">
-          <a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}">
-            <span class="icon ps-3">
-              <ion-icon name="create-outline" aria-label="Editar" size="large" style="color: #000;"></ion-icon>
-            </span>
-          </a>
-        </div>
-        @endif
         <div class="mx-2 border-bottom border-dark-subtle pb-3">
-          <p class="h5 mt-3 fw-bold text-center">Comentario de:  {{ $review->user->username}}</p>
+          <p class="h5 mt-3 fw-bold text-center">Comentario de  {{ $review->user->username}}</p>
+          <p class="text-center"> {{ $review->created_at }}</p>
           <div class="d-flex justify-content-center">
-            <div class="col-12 mt-2 d-flex justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
               @switch($review->score)
                 @case($review->score > 0 && $review->score < 2)
                   <div class="d-flex">
@@ -342,13 +334,20 @@
           <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
           @endif
         </div>
-        <div class="row">
+
+        <div class="row pt-4">
+          @if ($review->user_id == Auth::id())
           <div class="col-6">
-            <p class="h6 ps-2 mt-1 fw-bold">Fecha: </p>
-            <p class="ps-2"> {{ $review->created_at }}</p>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Ver detalle</a></div>
           </div>
           <div class="col-6">
-            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Editar</a>
+            </div>
+            @else
+            <div class="col-12">
+              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-50">Ver detalle</a></div>
+            </div>
+            @endif
           </div>
         </div>
       </div>
