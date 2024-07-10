@@ -1,11 +1,11 @@
 <div class="bg-gris-claro d-flex flex-column min-vh-40">
    <div class="container container-fluid py-2 align-items-center">
      <div class="row py-4 py-lg-5">
-       <div class="col-12 col-md-3 col-lg-4 d-flex justify-content-center justify-content-lg-start">
+       <div class="col-12 col-md-3 col-lg-4 mb-4 d-flex justify-content-center justify-content-lg-start">
         <img src="{{ url('/img/logo_footer.png') }}" alt="logo de nivelo" height="180px"></a>
        </div>
        <div class="col-12 col-md-5 col-lg-4">
-        <h2 class="h5 pt-2 pb-2 pt-lg-0">Suscribite para ser parte del lanzamiento</h2>
+        {{-- <h2 class="h5 pt-2 pb-2 pt-lg-0">Suscribite para ser parte del lanzamiento</h2>
         <form action="{{ route('subscribeAction') }}" method="POST">
           @csrf
           <input
@@ -43,7 +43,7 @@
           @endif
           <button class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " type="submit">
             Suscribirme
-        </form>
+        </form> --}}
        </div>
        <div class="col-12 col-md-4 px-3 px-md-0">
         <ul class="navbar-nav">
@@ -60,7 +60,7 @@
        </div>
        <div>
         <hr>
-        <p>© 2024 Nivelo. Todos los derechos reservados.</p>
+        <p><b>© 2024 Nivelo.</b> Todos los derechos reservados.</p>
        </div>
      </div>
    </div>

@@ -198,6 +198,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: #fff;
 }
 
+.strong-without-style{
+  font-weight: 400;
+}
+
 .btn-form-w{
   width: 135px;
   height: 52px;
