@@ -129,9 +129,9 @@
             </div>
           <div class="my-3">
             <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="submit">Aplicar filtros</button>
-            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
+            {{-- <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
               Resetear filtros
-                    </button>
+            </button> --}}
           </div>
           </div>
         </div>
