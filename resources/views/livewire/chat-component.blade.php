@@ -31,13 +31,13 @@
             @if (isset($convoItem['user_id']) && Auth::user()->id == $convoItem['user_id'])
               <div class="message sent-message">
                 <p>{{$convoItem['message']}}</p>
-                <small class="text-muted">{{$convoItem['created_at']}}</small>
+                {{-- <small class="text-muted">{{$convoItem['created_at']}}</small> --}}
               </div>
             @else
               <!-- Mensajes recibidos receptor -->
               <div class="message received-message">
                 <p>{{$convoItem['message']}}</p>
-                <small class="text-muted">{{$convoItem['created_at']}}</small>
+                {{-- <small class="text-muted">{{$convoItem['created_at']}}</small> --}}
               </div>
             @endif
           @endforeach
@@ -45,9 +45,9 @@
 
         <!-- Campo de entrada y botón para enviar mensaje -->
         <form wire:submit.prevent="submitMessage"  class="input-group mt-3">
-            <input wire:model="message" class="form-control" placeholder="Escribí tu mensaje...">
+            <input id="messageInput" wire:model="message" class="form-control" placeholder="Escribí tu mensaje...">
             <input type="hidden" wire:model="chat_id">
-            <button type="submit" class="btn bg-verde-principal btn-verde-hover text-light fw-bold">Enviar</button>
+            <button id="sendButton" type="submit" class="btn bg-verde-principal btn-verde-hover text-light fw-bold">Enviar</button>
         </form>
       </div>
     </div>
@@ -56,5 +56,26 @@
     Livewire.on('messageSent', () => {
         @this.call('loadMessages');
     });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const messageInput = document.getElementById('messageInput');
+      const sendButton = document.getElementById('sendButton');
+
+      messageInput.addEventListener('input', function() {
+          if (messageInput.value.trim() === '') {
+              sendButton.disabled = true;
+          } else {
+              sendButton.disabled = false;
+          }
+      });
+
+      // Inicializar el estado del botón cuando se carga la página
+      if (messageInput.value.trim() === '') {
+          sendButton.disabled = true;
+      } else {
+          sendButton.disabled = false;
+      }
+  });
 </script>
 </div>
