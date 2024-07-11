@@ -536,10 +536,11 @@ table {
   width: 300px; /* Ancho del contenedor */
 }
 .mensaje-extracto-contenedor{
-  width: 300px;
+  /* width: 300px; */
   overflow: hidden; /* Ocultar texto que exceda el ancho */
   white-space: nowrap; /* Impide que el texto se divida en varias líneas */
   text-overflow: ellipsis;
+  font-size: 12px;
 }
 
 /* Estilos para los mensajes */
@@ -562,7 +563,7 @@ table {
 /* Ajustar el margen izquierdo del contenedor principal */
 .custom-container {
 
-  height: calc(94vh - 82px - 63px); /* Establecemos altura del 100% de la ventana del navegador */
+  height: calc(102vh - 82px - 63px); /* Establecemos altura del 100% de la ventana del navegador */
   /*overflow-y: auto;*/ /* Habilitamos el desplazamiento vertical si el contenido excede la altura */
 }
 
