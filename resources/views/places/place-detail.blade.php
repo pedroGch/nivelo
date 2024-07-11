@@ -43,7 +43,8 @@
         <div class="row">
           <div class="col-12">
             <h1 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
-              @if($notablePlace) <span class="badge bg-naranja-principal">Lugar destacado</span>
+              @if($notablePlace || $place->place_id == 5)
+              <span class="badge bg-naranja-principal">Lugar destacado</span>
               @endif</h1>
             <p class="h4 ps-2">{{ $place->getSecondPartOfName() }}</p>
           </div>
@@ -152,7 +153,7 @@
     </div>
     </div>
     <div class="col-12 col-lg-5 position-relative">
-      @if($notablePlace)
+      @if($notablePlace || $place->place_id == 5)
       <div class="position-absolute top-0 end-0 pt-4">
         <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 80px">
       </div>
