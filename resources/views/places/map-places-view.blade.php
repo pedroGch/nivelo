@@ -2,7 +2,7 @@
 
 {{-- @section('title') Página Principal @endsection --}}
 
-@section('title', 'Nuevo lugar')
+@section('title', 'Mapa')
 
 @section('header')
 
