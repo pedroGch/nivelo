@@ -56,14 +56,14 @@
                           <p  id="sin_filtro" class="text-center fw-bold"> Aún no aplicaste ningún filtro </p>
                         </div>
                       </div>
-                      <div class="col-12 col-lg-6">
+                      <div class="col-12 col-lg-6 mb-2">
                         <div class="col-12">
                           <div id="gmp-map" style="height: 500px;"></div>
                         </div>
                       </div>
                       <div class="col-12 col-lg-6" style="overflow-y: auto; height: 500px;">
                         <div class="col-12" id="con_filtro">
-                          <div class="container my-4" id="getPlacesAccordion">
+                          <div class="" id="getPlacesAccordion">
                           </div>
                         </div>
                       </div>
@@ -162,7 +162,7 @@
     places.forEach((place, index) => {
     let encodedPlaceName = encodeURIComponent(place.name);
     const placeHTML = `
-    <div class="container">
+    <div class="">
       <div class="card mb-3 w-100" id="placeCard${place.place_id}">
         <div class="row g-0">
           <div class="col-md-3">
@@ -171,23 +171,23 @@
           <div class="col-md-9">
             <div class="card-body">
               <a href="/categorias/${place.category_id}/${place.place_id}" class="h5 text-decoration-none text-dark">${place.name}</a>
-              // <p class="card-text">Puntaje: 4.5</p>
+              <p class="card-text">Puntaje: 4.5</p>
               <p class="card-text">${place.address}</p>
               <div class="row">
-                <div class="col-4">
-                  <button class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white " onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa
+                <div class="col-12 col-xl-4 mb-1">
+                  <button class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white " onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa
                   </button>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-xl-4 mb-1">
                   <button
-                    class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white"
+                    class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white"
                     data-bs-toggle="modal"
                     data-bs-target="#reviewsModal${place.place_id}"
                     onclick="loadReviews(${place.place_id})"> Explorar reseñas
                   </button>
                 </div>
-                <div class="col-4">
-                  <a class="text-dark btn btn-naranja-hover rounded-pill shadow-sm bg-naranja-principal " target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Google Maps</a>
+                <div class="col-12 col-xl-4 mb-1">
+                  <a class="text-dark btn btn-naranja-hover w-100 rounded-pill shadow-sm bg-naranja-principal " target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Google Maps</a>
                 </div>
 
               </div>
