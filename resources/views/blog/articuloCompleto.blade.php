@@ -36,7 +36,7 @@
         <div class="row d-flex col-12 my-2">
           <article class="col-12">
             <div class="my-4">
-              <h2>{{ $noticia->title }}</h2>
+              <h1>{{ $noticia->title }}</h1>
               <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa mt-3 mb-5">
