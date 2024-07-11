@@ -165,23 +165,30 @@
     <div class="container">
       <div class="card mb-3 w-100" id="placeCard${place.place_id}">
         <div class="row g-0">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <img src="/storage/${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-9">
             <div class="card-body">
               <p class="h5 card-title">${place.name}</p>
               <p class="card-text">Puntaje: 4.5</p>
               <p class="card-text">${place.address}</p>
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white fw-semibold" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
-                <button
-                  class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white fw-semibold"
-                  data-bs-toggle="modal"
-                  data-bs-target="#reviewsModal${place.place_id}"
-                  onclick="loadReviews(${place.place_id})"> Opiniones
-                </button>
-                <a class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold" target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Ver en maps</a>
+              <div class="row">
+                <div class="col-4">
+                  <button class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white " onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white "
+                    data-bs-toggle="modal"
+                    data-bs-target="#reviewsModal${place.place_id}"
+                    onclick="loadReviews(${place.place_id})"> Reseñas de usuarios
+                  </button>
+                </div>
+                <div class="col-4">
+                  <a class="text-dark btn btn-naranja-hover rounded-pill shadow-sm bg-naranja-principal " target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Google Maps</a>
+                </div>
 
               </div>
             </div>
