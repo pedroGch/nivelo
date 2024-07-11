@@ -166,12 +166,12 @@
       <div class="card mb-3 w-100" id="placeCard${place.place_id}">
         <div class="row g-0">
           <div class="col-md-3">
-            <img src="/storage/${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;">
+            <a href="/categorias/${place.category_id}/${place.place_id}"><img src="/storage/${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;"></a>
           </div>
           <div class="col-md-9">
             <div class="card-body">
-              <p class="h5 card-title">${place.name}</p>
-              <p class="card-text">Puntaje: 4.5</p>
+              <a href="/categorias/${place.category_id}/${place.place_id}" class="h5 text-decoration-none text-dark">${place.name}</a>
+              // <p class="card-text">Puntaje: 4.5</p>
               <p class="card-text">${place.address}</p>
               <div class="row">
                 <div class="col-4">
@@ -180,10 +180,10 @@
                 </div>
                 <div class="col-4">
                   <button
-                    class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white "
+                    class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white"
                     data-bs-toggle="modal"
                     data-bs-target="#reviewsModal${place.place_id}"
-                    onclick="loadReviews(${place.place_id})"> Reseñas de usuarios
+                    onclick="loadReviews(${place.place_id})"> Explorar reseñas
                   </button>
                 </div>
                 <div class="col-4">
@@ -202,14 +202,14 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="reviewsModalLabel${place.place_id}">Opiniones sobre ${place.name}</h5>
+            <p class="h5 modal-title" id="reviewsModalLabel${place.place_id}">Opiniones sobre ${place.name}</p>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" id="reviewsContainer${place.place_id}">
             <!-- Aquí irían las opiniones del lugar -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white px-2" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
@@ -232,10 +232,10 @@
         reviews.forEach(review => {
           const reviewHTML = `
             <div class="d-flex mb-3">
-              <img src="${review.user.profile_picture}" alt="Foto del usuario" class="img-fluid me-3 rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+              <img src="/img/avatars/${review.user.avatar}" alt="Foto del usuario" class="img-fluid me-3 rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
               <div>
-                <h6 class="mb-1">${review.user.username}</h6>
-                <p class="mb-0">Puntaje: ${review.score}</p>
+                <p class="h5 mb-1">${review.user.username}</p>
+                <p class="mb-0">Puntaje: ${review.score}/5</p>
                 <p class="mb-0">Comentario: ${review.review}</p>
               </div>
             </div>`;
