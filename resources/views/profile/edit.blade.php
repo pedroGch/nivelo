@@ -85,11 +85,11 @@
         <div class="mb-4">
           <label for="avatar" class="form-label">Selecciona tu avatar:</label>
           <div class="d-flex flex-wrap gap-3">
-            @for ($i = 1; $i <= 6; $i++)
+            @for ($i = 1; $i <= 7; $i++)
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="avatar" id="0{{ $i }}" value="0{{ $i }}.jpg" {{ old('avatar', auth()->user()->avatar) == "avatar$i.jpg" ? 'checked' : '' }}>
                 <label class="form-check-label" for="avatar{{ $i }}">
-                  <img src="{{ url("/img/avatars/0$i.jpg") }}" alt="avatar{{ $i }}" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                  <img src="{{ url("/img/avatars/0$i.jpg") }}" alt="avatar{{ $i }}" class="rounded-circle shadow-sm" style="width: 140px; height: 140px; object-fit: cover;">
                 </label>
               </div>
             @endfor

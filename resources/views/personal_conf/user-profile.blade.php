@@ -62,7 +62,7 @@
     <div class="col-12 col-lg-6">
       <div>
         <p class="h5 fw-bold"> Mi avatar: </p>
-        <img src="{{ url('/img/avatars/'. $userDB->avatar)}}" alt="avatar" class="rounded-image me-3" style="width: 150px; height: 150px; object-fit: cover;"></div>
+        <img src="{{ url('/img/avatars/'. $userDB->avatar)}}" alt="avatar" class="rounded-image me-3 shadow-sm" style="width: 150px; height: 150px; object-fit: cover;"></div>
       <div class="mt-5 mb-2 d-flex align-items-center">
         <p class="h5 fw-bold"> Cómo me movilizo: </p>
         <a href="{{ route('aboutYouForm') }}">
