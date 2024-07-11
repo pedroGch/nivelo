@@ -50,7 +50,7 @@
       </div>
         <div class="card-body d-flex flex-column">
           <p class="h6">{{ $place->categories->name }}</p>
-          <h3 class="h5 fw-bold mt-3 place-name">{{ $place->name }}</h3>
+          <h2 class="h5 fw-bold mt-3 place-name">{{ $place->name }}</h2>
           @if($place->city != null)
           <p class="h6">{{ $place->city }}</p>
           @else

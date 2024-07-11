@@ -94,7 +94,7 @@
               </div>
               <div class="col-12 border-bottom border-dark-subtle pb-3">
                 <div class="row">
-                  <h3 class="mt-1 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</h3>
+                  <p class="h3 mt-1 mb-4 h5">Características de <strong>accesibilidad</strong> que posee:</p>
                   <div class="mb-4 d-flex justify-content-center col-6 col-md-4 col-lg-3">
                     <input type="checkbox" class="btn-check" id="acces_entrance" name="acces_entrance"
                     @if(old('acces_entrance')) checked @endif

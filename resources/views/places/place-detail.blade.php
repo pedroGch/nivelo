@@ -42,9 +42,9 @@
       <div class="mt-3">
         <div class="row">
           <div class="col-12">
-            <h2 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
+            <h1 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
               @if($notablePlace) <span class="badge bg-naranja-principal">Lugar destacado</span>
-              @endif</h2>
+              @endif</h1>
             <p class="h4 ps-2">{{ $place->getSecondPartOfName() }}</p>
           </div>
           <div class="col-12">
@@ -76,7 +76,7 @@
       </div>
       <div class="mt-3 align-items-center border-bottom border-top border-dark-subtle pb-3">
         <div>
-          <p class="h5 ps-2 mt-3">Promedio de calificaciones:</p>
+          <h2 class="h5 ps-2 mt-3">Promedio de calificaciones:</h2>
         </div>
         <div class="col-12 mt-2 d-flex">
           @switch($averagePlaceScore)
@@ -135,7 +135,7 @@
     <div class="col-12 col-lg-6 ">
       <div class="mt-3 d-flex align-items-center">
         <div>
-          <p class="h5 ps-2 mt-3 fw-bold">Dirección:</p>
+          <h2 class="h5 ps-2 mt-3 fw-bold">Dirección:</h2>
         </div>
       </div>
       <div>
@@ -167,7 +167,7 @@
       <div class="mt-3 d-flex align-items-center">
         <div class="d-flex">
           <div class="me-4"><img src="/img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
-          <p class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</p>
+          <h2 class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</h2>
         </div>
       </div>
     </div>
@@ -202,14 +202,14 @@
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="mt-3 d-flex align-items-center">
       <div>
-        <p class="h5 ps-2 mt-3 fw-bold">Descripción:</p>
+        <h2 class="h5 ps-2 mt-3 fw-bold">Descripción:</h2>
       </div>
     </div>
     <div>
       <p class="ps-2">{!! nl2br($place->description) !!}</p>
     </div>
   </div>
-  <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">
+  <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle pb-3">
     <p>{{ $place->src_information->name }}</p>
     @if($place->src_information->src_info_id == 2)
     <p>Lugar cargado por: {{ $place->users->username }} </p>
@@ -244,8 +244,7 @@
           <span class="fw-semibold">No podes realizar reseñas</span>
         </a>
         @else
-          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-            <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
+          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn px-4 w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
         @endif
@@ -258,7 +257,7 @@
     <div class="col-12 col-md-6 col-xl-4 review-item">
       <div class="p-3 rounded rounded-3 bg-violeta-ultra-light review-content">
         <div class="mx-2 border-bottom border-dark-subtle pb-3">
-          <p class="h5 mt-3 fw-bold text-center">Comentario de  {{ $review->user->username}}</p>
+          <h4 class="h5 mt-3 fw-bold text-center">Comentario de  {{ $review->user->username}}</h4>
           <p class="text-center"> {{ $review->created_at }}</p>
           <div class="d-flex justify-content-center">
             <div class="col-12 d-flex justify-content-center">
@@ -370,7 +369,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="nearbyPlacesModalLabel">{{$place->getFirstPartOfName()}}</h5>
+            <h4 class="modal-title" id="nearbyPlacesModalLabel">{{$place->getFirstPartOfName()}}</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

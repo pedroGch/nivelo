@@ -8,7 +8,7 @@
           <div class="d-flex align-items-center {{ $selectedChatId === $chat->id ? 'selected-chat' : '' }}">
             <img src="{{ url('/img/avatars/'.$chat->receiver->avatar) }}" alt="avatar" class="rounded-image me-3">
             <div class="pt-3 ps-2">
-              <h3 class="h5">{{ $chat->sender_id == Auth::id() ? $chat->receiver->username : $chat->sender->name }}</h3>
+              <h2 class="h5">{{ $chat->sender_id == Auth::id() ? $chat->receiver->username : $chat->sender->name }}</h2>
               <span class="mensaje-extracto">
                 <p class="mensaje-extracto-contenedor">
                   {{-- Último mensaje enviado por {{ $chat->sender_id == Auth::id() ? 'tú' : $chat->sender->name }} --}}

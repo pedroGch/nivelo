@@ -30,7 +30,7 @@
                 <div class="row">
                   <div class="row mb-3">
                     <div class="col-md-4 col-sm-12">
-                      <h3 class="modal-title d-inline" id="nearbyPlacesModalLabel">Filtrar por:</h3>
+                      <p class="h3 modal-title d-inline" id="nearbyPlacesModalLabel">Filtrar por:</p>
                     </div>
                     <div class="col-md-8 col-sm-12">
                       <select class="form-select d-inline" aria-label="Default select example" name="category" id="category">
@@ -166,22 +166,22 @@
       <div class="card mb-3 w-100" id="placeCard${place.place_id}">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="/storage/${place.main_img}" alt="${place.alt_main_img}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">${place.name}</h5>
+              <p class="h5 card-title">${place.name}</p>
               <p class="card-text">Puntaje: 4.5</p>
               <p class="card-text">${place.address}</p>
               <div class="d-flex justify-content-end">
-                <button class="btn btn-primary me-2" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
+                <button class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white fw-semibold" onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa</button>
                 <button
-                  class="btn btn-secondary me-2"
+                  class="btn btn-verde-hover rounded-pill p-2 shadow-sm bg-verde-principal text-white fw-semibold"
                   data-bs-toggle="modal"
                   data-bs-target="#reviewsModal${place.place_id}"
                   onclick="loadReviews(${place.place_id})"> Opiniones
                 </button>
-                <a class="btn btn-primary" target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Ver en maps</a>
+                <a class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold" target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Ver en maps</a>
 
               </div>
             </div>

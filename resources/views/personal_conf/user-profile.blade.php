@@ -181,8 +181,8 @@
     </div>
   </div>
   <div>
-    <h3 class="h4 mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h3>
-    <h4 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h4>
+    <h2 class="mt-5 mb-2 fw-bold"> Mis aportes y reseñas: </h2>
+    <h3 class="mt-5 mb-2 fw-bold"> Lugares nuevos:</h3>
     @if ($status)
       @if($myPlaces->isEmpty())
       <p> No subiste ningún lugar aún.</p>
@@ -227,7 +227,7 @@
     </table>
   </div>
   <div class="pb-4">
-    <h4 class="mt-5 mb-2 fw-bold">Opiniones: </h4>
+    <h3 class="mt-5 mb-2 fw-bold">Opiniones: </h3>
     <table>
       @unless ($madeReviews->isEmpty())
       <thead>

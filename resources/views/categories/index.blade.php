@@ -146,7 +146,7 @@
         <div class="stablished-height col-12 d-flex">
           <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow-sm img-fluid image-hover-bright">
           <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-0 ms-2 shadow-sm image-hover-bright">
-            <h3 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h3>
+            <h2 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h2>
           </div>
         </div>
       </a>
@@ -159,7 +159,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="nearbyPlacesModalLabel">Lugares Cercanos</h5>
+        <p class="h5 modal-title" id="nearbyPlacesModalLabel">Lugares Cercanos</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

@@ -28,7 +28,7 @@
           @foreach ($noticias as $noticia)
           <article class="col-12 col-lg-4 py-3">
             <div class="my-2">
-              <h3>{{ $noticia->title }}</h3>
+              <h2>{{ $noticia->title }}</h2>
               <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa">
