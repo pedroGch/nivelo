@@ -91,12 +91,13 @@
           <p>Lugares nuevos para promover que otros usuarios los visiten.</p>
         </div>
       </div>
-
-      <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25"
-        onclick="instalarApp()"
-      >
-      Descargá la app
-    </button>
+      <div class="col-12 col-lg-4 d-flex justify-content-lg-center">
+        <button class="text-dark mt-5 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold "
+          onclick="instalarApp()"
+        >
+        Descargá la app
+      </button>
+      </div>
     </div>
   </div>
 </div>
