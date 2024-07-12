@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\FCMTokenController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LocationController;
 
 
 // Ruta de landing page
@@ -270,6 +272,16 @@ Route::post('/lugares/{id}/autorizar', [\App\Http\Controllers\PlaceController::c
   ->middleware('only_admin_allow')
   ->name('authorizePlace');
 
+Route::get('/lugares/{id}/editar', [\App\Http\Controllers\PlaceController::class, 'editPlaceForm'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editPlaceForm');
+
+Route::post('/lugares/editar', [\App\Http\Controllers\PlaceController::class, 'editPlaceAction'])
+  ->middleware('auth')
+  ->middleware('only_admin_allow')
+  ->name('editPlaceAction');
+
 Route::get('/administrar/usuarios', [\App\Http\Controllers\HomeController::class, 'AdminUsersView'])
   ->middleware('auth')
   ->middleware('only_admin_allow')
@@ -280,8 +292,18 @@ Route::post('/administrar/usuarios/{userId}/bloquear-desbloquear', [\App\Http\Co
   ->middleware('only_admin_allow')
   ->name('toggleBlock');
 
-// Ruta para guardar el token para Firebase Messaging
-Route::post('/fcm-token', [FCMTokenController::class, 'store'])->middleware('auth');
+// Rutas para el manejo de las notificaciones
+
+Route::get('/notificaciones', [App\Http\Controllers\NotificationController::class, 'index'])
+  ->middleware('auth')
+  ->name('notificationsView');
+
+Route::get('/notificaciones/leer/{id}', [App\Http\Controllers\NotificationController::class, 'markAsRead'])
+  ->middleware('auth')
+  ->name('notificationsRead');
+
+Route::post('/guardar-ubicacion', [LocationController::class, 'store'])->name('saveLocation');
 
 
-  require __DIR__.'/auth.php';
+
+require __DIR__.'/auth.php';

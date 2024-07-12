@@ -31,25 +31,31 @@ use Illuminate\Pagination\LengthAwarePaginator;
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
       <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
-      <h2 class="h5 fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / {{ $category->name }}</h2>
+      <h1 class="h5 fw-bold ps-2"><a href="{{ route('categories') }}" class="text-decoration-none text-reset">Categorías</a> / {{ $category->name }}</h1>
     </div>
   </div>
   <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
     @forelse ($places as $place)
-    <div class="card col-6 col-lg-3 shadow-sm" style="width: 18rem;">
-      @if($place->notablePlace)
-      <div class="position-absolute top-0 end-0 pt-1">
+    <div class="card col-6 col-lg-3 shadow-sm place-card mb-4 position-relative">
+      @if($place->notablePlace || $place->place_id == 5)
+      <div class="position-absolute top-0 end-0 pt-1 z-3">
         <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 70px">
       </div>
       @endif
-      <div>
+      <div class="place-image-wrapper">
         <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid image-hover-bright" alt="{{ $place->alt_main_img }}">
+          <img src="{{ asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid place-image image-hover-bright" alt="{{ $place->alt_main_img }}">
       </div>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
           <p class="h6">{{ $category->name }}</p>
-          <h3 class="h5 fw-bold mt-3">{{ $place->getFirstPartOfName() }}</h3>
+          <h2 class="h5 fw-bold mt-3 place-name">{{ $place->getFirstPartOfName() }}</h2>
+          @if($place->city != null)
           <p class="h6">{{ $place->city }}</p>
+          @else
+          <div class="pt-4">
+          </div>
+          @endif
+
           <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
             @switch($place->totalAverageScore)
               @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)

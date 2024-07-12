@@ -23,7 +23,7 @@
         <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
           <a href="{{ route('blogAdmin') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Editar noticia</h2>
+            <h1 class="h3 fw-bold">Editar noticia</h1>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>

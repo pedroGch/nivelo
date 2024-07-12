@@ -20,8 +20,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        PlaceCreated::class => [
-            SendPlaceNotification::class,
+        \App\Events\PlaceCreated::class => [
+            \App\Listeners\SendPlaceNotification::class,
         ],
     ];
 

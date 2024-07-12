@@ -4,31 +4,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Chat extends Model
 {
-  use HasFactory;
-  protected $fillable = [
-    'sender_id',
-    'receiver_id',
-  ];
+    use HasFactory;
 
-  protected $table = 'chats';
+    protected $fillable = [
+        'sender_id',
+        'receiver_id',
+    ];
 
-  public function sender()
-  {
-      return $this->belongsTo(User::class, 'sender_id');
-  }
+    protected $table = 'chats';
 
-  public function receiver()
-  {
-      return $this->belongsTo(User::class, 'receiver_id');
-  }
+    /**
+     * Accessor for the created_at attribute to format it as DD-MM-YYYY.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => (new \DateTime($value))->format('d-m-Y'),
+        );
+    }
 
-  public function messages()
-  {
-      return $this->hasMany(Message::class);
-  }
+    public function sender()
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

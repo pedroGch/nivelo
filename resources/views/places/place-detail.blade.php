@@ -42,9 +42,10 @@
       <div class="mt-3">
         <div class="row">
           <div class="col-12">
-            <h2 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
-              @if($notablePlace) <span class="badge bg-naranja-principal">Lugar destacado</span>
-              @endif</h2>
+            <h1 class="fw-bold ps-2">{{ $place->getFirstPartOfName() }}
+              @if($notablePlace || $place->place_id == 5)
+              <span class="badge bg-naranja-principal">Lugar destacado</span>
+              @endif</h1>
             <p class="h4 ps-2">{{ $place->getSecondPartOfName() }}</p>
           </div>
           <div class="col-12">
@@ -76,7 +77,7 @@
       </div>
       <div class="mt-3 align-items-center border-bottom border-top border-dark-subtle pb-3">
         <div>
-          <p class="h5 ps-2 mt-3">Promedio de calificaciones:</p>
+          <h2 class="h5 ps-2 mt-3">Promedio de calificaciones:</h2>
         </div>
         <div class="col-12 mt-2 d-flex">
           @switch($averagePlaceScore)
@@ -135,15 +136,15 @@
     <div class="col-12 col-lg-6 ">
       <div class="mt-3 d-flex align-items-center">
         <div>
-          <p class="h5 ps-2 mt-3 fw-bold">Dirección:</p>
+          <h2 class="h5 ps-2 mt-3 fw-bold">Dirección:</h2>
         </div>
       </div>
       <div>
         <p class="ps-2">{{ $place->address }}, {{ $place->city }}, {{ $place->province }}.</p>
       </div>
       <div class="col-12 d-flex">
-        <div class="my-3">
-          <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
+        <div class="my-3" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
+          <a id="show-nearby-places" class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-standard " >
             <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
             <span class="fw-semibold mt-2">Ver mapa</span>
           </a>
@@ -152,7 +153,7 @@
     </div>
     </div>
     <div class="col-12 col-lg-5 position-relative">
-      @if($notablePlace)
+      @if($notablePlace || $place->place_id == 5)
       <div class="position-absolute top-0 end-0 pt-4">
         <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 80px">
       </div>
@@ -167,7 +168,7 @@
       <div class="mt-3 d-flex align-items-center">
         <div class="d-flex">
           <div class="me-4"><img src="/img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
-          <p class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</p>
+          <h2 class="h5 ps-2 mt-3 fw-bold">Características de accesibilidad:</h2>
         </div>
       </div>
     </div>
@@ -202,34 +203,45 @@
   <div class="row border-bottom border-dark-subtle pb-3">
     <div class="mt-3 d-flex align-items-center">
       <div>
-        <p class="h5 ps-2 mt-3 fw-bold">Descripción:</p>
+        <h2 class="h5 ps-2 mt-3 fw-bold">Descripción:</h2>
       </div>
     </div>
     <div>
       <p class="ps-2">{!! nl2br($place->description) !!}</p>
     </div>
   </div>
-  <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle">
-    <p>{{ $place->src_information->name }}</p>
-    @if($place->src_information->src_info_id == 2)
-    <p>Lugar cargado por: {{ $place->users->username }} </p>
-      @if($place->users->id != Auth::id())
-        <form action="{{ route('startChat') }}" method="POST" class="mb-3">
-          @csrf
-          <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
-          <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
-        </form>
-      @else
-      <div class="alert alert-warning align-self-center" role="alert">
-        <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+  <div class="container">
+    <div class="row my-3 text-center border-bottom border-dark-subtle pb-3">
+      <div class="col-12 mx-auto">
+        <p>{{ $place->src_information->name }}</p>
       </div>
-      <form action="{{ route('startChat') }}" method="POST" class="mb-3">
-        @csrf
-        <input type="hidden" name="receiver_id" value="3">
-        <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: Equipo de nivelo</button>
-      </form>
-      @endif
-    @endif
+        @if($place->src_information->src_info_id == 2)
+          <div class="col-12 mx-auto">
+            <p>Lugar cargado por: {{ $place->users->username }} </p>
+          </div>
+          @if($place->users->id != Auth::id())
+            <div class="col-12 col-lg-4 mx-auto">
+              <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+                @csrf
+                <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
+                <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold ">Chateá con: {{ $place->users->username }}</button>
+              </form>
+            </div>
+          @else
+          <div class="alert alert-warning align-self-center" role="alert">
+            <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+          </div>
+          <div class="col-12 col-lg-4 mx-auto">
+            <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+              @csrf
+              <input type="hidden" name="receiver_id" value="3">
+              <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold ">Chateá con: Equipo de nivelo</button>
+            </form>
+          </div>
+          @endif
+        @endif
+
+    </div>
   </div>
   <div class="row pb-3">
     <div class="mt-3 d-flex align-items-center">
@@ -244,8 +256,7 @@
           <span class="fw-semibold">No podes realizar reseñas</span>
         </a>
         @else
-          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-            <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
+          <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn px-4 w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <span class="fw-semibold">Opiná sobre este lugar</span>
           </a>
         @endif
@@ -257,19 +268,11 @@
     @forelse($reviews as $review)
     <div class="col-12 col-md-6 col-xl-4 review-item">
       <div class="p-3 rounded rounded-3 bg-violeta-ultra-light review-content">
-        @if ($review->user_id == Auth::id())
-        <div class="d-flex justify-content-end">
-          <a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}">
-            <span class="icon ps-3">
-              <ion-icon name="create-outline" aria-label="Editar" size="large" style="color: #000;"></ion-icon>
-            </span>
-          </a>
-        </div>
-        @endif
         <div class="mx-2 border-bottom border-dark-subtle pb-3">
-          <p class="h5 mt-3 fw-bold text-center">Comentario de:  {{ $review->user->username}}</p>
+          <h4 class="h5 mt-3 fw-bold text-center">Comentario de  {{ $review->user->username}}</h4>
+          <p class="text-center"> {{ $review->created_at }}</p>
           <div class="d-flex justify-content-center">
-            <div class="col-12 mt-2 d-flex justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
               @switch($review->score)
                 @case($review->score > 0 && $review->score < 2)
                   <div class="d-flex">
@@ -342,13 +345,20 @@
           <div class="col-4"><a href="#"><img src="{{asset('storage/'. $review->pic_3) }}" class="card-img-top rounded rounded-2" alt="{{ $review->alt_pic_3 }}"></a></div>
           @endif
         </div>
-        <div class="row">
+
+        <div class="row pt-4">
+          @if ($review->user_id == Auth::id())
           <div class="col-6">
-            <p class="h6 ps-2 mt-1 fw-bold">Fecha: </p>
-            <p class="ps-2"> {{ $review->created_at }}</p>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Ver detalle</a></div>
           </div>
           <div class="col-6">
-            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white ">Ver detalle</a></div>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Editar</a>
+            </div>
+            @else
+            <div class="col-12">
+              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-50">Ver detalle</a></div>
+            </div>
+            @endif
           </div>
         </div>
       </div>
@@ -367,7 +377,49 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="showNearbyPlaces" tabindex="-1" aria-labelledby="showNearbyPlacesLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="nearbyPlacesModalLabel">{{$place->getFirstPartOfName()}}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="gmp-map" style="height: 500px;"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEetZLrPoooCSa5fQ9TQVTgKP_YadJpIk&callback=initMap&libraries=places&v=weekly" defer></script>
+
+<script>
+  let myLatLng = {
+    lat: {{ $place->latitude }},
+    lng: {{ $place->longitude }}
+  };
+  let map;
+  let marker;
+  function initMap(){
+    map = new google.maps.Map(document.getElementById("gmp-map"), {
+      zoom: 10,
+      center: myLatLng,
+      fullscreenControl: true,
+      zoomControl: true,
+      streetViewControl: true
+    });
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: "Estoy acá",
+      icon: "../../img/icons/icon-red.png" //<body data-base-url="{{ url('/') }}>
+    });
+  }
+</script>
 @endsection
 
 @section('footer')

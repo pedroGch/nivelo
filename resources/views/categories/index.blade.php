@@ -29,7 +29,7 @@
     @endif
     <div class="row pt-3">
       <div class="col-6 col-md-9 d-flex mt-3 ps-2">
-        <h2 class="h3 fw-bold">Categorías</h2>
+        <h1 class="h3 fw-bold">Categorías</h1>
         <span class="bg-movimiento ms-3"></span>
       </div>
       {{-- <div class="col-6 col-md-3 d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#showNearbyPlaces">
@@ -78,59 +78,60 @@
                   <div class="me-4"><img src="./img/icons/wheelchair.png" alt="icono silla de ruedas"></div>
                   <legend class="h5 fw-semibold pt-3">Características de accesibilidad:</legend>
                 </div>
-                <div class="d-flex justify-content-around mt-4 mb-2">
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="access_entrance" id="access_entrance" name="features[]"{{ in_array('access_entrance', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="access_entrance">
-                        Entrada
-                      </label>
+                <div class="mt-4 mb-2">
+                  <div class="row mx-2">
+                      <div class="col-4 form-check">
+                        <input class="form-check-input" type="checkbox" value="access_entrance" id="access_entrance" name="features[]"{{ in_array('access_entrance', $request->features ?? []) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="access_entrance">
+                          Entrada
+                        </label>
+                      </div>
+                      <div class="col-4 form-check">
+                          <input class="form-check-input" type="checkbox" value="assisted_access_entrance" id="assisted_access_entrance" name="features[]"{{ in_array('assisted_access_entrance', $request->features ?? []) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="assisted_access_entrance">
+                            Entrada accesible con asistencia
+                          </label>
+                      </div>
+                      <div class="col-4 form-check">
+                          <input class="form-check-input" type="checkbox" value="internal_circulation" id="internal_circulation" name="features[]"{{ in_array('internal_circulation', $request->features ?? []) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="internal_circulation">
+                            Circulación interna
+                          </label>
+                      </div>
+                      <div class="col-4 form-check">
+                          <input class="form-check-input" type="checkbox" value="bathroom" id="bathroom" name="features[]"{{ in_array('bathroom', $request->features ?? []) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="bathroom">
+                            Baño adaptado
+                          </label>
+                      </div>
+                      <div class="col-4 form-check">
+                        <input class="form-check-input" type="checkbox" value="adult_changing_table" id="adult_changing_table" name="features[]"{{ in_array('adult_changing_table', $request->features ?? []) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="adult_changing_table">
+                          Cambiador para adultos
+                        </label>
+                      </div>
+                      <div class="col-4 form-check">
+                          <input class="form-check-input" type="checkbox" value="parking" id="parking" name="features[]"{{ in_array('parking', $request->features ?? []) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="parking">
+                            Estacionamiento
+                          </label>
+                      </div>
+                      <div class="col-4 form-check">
+                          <input class="form-check-input" type="checkbox" value="elevator" id="elevator" name="features[]">
+                          <label class="form-check-label" for="elevator">
+                            Ascensor / plataforma
+                          </label>
+                      </div>
+                    </div>
+
                   </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="assisted_access_entrance" id="assisted_access_entrance" name="features[]"{{ in_array('assisted_access_entrance', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="assisted_access_entrance">
-                        Entrada accesible con asistencia
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="internal_circulation" id="internal_circulation" name="features[]"{{ in_array('internal_circulation', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="internal_circulation">
-                        Circulación interna
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="bathroom" id="bathroom" name="features[]"{{ in_array('bathroom', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="bathroom">
-                        Baño adaptado
-                      </label>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-around mb-4">
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="adult_changing_table" id="adult_changing_table" name="features[]"{{ in_array('adult_changing_table', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="adult_changing_table">
-                        Cambiador para adultos
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="parking" id="parking" name="features[]"{{ in_array('parking', $request->features ?? []) ? 'checked' : '' }}>
-                      <label class="form-check-label" for="parking">
-                        Estacionamiento
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="elevator" id="elevator" name="features[]">
-                      <label class="form-check-label" for="elevator">
-                        Ascensor / plataforma
-                      </label>
-                  </div>
-                </div>
               </fieldset>
             </div>
           <div class="my-3">
             <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="submit">Aplicar filtros</button>
-            <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
+            {{-- <button class="btn rounded-pill py-2 shadow-sm bg-verde-principal text-white fw-semibold" type="button" onclick="window.location.href='{{ route('searchPlaces') }}';">
               Resetear filtros
-                    </button>
+            </button> --}}
           </div>
           </div>
         </div>
@@ -145,7 +146,7 @@
         <div class="stablished-height col-12 d-flex">
           <img src="{{asset('storage/'.$category->image_cat) }}" alt="{{ $category->alt_img_cat }}" class="w-100 rounded rounded-3 shadow-sm img-fluid image-hover-bright">
           <div class="bg-violeta-dark rounded rounded-3 position-absolute start-0 bottom-0 mb-0 ms-2 shadow-sm image-hover-bright">
-            <h3 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h3>
+            <h2 class="fs-6 pt-3 pb-2 px-4 text-white">{{ $category->name }}</h2>
           </div>
         </div>
       </a>
@@ -158,7 +159,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="nearbyPlacesModalLabel">Lugares Cercanos</h5>
+        <p class="h5 modal-title" id="nearbyPlacesModalLabel">Lugares Cercanos</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

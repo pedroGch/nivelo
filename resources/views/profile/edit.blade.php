@@ -1,4 +1,3 @@
-
 <?php
 /**
  * @var \App\Models\Category $category
@@ -8,7 +7,7 @@
  * @var \App\Models\Review[] $madeReviews
  * @var $UserProfileActive
  */
- ?>
+?>
 
 @extends('layouts.main')
 
@@ -35,7 +34,7 @@
     <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
       <a href="{{ route('userProfile') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
       <div class="d-flex ">
-        <h2 class="h3 fw-bold">Editar mi perfil</h2>
+        <h1 class="h3 fw-bold">Editar mi perfil</h1>
         <span class="bg-movimiento ms-3"></span>
       </div>
     </div>
@@ -44,9 +43,10 @@
     <div class="col-12">
       <form action="{{ route('editProfileAction') }}" method="POST">
         @csrf
+        {{-- @method('PUT') --}}
         <div class="mb-4">
           <div class="form-floating">
-            <input type="username" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Nombre de usuario" value="{{ old('username') }}"
+            <input type="username" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Nombre de usuario" value="{{ old('username', auth()->user()->username) }}"
             @error('username') aria-describedby="error-username" aria-invalid="true" @enderror>
             <label for="username">Nombre de usuario</label>
             @error('username')
@@ -77,10 +77,25 @@
         </div>
         <div class="mb-4">
           <div class="form-floating">
-            <input type="text" name="bio" class="form-control" id="bio" placeholder="Biografía" value="{{ old('bio') }}">
+            <input type="text" name="bio" class="form-control" id="bio" placeholder="Biografía" value="{{ old('bio', auth()->user()->bio) }}">
             <label for="bio">Biografía</label>
           </div>
         </div>
+
+        <div class="mb-4">
+          <label for="avatar" class="form-label">Selecciona tu avatar:</label>
+          <div class="d-flex flex-wrap gap-3">
+            @for ($i = 1; $i <= 7; $i++)
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="avatar" id="0{{ $i }}" value="0{{ $i }}.jpg" {{ old('avatar', auth()->user()->avatar) == "avatar$i.jpg" ? 'checked' : '' }}>
+                <label class="form-check-label" for="avatar{{ $i }}">
+                  <img src="{{ url("/img/avatars/0$i.jpg") }}" alt="avatar{{ $i }}" class="rounded-circle shadow-sm" style="width: 140px; height: 140px; object-fit: cover;">
+                </label>
+              </div>
+            @endfor
+          </div>
+        </div>
+
         <div class="mb-4">
           <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
         </div>
@@ -101,6 +116,5 @@
 
 {{-- <x-NavbarBottom :UserProfileActive="$UserProfileActive ? 'true' : 'false'" /> --}}
 <x-NavbarBottom/>
-
 
 @endsection

@@ -198,6 +198,10 @@ a.bg-violeta-principal:hover, button.bg-violeta-principal:hover {
   background-color: #fff;
 }
 
+.strong-without-style{
+  font-weight: 400;
+}
+
 .btn-form-w{
   width: 135px;
   height: 52px;
@@ -532,10 +536,11 @@ table {
   width: 300px; /* Ancho del contenedor */
 }
 .mensaje-extracto-contenedor{
-  width: 150px;
+  /* width: 300px; */
   overflow: hidden; /* Ocultar texto que exceda el ancho */
   white-space: nowrap; /* Impide que el texto se divida en varias líneas */
   text-overflow: ellipsis;
+  font-size: 12px;
 }
 
 /* Estilos para los mensajes */
@@ -546,25 +551,29 @@ table {
   max-width: 70%; /* Anchura máxima de los mensajes */
 }
 .sent-message {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--verde-light);
+  color: #000;
   margin-left: auto; /* Alinear mensajes enviados a la derecha */
 }
 .received-message {
-  background-color: #f0f0f0;
+  background-color: var(--violeta-ultra-light);
   color: #000;
 }
 
 /* Ajustar el margen izquierdo del contenedor principal */
 .custom-container {
 
-  height: calc(94vh - 82px - 63px); /* Establecemos altura del 100% de la ventana del navegador */
+  height: calc(102vh - 82px - 63px); /* Establecemos altura del 100% de la ventana del navegador */
   /*overflow-y: auto;*/ /* Habilitamos el desplazamiento vertical si el contenido excede la altura */
 }
 
 .conversation{
-  height: calc(86vh - 82px - 63px);
+  /* height: calc(86vh - 82px - 63px); */
+  padding: 1rem;
+  height: calc(80vh - 82px - 63px);
   overflow-y: auto;
+  background-color: #f0f0f01c; /* Color de fondo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 /* Estilo para el borde derecho */
 .conversations-border {
@@ -573,6 +582,16 @@ table {
   position: relative; /* Establecemos el posicionamiento relativo para el contenedor */
   overflow-y:auto
 }
+
+.selected-chat {
+  background-color: #f0f0f01c; /* Color de fondo para el chat seleccionado */
+  border-left: 5px solid var(--naranja-principal);
+  padding-left: 1rem;/* Indicador visual para el chat seleccionado */
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
 
 /* Estilo para fijar el campo de entrada y el botón al fondo */
 
@@ -652,56 +671,43 @@ h2.titulo-h1-mb {
 /* END ALTO FIJO EN REVIEWS */
 
 /* ALTO FIJO EN CARDS DE LUGARES */
-.place-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Espacio entre las tarjetas */
-}
-
+/* Que todas las cards tengan el mismo alto */
 .place-card {
-  width: 100%; /* Ocupa el ancho disponible */
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc; /* Borde para visualización */
+  height: 100%;
 }
 
-.place-image-wrapper {
+.place-card .place-image-wrapper {
+  flex: 1 0 auto;
+  overflow: hidden;
+  height: 0;
+  padding-top: 100%; /* Mantener proporción cuadrada */
   position: relative;
-  width: 100%;
-  padding-top: 100%; /* Hace que el contenedor sea cuadrado */
-  overflow: hidden; /* Oculta cualquier desbordamiento */
 }
 
-.place-image {
+.place-card .place-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la imagen como un cover */
+  object-fit: cover;
 }
 
-.place-content {
-  flex-grow: 1;
+.place-card .card-body {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem; /* Espaciado interno */
 }
 
-.place-name {
-  font-size: 1.25rem; /* Tamaño de fuente del nombre del lugar */
-  font-weight: bold;
-  margin-bottom: 0.5rem; /* Espaciado inferior del nombre */
-}
-
-.place-details {
-  font-size: 1rem; /* Tamaño de fuente de los detalles */
-  margin-bottom: 0.5rem; /* Espaciado inferior de los detalles */
-}
-
-.place-rating {
-  display: flex;
-  align-items: center;
+.place-card .place-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de líneas que queremos mostrar */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3em; /* Aproximadamente la altura de dos líneas de texto */
 }
 
 /* END ALTO FIJO EN CARDS DE LUGARES */

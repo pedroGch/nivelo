@@ -185,6 +185,7 @@ class HomeController extends Controller
     return view('admin.dashboard', [
       'noticias' => Blog::all(),
       'lugares' => Place::all(),
+      'lugaresPendientes' => Place::where('status', 'pending')->get(),
       'usuarios' => User::where('rol', 'user')->get(),
       'suscriptores' => Subscriber::all(),
       'reviews' => Review::all(),

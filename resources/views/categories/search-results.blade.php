@@ -29,16 +29,13 @@
     @endif
   </div>
   <div class="row">
-    <div class="col-6 col-md-9 d-flex mt-3 align-items-center">
-      <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mb-2" height="20px"></a>
-      <h2 class="h5 fw-bold ps-2">Resultados de tu búsqueda:</h2>
-    </div>
-    <div class="col-6 col-md-3 d-flex justify-content-end">
-      <div>
-        <a class="btn rounded-pill pt-3 px-3 pb-3 shadow-sm-sm bg-verde-principal text-white w-standard " >
-          <img src="{{ url('/img/location.png') }}" alt="icono lugar" class="me-1 mb-2">
-          <span class="fw-semibold mt-2">Ver mapa</span>
-        </a>
+    <div class="row border-bottom border-dark-subtle pb-3 d-flex">
+      <div class="col-12 col-md-9 d-flex mt-3 align-items-center">
+        <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1  mb-2" height="20px"></a>
+        <div class="d-flex ">
+          <h1 class="h3 fw-bold">Resultados de tu búsqueda</h1>
+          <span class="bg-movimiento ms-3"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -134,22 +131,28 @@
       </form>
     </div>
   </div>
-  <div class="row g-4 my-2 pt-2 d-flex justify-content-around place-container">
+  <div class="row g-4 my-2 mb-5 pt-2 d-flex justify-content-around">
     @forelse ($placesResult as $place)
-    <div class="card col-6 col-lg-3 shadow-sm-sm place-item mb-3" style="width: 18rem;">
-      @if($place->notablePlace)
-      <div class="position-absolute top-0 end-0 pt-1">
+    <div class="card col-6 col-lg-3 shadow-sm-sm place-card mb-4 position-relative">
+      {{-- @if($place->notablePlace) --}}
+      @if($place->notablePlace || $place->place_id == 5)
+      <div class="position-absolute top-0 end-0 pt-1 z-3">
         <img src="/img/icons/notable-place.png" alt="lugar destacado" style="height: 70px">
       </div>
       @endif
       <div class="place-image-wrapper">
         <a href="{{ route('placeDetail', ['category_id' => $place->categories->category_id, 'place_id' => $place->place_id  ] ) }}" class="text-reset text-decoration-none">
-          <img src="{{asset('storage/'. $place->main_img) }}" class="place-image img-fluid image-hover-bright" alt="{{ $place->alt_main_img }}">
+          <img src="{{asset('storage/'. $place->main_img) }}" class="card-img-top img-fluid place-image image-hover-bright" alt="{{ $place->alt_main_img }}">
       </div>
-      <div class="card-body place-content">
+      <div class="card-body d-flex flex-column">
         <p class="h6">{{ $place->categories->name }}</p>
-        <h3 class="h5 fw-bold mt-3">{{ $place->getFirstPartOfName() }}</h3>
-        <p class="h6">{{ $place->city }}</p>
+        <h2 class="h5 fw-bold mt-3 place-name">{{ $place->getFirstPartOfName() }}</h2>
+        @if($place->city != null)
+          <p class="h6">{{ $place->city }}</p>
+          @else
+          <div class="pt-4">
+          </div>
+          @endif
         <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
           @switch($place->totalAverageScore)
             @case($place->totalAverageScore >= 1 && $place->totalAverageScore < 2)

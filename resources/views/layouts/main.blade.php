@@ -19,7 +19,7 @@
 
 <body>
   <header>
-    <h1 class="d-none">Nivelo</h1>
+    <p class="h2 d-none">Nivelo</p>
     @yield('header')
   </header>
 

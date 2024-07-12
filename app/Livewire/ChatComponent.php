@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -17,6 +16,7 @@ class ChatComponent extends Component
   public $chats = [];
   public $chat_id;
   public $selectedChat;
+  public $selectedChatId;
 
   public function mount($chat_id = null)
   {
@@ -29,40 +29,45 @@ class ChatComponent extends Component
   }
 
   public function loadChats()
-  {
+{
     $user_id = Auth::id();
     $this->chats = Chat::where('sender_id', $user_id)
-      ->orWhere('receiver_id', $user_id)
-      ->get();
-  }
+        ->orWhere('receiver_id', $user_id)
+        ->with(['messages' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])
+        ->get()
+        ->sortByDesc(function ($chat) {
+            return $chat->messages->first()->created_at ?? $chat->created_at;
+        });
+}
 
-  public function loadMessages()
-  {
+public function loadMessages()
+{
     if ($this->chat_id) {
-      $messages = Message::where('chat_id', $this->chat_id)->get();
-      $this->conversation = [];
+        $messages = Message::where('chat_id', $this->chat_id)->get();
+        $this->conversation = [];
 
-      foreach ($messages as $m)
-      {
-        if (isset($m->user_id)) {
-          $this->conversation[] = [
-            'message'  => $m->message,
-            'user_id'  => $m->user_id
-          ];
-        } else {
-          $this->conversation[] = [
-            'message'  => $m->message,
-            'user_id'  => null
-          ];
+        foreach ($messages as $m) {
+            if (isset($m->user_id)) {
+                $this->conversation[] = [
+                    'message'  => $m->message,
+                    'user_id'  => $m->user_id,
+                    'created_at' => $m->created_at->diffForHumans(),
+                ];
+            } else {
+                $this->conversation[] = [
+                    'message'  => $m->message,
+                    'user_id'  => null,
+                    'created_at' => $m->created_at->diffForHumans(),
+                ];
+            }
         }
-      }
     }
-  }
+}
+
   public function submitMessage()
   {
-    //MessageEvent::dispatch(Auth::user()->id, $this->chat_id, $this->message);
-    //$this->message = "";
-
     $user_id = Auth::user()->id;
     $chat_id = $this->chat_id;
     $message = $this->message;
@@ -73,37 +78,49 @@ class ChatComponent extends Component
     // Limpiar el campo del mensaje
     $this->message = "";
   }
+
   #[On('echo:chat-channel,MessageEvent')]
   public function listenForMessage($data)
   {
-
     if ($data['chat_id'] == $this->chat_id) {
       $this->conversation[] = [
-
-          'message'  => $data['message'],
-          'user_id'  => $data['user_id']
+        'message'  => $data['message'],
+        'user_id'  => $data['user_id']
       ];
-  }
+    }
   }
 
   public function chatInbox(Chat $chat)
   {
-    //$this->authorize('view', $chat);
     $existingChats = true;
     $chatInboxActive = true;
     $chats = Chat::all();
     if ($chats->isEmpty()){
       $existingChats = false;
     }
-//dd($existingChats);
+
     return view('chat.chat', compact('chat', 'chatInboxActive', 'existingChats'));
   }
 
   public function selectChat($chat_id)
   {
       $this->chat_id = $chat_id;
+      $this->selectedChatId = $chat_id;
       $this->loadMessages();
+      $this->markMessagesAsRead($chat_id); // Llamar al método para marcar mensajes como leídos
   }
+
+  public function markMessagesAsRead($chat_id)
+  {
+      $chat = Chat::find($chat_id);
+
+      if ($chat && $chat->receiver_id == Auth::id()) {
+          Message::where('chat_id', $chat_id)
+              ->where('read', false)
+              ->update(['read' => true]);
+      }
+  }
+
   public function render()
   {
     return view('livewire.chat-component', ['chat_id' => '8']);
@@ -114,6 +131,7 @@ class ChatComponent extends Component
       $request->validate([
           'receiver_id' => 'required|exists:users,id',
       ]);
+
       $existingChats = true;
       $sender_id = Auth::id();
       $receiver_id = $request->input('receiver_id');
@@ -135,12 +153,19 @@ class ChatComponent extends Component
           ]);
       }
 
+      // Contar los mensajes no leídos en todos los chats del usuario autenticado
+      $unreadMessages = Message::whereHas('chat', function ($query) {
+          $query->where('receiver_id', Auth::id());
+      })->where('read', false)->count();
+
       $chatInboxActive = true;
-      //return redirect()->route('chatInbox', ['chat_id' => $chat->id]);
+
+      // Pasar la variable unreadMessages a la vista
       return view('chat.chat', [
-        'chat_id' => $chat->id,
-        'chatInboxActive' => $chatInboxActive,
-        'existingChats' => $existingChats,
+          'chat_id' => $chat->id,
+          'chatInboxActive' => $chatInboxActive,
+          'existingChats' => $existingChats,
+          'unreadMessages' => $unreadMessages,
       ]);
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PlaceCreated;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
@@ -11,8 +12,7 @@ use App\Models\UserMoreInfo;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Events\PlaceCreated;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Validator;
 
 class PlaceController extends Controller
 {
@@ -139,6 +139,48 @@ class PlaceController extends Controller
             ])
             ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
     }
+
+    $latitude = $request->latitude;
+    $longitude = $request->longitude;
+
+    // Verificar si ya existe un lugar con las mismas coordenadas
+    $existingPlace = Place::where('latitude', $latitude)->where('longitude', $longitude)->first();
+
+    if ($existingPlace) {
+        return redirect()->back()->with('status.message', 'Ya existe un lugar con las mismas coordenadas')->with('status.type', 'warning');
+    }
+
+    $newPlace = Place::Create([
+      'name' => $request->place_name,
+      'address' => $request->addressPlace,
+      'city' => $request->cityPlace,
+      'province' => $request->provincePlace,
+      'description' => $request->place_description,
+      'main_img' => $data,
+      'alt_main_img' => 'imagen subida por el usuario '.$userId,
+      'access_entrance' => $request->acces_entrance === 'on',
+      'assisted_access_entrance' => $request->asisted_entrance === 'on',
+      'internal_circulation' => $request->internal_circulation === 'on',
+      'bathroom' => $request->bathroom === 'on',
+      'adult_changing_table' => $request->adult_changing_table === 'on',
+      'parking' => $request->parking === 'on',
+      'elevator' => $request->elevator === 'on',
+      'src_info_id' => 2,
+      'review_id' => null,
+      'category_id' => $request->category,
+      'uploaded_from_id' => $userId,
+      'latitude'=> $request->latitude,
+      'longitude'=> $request->longitude,
+      'status' => 0, // Estado inicial del lugar: pendiente de aprobación
+    ]);
+
+    $placeId = $newPlace->place_id;
+    return redirect()
+      ->route('addReviewForm', [
+        'category_id' => $request->category,
+        'place_id' => $placeId,])
+      ->with('status.message', '¡El lugar fue cargado correctamente!, ahora podés calificarlo.');
+  }
 
     /**
    * Retorna una vista con los resultados
@@ -294,6 +336,19 @@ class PlaceController extends Controller
     $user = Auth::user();
     $favorites = $user->favoritePlaces;
 
+    foreach ($favorites as $place) {
+      $totalScores = Review::where('place_id', $place->place_id)->pluck('score')->toArray();
+
+      if (count($totalScores) > 0) {
+        $totalScore = array_sum($totalScores);
+        $averageScore = $totalScore / count($totalScores);
+        $averageScore = max(1, min(5, $averageScore));
+        $place->totalAverageScore = $averageScore;
+      } else {
+        $place->totalAverageScore = 3; // Otra opción si no hay reseñas
+      }
+    }
+
     $favoritesPlacesActive = true;
     return view('places.favoritePlaces', [
       "placesResult" => $favorites,
@@ -382,9 +437,70 @@ class PlaceController extends Controller
    */
   public function authorizePlace($id)
   {
-    $place = Place::findOrFail($id);
-    $place->status = true;
+      $place = Place::findOrFail($id);
+      $place->status = 1;
+      $place->save();
+      return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
+  }
+
+  public function editPlaceForm($id)
+  {
+    $place = Place::where('place_id', $id)->first();
+    $addPlaceActive = true;
+    return view('places.edit-place-form', [
+      "place" => $place,
+      "categories" => Category::all(),
+      "addPlaceActive" => $addPlaceActive,
+    ]);
+  }
+
+  public function editPlaceAction(Request $request)
+  {
+    $place = Place::find($request->input('placeId'));
+
+     // Si el lugar no existe, redirigir con un mensaje de error
+    if (!$place) {
+      return redirect()->route('AdminPlacesView')->with('status', [
+        'type' => 'danger',
+        'message' => 'El lugar no existe.'
+      ]);
+    }
+
+    // Validar los datos entrantes
+    $validator = Validator::make($request->all(), [
+      'category' => 'required|exists:categories,category_id',
+      'place_description' => 'required|string',
+      // 'access_entrance' => 'nullable|boolean',
+      // 'asisted_entrance' => 'nullable|boolean',
+      // 'internal_circulation' => 'nullable|boolean',
+      // 'bathroom' => 'nullable|boolean',
+      // 'adult_changing_table' => 'nullable|boolean',
+      // 'parking' => 'nullable|boolean',
+      // 'elevator' => 'nullable|boolean'
+    ]);
+    // Si la validación falla, redirigir con errores
+    if ($validator->fails()) {
+      return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Actualizar los datos del lugar
+    $place->category_id = $request->input('category');
+    $place->description = $request->input('place_description');
+    $place->access_entrance = $request->has('acces_entrance');
+    $place->assisted_access_entrance = $request->has('asisted_entrance');
+    $place->internal_circulation = $request->has('internal_circulation');
+    $place->bathroom = $request->has('bathroom');
+    $place->adult_changing_table = $request->has('adult_changing_table');
+    $place->parking = $request->has('parking');
+    $place->elevator = $request->has('elevator');
+
+    // Guardar los cambios en la base de datos
     $place->save();
-    return redirect()->back()->with('status.message', 'Lugar autorizado')->with('status.type', 'success');
+
+     // Redirigir con un mensaje de éxito
+    return redirect()->route('AdminPlacesView')->with('status', [
+      'type' => 'success',
+      'message' => 'El lugar ha sido actualizado exitosamente.'
+    ]);
   }
 }

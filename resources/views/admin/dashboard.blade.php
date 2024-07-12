@@ -2,6 +2,7 @@
 /**
  * @var \App\Models\Noticia[] $noticias
  * @var \App\Models\Place[] $lugares
+ * @var \App\Models\Place[] $lugaresPendientes
  * @var \App\Models\User[] $usuarios
  * @var \App\Models\Subscriber[] $suscriptores
  * @var \App\Models\Review[] $reviews
@@ -30,7 +31,7 @@
         <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
           <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Panel de administración</h2>
+            <h1 class="h3 fw-bold">Panel de administración</h1>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
@@ -54,9 +55,13 @@
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+                {{ $lugaresPendientes->count() }}
+                <span class="visually-hidden">Lugares pendientes de aprobación</span>
+              </span>
               <h3 class="mt-2 text-center">Lugares y categorias</h3>
-              <p class="text-center">Cantidad de lugares: {{ $lugares->count() }}</p>
+              <p class="text-center">Total: {{ $lugares->count() }} | Pendientes: {{ $lugaresPendientes->count() }} </p>
               <div class="mb-2">
                 <a href="{{route('AdminPlacesView')}}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Administrar</a>
               </div>
@@ -83,7 +88,11 @@
           </div>
 
           <div class="col-md-4 mb-3">
-            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
+            <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-naranja-principal text-dark">
+                {{ $reviewsPendientes->count() }}
+                <span class="visually-hidden">Reseñas pendientes de aprobación</span>
+              </span>
               <h3 class="mt-2 text-center">Reseñas</h3>
               <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: {{ $reviewsPendientes->count() }} </p>
               <div class="mb-2">

@@ -18,7 +18,7 @@
         <div class="col-12 my-2 d-flex border-bottom border-dark-subtle pb-3">
           <a href="{{ route('categories') }}"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="me-1 mt-2 mb-2" height="20px"></a>
           <div class="d-flex ">
-            <h2 class="h3 fw-bold">Blog</h2>
+            <h1 class="h3 fw-bold">Blog</h1>
             <span class="bg-movimiento ms-3"></span>
           </div>
         </div>
@@ -28,7 +28,7 @@
           @foreach ($noticias as $noticia)
           <article class="col-12 col-lg-4 py-3">
             <div class="my-2">
-              <h3>{{ $noticia->title }}</h3>
+              <h2>{{ $noticia->title }}</h2>
               <p> {{ $noticia->created_at }}</p>
             </div>
             <div class="imagenDeTapa">

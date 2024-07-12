@@ -18,7 +18,7 @@
     <div class="col-12">
       <div class="d-flex">
         <a href="#" onclick="event.preventDefault(); window.history.back();"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="mt-2 me-4" height="40px"></a>
-        <h2 class="h2 fw-bolder mt-2 mb-3">Acerca de nivelo</h2>
+        <h1 class="h2 fw-bolder mt-2 mb-3">Acerca de nivelo</h1>
       </div>
       <p>Versión: 1.0.0</p>
       <p><strong>Nivelo es una aplicación web desarrollada en Argentina por un equipo de jóvenes y apasionados desarrolladores comprometidos en brindar soluciones innovadoras a la comunidad a través de las nuevas tecnologías. Nuestra aplicación es completamente gratuita y está diseñada para compartir experiencias y descubrir lugares en todo el país.</strong></p>
