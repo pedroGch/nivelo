@@ -210,27 +210,33 @@
       <p class="ps-2">{!! nl2br($place->description) !!}</p>
     </div>
   </div>
-  <div class="row my-3 d-flex justify-content-center text-center border-bottom border-dark-subtle pb-3">
-    <p>{{ $place->src_information->name }}</p>
-    @if($place->src_information->src_info_id == 2)
-    <p>Lugar cargado por: {{ $place->users->username }} </p>
-      @if($place->users->id != Auth::id())
-        <form action="{{ route('startChat') }}" method="POST" class="mb-3">
-          @csrf
-          <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
-          <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
-        </form>
-      @else
-      <div class="alert alert-warning align-self-center" role="alert">
-        <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+  <div class="container">
+    <div class="row my-3 text-center border-bottom border-dark-subtle pb-3">
+      <div class="col-12">
+        <p>{{ $place->src_information->name }}</p>
+        @if($place->src_information->src_info_id == 2)
+        <p>Lugar cargado por: {{ $place->users->username }} </p>
+          @if($place->users->id != Auth::id())
+            <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+              @csrf
+              <input type="hidden" name="receiver_id" value="{{ $place->users->id }}">
+              <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: {{ $place->users->username }}</button>
+            </form>
+          @else
+          <div class="alert alert-warning align-self-center" role="alert">
+            <p><strong>Si cometiste un error en los datos ingresados</strong> o querés realizar una modificación, pór favor contactate con el Equipo de nivelo para que podamos resolverlo.</p>
+          </div>
+          <div class="col-12 col-lg-4 ">
+            <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+              @csrf
+              <input type="hidden" name="receiver_id" value="3">
+              <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold ">Chateá con: Equipo de nivelo</button>
+            </form>
+          </div>
+          @endif
+        @endif
       </div>
-      <form action="{{ route('startChat') }}" method="POST" class="mb-3">
-        @csrf
-        <input type="hidden" name="receiver_id" value="3">
-        <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold w-25">Chateá con: Equipo de nivelo</button>
-      </form>
-      @endif
-    @endif
+    </div>
   </div>
   <div class="row pb-3">
     <div class="mt-3 d-flex align-items-center">
