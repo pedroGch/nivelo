@@ -1,43 +1,13 @@
 <?php
 
-// namespace App\Listeners;
-
-// use App\Events\PlaceCreated;
-// use App\Models\Notification;
-// use App\Models\User;
-// use Illuminate\Contracts\Queue\ShouldQueue;
-// use Illuminate\Queue\InteractsWithQueue;
-
-// class SendPlaceNotification
-// {
-//     public function handle(PlaceCreated $event)
-//     {
-//         $place = $event->place;
-//         $users = User::all(); // Después filtrar usuarios por proximidad acá
-
-//         foreach ($users as $user) {
-//             if ($this->isNearby($user, $place)) {
-//                 Notification::create([
-//                     'user_id' => $user->id,
-//                     'message' => 'Nuevo lugar cercano: ' . $place->name,
-//                 ]);
-//             }
-//         }
-//     }
-
-//     private function isNearby($user, $place)
-//     {
-//         // Implementa la lógica para determinar si el lugar es cercano al usuario
-//         return true; // Placeholder
-//     }
-// }
-
 namespace App\Listeners;
 
 use App\Events\PlaceCreated;
 use App\Models\Notification;
 use App\Models\User;
 use App\Services\LocationService;
+use App\Mail\NewNotification;
+use Illuminate\Support\Facades\Mail;
 
 class SendPlaceNotification
 {
@@ -55,12 +25,15 @@ class SendPlaceNotification
 
         foreach ($users as $user) {
             if ($this->isNearby($user, $place)) {
-                Notification::create([
+                $notification = Notification::create([
                     'user_id' => $user->id,
                     'message' => 'Nuevo lugar cercano: ' . $place->name,
                     'category_id' => $place->category_id,
                     'place_id' => $place->place_id,
                 ]);
+
+                // Enviar correo electrónico de notificación
+                Mail::to($user->email)->send(new NewNotification($notification));
             }
         }
     }
