@@ -15,7 +15,7 @@
 @section('content')
 
 <div class="mt-5 pt-5 container">
-  <div class="row my-5">
+  <div class="row mb-5">
     <div class="col-12">
       <div class="d-flex">
         <a href="#" onclick="event.preventDefault(); window.history.back();"><img src="{{ url('/img/icons/back_icon.svg') }}" alt="atrás" class="mt-2 me-4" height="40px"></a>

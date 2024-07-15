@@ -80,43 +80,43 @@
                 </div>
                 <div class="mt-4 mb-2">
                   <div class="row mx-2">
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                         <input class="form-check-input" type="checkbox" value="access_entrance" id="access_entrance" name="features[]"{{ in_array('access_entrance', $request->features ?? []) ? 'checked' : '' }}>
                         <label class="form-check-label" for="access_entrance">
                           Entrada
                         </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                           <input class="form-check-input" type="checkbox" value="assisted_access_entrance" id="assisted_access_entrance" name="features[]"{{ in_array('assisted_access_entrance', $request->features ?? []) ? 'checked' : '' }}>
                           <label class="form-check-label" for="assisted_access_entrance">
                             Entrada accesible con asistencia
                           </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                           <input class="form-check-input" type="checkbox" value="internal_circulation" id="internal_circulation" name="features[]"{{ in_array('internal_circulation', $request->features ?? []) ? 'checked' : '' }}>
                           <label class="form-check-label" for="internal_circulation">
                             Circulación interna
                           </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                           <input class="form-check-input" type="checkbox" value="bathroom" id="bathroom" name="features[]"{{ in_array('bathroom', $request->features ?? []) ? 'checked' : '' }}>
                           <label class="form-check-label" for="bathroom">
                             Baño adaptado
                           </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                         <input class="form-check-input" type="checkbox" value="adult_changing_table" id="adult_changing_table" name="features[]"{{ in_array('adult_changing_table', $request->features ?? []) ? 'checked' : '' }}>
                         <label class="form-check-label" for="adult_changing_table">
                           Cambiador para adultos
                         </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                           <input class="form-check-input" type="checkbox" value="parking" id="parking" name="features[]"{{ in_array('parking', $request->features ?? []) ? 'checked' : '' }}>
                           <label class="form-check-label" for="parking">
                             Estacionamiento
                           </label>
                       </div>
-                      <div class="col-4 form-check">
+                      <div class="col-12 col-lg-4 form-check">
                           <input class="form-check-input" type="checkbox" value="elevator" id="elevator" name="features[]">
                           <label class="form-check-label" for="elevator">
                             Ascensor / plataforma
