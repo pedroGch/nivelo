@@ -43,7 +43,7 @@
         <p>Equipo de <b>nivelo</b></p>
     </div>
     <div class="container footer">
-        <p><b>© 2024 Nivelo.</b> Todos los derechos reservados.</p>
+        <p><b>© 2024 nivelo.</b> Todos los derechos reservados.</p>
     </div>
 </body>
 </html>

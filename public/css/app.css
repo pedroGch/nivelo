@@ -45,7 +45,9 @@ body {
   /*background-color: #f2eaff;*/
   background-color: var(--naranja-principal);
 }
-
+.color-naranja{
+  color: var(--naranja-principal);
+}
 .h-100px {
   height: 100px;
 }

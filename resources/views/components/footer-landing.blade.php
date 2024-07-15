@@ -60,7 +60,7 @@
        </div>
        <div>
         <hr>
-        <p><b>© 2024 Nivelo.</b> Todos los derechos reservados.</p>
+        <p><b>© 2024 nivelo.</b> Todos los derechos reservados.</p>
        </div>
      </div>
    </div>

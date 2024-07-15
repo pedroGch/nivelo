@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row p-t-b-80px p-t-b-200px">
         <div class="col-lg-6 bg-white p-100px rounded-5">
-          <h1 class="fw-bolder titulo-h1 titulo-h1-mb">Conocé nivelo</h1>
+          <h1 class="titulo-h1 titulo-h1-mb">Conocé <span class="color-naranja fw-bolder">nivelo</span></h1>
           <p class="h5 lh-base pt-md-2 pt-lg-3">La App que revolucionará la accesibilidad para personas con movilidad reducida en nuestro país.</p>
           <a href="{{ route('home') }}#app"><button class="mt-4 btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold w-50">Saber más</button></a>
         </div>
@@ -56,7 +56,7 @@
     <div class="row d-flex justify-content-center py-4 px-3 px-lg-0">
       <div class="col-12 col-lg-6 pb-5">
         <h2 class="fw-bolder titulo-h1 titulo-h1-mb mt-5 text-white">La app</h2>
-        <p class="text-white pe-4 pt-3 h5 lh-base"><strong class="strong-without-style">Si tenés movilidad reducida y antes de ir a un lugar preguntás cómo es, pedís fotos de la entrada, las puertas, los baños, chequeás en Google Maps cómo es el acceso, nivelo es para vos.</strong></p>
+        <p class="text-white pe-4 pt-3 h5 lh-base"><strong class="strong-without-style">Si tenés movilidad reducida y antes de ir a un lugar preguntás cómo es, pedís fotos de la entrada, las puertas, los baños, chequeás en Google Maps cómo es el acceso, <span class="color-naranja fw-bolder">nivelo</span> es para vos.</strong></p>
         <p class="text-white pe-4 pt-3 h5 lh-base">Vas a poder navegar a través del mapa y conocer lugares cercanos, realizar búsquedas por categoría o nombre de lugares y si otra persona ya lo subió, podrás acceder a su reseña completa, contribuir con tu opinión ¡y también agregar lugares nuevos!.</p>
       </div>
       <div class="col-12 col-lg-6 d-flex justify-content-center">
@@ -69,7 +69,7 @@
 <div>
   <div class="container py-5">
     <div class="row d-flex justify-content-center pb-5 px-3 px-lg-0">
-      <h2 class="text-center fw-bolder titulo-h1 titulo-h1-mb mt-4 pb-5">Con nivelo podés</h2>
+      <h2 class="text-center fw-bolder titulo-h1 titulo-h1-mb mt-4 pb-5">Con <span class="color-naranja fw-bolder">nivelo</span> podés</h2>
       <div class="col-lg-8 d-flex justify-content-center">
         <img src="{{ url('/img/pantalla-nuevo-lugar.jpg') }}" alt="pantalla de celular y notebook mostrando la aplicación" class="img-fluid">
       </div>
