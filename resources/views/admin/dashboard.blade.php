@@ -77,7 +77,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
+          {{-- <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light">
               <h3 class="mt-2 text-center">Suscriptores</h3>
               <p class="text-center">Cantidad: {{ $suscriptores->count() }}</p>
@@ -85,7 +85,7 @@
                 <a href="#" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Administrar</a>
               </div>
             </div>
-          </div>
+          </div> --}}
 
           <div class="col-md-4 mb-3">
             <div class="p-3 rounded rounded-3 bg-violeta-ultra-light position-relative">

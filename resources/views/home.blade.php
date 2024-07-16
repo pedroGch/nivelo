@@ -104,7 +104,7 @@
 
 <div class="bg-naranja-principal pt-2 mb-5">
 </div>
-<div class="container py-5">
+{{-- <div class="container py-5">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-lg-6 d-flex justify-content-center pb-lg-5">
       <img src="{{ url('/img/stand.jpg') }}" alt="stand presentación de la marca" class="img-fluid rounded-5">
@@ -154,7 +154,7 @@
   </div>
 </div>
 <div class="bg-naranja-principal pt-2 mb-5">
-</div>
+</div> --}}
 
 <div>
   <div class="container py-5">
