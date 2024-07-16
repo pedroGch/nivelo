@@ -52,9 +52,11 @@
                                     <span class="fw-semibold">Marcar como leído</span>
                                 </button>
                             </form>
+                            @if($notification->category_id != NULL && $notification->place_id != NULL)
                             <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white ms-3 px-4">
                                 <span class="fw-semibold">Ver lugar</span>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>
