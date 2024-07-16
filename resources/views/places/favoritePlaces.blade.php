@@ -128,7 +128,7 @@
       </div>
 
       <div>
-        <p class="h4 lh-md text-center px-5 pt-5">Con nivelo podés buscar lugares por nombre, categoría y características de accesibilidad, o navegar por el mapa y descubrir lugares cercanos.</p>
+        <p class="h4 lh-md text-center px-5 pt-5">Con <span class="color-naranja fw-bolder">nivelo</span> podés buscar lugares por nombre, categoría y características de accesibilidad, o navegar por el mapa y descubrir lugares cercanos.</p>
       </div>
 
       <div class="my-4 d-flex justify-content-center">
