@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\PlaceCreated::class => [
             \App\Listeners\SendPlaceNotification::class,
         ],
+        \App\Events\UserStatusChanged::class => [
+            \App\Listeners\SendUserStatusNotification::class,
+        ],
     ];
 
     /**

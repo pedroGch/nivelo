@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserStatusChanged;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\User;
@@ -55,6 +56,9 @@ class UserController extends Controller
     $user = User::where('id', $id)->first();
     $user->status = !$user->status;
     $user->save();
+    // Despachar el evento
+    event(new UserStatusChanged($user));
+
     return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con éxito')->with('status.type', 'success');
   }
 }
