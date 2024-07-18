@@ -27,7 +27,7 @@ class SendPlaceNotification
             if ($this->isNearby($user, $place)) {
                 $notification = Notification::create([
                     'user_id' => $user->id,
-                    'message' => 'Nuevo lugar cercano: ' . $place->name,
+                    'message' => '<b>Nuevo lugar cercano:</b><br> ' . $place->name,
                     'category_id' => $place->category_id,
                     'place_id' => $place->place_id,
                 ]);

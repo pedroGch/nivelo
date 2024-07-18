@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserStatusChanged;
+use App\Mail\NewNotification;
 use App\Models\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -21,12 +22,12 @@ class SendUserStatusNotification
         $user = $event->user;
 
         // Crear la notificación en la base de datos
-        Notification::create([
+        $notification = Notification::create([
             'user_id' => $user->id,
-            'message' => $user->status ? 'Tu cuenta ha sido desbloqueada.' : 'Tu cuenta ha sido bloqueada.',
+            'message' => $user->status ? 'Tu cuenta ha sido <b>desbloqueada</b>.' : 'Tu cuenta ha sido <b>bloqueada</b>.',
         ]);
 
-        // Enviar el correo electrónico
-        // Mail::to($user->email)->send(new UserStatusChangedMail($user));
+        // Enviar correo electrónico de notificación
+        Mail::to($user->email)->send(new NewNotification($notification));;
     }
 }

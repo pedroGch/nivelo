@@ -42,7 +42,7 @@
             @if ($notification->read == 0)
                 <div class="col-10 shadow-sm my-4">
                     <div class="card-body">
-                        <p class="h5">{{ $notification->message }}</p>
+                        <p class="h5">{!! $notification->message !!}</p>
                         <p class="h6">{{ $notification->created_at->diffForHumans() }}</p>
                         <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
                             <form action="{{ route('notificationsRead', $notification->id) }}" method="GET">
