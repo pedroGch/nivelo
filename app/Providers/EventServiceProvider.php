@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\UserStatusChanged::class => [
             \App\Listeners\SendUserStatusNotification::class,
         ],
+        \App\Events\UserRegistered::class => [
+            \App\Listeners\SendWelcomeNotification::class,
+        ],
     ];
 
     /**
