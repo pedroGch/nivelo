@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Models\User;
 //use App\Models\UserMoreInfo;
 use App\Models\UserDefinition;
@@ -118,8 +119,11 @@ class SessionController extends Controller
       'external_auth' => 'google',
     ]);
 
+
     $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
 
+    // Disparar el evento
+    event(new UserRegistered($newUser));
     Auth::login($newUser);
 
     return redirect()
@@ -176,6 +180,10 @@ class SessionController extends Controller
     $data = $request->only(['name', 'surname' ,'username', 'email', 'birth_date','password']);
     //guardo en la tabla user
     $newUser = User::create($data);
+
+     // Disparar el evento
+    event(new UserRegistered($newUser));
+
     //autentico al usuario
     Auth::login($newUser);
     //creo la tabla de user definition
