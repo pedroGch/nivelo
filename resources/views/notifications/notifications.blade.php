@@ -39,33 +39,41 @@
 
   <div class="row g-4 my-2 pt-2 d-flex justify-content-around">
     @forelse ($notifications as $notification)
-            @if ($notification->read == 0)
-                <div class="col-10 shadow-sm my-4">
-                    <div class="card-body">
-                        <p class="h5">{!! $notification->message !!}</p>
-                        <p class="h6">{{ $notification->created_at->diffForHumans() }}</p>
-                        <div class="col-12 mt-2 mb-3 d-flex justify-content-center">
-                            <form action="{{ route('notificationsRead', $notification->id) }}" method="GET">
-                                @csrf
-                                <button type="submit" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
-                                    <ion-icon style="color: #fff" name="checkmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
-                                    <span class="fw-semibold">Marcar como leído</span>
-                                </button>
-                            </form>
-                            @if($notification->category_id != NULL && $notification->place_id != NULL)
-                            <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}" class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white ms-3 px-4">
-                                <span class="fw-semibold">Ver lugar</span>
-                            </a>
-                            @endif
-                        </div>
-                    </div>
+      @if ($notification->read == 0)
+        <div class="col-10 shadow-sm my-4">
+          <div class="card-body">
+            <p class="h5">{!! $notification->message !!}</p>
+            <p class="h6">{{ $notification->created_at->diffForHumans() }}</p>
+            <div class="col-12 mt-2 mb-3">
+              <div class="row">
+                <div class="col-12 col-lg-6 mb-3">
+                  <form action="{{ route('notificationsRead', $notification->id) }}" method="GET">
+                    @csrf
+                    <button type="submit" class="w-100 btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">
+                      <ion-icon style="color: #fff" name="checkmark-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                      <span class="fw-semibold">Marcar como leído</span>
+                    </button>
+                  </form>
                 </div>
-            @endif
-        @empty
-            <div class="col-12 d-flex justify-content-center">
-                <h2 class="h5 fw-bold">No hay notificaciones</h2>
+                @if($notification->category_id != NULL && $notification->place_id != NULL)
+                  <div class="col-12 col-lg-6 mb-3">
+                    <a href="{{ route('placeDetail', ['category_id' => $notification->category_id, 'place_id' => $notification->place_id]) }}"
+                      class="btn d-flex align-items-center justify-content-center rounded-pill shadow-sm bg-naranja-principal text-dark">
+                      <ion-icon style="color: #000" name="map-outline" size="large" class="me-2 icon-hover"></ion-icon>
+                      <span class="fw-semibold">Ver lugar</span>
+                    </a>
+                  </div>
+                  @endif
+              </div>
             </div>
-        @endforelse
+          </div>
+        </div>
+      @endif
+      @empty
+        <div class="col-12 d-flex justify-content-center">
+          <h2 class="h5 fw-bold">No hay notificaciones</h2>
+        </div>
+      @endforelse
   </div>
 </section>
 
