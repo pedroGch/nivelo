@@ -379,7 +379,7 @@
                 if (data.status == 200) {
                     // Actualizar la fila de la tabla
                     document.getElementById(`placeRow${id}`).remove();
-                    Swal.fire('Autorizado', 'El lugar ha sido autorizado.', 'success');
+                    Swal.fire('Autorizado', 'El lugar ha sido autorizado. Recordá autorizar también la reseña vinculada al mismo.', 'success');
                 } else {
                     Swal.fire('Error', data.message, 'error');
                 }
