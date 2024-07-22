@@ -147,6 +147,10 @@ class PlaceController extends Controller
     $categoryId = $request->category_id;
 
     $query = Place::query();
+    
+    // Filtra los lugares que estén aprobados
+    $query->where('status', true);
+
     // Agrupa las condiciones de búsqueda manual
     if (!is_null($searchPlace)) {
       $query = $query->where(function ($query) use ($searchPlace) {
