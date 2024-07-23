@@ -159,7 +159,7 @@
       </div>
       @endif
       <div>
-        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3 image-hover-bright">
+        <img src="{{asset('storage/'. $place->main_img) }}" alt="{{ $place->alt_main_img }}" class="w-100 rounded rounded-3 shadow-sm m-md-2 m-lg-3">
       </div>
     </div>
   </div>
