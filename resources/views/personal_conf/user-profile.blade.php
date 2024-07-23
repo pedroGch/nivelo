@@ -186,10 +186,12 @@
     @if ($status)
       @if($myPlaces->isEmpty())
       <p> No subiste ningún lugar aún.</p>
-      <div class="my-4">
-        <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-          <span class="fw-semibold">Cargar un lugar</span>
-        </a>
+      <div class="row">
+        <div class="col-12 col-lg-4 my-4">
+          <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+            <span class="fw-semibold">Cargar un lugar</span>
+          </a>
+        </div>
       </div>
       @endif
     @else
@@ -275,10 +277,12 @@
         </tr>
         @empty
         <p>No has opinado sobre ningún lugar.</p>
-        <div class="my-4">
-          <a href="{{ route('categories') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
-            <span class="fw-semibold">Buscar lugar</span>
-          </a>
+        <div class="row">
+          <div class="col-12 col-lg-4 my-4">
+            <a href="{{ route('categories') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
+              <span class="fw-semibold">Buscar lugar</span>
+            </a>
+          </div>
         </div>
         @endforelse
       </tbody>
