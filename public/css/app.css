@@ -56,6 +56,10 @@ body {
   width: 100%;
 }
 
+.w-75{
+  width: 75%;
+}
+
 h2.titulo{
   font-size: var(--H-2);
 }
