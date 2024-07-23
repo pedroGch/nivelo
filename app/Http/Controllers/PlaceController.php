@@ -92,7 +92,7 @@ class PlaceController extends Controller
     $request->validate(Place::$rules, Place::$errorMessages);
 
     if ($request->hasFile('main_img')) {
-      $data = $request->file('main_img')->store('places');
+      $data = $request->file('main_img')->store('places', 'public');
     }
 
     $latitude = $request->latitude;
@@ -147,7 +147,7 @@ class PlaceController extends Controller
     $categoryId = $request->category_id;
 
     $query = Place::query();
-    
+
     // Filtra los lugares que estén aprobados
     $query->where('status', true);
 
