@@ -248,22 +248,40 @@
           <td width="25%" class="col px-2">
             @switch($review->score)
               @case($review->score == 1)
-                <p>⭐️</p>
+                <div class="visually-hidden">Puntaje: 1 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️</p>
+                </div>
               @break
               @case($review->score == 2)
-                <p>⭐️⭐️</p>
+                <div class="visually-hidden">Puntaje: 2 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️⭐️</p>
+                </div>
               @break
               @case($review->score == 3)
-                <p>⭐️⭐️⭐️</p>
+                <div class="visually-hidden">Puntaje: 3 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️⭐️⭐️</p>
+                </div>
               @break
               @case($review->score == 4)
-                <p>⭐️⭐️⭐️⭐️</p>
+                <div class="visually-hidden">Puntaje: 4 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️⭐️⭐️⭐️</p>
+                </div>
               @break
               @case($review->score == 5)
-                <p>⭐️⭐️⭐️⭐️⭐️</p>
+                <div class="visually-hidden">Puntaje: 5 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️⭐️⭐️⭐️⭐️</p>
+                </div>
               @break
               @default
-                <p>⭐️</p>
+                <div class="visually-hidden">Puntaje: 1 de 5</div>
+                <div aria-hidden="true">
+                  <p>⭐️</p>
+                </div>
             @endswitch
           <td width="25%" class="col px-2">{{ $review->created_at}}</td>
           <td width="25%" class="col px-2">

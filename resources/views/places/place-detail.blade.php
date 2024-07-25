@@ -82,7 +82,8 @@
         <div class="col-12 mt-2 d-flex">
           @switch($averagePlaceScore)
             @case($averagePlaceScore >= 1 && $averagePlaceScore < 2)
-              <div class="d-flex">
+              <div class="visually-hidden">Puntaje: 1 de 5</div>
+              <div class="d-flex" aria-hidden="true">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella hueco" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella hueco" class="img-fluid ps-3 pt-1">
@@ -91,7 +92,8 @@
               </div>
             @break
             @case($averagePlaceScore >= 2 && $averagePlaceScore < 3)
-              <div class="d-flex">
+            <div class="visually-hidden">Puntaje: 2 de 5</div>
+              <div class="d-flex" aria-hidden="true">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_40.png') }}" alt="ícono estrella hueco" class="img-fluid ps-3 pt-1">
@@ -100,7 +102,8 @@
               </div>
             @break
             @case($averagePlaceScore >= 3 && $averagePlaceScore < 4)
-              <div class="d-flex">
+            <div class="visually-hidden">Puntaje: 3 de 5</div>
+              <div class="d-flex" aria-hidden="true">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
@@ -109,7 +112,8 @@
               </div>
             @break
             @case($averagePlaceScore >= 4 && $averagePlaceScore < 5)
-              <div class="d-flex">
+              <div class="visually-hidden">Puntaje: 4 de 5</div>
+              <div class="d-flex" aria-hidden="true">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
@@ -118,7 +122,8 @@
               </div>
             @break
             @case($averagePlaceScore == 5)
-              <div class="d-flex">
+            <div class="visually-hidden">Puntaje: 5 de 5</div>
+              <div class="d-flex" aria-hidden="true">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
                 <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
@@ -127,7 +132,8 @@
               </div>
             @break
             @default
-            <div class="d-flex">
+            <div class="visually-hidden">Puntaje: 1 de 5</div>
+            <div class="d-flex" aria-hidden="true">
               <img src="{{ url('/img/icon_star_fill_40.png') }}" alt="ícono estrella relleno" class="img-fluid ps-3 pt-1">
             </div>
           @endswitch
