@@ -112,9 +112,15 @@
                         <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
                       </form>
                     @endif
-                    <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
+                    @if($review->status == "approved")
+                      <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
                       <button type="submit" class="form-control btn rounded-pill shadow-sm bg-rojo btn-rojo-hover text-white">Ocultar</button>
                     </form>
+                    @elseif($review->status == "hidden")
+                      <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
+                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">Mostrar</button>
+                    </form>
+                    @endif
                   </td>
                 </tr>
               @endforeach
