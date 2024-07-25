@@ -83,6 +83,19 @@
                       @else
                       <p class="h6">El usuario no subió fotos</p>
                       @endif
+                    </div>
+                    <div>
+                      @if($review->alt_pic_1)
+                      <p class="text-sm"><b>Descripción de la foto 1:</b> {{$review->alt_pic_1}}</p>
+                      @endif
+                      @if($review->alt_pic_2)
+                      <p class="text-sm"><b>Descripción de la foto 2:</b> {{$review->alt_pic_2}}</p>
+                      @endif
+                      @if($review->alt_pic_3)
+                      <p class="text-sm"><b>Descripción de la foto 3:</b> {{$review->alt_pic_3}}</p>
+                      @endif
+
+                    </div>
                   </td>
                   <td class="text-sm p-3 border-2" width="40%">
                     <p><b>Fecha:</b> {{ $review->created_at }}</p>
