@@ -171,7 +171,7 @@
           <div class="col-md-9">
             <div class="card-body">
               <a href="/categorias/${place.category_id}/${place.place_id}" class="h5 text-decoration-none text-dark">${place.name}</a>
-              <p class="card-text">Puntaje: 4.5</p>
+              <!-- <p class="card-text">Puntaje: 4.5</p> -->
               <p class="card-text">${place.address}</p>
               <div class="row">
                 <div class="col-12 col-xl-4 mb-1">
@@ -230,17 +230,19 @@
         }
 
         reviews.forEach(review => {
-          const reviewHTML = `
-            <div class="d-flex mb-3">
-              <img src="/img/avatars/${review.user.avatar}" alt="Foto del usuario" class="img-fluid me-3 rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-              <div>
-                <p class="h5 mb-1">${review.user.username}</p>
-                <p class="mb-0">Puntaje: ${review.score}/5</p>
-                <p class="mb-0">Comentario: ${review.review}</p>
-              </div>
-            </div>`;
-          reviewsContainer.insertAdjacentHTML('beforeend', reviewHTML);
+        const reviewContent = review.review ? review.review : 'Solo puntuado con estrellas';
+        const reviewHTML = `
+          <div class="d-flex mb-3">
+            <img src="/img/avatars/${review.user.avatar}" alt="Foto del usuario" class="img-fluid me-3 rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+            <div>
+              <p class="h5 mb-1">${review.user.username}</p>
+              <p class="mb-0">Puntaje: ${review.score}/5</p>
+              <p class="mb-0">Comentario: ${reviewContent}</p>
+            </div>
+          </div>`;
+        reviewsContainer.insertAdjacentHTML('beforeend', reviewHTML);
         });
+
       })
       .catch(error => console.error('Error al obtener las opiniones:', error));
   }
