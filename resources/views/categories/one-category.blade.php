@@ -115,7 +115,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
     @empty
     <div class="col-12">
       <p class="h6 fw-bold">¡Aún no hay lugares cargados para esta categoría!</p>
-      <div class="my-4">
+      <div class="col-12 col-lg-4 my-4">
         <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
           <span class="fw-semibold">Cargar un lugar</span>
         </a>

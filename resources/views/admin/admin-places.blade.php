@@ -55,7 +55,7 @@
             <div class="row">
               <div class="col-12 col-lg-3">
                 <form action="{{ route('addPlaceForm') }}" method="GET">
-                  <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar lugar</button>
+                  <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3 fw-semibold">Agregar lugar</button>
                 </form>
               </div>
             </div>
@@ -93,7 +93,7 @@
             <!-- Contenido de administración de categorías -->
             <div class="row">
               <div class="col-12 col-lg-3">
-                <button type="button" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                <button type="button" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3 fw-semibold" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
                   Nueva categoría
                 </button>
               </div>
@@ -160,22 +160,22 @@
               <form id="addCategoryForm" action="{{route('addCategorieAction')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label for="categoryName" class="form-label">Nombre de la Categoría</label>
+                  <label for="categoryName" class="form-label h5">Nombre de la Categoría</label>
                   <input type="text" class="form-control" id="categoryName" name="name">
                 </div>
                 <div class="mb-3">
-                  <label for="categoryIcon" class="form-label">Ícono</label>
+                  <label for="categoryIcon" class="form-label h5">Ícono</label>
                   <input type="file" class="form-control" id="categoryIcon" name="icon" accept="image/*">
                 </div>
                 <div class="mb-3">
-                  <label for="categoryImage" class="form-label">Imagen</label>
+                  <label for="categoryImage" class="form-label h5">Imagen</label>
                   <input type="file" class="form-control" id="categoryImage" name="image_cat" accept="image/*">
                 </div>
                 <div class="mb-3">
-                  <label for="imageDescription" class="form-label">Descripción de la Imagen</label>
+                  <label for="imageDescription" class="form-label h5">Descripción de la Imagen</label>
                   <input type="text" class="form-control" id="imageDescription" name="alt_img_cat">
                 </div>
-                <button type="submit" id="btnCategoriaAction" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar Categoría</button>
+                <button type="submit" id="btnCategoriaAction" class="btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3 fw-semibold">Agregar Categoría</button>
               </form>
             </div>
           </div>
@@ -264,9 +264,9 @@
               <td>${place.city}</td>
               <td>${place.province}</td>
               <td>
-                  <a href="/lugares/${place.place_id}/editar" class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white">Editar</a>
-                  <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm bg-rojo btn-rojo-hover text-white">Eliminar</button>
-                  ${category_id === 'pending' ? `<button onclick="autorizarLugar(${place.place_id})" class="btn btn-sm bg-verde-principal btn-verde-hover text-white">Autorizar</button>` : ''}
+                  <a href="/lugares/${place.place_id}/editar" class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white fw-semibold rounded-pill">Editar</a>
+                  <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm bg-rojo btn-rojo-hover text-white fw-semibold rounded-pill">Eliminar</button>
+                  ${category_id === 'pending' ? `<button onclick="autorizarLugar(${place.place_id})" class="btn btn-sm bg-verde-principal btn-verde-hover text-white fw-semibold rounded-pill">Autorizar</button>` : ''}
               </td>
             `;
             tbody.appendChild(row);
@@ -327,7 +327,7 @@
           <td>${imageContent}</td>
           <td>${category.alt_img_cat}</td>
           <td>
-            <button class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white" onclick="editCategory(${category.category_id})">Editar</button>
+            <button class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white fw-semibold rounded-pill" onclick="editCategory(${category.category_id})">Editar</button>
           </td>
         `;
         tbody.appendChild(row);

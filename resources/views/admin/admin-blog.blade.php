@@ -41,7 +41,7 @@
           <div class="lg:mx-6 mb-8 mt-2 mb-5 flex justify-center flex-row flex-wrap">
             <div class="col-12 col-lg-3">
               <form action="{{ route('addPostAction') }}" method="GET">
-                <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3">Agregar noticia nueva</button>
+                <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white mb-3 fw-semibold">Agregar noticia nueva</button>
               </form>
             </div>
             <table class="mb-4">
@@ -65,12 +65,12 @@
                   <td class="text-sm p-3 border-2">{{ $noticia->created_at }}</td>
                   <td class="p-3 border-2" width="15%">
                     <form action="{{ url('/blog/' . $noticia->id . '/editar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Editar</button>
+                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Editar</button>
                     </form>
-                    <button type="button" onclick="borrarNoticia({{ $noticia->id }}, '{{ $noticia->title }}')" class="mb-3 form-control btn rounded-pill p-3 shadow-sm bg-rojo btn-rojo-hover text-white">Eliminar
+                    <button type="button" onclick="borrarNoticia({{ $noticia->id }}, '{{ $noticia->title }}')" class="mb-3 form-control btn rounded-pill p-3 shadow-sm bg-rojo btn-rojo-hover text-white fw-semibold">Eliminar
                     </button>
                     <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-naranja-principal btn-naranja-hover text-white">Leer más</button>
+                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-naranja-principal btn-naranja-hover text-white fw-semibold">Leer más</button>
                     </form>
                   </td>
                 </tr>

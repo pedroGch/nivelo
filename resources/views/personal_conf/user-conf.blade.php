@@ -69,12 +69,12 @@
               </div>
             </div>
             <div class="mb-4">
-              <input type="submit" class="form-control rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white" value="Continuar">
+              <input type="submit" class="form-control rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold" value="Continuar">
             </div>
           </form>
           </div>
           <div class="mb-4">
-            <a href="{{ route('categories') }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Omitir por ahora</a>
+            <a href="{{ route('categories') }}" class="form-control btn btn-violeta-hover rounded-pill p-3 shadow-sm bg-violeta-principal text-white fw-semibold">Omitir por ahora</a>
           </div>
         </div>
       </div>

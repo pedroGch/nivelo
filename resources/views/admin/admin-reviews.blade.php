@@ -109,16 +109,16 @@
                   <td class="p-3 border-2" width="15%">
                     @if ($review->status == "pending")
                       <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
-                        <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">Aprobar</button>
+                        <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Aprobar</button>
                       </form>
                     @endif
                     @if($review->status == "approved")
                       <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/ocultar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-rojo btn-rojo-hover text-white">Ocultar</button>
+                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-rojo btn-rojo-hover text-white fw-semibold">Ocultar</button>
                     </form>
                     @elseif($review->status == "hidden")
                       <form action="{{ url('/dashboard/administrar-resenas/' . $review->review_id . '/aprobar') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white">Mostrar</button>
+                      <button type="submit" class="form-control btn rounded-pill shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Mostrar</button>
                     </form>
                     @endif
                   </td>

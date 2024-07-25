@@ -40,7 +40,7 @@
             <div class="my-2">
               <div>
                 <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="get">
-                  <button class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " type="submit">
+                  <button class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold" type="submit">
                     Leer más
                   </button>
                 </form>

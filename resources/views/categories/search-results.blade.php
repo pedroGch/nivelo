@@ -213,7 +213,7 @@
     <div class="col-12">
       <p class="h5 fw-bold">Aún no hay lugares que coincidan con los criterios de tu búsqueda.</p>
       <p class="h6"> ¿Conocés alguno? ¡Te invitamos a subirlo a nivelo para hacer crecer nuestra base de datos y permitir que otros usuarios se animen a visitarlo!.</p>
-        <div class="my-4">
+        <div class="col-12 col-lg-4 my-4">
           <a href="{{ route('addPlaceForm') }}" class="btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >
             <span class="fw-semibold">Cargar un lugar</span>
           </a>

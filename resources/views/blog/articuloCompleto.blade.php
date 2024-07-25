@@ -56,8 +56,8 @@
             @endif
 
             @if ($noticia->source)
-            <div class="my-5">
-              <a href="{{ $noticia->source }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white" target="_blank">Ver fuente</a>
+            <div class="col-12 col-lg-4 my-5">
+              <a href="{{ $noticia->source }}" class="form-control btn rounded-pill p-3 shadow-sm bg-naranja-principal btn-naranja-hover text-white fw-semibold" target="_blank">Ver fuente</a>
 
             @endif
           </article>
@@ -84,8 +84,8 @@
               @endforeach
             </div>
           </div>
-          <div class="my-5">
-            <a href="{{ route('blogIndex') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal  btn-verde-hover text-white">Ver todas</a>
+          <div class="col-12 col-lg-4 my-5">
+            <a href="{{ route('blogIndex') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal  btn-verde-hover text-white fw-semibold">Ver todas</a>
           </div>
         </div>
 

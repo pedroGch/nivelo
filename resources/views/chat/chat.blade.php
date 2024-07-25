@@ -26,7 +26,7 @@
     </div>
 
     <div class="my-4 d-flex justify-content-center">
-      <a href="{{ route('categories') }}" class="my-3 form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-50 fw-bold">Conocer lugares</a>
+      <a href="{{ route('categories') }}" class="my-3 form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white w-50 fw-semibold">Conocer lugares</a>
     </div>
   @else
     <div class="container custom-container">

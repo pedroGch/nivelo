@@ -175,19 +175,19 @@
               <p class="card-text">${place.address}</p>
               <div class="row">
                 <div class="col-12 col-xl-4 mb-1">
-                  <button class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white " onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa
+                  <button class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white fw-semibold " onclick="viewOnMap(${place.latitude}, ${place.longitude})">Ver en el mapa
                   </button>
                 </div>
                 <div class="col-12 col-xl-4 mb-1">
                   <button
-                    class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white"
+                    class="btn btn-verde-hover rounded-pill w-100 shadow-sm bg-verde-principal text-white fw-semibold"
                     data-bs-toggle="modal"
                     data-bs-target="#reviewsModal${place.place_id}"
                     onclick="loadReviews(${place.place_id})"> Explorar reseñas
                   </button>
                 </div>
                 <div class="col-12 col-xl-4 mb-1">
-                  <a class="text-dark btn btn-naranja-hover w-100 rounded-pill shadow-sm bg-naranja-principal " target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Google Maps</a>
+                  <a class="text-dark btn btn-naranja-hover w-100 rounded-pill shadow-sm bg-naranja-principal fw-semibold" target="_blank" href="https://www.google.com/maps?q=${encodedPlaceName}">Google Maps</a>
                 </div>
 
               </div>
