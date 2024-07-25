@@ -722,6 +722,19 @@ h2.titulo-h1-mb {
   color: var(--naranja-principal) !important;
 }
 
+/* ESTILOS TABS*/
+
+.nav-tabs .nav-link {
+  color: #000!important; /* Cambia este valor por el color que prefieras */
+}
+
+.nav-tabs .nav-link.active {
+  color: #5713AC!important;
+  font-weight: 500; /* Cambia este valor por el color que prefieras */
+}
+
+/* FIN ESTILOS TABS */
+
 /*************** MEDIA QUERIES ****************/
 
 /*Small devices (landscape phones, 576px and up)*/

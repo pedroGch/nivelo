@@ -51,10 +51,10 @@
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
-                      <th>User name</th>
+                      <th>Usuario</th>
                       <th>Email</th>
                       <th>Estado</th>
-                      <th>Acciones</th>
+                      <th>Cambiar estado</th>
                     </tr>
                   </thead>
                   <tbody id="usersTableBody">

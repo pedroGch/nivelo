@@ -104,6 +104,7 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Ícono</th>
+                    <th>Imagen</th>
                     <th>Descripción</th>
                     <th>Acciones</th>
                   </tr>
@@ -263,9 +264,9 @@
               <td>${place.city}</td>
               <td>${place.province}</td>
               <td>
-                  <a href="/lugares/${place.place_id}/editar" class="btn btn-sm btn-primary">Editar</a>
-                  <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm btn-danger">Eliminar</button>
-                  ${category_id === 'pending' ? `<button onclick="autorizarLugar(${place.place_id})" class="btn btn-sm btn-success">Autorizar</button>` : ''}
+                  <a href="/lugares/${place.place_id}/editar" class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white">Editar</a>
+                  <button onclick="borrarLugar(${place.place_id}, '${place.name}')" class="btn btn-sm bg-rojo btn-rojo-hover text-white">Eliminar</button>
+                  ${category_id === 'pending' ? `<button onclick="autorizarLugar(${place.place_id})" class="btn btn-sm bg-verde-principal btn-verde-hover text-white">Autorizar</button>` : ''}
               </td>
             `;
             tbody.appendChild(row);
@@ -310,25 +311,30 @@
   }
 
   function loadCategories() {
-    fetch(`/administrar/categorias`)
-      .then(response => response.json())
-      .then(data => {
-        const tbody = document.getElementById('categoriesTableBody');
-        tbody.innerHTML = '';
-        data.forEach(category => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${category.name}</td>
-            <td><img src="${category.icon}" alt="${category.name}" class="img-fluid" style="width: 30px; height: 30px;"></td>
-            <td>${category.alt_img_cat}</td>
-            <td>
-              <button class="btn btn-sm btn-primary" onclick="editCategory(${category.category_id})">Editar</button>
-            </td>
-          `;
-          tbody.appendChild(row);
-        });
+  fetch(`/administrar/categorias`)
+    .then(response => response.json())
+    .then(data => {
+      const tbody = document.getElementById('categoriesTableBody');
+      tbody.innerHTML = '';
+      data.forEach(category => {
+        const row = document.createElement('tr');
+        const iconContent = category.icon ? `<img src="${category.icon}" alt="${category.name}" class="img-fluid" style="width: 30px; height: 30px;">` : 'ninguno';
+        const imageContent = category.image_cat ? `<img src="/storage/${category.image_cat}" alt="${category.name}" class="img-fluid" height: 15px;">` : 'ninguno';
+
+        row.innerHTML = `
+          <td>${category.name}</td>
+          <td>${iconContent}</td>
+          <td>${imageContent}</td>
+          <td>${category.alt_img_cat}</td>
+          <td>
+            <button class="btn btn-sm bg-naranja-principal btn-naranja-hover text-white" onclick="editCategory(${category.category_id})">Editar</button>
+          </td>
+        `;
+        tbody.appendChild(row);
       });
-  }
+    });
+}
+
 
   function editCategory(id) {
     fetch(`/categorias/${id}/editar`, {

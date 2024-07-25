@@ -70,7 +70,7 @@
                     <button type="button" onclick="borrarNoticia({{ $noticia->id }}, '{{ $noticia->title }}')" class="mb-3 form-control btn rounded-pill p-3 shadow-sm bg-rojo btn-rojo-hover text-white">Eliminar
                     </button>
                     <form action="{{ url('/blog/' . $noticia->id . '/leer_mas') }}" method="GET">
-                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Leer más</button>
+                      <button type="submit" class="form-control btn rounded-pill p-3 shadow-sm bg-naranja-principal btn-naranja-hover text-white">Leer más</button>
                     </form>
                   </td>
                 </tr>
