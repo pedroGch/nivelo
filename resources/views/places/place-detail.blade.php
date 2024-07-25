@@ -349,14 +349,14 @@
         <div class="row pt-4">
           @if ($review->user_id == Auth::id())
           <div class="col-6">
-            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Ver detalle</a></div>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold w-100">Ver detalle</a></div>
           </div>
           <div class="col-6">
-            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-100">Editar</a>
+            <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('editReviewForm', ['review_id' => $review->review_id ]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-naranja-principal btn-naranja-hover text-white fw-semibold w-100">Editar</a>
             </div>
             @else
             <div class="col-12">
-              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white w-50">Ver detalle</a></div>
+              <div class="mt-1 pb-3 d-flex justify-content-center"><a href="{{ route('reviewDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id, 'review_id' => $review->review_id]) }}" class="btn rounded-pill p-3 px-4 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold w-50">Ver detalle</a></div>
             </div>
             @endif
           </div>
@@ -373,7 +373,7 @@
     <div class="row my-3 d-flex justify-content-center">
       <div class="col-12 col-lg-3 justify-content-center">
         <div class="mb-4">
-          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="my-3 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white">Atrás</a>
+          <a href="{{ route('categoryDetail', ['category_id' => $category->category_id ]) }}" class="my-3 form-control btn w-100 rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Atrás</a>
         </div>
       </div>
     </div>

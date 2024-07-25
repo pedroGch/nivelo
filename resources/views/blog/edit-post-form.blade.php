@@ -131,14 +131,17 @@
 
                 </div>
               </div>
-              <div class="mb-4">
-                <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Guardar cambios </button>
+
+            </div>
+              <div class="row">
+                <div class="col-12 col-lg-6 pt-3 mb-5">
+                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
+                </div>
+                <div class="col-12 col-lg-6 pt-3 mb-4">
+                  <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Editar </button>
+                </div>
               </div>
-            </div>
             </form>
-            <div class="mb-5">
-              <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal  btn-verde-hover text-white">Cancelar</a>
-            </div>
           </form>
         </div>
       </div>

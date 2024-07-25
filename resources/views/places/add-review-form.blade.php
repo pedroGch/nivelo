@@ -131,12 +131,12 @@
                   <label for="alt_pic_3">Descripción foto 3:</label>
                   <input type="text" name="alt_pic_3" id="alt_pic_3" class="form-control p-3 @error('alt_pic_3') is-invalid @enderror">
                 </div>
-                <div class="row">
+                <div class="row pt-3">
                   <div class="col-12 col-lg-6 mb-4">
-                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
+                    <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
                   </div>
                   <div class="col-12 col-lg-6 mb-4">
-                    <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
+                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Agregar </button>
                   </div>
                 </div>
               </div>

@@ -147,14 +147,16 @@
                   <label for="alt_pic_3">Descripción foto 3:</label>
                   <input type="text" name="alt_pic_3" id="alt_pic_3" class="form-control p-3 @error('alt_pic_3') is-invalid @enderror" value="{{ old('alt_pic_3', $review->alt_pic_3) }}">
                 </div>
-                <div class="mb-4">
-                  <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Editar </button>
-                </div>
+                <DIV class="row pt-4">
+                  <div class="col-12 col-lg-6 mb-4">
+                    <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
+                  </div>
+                  <div class="col-12 col-lg-6 mb-4">
+                    <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Editar </button>
+                  </div>
+                </DIV>
               </div>
             </form>
-            <div class="mb-4">
-              <a href="{{ route('placeDetail', ['category_id' => $category->category_id, 'place_id' => $place->place_id  ] ) }}" class="form-control btn btn-verde-hover rounded-pill p-3 shadow-sm bg-verde-principal text-white">Cancelar</a>
-            </div>
           </div>
         </div>
       </div>

@@ -95,12 +95,12 @@
             @endfor
           </div>
         </div>
-        <div class="row">
+        <div class="row pt-4">
           <div class="col-12 col-lg-6 mb-4">
-            <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Continuar </button>
+            <a href="{{ route('userProfile') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
           </div>
           <div class="col-12 col-lg-6 mb-4">
-            <a href="{{ route('userProfile') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-verde-principal  btn-verde-hover text-white">Cancelar</a>
+            <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value="">Editar</button>
           </div>
         </div>
       </form>
