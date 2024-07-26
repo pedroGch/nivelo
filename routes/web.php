@@ -144,6 +144,10 @@ Route::post('/start-chat/{chat_id?}', [\App\Livewire\ChatComponent::class, 'star
   ->middleware('auth')
   ->name('startChat');
 
+  Route::get('/chat/{id}/messages', [\App\Http\Controllers\UserController::class, 'getMessages'])
+  ->middleware('auth')
+  ->name('getMessages');
+
 Route::get('/nearby-places', [\App\Http\Controllers\PlaceController::class, 'nearbyPlaces'])
   ->middleware('auth')
   ->name('nearbyPlaces');

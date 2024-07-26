@@ -40,7 +40,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
-          console.log('ServiceWorker registrado con éxito:', registration);
+          //console.log('ServiceWorker registrado con éxito:', registration);
         }, function(error) {
           console.log('Registro de ServiceWorker fallido:', error);
         });
@@ -54,7 +54,6 @@
       e.preventDefault();
       // Save the event so it can be triggered later.
       deferredPrompt = e;
-      console.log('Evento beforeinstallprompt capturado');
       document.getElementById('installButton').style.display = 'block'; // Mostrar el botón de instalación
     });
 

@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\UserDefinition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Message;
+use App\Models\Chat;
 
 class UserController extends Controller
 {
@@ -60,5 +62,11 @@ class UserController extends Controller
     event(new UserStatusChanged($user));
 
     return redirect()->route('AdminUsersView')->with('status.message', 'Acción realizada con éxito')->with('status.type', 'success');
+  }
+
+  public function getMessages($id)
+  {
+    $messages = Message::where('chat_id', $id)->get();
+    return response()->json($messages);
   }
 }

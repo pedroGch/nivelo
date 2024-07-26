@@ -41,10 +41,10 @@
         </div>
 
         <!-- Campo de entrada y botón para enviar mensaje -->
-        <form wire:submit.prevent="submitMessage" class="input-group mt-3">
+        <form wire:submit.prevent="submitMessage" onsubmit="clearMessageInput()" class="input-group mt-3">
           <input id="messageInput" wire:model="message" class="form-control" placeholder="Escribí tu mensaje...">
-          <input type="hidden" wire:model="chat_id">
-          <button id="sendButton" type="submit" class="btn bg-verde-principal btn-verde-hover text-light fw-bold" disabled>Enviar</button>
+          <input id="inputChatId" value="{{$chat->id}}" type="hidden" wire:model="chat_id">
+          <button  id="sendButton" type="submit" class="btn bg-verde-principal btn-verde-hover text-light fw-bold" disabled>Enviar</button>
         </form>
       </div>
     </div>
@@ -58,23 +58,87 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const messageInput = document.getElementById('messageInput');
-        const sendButton = document.getElementById('sendButton');
+      const messageInput = document.getElementById('messageInput');
+      const sendButton = document.getElementById('sendButton');
+      let currentTimeout = 10000;
+      let retries = 0;
+      let messages = [];
 
-        messageInput.addEventListener('input', function() {
-            if (messageInput.value.trim() === '') {
-                sendButton.disabled = true;
-            } else {
-                sendButton.disabled = false;
-            }
-        });
-
-        // Inicializar el estado del botón cuando se carga la página
+      messageInput.addEventListener('input', function() {
         if (messageInput.value.trim() === '') {
-            sendButton.disabled = true;
+          sendButton.disabled = true;
         } else {
-            sendButton.disabled = false;
+          sendButton.disabled = false;
         }
+      });
+      // Inicializar el estado del botón cuando se carga la página
+      if (messageInput.value.trim() === '') {
+        sendButton.disabled = true;
+      } else {
+        sendButton.disabled = false;
+      }
+
+      setMessagesTimeout(currentTimeout=10000, newMessages => {
+        // Agregamos los mensajes nuevos a los que ya tenemos.
+        messages = [...messages, ...newMessages];
+        // Los renderizamos en pantalla.
+        renderMessages(messages);
+      });
     });
+
+    function clearMessageInput() {
+      document.getElementById('messageInput').value = '';
+    }
+
+    function renderMessages(messages) {
+      console.log('dsfgdsfadsafdafs');
+      const conversationContainer = document.querySelector('.conversation');
+      conversationContainer.innerHTML = '';
+      messages.forEach(message => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.classList.add(message.user_id == {{ Auth::user()->id }} ? 'sent-message' : 'received-message');
+        messageElement.innerHTML = `<p>${message.message}</p>`;
+        conversationContainer.appendChild(messageElement);
+      });
+    }
+
+
+    async function getMessages() {
+      const inputchatId = document.getElementById('inputChatId')
+      const chatId = inputchatId.value
+      const response = await fetch(`/chat/${chatId}/messages`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+          }
+      });
+      const json = await response.json();
+      return json.messages; // [] o [{...}]
+    }
+
+    function setMessagesTimeout(timeout, callback) {
+        setTimeout(async function() {
+            const newMessages = await getMessages();
+
+            if(newMessages.length > 0) {
+                callback(newMessages);
+                currentTimeout = 500;
+                retries = 0;
+            } else {
+                retries++;
+
+                if(retries >= 10 && retries < 20) {
+                    currentTimeout = 1000;
+                } else if(retries >= 20 && retries < 30) {
+                    currentTimeout = 1500;
+                }
+            }
+
+            setMessagesTimeout(currentTimeout, callback);
+        }, timeout);
+    }
+
+
   </script>
 </div>
