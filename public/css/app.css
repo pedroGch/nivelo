@@ -48,6 +48,13 @@ body {
 .color-naranja{
   color: var(--naranja-principal);
 }
+
+.font-23{
+  font-size: 23px !important;
+  margin-top: 10px;
+}
+
+
 .h-100px {
   height: 100px;
 }
