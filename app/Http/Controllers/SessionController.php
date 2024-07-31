@@ -123,7 +123,7 @@ class SessionController extends Controller
     $userDefinition = UserDefinition::Create(['user_id'=>$newUser->id]);
 
     // Disparar el evento
-    event(new UserRegistered($newUser));
+    //event(new UserRegistered($newUser));
     Auth::login($newUser);
 
     return redirect()
@@ -182,7 +182,7 @@ class SessionController extends Controller
     $newUser = User::create($data);
 
      // Disparar el evento
-    event(new UserRegistered($newUser));
+    //event(new UserRegistered($newUser));
 
     //autentico al usuario
     Auth::login($newUser);
