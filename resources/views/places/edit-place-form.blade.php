@@ -131,7 +131,7 @@
               </div>
               <div class="row">
                 <div class="col-12 col-lg-6 mb-5">
-                  <a href="{{ route('categories') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
+                  <a href="{{ route('AdminPlacesView') }}" class="form-control btn rounded-pill p-3 shadow-sm bg-violeta-principal  btn-violeta-hover text-white fw-semibold">Cancelar</a>
                 </div>
                 <div class="col-12 col-lg-6 mb-5">
                   <button type="submit" class="btn btn-verde-hover form-control rounded-pill p-3 shadow-sm bg-verde-principal text-white fw-semibold" value=""> Editar </button>
