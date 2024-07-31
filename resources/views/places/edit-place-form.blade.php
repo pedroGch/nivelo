@@ -123,9 +123,7 @@
                   aria-describedby="error-place_description"
                   aria-invalid="true"
                   @enderror
-                  >
-                    {{ trim(old('place_description', $place->description)) }}
-                  </textarea>
+                  >{{ trim(old('place_description', $place->description)) }}</textarea>
                   @error('place_description')
                   <p class="text-danger" id="error-place_description">{{ $message }}</p>
                   @enderror
