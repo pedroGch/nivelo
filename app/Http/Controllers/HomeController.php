@@ -91,7 +91,7 @@ class HomeController extends Controller
     try{
       $data = $request->only(['title', 'content', 'image', 'alt', 'video', 'source']);
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('blog');
+        $data['image'] = $request->file('image')->store('blog', 'public');
       }
       Blog::create($data);
       return redirect()->route('blogAdmin')
@@ -126,7 +126,7 @@ class HomeController extends Controller
     try{
       $data = $request->only(['title', 'content', 'image', 'alt', 'video', 'source']);
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('blog');
+        $data['image'] = $request->file('image')->store('blog', 'public');
       }
       Blog::findOrFail($id)->update($data);
       return redirect()->route('blogAdmin')

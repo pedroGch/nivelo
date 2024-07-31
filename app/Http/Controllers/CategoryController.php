@@ -102,10 +102,10 @@ class CategoryController extends Controller
     try{
       $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('/storage/categories');
+        $data['image'] = $request->file('image')->store('/storage/categories', 'public');
       }
       if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('/storage/categories');
+        $data['icon'] = $request->file('icon')->store('/storage/categories', 'public');
       }
 
       Category::create([
@@ -156,11 +156,11 @@ class CategoryController extends Controller
       $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
 
       if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('/storage/categories');
+        $data['image'] = $request->file('image')->store('/storage/categories', 'public');
         $category->image = $data['image'];
       }
       if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('/storage/categories');
+        $data['icon'] = $request->file('icon')->store('/storage/categories', 'public');
         $category->icon = $data['icon'];
       }
 
