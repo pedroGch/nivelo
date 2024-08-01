@@ -103,7 +103,7 @@
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Ícono</th>
+
                     <th>Imagen</th>
                     <th>Descripción</th>
                     <th>Acciones</th>
@@ -162,10 +162,6 @@
                 <div class="mb-3">
                   <label for="categoryName" class="form-label h5">Nombre de la Categoría</label>
                   <input type="text" class="form-control" id="categoryName" name="name">
-                </div>
-                <div class="mb-3">
-                  <label for="categoryIcon" class="form-label h5">Ícono</label>
-                  <input type="file" class="form-control" id="categoryIcon" name="icon" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="categoryImage" class="form-label h5">Imagen</label>
@@ -318,12 +314,10 @@
       tbody.innerHTML = '';
       data.forEach(category => {
         const row = document.createElement('tr');
-        const iconContent = category.icon ? `<img src="${category.icon}" alt="${category.name}" class="img-fluid" style="width: 30px; height: 30px;">` : 'ninguno';
         const imageContent = category.image_cat ? `<img src="/storage/${category.image_cat}" alt="${category.name}" class="img-fluid" height: 15px;">` : 'ninguno';
 
         row.innerHTML = `
           <td>${category.name}</td>
-          <td>${iconContent}</td>
           <td>${imageContent}</td>
           <td>${category.alt_img_cat}</td>
           <td>

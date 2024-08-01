@@ -100,19 +100,15 @@ class CategoryController extends Controller
   {
 
     try{
-      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
-      if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('/storage/categories', 'public');
+      $data = $request->only(['name', 'alt_img_cat', 'image_cat']);
+      if($request->hasFile('image_cat')){
+        $data['image_cat'] = $request->file('image_cat')->store('/storage/categories', 'public');
       }
-      if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('/storage/categories', 'public');
-      }
-
+//dd($data);
       Category::create([
         'name' => $data['name'],
         'image_cat' => $data['image_cat'],
         'alt_img_cat' => $data['alt_img_cat'],
-        'icon' => $data['icon'],
       ]);
       return redirect()->route('AdminPlacesView')
         ->with('status.message', 'Categoría agregada correctamente');
@@ -147,21 +143,16 @@ class CategoryController extends Controller
       $request->validate([
         'name' => 'required|string|max:255',
         'alt_img_cat' => 'nullable|string|max:255',
-        'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'image_cat' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
 
       $category = Category::findOrFail($id);
 
-      $data = $request->only(['name', 'alt_img_cat', 'icon', 'image_cat']);
+      $data = $request->only(['name', 'alt_img_cat', 'image_cat']);
 
-      if($request->hasFile('image')){
-        $data['image'] = $request->file('image')->store('/storage/categories', 'public');
-        $category->image = $data['image'];
-      }
-      if($request->hasFile('icon')){
-        $data['icon'] = $request->file('icon')->store('/storage/categories', 'public');
-        $category->icon = $data['icon'];
+      if($request->hasFile('image_cat')){
+        $data['image_cat'] = $request->file('image_cat')->store('/storage/categories', 'public');
+        $category->image_cat = $data['image_cat'];
       }
 
       // Actualizar los campos de la categoría

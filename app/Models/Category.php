@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $category_id
  * @property string $name
- * @property string|null $icon
+
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
@@ -36,7 +36,6 @@ class Category extends Model
     'name',
     'image_cat',
     'alt_img_cat',
-    'icon',
   ];
   protected $primaryKey = "category_id";
 }
