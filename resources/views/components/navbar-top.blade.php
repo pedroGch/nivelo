@@ -78,6 +78,13 @@
             </li>
           @endauth
           </ul>
+          <div class="col-12 mx-auto pt-5 mt-5">
+            <form action="{{ route('startChat') }}" method="POST" class="mb-3">
+              @csrf
+              <input type="hidden" name="receiver_id" value="3">
+              <button type="submit" class="text-dark mt-1 btn btn-naranja-hover form-control rounded-pill p-3 shadow-sm bg-naranja-principal fw-semibold ">Chateá con nivelo</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
