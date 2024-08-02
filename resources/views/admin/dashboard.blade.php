@@ -62,7 +62,7 @@
                 <span class="visually-hidden">Lugares pendientes de aprobación</span>
               </span>
               @endif
-              <h3 class="mt-2 text-center">Lugares y categorias</h3>
+              <h3 class="mt-2 text-center">Lugares y categorías</h3>
               <p class="text-center">Total: {{ $lugares->count() }} | Pendientes: {{ $lugaresPendientes->count() }} </p>
               <div class="mb-2">
                 <a href="{{route('AdminPlacesView')}}" class="mt-1 form-control btn w-100 rounded-pill p-1 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
