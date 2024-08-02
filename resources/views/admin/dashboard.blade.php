@@ -50,7 +50,7 @@
               <h3 class="mt-2 text-center">Blog</h3>
               <p class="text-center">Cantidad de noticias: {{ $noticias->count() }}</p>
               <div class="mb-2">
-                <a href="{{ route('blogAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
+                <a href="{{ route('blogAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-1 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
               <h3 class="mt-2 text-center">Lugares y categorias</h3>
               <p class="text-center">Total: {{ $lugares->count() }} | Pendientes: {{ $lugaresPendientes->count() }} </p>
               <div class="mb-2">
-                <a href="{{route('AdminPlacesView')}}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
+                <a href="{{route('AdminPlacesView')}}" class="mt-1 form-control btn w-100 rounded-pill p-1 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
               <h3 class="mt-2 text-center">Usuarios registrados</h3>
               <p class="text-center">Cantidad de usuarios: {{ $usuarios->count() }}</p>
               <div class="mb-2">
-                <a href="{{route('AdminUsersView')}}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
+                <a href="{{route('AdminUsersView')}}" class="mt-1 form-control btn w-100 rounded-pill p-1 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
               <h3 class="mt-2 text-center">Reseñas</h3>
               <p class="text-center">Total: {{ $reviews->count() }} | Pendientes: {{ $reviewsPendientes->count() }} </p>
               <div class="mb-2">
-                <a href="{{ route('reviewsAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
+                <a href="{{ route('reviewsAdmin') }}" class="mt-1 form-control btn w-100 rounded-pill p-1 shadow-sm bg-verde-principal btn-verde-hover text-white fw-semibold">Administrar</a>
               </div>
             </div>
           </div>
