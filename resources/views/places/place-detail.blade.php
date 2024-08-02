@@ -259,7 +259,7 @@
       <div class="my-3">
         @if (!$status)
         <a href="#" disable class="btn w-100 rounded-pill p-3 shadow-sm bg-secondary text-white " >
-          <span class="fw-semibold">No podes realizar reseñas</span>
+          <span class="fw-semibold">No podés realizar reseñas</span>
         </a>
         @else
           <a href="{{ route('addReviewForm', ['category_id' => $category->category_id, 'place_id' => $place->place_id ]) }}" class="btn px-4 w-100 rounded-pill p-3 shadow-sm bg-verde-principal btn-verde-hover text-white " >

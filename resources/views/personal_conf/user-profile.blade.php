@@ -195,7 +195,7 @@
       </div>
       @endif
     @else
-      <p class="alert alert-dark" role="alert"> No podes subir lugares nuevos. Comunicate con el equipo de nivelo.</p>
+      <p class="alert alert-dark" role="alert"> No podés subir lugares nuevos. Comunicate con el equipo de nivelo.</p>
     @endif
     <table>
       @unless ($myPlaces->isEmpty())
